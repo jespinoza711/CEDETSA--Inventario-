@@ -1,0 +1,8 @@
+Line 9: Property Icon in frmBodega had an invalid file reference.
+Line 26: Property Picture in cmdEditItem had an invalid file reference.
+Line 37: Property Picture in cmdSave had an invalid file reference.
+Line 56: Property Picture in cmdAdd had an invalid file reference.
+Line 75: Property Picture in cmdEliminar had an invalid file reference.
+Line 186: Property Picture in cmdUndo had an invalid file reference.
+Line 196: Property OleObjectBlob in TDBG had an invalid file reference.
+Line 193: Cannot load control TDBG.

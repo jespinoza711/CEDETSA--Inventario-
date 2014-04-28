@@ -1,0 +1,7 @@
+Line 25: Property Picture in cmdUndo had an invalid file reference.
+Line 153: Property Picture in cmdEliminar had an invalid file reference.
+Line 172: Property Picture in cmdAdd had an invalid file reference.
+Line 183: Property Picture in cmdSave had an invalid file reference.
+Line 202: Property Picture in cmdEditItem had an invalid file reference.
+Line 212: Property OleObjectBlob in TDBG had an invalid file reference.
+Line 209: Cannot load control TDBG.
