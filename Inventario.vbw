@@ -1,14 +1,14 @@
-Unit = 132, 174, 955, 541, C
+Unit = 132, 174, 955, 541, 
 frmBusqGral = 0, 0, 0, 0, C, 110, 145, 955, 486, C
 frmCatalogos = 0, 0, 0, 0, C, 0, 0, 845, 341, C
 frmMain = 0, 0, 941, 367, C, 66, 87, 889, 454, C
 frmLogin = 0, 0, 0, 0, C, 44, 58, 867, 425, C
 frmBrowseCat = 88, 116, 911, 483, C, 132, 174, 943, 570, C
-frmMensajeError = 0, 0, 0, 0, C, 0, 0, 845, 341, C
+frmMensajeError = 88, 116, 1029, 418, , 0, 0, 845, 341, C
 frmTablas = 85, 35, 896, 431, C, 88, 116, 933, 457, C
 frmProductosINICIAL = 0, 0, 0, 0, C, 371, 388, 1182, 784, C
 frmBodega = 38, -8, 861, 388, C, -113, 174, 710, 541, C
 frmProductos = 106, 93, 917, 565, C, 22, 29, 867, 370, C
 frmVendedor = 7, 19, 852, 360, C, 72, 107, 917, 448, C
 frmTransacciones = 132, 174, 955, 559, , 88, 116, 911, 501, C
-frmRegistrarTransaccion = 44, 58, 963, 454, Z, 0, 0, 0, 0, C
+frmRegistrarTransaccion = 44, 58, 963, 454, Z, 88, 116, 911, 501, C

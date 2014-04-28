@@ -525,7 +525,6 @@ Begin VB.Form frmRegistrarTransaccion
       _ExtentX        =   14790
       _ExtentY        =   1614
       _Version        =   393217
-      Enabled         =   -1  'True
       ScrollBars      =   2
       TextRTF         =   $"frmRegistrarTransaccion.frx":7586
    End
@@ -555,7 +554,7 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Format          =   61472769
+      Format          =   21364737
       CurrentDate     =   41095
    End
    Begin VB.Label Label4 
@@ -1118,50 +1117,50 @@ Dim frm As New frmBrowseCat
     End If
 End Sub
 
-Private Function CreaCabeceraTran() As Boolean
-    Dim lTotal As Double
-    Dim lTotalD As Double
-    Dim lbOk As Boolean
-    On Error GoTo errores
-    lbOk = False
-    
-    gConet.Execute "invInsertCabMovimientos "
-    ' preparacion del recordset CABECERA
-    Dim rstTransCABCO As ADODB.Recordset
-    Set rstTransCABCO = New ADODB.Recordset
-    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
-    rstTransCABCO.ActiveConnection = gConet 'Asocia la conexión de trabajo
-    rstTransCABCO.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
-    rstTransCABCO.CursorLocation = adUseClient ' Cursor local al cliente
-    rstTransCABCO.LockType = adLockPessimistic 'adLockOptimistic
-    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
-    gstrSQL = "SELECT * FROM TRANSACCION WHERE 1=2"
-    rstTransCABCO.Open gstrSQL
-    
-    'gConet.BeginTrans
-    
-    If Not rstTransDETCO.EOF Then
-      lTotal = 0
-        rstTransCABCO.AddNew
-        rstTransCABCO!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD") 'Format(Now, )
-        rstTransCABCO!CorTran = lCorrelativo
-        rstTransCABCO!CodTipoTran = ParametrosGenerales.CodTranCompra
-        rstTransCABCO!Documento = Me.txtNumFactura.Text
-        rstTransCABCO!Descr = Me.txtReferencia.Text
-        rstTransCABCO!Fecha = Format(Me.dtpFactura.value, "YYYY/MM/DD")
-        rstTransCABCO!Usuario = gNombreUsuario
-        rstTransCABCO.Update
-        lbOk = True
-        CreaCabeceraCO = lbOk
-        rstTransDETCO.MoveFirst ' se ubica en el inicio
-        Exit Function
-    End If
-errores:
-    gTrans = False
-    CreaCabeceraCO = lbOk
-    'gConet.RollbackTrans
-    Exit Function
-End Function
+'Private Function CreaCabeceraTran() As Boolean
+'    Dim lTotal As Double
+'    Dim lTotalD As Double
+'    Dim lbOk As Boolean
+'    On Error GoTo errores
+'    lbOk = False
+'
+'    gConet.Execute "invInsertCabMovimientos "
+'    ' preparacion del recordset CABECERA
+'    Dim rstTransCABCO As ADODB.Recordset
+'    Set rstTransCABCO = New ADODB.Recordset
+'    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
+'    rstTransCABCO.ActiveConnection = gConet 'Asocia la conexión de trabajo
+'    rstTransCABCO.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+'    rstTransCABCO.CursorLocation = adUseClient ' Cursor local al cliente
+'    rstTransCABCO.LockType = adLockPessimistic 'adLockOptimistic
+'    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
+'    gstrSQL = "SELECT * FROM TRANSACCION WHERE 1=2"
+'    rstTransCABCO.Open gstrSQL
+'
+'    'gConet.BeginTrans
+'
+'    If Not rstTransDETCO.EOF Then
+'      lTotal = 0
+'        rstTransCABCO.AddNew
+'        rstTransCABCO!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD") 'Format(Now, )
+'        rstTransCABCO!CorTran = lCorrelativo
+'        rstTransCABCO!CodTipoTran = ParametrosGenerales.CodTranCompra
+'        rstTransCABCO!Documento = Me.txtNumFactura.Text
+'        rstTransCABCO!Descr = Me.txtReferencia.Text
+'        rstTransCABCO!Fecha = Format(Me.dtpFactura.value, "YYYY/MM/DD")
+'        rstTransCABCO!Usuario = gNombreUsuario
+'        rstTransCABCO.Update
+'        lbOk = True
+'        CreaCabeceraCO = lbOk
+'        rstTransDETCO.MoveFirst ' se ubica en el inicio
+'        Exit Function
+'    End If
+'errores:
+'    gTrans = False
+'    CreaCabeceraCO = lbOk
+'    'gConet.RollbackTrans
+'    Exit Function
+'End Function
 
 
 Private Sub cmdSave_Click()
@@ -1190,7 +1189,7 @@ Private Sub cmdSave_Click()
 '        lblProgress.Caption = "Preparando datos"
 '        lblProgress.Refresh
 '      '----------- Progress bar
-        SaveRstBatch rstTmpMovimiento, Me.gsIDTipoTransaccion ' salva el detalle que esta en batch
+        SaveRstBatch rstTmpMovimiento, sDocumento ' salva el detalle que esta en batch
         'rstTransCO.Update
 '      '----------- Progress bar
 '        ProgressBar1.Value = 70
@@ -1492,37 +1491,37 @@ Private Sub SaveRstBatch(rst As ADODB.Recordset, sCodTra As String)
                 .CommandText = "invInsertMovimientos"
                 .CommandType = adCmdStoredProc
                 .CommandTimeout = 30
-                .Parameters.Append .CreateParameter("IDPaquete", adInteger, adParamInput, , Me.gsIDTipoTransaccion)
-                .Parameters.Append .CreateParameter("IDBodega", adInteger, adParamInput, , rst.Fields("IdBodega").value)
-                .Parameters.Append .CreateParameter("IDProducto", adInteger, adParamInput, , rst.Fields("IDProducto").value)
-                .Parameters.Append .CreateParameter("IDLote", adInteger, adParamInput, , rst.Fields("IDLote").value)
-                .Parameters.Append .CreateParameter("Documento", adVarChar, adParamInput, 20, rst.Fields("Documento").value)
-                .Parameters.Append .CreateParameter("Fecha", adDate, adParamInput, , rst.Fields("Fecha").value)
-                .Parameters.Append .CreateParameter("IdTipo", adInteger, adParamInput, , rst.Fields("IdTipo").value)
-                .Parameters.Append .CreateParameter("Transaccion", adVarChar, adParamInput, 10, rst.Fields("Transaccion").value)
-                .Parameters.Append .CreateParameter("Naturaleza", adVarChar, adParamInput, 1, rst.Fields("Naturaleza").value)
-                .Parameters.Append .CreateParameter("Cantidad", adDecimal, adParamInput, , rst.Fields("Cantidad").value)
-                .Parameters.Append .CreateParameter("CostoDolar", adDecimal, adParamInput, , rst.Fields("CostoDolar").value)
-                .Parameters.Append .CreateParameter("CostoLocal", adDecimal, adParamInput, , rst.Fields("CostoLocal").value)
-                .Parameters.Append .CreateParameter("PrecioLocal", adDecimal, adParamInput, , rst.Fields("PrecioLocal").value)
-                .Parameters.Append .CreateParameter("PrecioDolar", adDecimal, adParamInput, , rst.Fields("PrecioDolar").value)
-                .Parameters.Append .CreateParameter("UserInsert", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
-                .Parameters.Append .CreateParameter("UserUpdate", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
-                .Parameters("Cantidad").Precision = 28
-                .Parameters("Cantidad").NumericScale = 8
-                .Parameters("CostoDolar").Precision = 28
-                .Parameters("CostoDolar").NumericScale = 8
-                .Parameters("CostoLocal").Precision = 28
-                .Parameters("CostoLocal").NumericScale = 8
-                .Parameters("PrecioLocal").Precision = 28
-                .Parameters("PrecioLocal").NumericScale = 8
-                .Parameters("PrecioDolar").Precision = 28
-                .Parameters("PrecioDolar").NumericScale = 8
+                .Parameters.Append .CreateParameter("@IDPaquete", adInteger, adParamInput, , Me.gsIDTipoTransaccion)
+                .Parameters.Append .CreateParameter("@IDBodega", adInteger, adParamInput, , rst.Fields("IdBodega").value)
+                .Parameters.Append .CreateParameter("@IDProducto", adInteger, adParamInput, , rst.Fields("IDProducto").value)
+                .Parameters.Append .CreateParameter("@IDLote", adInteger, adParamInput, , rst.Fields("IDLote").value)
+                .Parameters.Append .CreateParameter("@Documento", adVarChar, adParamInput, 20, sCodTra)
+                .Parameters.Append .CreateParameter("@Fecha", adDate, adParamInput, , rst.Fields("Fecha").value)
+                .Parameters.Append .CreateParameter("@IdTipo", adInteger, adParamInput, , rst.Fields("IdTipo").value)
+                .Parameters.Append .CreateParameter("@Transaccion", adVarChar, adParamInput, 10, rst.Fields("Transaccion").value)
+                .Parameters.Append .CreateParameter("@Naturaleza", adVarChar, adParamInput, 1, rst.Fields("Naturaleza").value)
+                .Parameters.Append .CreateParameter("@Cantidad", adDecimal, adParamInput, , rst.Fields("Cantidad").value)
+                .Parameters.Append .CreateParameter("@CostoDolar", adDecimal, adParamInput, , rst.Fields("CostoDolar").value)
+                .Parameters.Append .CreateParameter("@CostoLocal", adDecimal, adParamInput, , rst.Fields("CostoLocal").value)
+                .Parameters.Append .CreateParameter("@PrecioLocal", adDecimal, adParamInput, , rst.Fields("PrecioLocal").value)
+                .Parameters.Append .CreateParameter("@PrecioDolar", adDecimal, adParamInput, , rst.Fields("PrecioDolar").value)
+                .Parameters.Append .CreateParameter("@UserInsert", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
+                .Parameters.Append .CreateParameter("@UserUpdate", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
+                .Parameters("@Cantidad").Precision = 28
+                .Parameters("@Cantidad").NumericScale = 8
+                .Parameters("@CostoDolar").Precision = 28
+                .Parameters("@CostoDolar").NumericScale = 8
+                .Parameters("@CostoLocal").Precision = 28
+                .Parameters("@CostoLocal").NumericScale = 8
+                .Parameters("@PrecioLocal").Precision = 28
+                .Parameters("@PrecioLocal").NumericScale = 8
+                .Parameters("@PrecioDolar").Precision = 28
+                .Parameters("@PrecioDolar").NumericScale = 8
                 .Execute
                
                 
             End With
-            
+            rst.MoveNext
       Wend
       
 
