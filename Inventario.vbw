@@ -10,4 +10,5 @@ frmProductosINICIAL = 0, 0, 0, 0, C, 371, 388, 1182, 784, C
 frmBodega = 38, -8, 861, 388, C, -113, 174, 710, 541, C
 frmProductos = 106, 93, 917, 565, C, 22, 29, 867, 370, C
 frmVendedor = 7, 19, 852, 360, C, 72, 107, 917, 448, C
-frmTransacciones = 132, 174, 955, 559, Z, 88, 116, 911, 501, C
+frmTransacciones = 132, 174, 955, 559, , 88, 116, 911, 501, C
+frmRegistrarTransaccion = 44, 58, 963, 454, Z, 0, 0, 0, 0, C

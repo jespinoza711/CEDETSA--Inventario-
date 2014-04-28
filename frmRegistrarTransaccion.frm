@@ -555,7 +555,7 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Format          =   61603841
+      Format          =   61472769
       CurrentDate     =   41095
    End
    Begin VB.Label Label4 
@@ -759,7 +759,7 @@ Public Sub HabilitarControles()
             Me.cmdDelArticulo.Enabled = True
             Me.cmdLote.Enabled = True
             Me.cmdDelLote.Enabled = True
-            
+            Me.TDBG.Enabled = True
 '            txtBodega.Text = "100"
 '            txtDescrBodega.Text = ""
 '            fmtTextbox txtBodega, "R"
@@ -767,35 +767,25 @@ Public Sub HabilitarControles()
             
         Case TypAccion.Edit
             dtpFecha.value = Format(Now, "YYYY/MM/DD")
-            txtTipoTransaccion.Text = ""
+          
             fmtTextbox txtTipoTransaccion, "R"
-            Me.txtDescrTipoTransaccion.Text = ""
             fmtTextbox Me.txtDescrTipoTransaccion, "R"
             
-            txtBodegaDestino.Text = ""
             fmtTextbox txtBodegaDestino, "R"
-            txtDescrBodegaDestino.Text = ""
             fmtTextbox txtDescrBodegaDestino, "R"
             
-            txtBodegaOrigen.Text = ""
             fmtTextbox txtBodegaOrigen, "R"
-            txtDescrBodegaOrigen.Text = ""
             fmtTextbox txtDescrBodegaOrigen, "R"
             
             fmtTextbox txtArticulo, "R"
-            txtArticulo.Text = ""
             fmtTextbox Me.txtDescrArticulo, "R"
-            txtDescrArticulo.Text = ""
+                        
             
-            txtLote.Text = ""
             fmtTextbox txtLote, "R"
-            txtDescrLote.Text = ""
             fmtTextbox txtDescrLote, "R"
             
-            txtCantidad.Text = ""
             fmtTextbox txtCantidad, "O"
             
-            txtCostoDolar.Text = ""
             fmtTextbox txtCostoDolar, "R"
             
             Me.cmdTipoTransaccion.Enabled = True
@@ -808,7 +798,8 @@ Public Sub HabilitarControles()
             Me.cmdDelArticulo.Enabled = True
             Me.cmdLote.Enabled = True
             Me.cmdDelLote.Enabled = True
-           
+            Me.TDBG.Enabled = False
+            
         Case TypAccion.View
             dtpFecha.value = Format(Now, "YYYY/MM/DD")
             txtTipoTransaccion.Text = ""
@@ -844,6 +835,7 @@ Public Sub HabilitarControles()
             Me.cmdLote.Enabled = False
             Me.cmdDelLote.Enabled = False
            
+            Me.TDBG.Enabled = True
     End Select
 End Sub
 
@@ -901,19 +893,19 @@ Private Sub cmdAdd_Click()
             Exit Sub
           End If
           Set rstLote = New ADODB.Recordset
-            rstLote.ActiveConnection = conn
+            rstLote.ActiveConnection = gConet
           CargaDatosLotes rstLote, CInt(Trim(Me.txtLote.Text))
           ' Carga los datos del detalle de transacciones para ser grabados a la bd
           rstTmpMovimiento.AddNew
-          rstTmpMovimiento!IDBodega = Me.txtBodegaOrigen.Text
+          rstTmpMovimiento!IdBodega = Me.txtBodegaOrigen.Text
           rstTmpMovimiento!DescrBodega = Me.txtDescrBodegaOrigen.Text
-          rstTmpMovimiento!IDPRODUCTO = Me.txtArticulo.Text
+          rstTmpMovimiento!IDProducto = Me.txtArticulo.Text
           rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
           rstTmpMovimiento!IDLote = Me.txtLote.Text
           rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
           rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
           rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
-          rstTmpMovimiento!IDTipo = Me.txtTipoTransaccion.Text
+          rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
           rstTmpMovimiento!DescrTipo = Me.txtDescrTipoTransaccion.Text
           rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
           rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
@@ -941,13 +933,13 @@ Private Sub cmdAdd_Click()
 '        '  rstTransAI!numfac = txtFactura.Text
 '          rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
       ElseIf (Accion = Edit) Then
-          rstTmpMovimiento!IDBodega = Me.txtBodegaOrigen.Text
-          rstTmpMovimiento!DecrBodega = Me.txtDescrBodegaOrigen.Text
-          rstTmpMovimiento!IDPRODUCTO = Me.txtArticulo.Text
+          rstTmpMovimiento!IdBodega = Me.txtBodegaOrigen.Text
+          rstTmpMovimiento!DescrBodega = Me.txtDescrBodegaOrigen.Text
+          rstTmpMovimiento!IDProducto = Me.txtArticulo.Text
           rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
           rstTmpMovimiento!IDLote = Me.txtLote.Text
           rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
-          rstTmpMovimiento!IDTipo = Me.txtTipoTransaccion.Text
+          rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
           rstTmpMovimiento!DescrTipo = Me.txtDescrTipoTransaccion.Text
           rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
           rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
@@ -982,6 +974,7 @@ Private Sub cmdAdd_Click()
 '      Me.cmdAgregar.Enabled = False
       Accion = Add
       HabilitarControles
+      HabilitarBotones
 End Sub
 
 Private Sub cmdArticulo_Click()
@@ -1067,62 +1060,39 @@ Private Sub cmdEditItem_Click()
     HabilitarControles
 End Sub
 Private Sub GetDataFromGridToControl() 'EDITAR
-'If Not (rst.EOF And rst.BOF) Then
-'    txtBodega.Text = rst("IDBodega").value
-'    txtDescrBodega.Text = rst("DescrBodega").value
-'    If rst("Activo").value = True Then
-'        chkActivo.value = 1
-'    Else
-'        chkActivo.value = 0
-'    End If
-'    If rst("Factura").value = True Then
-'        chkFactura.value = 1
-'    Else
-'        chkFactura.value = 0
-'    End If
-'Else
-'    txtBodega.Text = ""
-'    txtDescrBodega.Text = ""
-'End If
+'
+    If Not (rstTmpMovimiento.EOF And rstTmpMovimiento.BOF) Then
+        Me.txtTipoTransaccion.Text = rstTmpMovimiento("IDTipo").value
+        Me.txtDescrTipoTransaccion.Text = rstTmpMovimiento("DescrTipo").value
+        'Contemplar para traslados
+        'Me.txtDescrBodegaDestino.Text = rstTmpMovimiento("DescrBodega").value
+        
+        Me.txtBodegaOrigen.Text = rstTmpMovimiento("IDBodega").value
+        Me.txtDescrBodegaOrigen.Text = rstTmpMovimiento("DescrBodega").value
+        Me.txtArticulo.Text = rstTmpMovimiento("IDProducto").value
+        Me.txtDescrArticulo.Text = rstTmpMovimiento("DescrProducto").value
+        Me.txtLote.Text = rstTmpMovimiento("IDLote").value
+        Me.txtDescrLote.Text = rstTmpMovimiento("LoteInterno").value
+        Me.txtCantidad.Text = rstTmpMovimiento("Cantidad").value
+        Me.txtCostoDolar.Text = rstTmpMovimiento("CostoDolar").value
+        
+        
+    Else
+      
+        HabilitarControles
+    End If
 
 End Sub
 
 Private Sub cmdEliminar_Click()
     Dim lbOk As Boolean
-    Dim sMsg As String
-    Dim sTipo As String
-    Dim sFiltro As String
-    Dim sActivo As String
-    Dim sFactura As String
-
-    If txtBodega.Text = "" Then
-        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
-        Exit Sub
-    End If
-    If chkActivo.value = 1 Then
-        sActivo = "1"
-    Else
-        sActivo = "0"
-
-    End If
     
-    If chkFactura.value = 1 Then
-        sFactura = "1"
-    Else
-        sFactura = "0"
-    End If
-    
-    ' hay que validar la integridad referencial
-    lbOk = Mensaje("Está seguro de eliminar la Bodega " & rst("IDBodega").value, ICO_PREGUNTA, True)
-    If lbOk Then
-                lbOk = invUpdateBodega("D", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
-        
-        If lbOk Then
-            sMsg = "Borrado Exitosamente ... "
-            lbOk = Mensaje(sMsg, ICO_OK, False)
-            ' actualiza datos
-            cargaGrid
-        End If
+    lbOk = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
+    If (lbOk) Then
+        rstTmpMovimiento.Delete
+        Accion = Add
+        HabilitarBotones
+        HabilitarControles
     End If
 End Sub
 
@@ -1148,76 +1118,199 @@ Dim frm As New frmBrowseCat
     End If
 End Sub
 
-Private Sub cmdSave_Click()
+Private Function CreaCabeceraTran() As Boolean
+    Dim lTotal As Double
+    Dim lTotalD As Double
     Dim lbOk As Boolean
-    Dim sMsg As String
-    Dim sActivo As String
-    Dim sFactura As String
-    Dim sFiltro As String
-    If txtBodega.Text = "" Then
-        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
-        Exit Sub
-    End If
-    If chkActivo.value = 1 Then
-        sActivo = "1"
-    Else
-        sActivo = "0"
-    End If
-    If chkFactura.value = 1 Then
-        sFactura = "1"
-    Else
-        sFactura = "0"
-    End If
-    If txtDescrBodega.Text = "" Then
-        lbOk = Mensaje("La Descripción del Centro no puede estar en blanco", ICO_ERROR, False)
-        Exit Sub
-    End If
+    On Error GoTo errores
+    lbOk = False
     
+    gConet.Execute "invInsertCabMovimientos "
+    ' preparacion del recordset CABECERA
+    Dim rstTransCABCO As ADODB.Recordset
+    Set rstTransCABCO = New ADODB.Recordset
+    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
+    rstTransCABCO.ActiveConnection = gConet 'Asocia la conexión de trabajo
+    rstTransCABCO.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+    rstTransCABCO.CursorLocation = adUseClient ' Cursor local al cliente
+    rstTransCABCO.LockType = adLockPessimistic 'adLockOptimistic
+    If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
+    gstrSQL = "SELECT * FROM TRANSACCION WHERE 1=2"
+    rstTransCABCO.Open gstrSQL
+    
+    'gConet.BeginTrans
+    
+    If Not rstTransDETCO.EOF Then
+      lTotal = 0
+        rstTransCABCO.AddNew
+        rstTransCABCO!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD") 'Format(Now, )
+        rstTransCABCO!CorTran = lCorrelativo
+        rstTransCABCO!CodTipoTran = ParametrosGenerales.CodTranCompra
+        rstTransCABCO!Documento = Me.txtNumFactura.Text
+        rstTransCABCO!Descr = Me.txtReferencia.Text
+        rstTransCABCO!Fecha = Format(Me.dtpFactura.value, "YYYY/MM/DD")
+        rstTransCABCO!Usuario = gNombreUsuario
+        rstTransCABCO.Update
+        lbOk = True
+        CreaCabeceraCO = lbOk
+        rstTransDETCO.MoveFirst ' se ubica en el inicio
+        Exit Function
+    End If
+errores:
+    gTrans = False
+    CreaCabeceraCO = lbOk
+    'gConet.RollbackTrans
+    Exit Function
+End Function
 
-        
-    If Accion = Add Then
+
+Private Sub cmdSave_Click()
+  Dim lbOk As Boolean
+    'On Error GoTo errores
     
-        If Not (rst.EOF And rst.BOF) Then
-            sFiltro = "IDBodega = '" & txtBodega.Text & "'"
-            If ExiteRstKey(rst, sFiltro) Then
-               lbOk = Mensaje("Ya exista Bodega ", ICO_ERROR, False)
-                txtBodega.SetFocus
+    If rstTmpMovimiento.RecordCount > 0 Then
+'        rstTmpMovimiento!CorTran = lCorrelativo
+      
+'      If gTasaCambio = 0 Then
+'        lbOk = Mensaje("La tasa de cambio es Cero llame a informática por favor ", ICO_ERROR, False)
+'        Exit Sub
+'      End If
+      
+      
+      gConet.BeginTrans ' inicio aqui la transacción
+      gBeginTransNoEnd = True
+      Dim sDocumento As String
+      sDocumento = CreaCabecera()
+      If sDocumento <> "" Then ' salva la cabecera
+'      '----------- Progress bar
+'        ProgressBar1.Visible = True
+'        ProgressBar1.Min = 1
+'        ProgressBar1.Max = 100
+'        ProgressBar1.Value = 20
+'        lblProgress.Caption = "Preparando datos"
+'        lblProgress.Refresh
+'      '----------- Progress bar
+        SaveRstBatch rstTmpMovimiento, Me.gsIDTipoTransaccion ' salva el detalle que esta en batch
+        'rstTransCO.Update
+'      '----------- Progress bar
+'        ProgressBar1.Value = 70
+'        lblProgress.Caption = "Costo Promedio"
+'        lblProgress.Refresh
+'      '----------- Progress bar
+        
+''        lbOk = Costo_Promedio_Batch(gRegistrosCODET, Format(CDate(Me.dtpFecha.value), "yyyy-mm-dd"), ParametrosGenerales.CodTranCompra)        ' Costo Promedio
+''        If lbOk = False Then
+''          If gBeginTransNoEnd Then
+''            conn.RollbackTrans
+''            gBeginTransNoEnd = False
+''          End If
+''          lbOk = Mensaje("Ha ocurrido un error en el cálculo del costo promedio, llame a informática", error, False)
+''
+''          Exit Sub
+''        End If
+        
+'      '----------- Progress bar
+'        ProgressBar1.Value = 90
+'        lblProgress.Caption = "Act. inventario"
+'        lblProgress.Refresh
+'      '----------- Progress bar
+        
+'        lbOk = Update_Inventory(gRegistrosCODET, "COMP")
+'        If lbOk = False Then
+'          lbOk = Mensaje("Ha ocurrido un error en la actualización del inventario, llame a informática", error, False)
+'          conn.RollbackTrans
+'          Exit Sub
+'        End If
+        
+'        If lbOk And SetFlgOk("TRANSACCION", "FLGOK", ParametrosGenerales.CodTranCompra, Str(lCorrelativo)) Then
+'          '----------- Progress bar
+'            ProgressBar1.Value = 100
+'            lblProgress.Caption = "Fin"
+'            lblProgress.Refresh
+'          '----------- Progress bar
+          If (gTrans = True) Then
+            lbOk = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
+         ' ProgressBar1.Visible = False
+          'lblProgress.Caption = ""
+          
+         ' lblNoTra.Caption = ""
+            Me.cmdAdd.Enabled = False
+          
+'          Me.tdgCompra.Columns("Descr").FooterText = "Items de la transacción :     "
+'          tdgCompra.Columns("Costo").FooterText = "Total : "
+'          tdgCompra.Columns("Monto").NumberFormat = "###,###,##0.#0"
+'          tdgCompra.Columns("Monto").FooterText = "0"
+  
+        
+            Accion = View
+            HabilitarBotones
+            HabilitarControles
+        
+'          If rstTransCO.State = adStateOpen Then rstTransCO.Close
+'          If rstTransDETCO.State = adStateOpen Then rstTransDETCO.Close
+'          If gRegistrosCODET.State = adStateOpen Then gRegistrosCODET.Close
+'          If rstTransCABCO.State = adStateOpen Then rstTransCABCO.Close
+'
+           
+            gConet.CommitTrans
+            gBeginTransNoEnd = False
+            'InicializaFormulario
             Exit Sub
-            End If
-        End If
-    
-            lbOk = invUpdateBodega("I", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+          Else
+            gConet.RollbackTrans
+            gBeginTransNoEnd = False
+          End If
+        gBeginTransNoEnd = False
             
-            If lbOk Then
-                sMsg = "La Bodega ha sido registrada exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
-                ' actualiza datos
-                cargaGrid
-                Accion = View
-                HabilitarControles
-                HabilitarBotones
-            Else
-                 sMsg = "Ha ocurrido un error tratando de Agregar la Bodega... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
-            End If
-    End If ' si estoy adicionando
-        If Accion = Edit Then
-            If Not (rst.EOF And rst.BOF) Then
-                lbOk = invUpdateBodega("U", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
-                If lbOk Then
-                    sMsg = "Ha ocurrido un error tratando de Actualizar la Bodega... "
-                    lbOk = Mensaje(sMsg, ICO_ERROR, False)
-                    ' actualiza datos
-                    cargaGrid
-                    Accion = View
-                    HabilitarControles
-                    HabilitarBotones
-                End If
-            End If
-        
-    End If ' si estoy adicionando
+       
+        Exit Sub
+      End If
+      
+    
+    End If
+    gTrans = False
+    
+    If gBeginTransNoEnd Then
+      gConet.RollbackTrans
+      gBeginTransNoEnd = False
+    End If
+    lbOk = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
+    'InicializaFormulario
 
 End Sub
+
+Private Function CreaCabecera() As String
+    Dim lTotal As Double
+    Dim lTotalD As Double
+    Dim lbOk As Boolean
+    On Error GoTo errores
+    lbOk = False
+    
+    ' preparacion del recordset CABECERA
+    Dim sqlCmd As New ADODB.Command
+    
+    Dim sDocumento As String
+    sqlCmd.ActiveConnection = gConet
+    sqlCmd.CommandText = "invInsertCabMovimientos "
+    sqlCmd.CommandType = adCmdStoredProc
+        
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adInteger, adParamInput, 100, Me.gsIDTipoTransaccion)
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adVarChar, adParamOutput, 400, sDocumento)
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adDate, adParamInput, 100, Me.dtpFecha.value)
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adVarChar, adParamInput, 255, Me.txtConcepto.Text)
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adVarChar, adParamInput, 255, gsUser)
+    sqlCmd.Parameters.Append sqlCmd.CreateParameter(, adVarChar, adParamInput, 255, gsUser)
+    sqlCmd.Execute
+    CreaCabecera = sqlCmd.Parameters(1).value
+    Exit Function
+errores:
+    gTrans = False
+    CreaCabecera = lbOk
+    'gConet.RollbackTrans
+    Exit Function
+End Function
+
+
 
 Private Sub cmdTipoTransaccion_Click()
     Dim frm As New frmBrowseCat
@@ -1309,8 +1402,7 @@ End Sub
 
 Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
     GetDataFromGridToControl
-    HabilitarControles
-    HabilitarBotones
+    
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
@@ -1321,15 +1413,123 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
     Dim lbOk As Boolean
     'On Error GoTo error
     lbOk = True
-      gstrSQL = "SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion"
+      GSSQL = "SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion"
     
-      gstrSQL = gstrSQL & " FROM " & " dbo.invLOTE " 'Constuye la sentencia SQL
-      gstrSQL = gstrSQL & " WHERE IDLote=" & iIDLote
+      GSSQL = GSSQL & " FROM " & " dbo.invLOTE " 'Constuye la sentencia SQL
+      GSSQL = GSSQL & " WHERE IDLote=" & iIDLote
       If rst.State = adStateOpen Then rst.Close
-      rst.Open gstrSQL, , adOpenKeyset, adLockOptimistic
+      rst.Open GSSQL, , adOpenKeyset, adLockOptimistic
     
     If (rst.BOF And rst.EOF) Then  'Si no es válido
         lbOk = False  'Indica que no es válido
     End If
+End Sub
+
+Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
+ Dim lbOk As Boolean
+    If KeyAscii = vbKeyReturn Then
+    
+        If txtCantidad.Text <> "" Then
+        
+            If Not Val_TextboxNum(txtCantidad) Then
+              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              txtCantidad.SetFocus
+              Exit Sub
+            End If
+            
+                     
+             ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
+         
+        Else
+            lbOk = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
+           ' txtCosto.Text = ""
+            Exit Sub
+        End If
+        Me.txtCostoDolar.SetFocus
+    End If
+End Sub
+
+Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
+ Dim lbOk As Boolean
+    If KeyAscii = vbKeyReturn Then
+    
+        If Me.txtCostoDolar.Text <> "" Then
+        
+            If Not Val_TextboxNum(txtCostoDolar) Then
+              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              txtCostoDolar.SetFocus
+              Exit Sub
+            End If
+            
+                     
+             ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
+         
+        Else
+            lbOk = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
+           ' txtCosto.Text = ""
+            Exit Sub
+        End If
+        Me.cmdAdd.SetFocus
+    End If
+
+End Sub
+
+
+Private Sub SaveRstBatch(rst As ADODB.Recordset, sCodTra As String)
+    Dim i As Integer
+    On Error GoTo errores
+    'Set lRegistros = New ADODB.Recordset  'Inicializa la variable de los registros
+    'gConet.BeginTrans
+    
+    
+    If rst.RecordCount > 0 Then
+      rst.MoveFirst
+      While Not rst.EOF
+            Dim sqlCmd As New ADODB.Command
+            With sqlCmd
+                .ActiveConnection = gConet
+            
+                .CommandText = "invInsertMovimientos"
+                .CommandType = adCmdStoredProc
+                .CommandTimeout = 30
+                .Parameters.Append .CreateParameter("IDPaquete", adInteger, adParamInput, , Me.gsIDTipoTransaccion)
+                .Parameters.Append .CreateParameter("IDBodega", adInteger, adParamInput, , rst.Fields("IdBodega").value)
+                .Parameters.Append .CreateParameter("IDProducto", adInteger, adParamInput, , rst.Fields("IDProducto").value)
+                .Parameters.Append .CreateParameter("IDLote", adInteger, adParamInput, , rst.Fields("IDLote").value)
+                .Parameters.Append .CreateParameter("Documento", adVarChar, adParamInput, 20, rst.Fields("Documento").value)
+                .Parameters.Append .CreateParameter("Fecha", adDate, adParamInput, , rst.Fields("Fecha").value)
+                .Parameters.Append .CreateParameter("IdTipo", adInteger, adParamInput, , rst.Fields("IdTipo").value)
+                .Parameters.Append .CreateParameter("Transaccion", adVarChar, adParamInput, 10, rst.Fields("Transaccion").value)
+                .Parameters.Append .CreateParameter("Naturaleza", adVarChar, adParamInput, 1, rst.Fields("Naturaleza").value)
+                .Parameters.Append .CreateParameter("Cantidad", adDecimal, adParamInput, , rst.Fields("Cantidad").value)
+                .Parameters.Append .CreateParameter("CostoDolar", adDecimal, adParamInput, , rst.Fields("CostoDolar").value)
+                .Parameters.Append .CreateParameter("CostoLocal", adDecimal, adParamInput, , rst.Fields("CostoLocal").value)
+                .Parameters.Append .CreateParameter("PrecioLocal", adDecimal, adParamInput, , rst.Fields("PrecioLocal").value)
+                .Parameters.Append .CreateParameter("PrecioDolar", adDecimal, adParamInput, , rst.Fields("PrecioDolar").value)
+                .Parameters.Append .CreateParameter("UserInsert", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
+                .Parameters.Append .CreateParameter("UserUpdate", adVarChar, adParamInput, 20, rst.Fields("UserInsert").value)
+                .Parameters("Cantidad").Precision = 28
+                .Parameters("Cantidad").NumericScale = 8
+                .Parameters("CostoDolar").Precision = 28
+                .Parameters("CostoDolar").NumericScale = 8
+                .Parameters("CostoLocal").Precision = 28
+                .Parameters("CostoLocal").NumericScale = 8
+                .Parameters("PrecioLocal").Precision = 28
+                .Parameters("PrecioLocal").NumericScale = 8
+                .Parameters("PrecioDolar").Precision = 28
+                .Parameters("PrecioDolar").NumericScale = 8
+                .Execute
+               
+                
+            End With
+            
+      Wend
+      
+
+    End If
+    Exit Sub
+errores:
+    gTrans = False
+    'gConet.RollbackTrans
 End Sub
 
