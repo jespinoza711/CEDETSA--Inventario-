@@ -1,3 +1,117 @@
+delete from dbo.[invPAQUETETIPOMOV]
+go 
+delete from dbo.invTIPOMOVIMIENTO
+go 
+delete from dbo.invPAQUETE
+go
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (1, 'COM', 'Compra', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (2, 'FAC', 'Facturación', 'S', -1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (3, 'AJE', 'Ajuste por Entrada', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (4, 'AJS', 'Ajuste por Salida', 'S', -1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (5, 'BON', 'Bonificación', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (6, 'PRS', 'Préstamo Salida', 'S', -1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (7, 'PRE', 'Préstamo Entrada', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (8, 'CON', 'Consumo', 'S', -1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (9, 'TRS', 'Traslado Salida', 'S', -1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (10, 'TRE', 'Traslado Entrada', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (11, 'FIE', 'Ajuste Físico Entrada', 'E', 1, 1)
+GO
+INSERT [dbo].[invTIPOMOVIMIENTO]( IDTipo, Transaccion , Descr, Naturaleza , Factor, ReadOnly )
+VALUES (12, 'FIS', 'Ajuste Físico Salida', 'S', -1, 1)
+GO
+
+
+--INSERTAR PAQUETES
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (1,'COM','Paquete de Compra',0,1,'COM000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (2,'FAC','Paquete de Facturación',0,1,'FAC000000000000',1)
+GO
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (3,'AJU','Paquete de Ajuste',0,1,'AJU000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (4,'BON','Paquete de Bonificación',0,1,'BON000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (5,'PRE','Paquete de Préstamo',0,1,'PRE000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (6,'CON','Paquete de Consumo',0,1,'CON000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (7,'TRS','Paquete de Traslado',0,1,'TRS000000000000',1)
+GO 
+INSERT INTO dbo.invPAQUETE(IDPaquete, PAQUETE,  Descr , Consecutivo, ConsecAutomatico, Documento, Activo )
+VALUES (8,'FIS','PPaquete de Ajuste Físico',0,1,'FIS000000000000',1)
+GO
+
+--INSERTAR PAQUETE - TIPO MOVIMIENTO
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (1,1,'COM')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (2,2,'FAC')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (3,3,'AJU')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (3,4,'AJU')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (4,5,'BON')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (5,6,'PRS')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (5,7,'PRS')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (6,8,'CON')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (7,9,'TRS')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (7,10,'TRS')
+GO 
+
+SELECT * FROM dbo.invTIPOMOVIMIENTO
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (8,11,'FIS')
+GO 
+INSERT [dbo].[invPAQUETETIPOMOV] (IDPaquete, IDTipo, Transaccion )
+VALUES (8,12,'FIS')
+GO
+
+
+select P.IDPaquete, M.IDTipo, M.Transaccion 
+from dbo.invPAQUETE P inner join dbo.invTIPOMOVIMIENTO M
+on P.IDPaquete = M.IDTipo 
 
 -- Drop procedure dbo.invInsertMovimientos
 CREATE PROCEDURE dbo.invInsertMovimientos  @IDPaquete int,
@@ -139,4 +253,19 @@ INNER JOIN dbo.invPAQUETETIPOMOV pm ON pm.IDPaquete = p.IDPaquete
 INNER JOIN dbo.invTIPOMOVIMIENTO tm ON pm.IDTipo=tm.IDTipo
 
 go 
+
+
+
+go 
+create procedure dbo.UpdateExistenciaBodega(@IdBodega int, @IdProducto int, @Cantidad decimal(28,8),@IdTipoTransaccion as int)	
+as
+	declare @Factor int, @Transaccion nvarchar(5)
+	
+	select @Factor=Factor,@Transaccion=Transaccion 
+	from dbo.invTIPOMOVIMIENTO where IDTipo=@IdTipoTransaccion
+	
+	
+	update dbo.invEXISTENCIABODEGA set EXISTENCIA = EXISTENCIA + (@Cantidad * @Factor)
+	where IDPRODUCTO=@IdProducto and IDBODEGA=@IdBodega
+
 
