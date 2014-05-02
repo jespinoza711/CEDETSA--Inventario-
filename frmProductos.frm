@@ -1,17 +1,17 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmProductos 
    Caption         =   "Simulacion LightSwitch"
    ClientHeight    =   8340
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   8730
+   ClientWidth     =   11400
    LinkTopic       =   "Form1"
    ScaleHeight     =   8340
-   ScaleWidth      =   8730
+   ScaleWidth      =   11400
    StartUpPosition =   1  'CenterOwner
    WindowState     =   2  'Maximized
    Begin VB.CommandButton cmdUndo 
@@ -191,7 +191,7 @@ Begin VB.Form frmProductos
       Tabs            =   "frmProductos.frx":4FF2
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
          Height          =   7305
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   1
          Top             =   360
          Width           =   13350
@@ -330,7 +330,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61603841
+            Format          =   54132737
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -353,7 +353,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61603841
+            Format          =   54132737
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -439,7 +439,7 @@ Begin VB.Form frmProductos
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
          Height          =   7305
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   18
          Top             =   360
          Width           =   13350
@@ -969,7 +969,7 @@ Begin VB.Form frmProductos
                Left            =   120
                TabIndex        =   81
                Top             =   1680
-               Width           =   1575
+               Width           =   1815
             End
          End
          Begin VB.Frame Frame2 
@@ -1823,7 +1823,7 @@ Private Sub GetDataFromGridToControl()
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sTipo As String
     Dim sFiltro As String
@@ -1835,7 +1835,7 @@ Private Sub cmdEliminar_Click()
     Dim sBajaPrecioProveedor As String
     
         If txtCodigo.Text = "" Then
-            lbOk = Mensaje("El Código del Producto no puede estar en Blanco", ICO_ERROR, False)
+            lbok = Mensaje("El Código del Producto no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
         
@@ -1872,16 +1872,16 @@ Private Sub cmdEliminar_Click()
        
         ' hay que validar la integridad referencial
         ' if exists dependencias then No se puede eliminar
-        lbOk = Mensaje("Está seguro de eliminar el Producto " & rst("Descr").value, ICO_PREGUNTA, True)
-        If lbOk Then
-                    lbOk = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+        lbok = Mensaje("Está seguro de eliminar el Producto " & rst("Descr").value, ICO_PREGUNTA, True)
+        If lbok Then
+                    lbok = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
                     txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo)
             
-            If lbOk Then
+            If lbok Then
                 sMsg = "Borrado Exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
             End If
@@ -1960,7 +1960,7 @@ Private Sub cmdProveedor_Click()
 End Sub
 
 Private Sub cmdRefresExistencia_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sIDArticulo As String
     Dim sIDBodega As String
     If txtBodMov.Text = "" Then
@@ -1969,12 +1969,12 @@ Private Sub cmdRefresExistencia_Click()
     
     sIDArticulo = txtCodigo.Text
     
-    lbOk = CargaExistenciaBodega(sIDArticulo, sIDBodega)
+    lbok = CargaExistenciaBodega(sIDArticulo, sIDBodega)
 
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFiltro As String
@@ -2032,20 +2032,20 @@ Private Sub cmdSave_Click()
         If Not (rst.EOF And rst.BOF) Then
             sFiltro = "IDProducto = " & txtCodigo.Text
             If ExiteRstKey(rst, sFiltro) Then
-               lbOk = Mensaje("Ya existe ese Departamento ", ICO_ERROR, False)
+               lbok = Mensaje("Ya existe ese Departamento ", ICO_ERROR, False)
                 txtCodigo.SetFocus
             Exit Sub
             End If
         End If
     
-                lbOk = invUpdateProducto("I", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+                lbok = invUpdateProducto("I", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
                     txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text)
             
-            If lbOk Then
+            If lbok Then
                 sMsg = "El Producto ha sido registrado exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -2053,19 +2053,19 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                  sMsg = "Ha ocurrido un error tratando de Agregar el Produto ... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
     End If ' si estoy adicionando
     If Accion = Edit Then
         If Not (rst.EOF And rst.BOF) Then
-                lbOk = invUpdateProducto("U", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+                lbok = invUpdateProducto("U", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
                     txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text)
     
-            If lbOk Then
+            If lbok Then
                 sMsg = "Los datos fueron grabados Exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -2073,7 +2073,7 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                 sMsg = "Ha ocurrido un error tratando de actualizar los datos del producto... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
         End If
        End If ' si estoy adicionando
@@ -2088,7 +2088,7 @@ Private Sub cmdUndo_Click()
 End Sub
 
 Private Sub Form_Load()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -2113,7 +2113,7 @@ Private Sub Form_Load()
     Accion = View
     HabilitarControles
     HabilitarBotones
-    lbOk = CargaTablas()
+    lbok = CargaTablas()
     cargaGrid
 
 End Sub
@@ -2263,10 +2263,10 @@ Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 End Sub
 
 Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As String)
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim iResultado As Integer
     On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = gsCompania & ".invGetExistenciaBodega " & sIDArticulo & " , " & sIDBodega
     
       'Set rst2 = gConet.Execute(GSSQL, adCmdText)  'Ejecuta la sentencia
@@ -2274,26 +2274,26 @@ Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As Strin
     
       If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
         
       ElseIf Not (rst3.BOF And rst3.EOF) Then  'Si no es válido
         Set TDBGExistencia.DataSource = rst3
         TDBGExistencia.Refresh
       End If
-      CargaExistenciaBodega = lbOk
+      CargaExistenciaBodega = lbok
       'rst3.Close
       Exit Function
 error:
-      lbOk = False
+      lbok = False
       gsOperacionError = "Ocurrió un error en la operación de los datos " & err.Description
       Resume Next
 End Function
 
 Private Function CargaTablas() As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim iResultado As Integer
     On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "
               
       'Set rst2 = gConet.Execute(GSSQL, adCmdText)  'Ejecuta la sentencia
@@ -2301,31 +2301,31 @@ Private Function CargaTablas() As Boolean
     
       If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
         
       ElseIf Not (rst2.BOF And rst2.EOF) Then  'Si no es válido
         rst2.MoveNext
-        lbOk = SetLable(rst2, "NOMBRE='LINEA'", lblClasif1)
-        lbOk = SetLable(rst2, "NOMBRE='FAMILIA'", lblClasif2)
-        lbOk = SetLable(rst2, "NOMBRE='SUBFAMILIA'", lblClasif3)
-        lbOk = SetLable(rst2, "NOMBRE='PRESENTACION'", lblPresentación)
-        lbOk = SetLable(rst2, "NOMBRE='IMPUESTO'", lblImpuesto)
-        lbOk = True
+        lbok = SetLable(rst2, "NOMBRE='LINEA'", lblClasif1)
+        lbok = SetLable(rst2, "NOMBRE='FAMILIA'", lblClasif2)
+        lbok = SetLable(rst2, "NOMBRE='SUBFAMILIA'", lblClasif3)
+        lbok = SetLable(rst2, "NOMBRE='PRESENTACION'", lblPresentación)
+        lbok = SetLable(rst2, "NOMBRE='IMPUESTO'", lblImpuesto)
+        lbok = True
       End If
-      CargaTablas = lbOk
+      CargaTablas = lbok
       rst2.Close
       Exit Function
 error:
-      lbOk = False
+      lbok = False
       gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
       Resume Next
 End Function
 
 Private Function SetLable(rstFuente As ADODB.Recordset, sFiltro As String, lbl As Label) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim rstClone As ADODB.Recordset
     Dim bmPos As Variant
-    lbOk = False
+    lbok = False
     If Not (rstFuente.EOF And rstFuente.BOF) Then
         Set rstClone = New ADODB.Recordset
             bmPos = rstFuente.Bookmark
@@ -2335,25 +2335,25 @@ Private Function SetLable(rstFuente As ADODB.Recordset, sFiltro As String, lbl A
             If Not rstClone.EOF Then ' Si existe
               lbl.Caption = rstClone("DescrUsuario").value & " :"
               lbl.Tag = rstClone("Nombre").value
-              lbOk = True
+              lbok = True
             End If
             rstFuente.Filter = adFilterNone
             rstFuente.Bookmark = bmPos
         rstClone.Filter = adFilterNone
     End If
-    SetLable = lbOk
+    SetLable = lbok
 End Function
 
 Private Function ControlsOk() As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If txtCodigo.Text = "" Then
-        lbOk = Mensaje("El Código del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("El Código del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCodigo) Then
-        lbOk = Mensaje("El Código del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Código del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
@@ -2361,42 +2361,42 @@ Private Function ControlsOk() As Boolean
     
     
     If txtDescr.Text = "" Then
-        lbOk = Mensaje("La Descripción del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Descripción del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif1.Text = "" Then
-        lbOk = Mensaje("La Clasificación1 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación1 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif2.Text = "" Then
-        lbOk = Mensaje("La Clasificación2 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación2 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif3.Text = "" Then
-        lbOk = Mensaje("La Clasificación3 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación3 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtImpuesto.Text = "" Then
-        lbOk = Mensaje("EL Impuesto del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("EL Impuesto del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtIDPresentacion.Text = "" Then
-        lbOk = Mensaje("La Presentación del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Presentación del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     If txtCodProveedor.Text = "" Then
-        lbOk = Mensaje("EL Proveedor del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("EL Proveedor del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         SSActiveTabs1.SelectedTab = 2
         ControlsOk = False
         Exit Function
@@ -2407,55 +2407,55 @@ Private Function ControlsOk() As Boolean
     End If
     
     If Not Val_TextboxNum(txtCostoUltDolar) Then
-        lbOk = Mensaje("El Costo Ultimo Dolar del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Dolar del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltLocal) Then
-        lbOk = Mensaje("El Costo Ultimo Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltPromDolar) Then
-        lbOk = Mensaje("El Costo Ultimo Promedio Dolar del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Promedio Dolar del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltPromLocal) Then
-        lbOk = Mensaje("El Costo Ultimo Promedio Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Promedio Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPorcDescAlzaProveedor) Then
-        lbOk = Mensaje("El % de Alza o Descuento del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El % de Alza o Descuento del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioCIFLocal) Then
-        lbOk = Mensaje("El Precio CIF del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio CIF del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioFOBLocal) Then
-        lbOk = Mensaje("El Precio FOB del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio FOB del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioFarmaciaLocal) Then
-        lbOk = Mensaje("El Precio Farmacia del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio Farmacia del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioPublico) Then
-        lbOk = Mensaje("El Precio Público del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio Público del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If

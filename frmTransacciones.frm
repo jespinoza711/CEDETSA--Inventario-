@@ -4,9 +4,9 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmTransacciones 
    Caption         =   "Form1"
    ClientHeight    =   7035
-   ClientLeft      =   60
-   ClientTop       =   450
-   ClientWidth     =   11610
+   ClientLeft      =   165
+   ClientTop       =   555
+   ClientWidth     =   11400
    BeginProperty Font 
       Name            =   "Microsoft Sans Serif"
       Size            =   8.25
@@ -19,7 +19,7 @@ Begin VB.Form frmTransacciones
    ForeColor       =   &H002F2F2F&
    LinkTopic       =   "Form1"
    ScaleHeight     =   7035
-   ScaleWidth      =   11610
+   ScaleWidth      =   11400
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton cmdUndo 
       BeginProperty Font 
@@ -182,7 +182,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   21299201
+         Format          =   54263809
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
@@ -203,7 +203,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   21299201
+         Format          =   54263809
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 
