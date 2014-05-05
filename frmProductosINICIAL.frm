@@ -25,7 +25,7 @@ Begin VB.Form frmProductosINICIAL
       Tabs            =   "frmProductosINICIAL.frx":0000
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
          Height          =   2865
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   79
          Top             =   360
          Width           =   14715
@@ -163,7 +163,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   21364737
+            Format          =   53870593
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -185,7 +185,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   21364737
+            Format          =   53870593
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -267,7 +267,7 @@ Begin VB.Form frmProductosINICIAL
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
          Height          =   2865
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   71
          Top             =   360
          Width           =   14715
@@ -813,7 +813,7 @@ Begin VB.Form frmProductosINICIAL
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
          Height          =   2865
          Index           =   1
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   14
          Top             =   360
          Width           =   14715

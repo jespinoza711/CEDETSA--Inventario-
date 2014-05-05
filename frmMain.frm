@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{1BE65FA0-CBF9-11D2-BBC7-00104B9E0792}#2.0#0"; "sstbars2.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMain 
    BackColor       =   &H00FFFFFF&
    Caption         =   "Módulo de Inventarios"
@@ -174,12 +174,14 @@ Dim frm As New frmCatalogos
 '                lbok = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
 '            End If
 '
-'        Case "ID_CANAL"
+        Case "ID_PREPARACION"
 '            If UserMayAccess(gsUSUARIO, A_ID_CANAL, C_MODULO) Then
-'                frm.gsCatalogoName = "CANAL"
-'                frmVendedor.Show vbModal
+                Dim ofrmVendedor As New frmVendedor
+                ofrmVendedor.gsFormCaption = "Vendedor"
+                ofrmVendedor.gsTitle = "Maestro de Vendedores"
+                ofrmVendedor.Show vbModal
 '            Else
-'                lbok = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
+'                lbOk = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
 '            End If
 '
         Case "ID_RESPONSABLE"
@@ -202,7 +204,8 @@ Dim frm As New frmCatalogos
                 Destructor
                 End
 ''
-'        Case "ID_REPORTES"
+        Case "ID_REPORTES"
+            frmTest.Show vbModal
 '            If UserMayAccess(gsUSUARIO, A_ID_REPORTES, C_MODULO) Then
 '                If ExistePreparacion(gsUSUARIO) Then
 '                    frmReportesCC.Show vbModal

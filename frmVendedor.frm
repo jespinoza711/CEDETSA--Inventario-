@@ -1,92 +1,35 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmVendedor 
+   BackColor       =   &H00F4D5BB&
    BorderStyle     =   3  'Fixed Dialog
-   ClientHeight    =   5490
+   ClientHeight    =   6030
    ClientLeft      =   105
    ClientTop       =   435
-   ClientWidth     =   9030
+   ClientWidth     =   9120
+   BeginProperty Font 
+      Name            =   "Arial"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    ForeColor       =   &H00414141&
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "frmVendedor.frx":0000
-   ScaleHeight     =   5490
-   ScaleWidth      =   9030
+   ScaleHeight     =   6030
+   ScaleWidth      =   9120
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton cmdEditItem 
+   Begin VB.Frame Frame1 
+      BackColor       =   &H00F4D5BB&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   8220
-      Picture         =   "frmVendedor.frx":0CCA
-      Style           =   1  'Graphical
-      TabIndex        =   9
-      ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2940
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdSave 
-      Enabled         =   0   'False
-      Height          =   555
-      Left            =   8220
-      Picture         =   "frmVendedor.frx":1994
-      Style           =   1  'Graphical
-      TabIndex        =   8
-      ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   4140
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdAdd 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   8220
-      Picture         =   "frmVendedor.frx":365E
-      Style           =   1  'Graphical
-      TabIndex        =   7
-      ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   2340
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdEliminar 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   8220
-      Picture         =   "frmVendedor.frx":4328
-      Style           =   1  'Graphical
-      TabIndex        =   6
-      ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3540
-      Width           =   555
-   End
-   Begin VB.Frame Frame2 
-      BeginProperty Font 
-         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -94,10 +37,115 @@ Begin VB.Form frmVendedor
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      Height          =   3345
+      Left            =   8040
+      TabIndex        =   12
+      Top             =   2370
+      Width           =   795
+      Begin VB.CommandButton cmdUndo 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   120
+         Picture         =   "frmVendedor.frx":0CCA
+         Style           =   1  'Graphical
+         TabIndex        =   17
+         ToolTipText     =   "Deshacer / Cancelar"
+         Top             =   2640
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdEliminar 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   120
+         Picture         =   "frmVendedor.frx":1994
+         Style           =   1  'Graphical
+         TabIndex        =   16
+         ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
+         Top             =   1440
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdAdd 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   120
+         Picture         =   "frmVendedor.frx":265E
+         Style           =   1  'Graphical
+         TabIndex        =   15
+         ToolTipText     =   "Agrega el item con los datos digitados..."
+         Top             =   240
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdSave 
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   120
+         Picture         =   "frmVendedor.frx":3328
+         Style           =   1  'Graphical
+         TabIndex        =   14
+         ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
+         Top             =   2040
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdEditItem 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   120
+         Picture         =   "frmVendedor.frx":4FF2
+         Style           =   1  'Graphical
+         TabIndex        =   13
+         ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
+         Top             =   840
+         Width           =   555
+      End
+   End
+   Begin VB.Frame Frame2 
+      BackColor       =   &H00F4D5BB&
+      BorderStyle     =   0  'None
       Height          =   1575
-      Left            =   180
-      TabIndex        =   2
-      Top             =   675
+      Left            =   150
+      TabIndex        =   1
+      Top             =   660
       Width           =   8775
       Begin VB.TextBox txtDescrTipo 
          BeginProperty Font 
@@ -112,7 +160,7 @@ Begin VB.Form frmVendedor
          ForeColor       =   &H00FF0000&
          Height          =   315
          Left            =   3315
-         TabIndex        =   16
+         TabIndex        =   11
          Top             =   1020
          Width           =   5280
       End
@@ -129,7 +177,7 @@ Begin VB.Form frmVendedor
          ForeColor       =   &H002F2F2F&
          Height          =   315
          Left            =   1440
-         TabIndex        =   15
+         TabIndex        =   10
          Top             =   1020
          Width           =   1080
       End
@@ -146,29 +194,48 @@ Begin VB.Form frmVendedor
          ForeColor       =   &H002F2F2F&
          Height          =   315
          Left            =   1440
-         TabIndex        =   14
+         TabIndex        =   9
          Top             =   585
          Width           =   1050
       End
       Begin VB.CommandButton cmdTipo 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   320
          Left            =   2580
-         Picture         =   "frmVendedor.frx":4FF2
+         Picture         =   "frmVendedor.frx":5CBC
          Style           =   1  'Graphical
-         TabIndex        =   13
+         TabIndex        =   8
          Top             =   1020
          Width           =   300
       End
       Begin VB.CommandButton cmdDelModulo 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   320
          Left            =   2940
-         Picture         =   "frmVendedor.frx":5334
+         Picture         =   "frmVendedor.frx":5FFE
          Style           =   1  'Graphical
-         TabIndex        =   11
+         TabIndex        =   6
          Top             =   1020
          Width           =   300
       End
       Begin VB.CheckBox chkActivo 
+         BackColor       =   &H00F4D5BB&
          Caption         =   "Activo ?"
          BeginProperty Font 
             Name            =   "Arial"
@@ -179,10 +246,10 @@ Begin VB.Form frmVendedor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   255
          Left            =   7680
-         TabIndex        =   4
+         TabIndex        =   3
          Top             =   240
          Width           =   1005
       End
@@ -199,7 +266,7 @@ Begin VB.Form frmVendedor
          ForeColor       =   &H00FF0000&
          Height          =   315
          Left            =   2565
-         TabIndex        =   3
+         TabIndex        =   2
          Top             =   585
          Width           =   6030
       End
@@ -215,7 +282,7 @@ Begin VB.Form frmVendedor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   255
          Left            =   360
          TabIndex        =   0
@@ -234,40 +301,21 @@ Begin VB.Form frmVendedor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   255
          Left            =   360
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   600
          Width           =   975
       End
    End
-   Begin VB.CommandButton cmdUndo 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   8220
-      Picture         =   "frmVendedor.frx":6FFE
-      Style           =   1  'Graphical
-      TabIndex        =   1
-      ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   4740
-      Width           =   555
-   End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   2955
+      Height          =   3435
       Left            =   150
       OleObjectBlob   =   "frmVendedor.frx":7CC8
-      TabIndex        =   10
+      TabIndex        =   5
       Top             =   2340
-      Width           =   7905
+      Width           =   7665
    End
    Begin VB.Label lbFormCaption 
       Alignment       =   2  'Center
@@ -287,7 +335,7 @@ Begin VB.Form frmVendedor
       ForeColor       =   &H002F2F2F&
       Height          =   375
       Left            =   -510
-      TabIndex        =   12
+      TabIndex        =   7
       Top             =   0
       Width           =   10140
    End

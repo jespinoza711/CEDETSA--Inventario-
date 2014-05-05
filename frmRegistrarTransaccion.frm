@@ -1,13 +1,15 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
+Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmRegistrarTransaccion 
+   BackColor       =   &H00F4D5BB&
    Caption         =   "Form1"
-   ClientHeight    =   7815
+   ClientHeight    =   8445
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   13410
+   ClientWidth     =   11400
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -18,9 +20,613 @@ Begin VB.Form frmRegistrarTransaccion
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   7815
-   ScaleWidth      =   13410
-   StartUpPosition =   3  'Windows Default
+   ScaleHeight     =   8445
+   ScaleWidth      =   11400
+   StartUpPosition =   2  'CenterScreen
+   Begin ActiveTabs.SSActiveTabs sTabTransaccion 
+      Height          =   7005
+      Left            =   270
+      TabIndex        =   11
+      Top             =   1320
+      Width           =   12120
+      _ExtentX        =   21378
+      _ExtentY        =   12356
+      _Version        =   131083
+      TabCount        =   3
+      Tabs            =   "frmRegistrarTransaccion.frx":0000
+      Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
+         Height          =   6615
+         Left            =   30
+         TabIndex        =   34
+         Top             =   360
+         Width           =   12060
+         _ExtentX        =   21273
+         _ExtentY        =   11668
+         _Version        =   131083
+         TabGuid         =   "frmRegistrarTransaccion.frx":00B3
+         Begin TrueOleDBGrid60.TDBGrid TDBG 
+            Height          =   5970
+            Left            =   240
+            OleObjectBlob   =   "frmRegistrarTransaccion.frx":00DB
+            TabIndex        =   35
+            Top             =   420
+            Width           =   11205
+         End
+      End
+      Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
+         Height          =   6615
+         Left            =   30
+         TabIndex        =   19
+         Top             =   360
+         Width           =   12060
+         _ExtentX        =   21273
+         _ExtentY        =   11668
+         _Version        =   131083
+         TabGuid         =   "frmRegistrarTransaccion.frx":8620
+         Begin VB.Frame Frame3 
+            Caption         =   "Frame3"
+            Height          =   1755
+            Left            =   300
+            TabIndex        =   42
+            Top             =   3120
+            Width           =   11445
+            Begin VB.TextBox txtCostoDolar 
+               Height          =   315
+               Left            =   6570
+               TabIndex        =   51
+               Top             =   780
+               Width           =   1515
+            End
+            Begin VB.CommandButton cmdDelLote 
+               Height          =   320
+               Left            =   3810
+               Picture         =   "frmRegistrarTransaccion.frx":8648
+               Style           =   1  'Graphical
+               TabIndex        =   47
+               Top             =   1380
+               Width           =   300
+            End
+            Begin VB.TextBox txtDescrLote 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   4350
+               TabIndex        =   46
+               Top             =   1440
+               Width           =   6675
+            End
+            Begin VB.CommandButton cmdLote 
+               Height          =   320
+               Left            =   3480
+               Picture         =   "frmRegistrarTransaccion.frx":A312
+               Style           =   1  'Graphical
+               TabIndex        =   45
+               Top             =   780
+               Width           =   300
+            End
+            Begin VB.TextBox txtLote 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   44
+               Top             =   780
+               Width           =   1095
+            End
+            Begin VB.TextBox txtCantidad 
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   43
+               Top             =   270
+               Width           =   1905
+            End
+            Begin VB.Label Label9 
+               Caption         =   "Lote:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   450
+               TabIndex        =   50
+               Top             =   1140
+               Width           =   735
+            End
+            Begin VB.Label Label10 
+               Caption         =   "Cantidad:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   540
+               TabIndex        =   49
+               Top             =   330
+               Width           =   1095
+            End
+            Begin VB.Label Label11 
+               Caption         =   "Costo Dolar:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   5175
+               TabIndex        =   48
+               Top             =   795
+               Width           =   1095
+            End
+         End
+         Begin VB.Frame Frame2 
+            Height          =   915
+            Left            =   300
+            TabIndex        =   36
+            Top             =   2220
+            Width           =   11445
+            Begin VB.CommandButton cmdDelArticulo 
+               Height          =   320
+               Left            =   3900
+               Picture         =   "frmRegistrarTransaccion.frx":A654
+               Style           =   1  'Graphical
+               TabIndex        =   40
+               Top             =   360
+               Width           =   300
+            End
+            Begin VB.TextBox txtArticulo 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   39
+               Top             =   360
+               Width           =   1095
+            End
+            Begin VB.TextBox txtDescrArticulo 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   4335
+               TabIndex        =   38
+               Top             =   360
+               Width           =   6675
+            End
+            Begin VB.CommandButton cmdArticulo 
+               Height          =   320
+               Left            =   3510
+               Picture         =   "frmRegistrarTransaccion.frx":C31E
+               Style           =   1  'Graphical
+               TabIndex        =   37
+               Top             =   360
+               Width           =   300
+            End
+            Begin VB.Label Label8 
+               Caption         =   "Articulo:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   570
+               TabIndex        =   41
+               Top             =   390
+               Width           =   1005
+            End
+         End
+         Begin VB.Frame Frame1 
+            Height          =   1980
+            Left            =   300
+            TabIndex        =   20
+            Top             =   150
+            Width           =   11460
+            Begin VB.CommandButton cmdDelBodegaOrigen 
+               Height          =   320
+               Left            =   3900
+               Picture         =   "frmRegistrarTransaccion.frx":C660
+               Style           =   1  'Graphical
+               TabIndex        =   53
+               Top             =   855
+               Width           =   300
+            End
+            Begin VB.CommandButton cmdBodegaDestino 
+               Height          =   320
+               Left            =   3510
+               Picture         =   "frmRegistrarTransaccion.frx":E32A
+               Style           =   1  'Graphical
+               TabIndex        =   52
+               Top             =   1305
+               Width           =   300
+            End
+            Begin VB.TextBox txtDescrBodegaDestino 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   4335
+               TabIndex        =   30
+               Top             =   1320
+               Width           =   6675
+            End
+            Begin VB.TextBox txtBodegaDestino 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   29
+               Top             =   1305
+               Width           =   1095
+            End
+            Begin VB.CommandButton cmdDelBodegaDestino 
+               Height          =   320
+               Left            =   3900
+               Picture         =   "frmRegistrarTransaccion.frx":E66C
+               Style           =   1  'Graphical
+               TabIndex        =   28
+               Top             =   1305
+               Width           =   300
+            End
+            Begin VB.CommandButton cmdBodegaOrigen 
+               Height          =   320
+               Left            =   3510
+               Picture         =   "frmRegistrarTransaccion.frx":10336
+               Style           =   1  'Graphical
+               TabIndex        =   27
+               Top             =   855
+               Width           =   300
+            End
+            Begin VB.TextBox txtDescrBodegaOrigen 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   4335
+               TabIndex        =   26
+               Top             =   870
+               Width           =   6675
+            End
+            Begin VB.TextBox txtBodegaOrigen 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   25
+               Top             =   855
+               Width           =   1095
+            End
+            Begin VB.CommandButton cmdTipoTransaccion 
+               Height          =   320
+               Left            =   3510
+               Picture         =   "frmRegistrarTransaccion.frx":10678
+               Style           =   1  'Graphical
+               TabIndex        =   24
+               Top             =   420
+               Width           =   300
+            End
+            Begin VB.TextBox txtDescrTipoTransaccion 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   4335
+               TabIndex        =   23
+               Top             =   420
+               Width           =   6675
+            End
+            Begin VB.TextBox txtTipoTransaccion 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   285
+               Left            =   2310
+               TabIndex        =   22
+               Top             =   420
+               Width           =   1095
+            End
+            Begin VB.CommandButton cmdDelTipoTransaccion 
+               Height          =   320
+               Left            =   3900
+               Picture         =   "frmRegistrarTransaccion.frx":109BA
+               Style           =   1  'Graphical
+               TabIndex        =   21
+               Top             =   405
+               Width           =   300
+            End
+            Begin VB.Label lblBodegaDestino 
+               Caption         =   "Bodega Destino:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   555
+               TabIndex        =   33
+               Top             =   1320
+               Width           =   1635
+            End
+            Begin VB.Label Label6 
+               Caption         =   "Bodega Origen:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   555
+               TabIndex        =   32
+               Top             =   870
+               Width           =   1635
+            End
+            Begin VB.Label Label5 
+               Caption         =   "Tipo Transacción:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   540
+               TabIndex        =   31
+               Top             =   420
+               Width           =   1635
+            End
+         End
+      End
+      Begin ActiveTabs.SSActiveTabPanel sTabPanelDocumento 
+         Height          =   6615
+         Left            =   30
+         TabIndex        =   12
+         Top             =   360
+         Width           =   12060
+         _ExtentX        =   21273
+         _ExtentY        =   11668
+         _Version        =   131083
+         TabGuid         =   "frmRegistrarTransaccion.frx":12684
+         Begin VB.TextBox txtUsuario 
+            Height          =   315
+            Left            =   1350
+            TabIndex        =   18
+            Top             =   3330
+            Width           =   1815
+         End
+         Begin RichTextLib.RichTextBox txtConcepto 
+            Height          =   1785
+            Left            =   540
+            TabIndex        =   13
+            Top             =   1110
+            Width           =   11085
+            _ExtentX        =   19553
+            _ExtentY        =   3149
+            _Version        =   393217
+            Enabled         =   -1  'True
+            ScrollBars      =   2
+            TextRTF         =   $"frmRegistrarTransaccion.frx":126AC
+         End
+         Begin MSComCtl2.DTPicker dtpFecha 
+            Height          =   315
+            Left            =   1140
+            TabIndex        =   15
+            Top             =   240
+            Width           =   2070
+            _ExtentX        =   3651
+            _ExtentY        =   556
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Format          =   56754177
+            CurrentDate     =   41095
+         End
+         Begin VB.Label Label7 
+            Caption         =   "Usuario:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H002F2F2F&
+            Height          =   300
+            Left            =   600
+            TabIndex        =   17
+            Top             =   3360
+            Width           =   795
+         End
+         Begin VB.Label Label2 
+            Caption         =   "Fecha:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H002F2F2F&
+            Height          =   300
+            Left            =   510
+            TabIndex        =   16
+            Top             =   270
+            Width           =   915
+         End
+         Begin VB.Label Label4 
+            Caption         =   "Concepto:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H002F2F2F&
+            Height          =   300
+            Left            =   540
+            TabIndex        =   14
+            Top             =   870
+            Width           =   915
+         End
+      End
+   End
+   Begin VB.TextBox txtIDDocumento 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   315
+      Left            =   2400
+      TabIndex        =   10
+      Top             =   780
+      Width           =   2445
+   End
+   Begin VB.TextBox txtPaquete 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   315
+      Left            =   1350
+      TabIndex        =   9
+      Top             =   780
+      Width           =   975
+   End
    Begin VB.CommandButton cmdEliminar 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -32,12 +638,12 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   12570
-      Picture         =   "frmRegistrarTransaccion.frx":0000
+      Left            =   12600
+      Picture         =   "frmRegistrarTransaccion.frx":12723
       Style           =   1  'Graphical
-      TabIndex        =   42
+      TabIndex        =   7
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3030
+      Top             =   3360
       Width           =   555
    End
    Begin VB.CommandButton cmdUndo 
@@ -51,420 +657,13 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   12570
-      Picture         =   "frmRegistrarTransaccion.frx":0CCA
+      Left            =   12600
+      Picture         =   "frmRegistrarTransaccion.frx":133ED
       Style           =   1  'Graphical
-      TabIndex        =   41
+      TabIndex        =   6
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   3660
+      Top             =   3990
       Width           =   555
-   End
-   Begin VB.Frame Frame1 
-      Height          =   2670
-      Left            =   1110
-      TabIndex        =   11
-      Top             =   4755
-      Width           =   11190
-      Begin VB.TextBox txtCostoDolar 
-         Height          =   315
-         Left            =   6690
-         TabIndex        =   40
-         Top             =   2190
-         Width           =   1515
-      End
-      Begin VB.TextBox txtCantidad 
-         Height          =   315
-         Left            =   2535
-         TabIndex        =   39
-         Top             =   2190
-         Width           =   1515
-      End
-      Begin VB.TextBox txtLote 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   2535
-         TabIndex        =   38
-         Top             =   1800
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdLote 
-         Height          =   320
-         Left            =   1935
-         Picture         =   "frmRegistrarTransaccion.frx":1994
-         Style           =   1  'Graphical
-         TabIndex        =   34
-         Top             =   1800
-         Width           =   300
-      End
-      Begin VB.TextBox txtDescrLote 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   4170
-         TabIndex        =   33
-         Top             =   1815
-         Width           =   6675
-      End
-      Begin VB.CommandButton cmdDelLote 
-         Height          =   320
-         Left            =   3735
-         Picture         =   "frmRegistrarTransaccion.frx":1CD6
-         Style           =   1  'Graphical
-         TabIndex        =   32
-         Top             =   1800
-         Width           =   300
-      End
-      Begin VB.CommandButton cmdArticulo 
-         Height          =   320
-         Left            =   1920
-         Picture         =   "frmRegistrarTransaccion.frx":2118
-         Style           =   1  'Graphical
-         TabIndex        =   30
-         Top             =   1410
-         Width           =   300
-      End
-      Begin VB.TextBox txtDescrArticulo 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   4155
-         TabIndex        =   29
-         Top             =   1425
-         Width           =   6675
-      End
-      Begin VB.TextBox txtArticulo 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   2520
-         TabIndex        =   28
-         Top             =   1410
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdDelArticulo 
-         Height          =   320
-         Left            =   3720
-         Picture         =   "frmRegistrarTransaccion.frx":245A
-         Style           =   1  'Graphical
-         TabIndex        =   27
-         Top             =   1410
-         Width           =   300
-      End
-      Begin VB.CommandButton cmdBodegaDestino 
-         Height          =   320
-         Left            =   1920
-         Picture         =   "frmRegistrarTransaccion.frx":289C
-         Style           =   1  'Graphical
-         TabIndex        =   25
-         Top             =   1035
-         Width           =   300
-      End
-      Begin VB.TextBox txtDescrBodegaDestino 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   4155
-         TabIndex        =   24
-         Top             =   1050
-         Width           =   6675
-      End
-      Begin VB.TextBox txtBodegaDestino 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   2520
-         TabIndex        =   23
-         Top             =   1035
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdDelBodegaDestino 
-         Height          =   320
-         Left            =   3720
-         Picture         =   "frmRegistrarTransaccion.frx":2BDE
-         Style           =   1  'Graphical
-         TabIndex        =   22
-         Top             =   1035
-         Width           =   300
-      End
-      Begin VB.CommandButton cmdBodegaOrigen 
-         Height          =   320
-         Left            =   1920
-         Picture         =   "frmRegistrarTransaccion.frx":3020
-         Style           =   1  'Graphical
-         TabIndex        =   20
-         Top             =   630
-         Width           =   300
-      End
-      Begin VB.TextBox txtDescrBodegaOrigen 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   4155
-         TabIndex        =   19
-         Top             =   660
-         Width           =   6675
-      End
-      Begin VB.TextBox txtBodegaOrigen 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   2520
-         TabIndex        =   18
-         Top             =   645
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdDelBodegaOrigen 
-         Height          =   320
-         Left            =   3720
-         Picture         =   "frmRegistrarTransaccion.frx":3362
-         Style           =   1  'Graphical
-         TabIndex        =   17
-         Top             =   645
-         Width           =   300
-      End
-      Begin VB.CommandButton cmdTipoTransaccion 
-         Height          =   320
-         Left            =   1920
-         Picture         =   "frmRegistrarTransaccion.frx":37A4
-         Style           =   1  'Graphical
-         TabIndex        =   16
-         Top             =   225
-         Width           =   300
-      End
-      Begin VB.TextBox txtDescrTipoTransaccion 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   4155
-         TabIndex        =   15
-         Top             =   240
-         Width           =   6675
-      End
-      Begin VB.TextBox txtTipoTransaccion 
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   285
-         Left            =   2520
-         TabIndex        =   14
-         Top             =   225
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdDelTipoTransaccion 
-         Height          =   320
-         Left            =   3720
-         Picture         =   "frmRegistrarTransaccion.frx":3AE6
-         Style           =   1  'Graphical
-         TabIndex        =   13
-         Top             =   225
-         Width           =   300
-      End
-      Begin VB.Label Label11 
-         Caption         =   "Costo Dolar:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   5550
-         TabIndex        =   37
-         Top             =   2235
-         Width           =   1095
-      End
-      Begin VB.Label Label10 
-         Caption         =   "Cantidad:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   375
-         TabIndex        =   36
-         Top             =   2235
-         Width           =   1095
-      End
-      Begin VB.Label Label9 
-         Caption         =   "Lote:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   390
-         TabIndex        =   35
-         Top             =   1815
-         Width           =   1635
-      End
-      Begin VB.Label Label8 
-         Caption         =   "Articulo:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   375
-         TabIndex        =   31
-         Top             =   1425
-         Width           =   1635
-      End
-      Begin VB.Label lblBodegaDestino 
-         Caption         =   "Bodega Destino:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   375
-         TabIndex        =   26
-         Top             =   1050
-         Width           =   1635
-      End
-      Begin VB.Label Label6 
-         Caption         =   "Bodega Origen:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   375
-         TabIndex        =   21
-         Top             =   660
-         Width           =   1635
-      End
-      Begin VB.Label Label5 
-         Caption         =   "Tipo Transacción:"
-         BeginProperty Font 
-            Name            =   "Arial"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   300
-         Left            =   360
-         TabIndex        =   12
-         Top             =   255
-         Width           =   1635
-      End
    End
    Begin VB.CommandButton cmdEditItem 
       BeginProperty Font 
@@ -477,23 +676,23 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   12555
-      Picture         =   "frmRegistrarTransaccion.frx":3F28
+      Left            =   12585
+      Picture         =   "frmRegistrarTransaccion.frx":140B7
       Style           =   1  'Graphical
-      TabIndex        =   10
+      TabIndex        =   5
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2400
+      Top             =   2730
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   555
-      Left            =   12570
-      Picture         =   "frmRegistrarTransaccion.frx":4BF2
+      Left            =   12600
+      Picture         =   "frmRegistrarTransaccion.frx":14D81
       Style           =   1  'Graphical
-      TabIndex        =   9
+      TabIndex        =   4
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   1380
+      Top             =   1710
       Width           =   555
    End
    Begin VB.CommandButton cmdAdd 
@@ -507,75 +706,26 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   12570
-      Picture         =   "frmRegistrarTransaccion.frx":68BC
+      Left            =   12600
+      Picture         =   "frmRegistrarTransaccion.frx":16A4B
       Style           =   1  'Graphical
-      TabIndex        =   8
+      TabIndex        =   3
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   4845
+      Top             =   5175
       Width           =   555
    End
-   Begin RichTextLib.RichTextBox txtConcepto 
-      Height          =   915
-      Left            =   1140
-      TabIndex        =   7
-      Top             =   1305
-      Width           =   11145
-      _ExtentX        =   19659
-      _ExtentY        =   1614
-      _Version        =   393217
-      Enabled         =   -1  'True
-      ScrollBars      =   2
-      TextRTF         =   $"frmRegistrarTransaccion.frx":7586
-   End
-   Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   2220
-      Left            =   1110
-      OleObjectBlob   =   "frmRegistrarTransaccion.frx":75FD
-      TabIndex        =   1
-      Top             =   2370
-      Width           =   11205
-   End
-   Begin MSComCtl2.DTPicker dtpFecha 
-      Height          =   315
-      Left            =   1155
-      TabIndex        =   2
-      Top             =   750
-      Width           =   2070
-      _ExtentX        =   3651
-      _ExtentY        =   556
-      _Version        =   393216
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Format          =   21364737
-      CurrentDate     =   41095
-   End
-   Begin VB.Label Label4 
-      Caption         =   "Concepto:"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
+   Begin VB.Label Label3 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Documento:"
+      ForeColor       =   &H00000000&
       Height          =   300
-      Left            =   255
-      TabIndex        =   6
-      Top             =   1335
-      Width           =   915
+      Left            =   390
+      TabIndex        =   8
+      Top             =   810
+      Width           =   1020
    End
    Begin VB.Label lblTransaccion 
+      BackStyle       =   0  'Transparent
       Caption         =   "Transacción:"
       BeginProperty Font 
          Name            =   "Arial"
@@ -588,46 +738,20 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       ForeColor       =   &H00FF0000&
       Height          =   300
-      Left            =   9615
-      TabIndex        =   5
+      Left            =   10590
+      TabIndex        =   2
       Top             =   810
       Width           =   2640
    End
    Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
       Caption         =   "Transacción:"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00000000&
       Height          =   300
-      Left            =   8415
-      TabIndex        =   4
-      Top             =   825
+      Left            =   9405
+      TabIndex        =   1
+      Top             =   810
       Width           =   1170
-   End
-   Begin VB.Label Label2 
-      Caption         =   "Fecha:"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   300
-      Left            =   270
-      TabIndex        =   3
-      Top             =   780
-      Width           =   915
    End
    Begin VB.Label lbFormCaption 
       Alignment       =   2  'Center
@@ -654,7 +778,7 @@ Begin VB.Form frmRegistrarTransaccion
    Begin VB.Image Image1 
       Height          =   885
       Left            =   -405
-      Picture         =   "frmRegistrarTransaccion.frx":FB42
+      Picture         =   "frmRegistrarTransaccion.frx":17715
       Stretch         =   -1  'True
       Top             =   -300
       Width           =   13815
@@ -887,9 +1011,9 @@ Private Sub cmdAdd_Click()
           rstTmpMovimiento.AddNew
           rstTmpMovimiento!IdBodega = Me.txtBodegaOrigen.Text
           rstTmpMovimiento!DescrBodega = Me.txtDescrBodegaOrigen.Text
-          rstTmpMovimiento!IDProducto = Me.txtArticulo.Text
+          rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
           rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-          rstTmpMovimiento!IDLote = Me.txtLote.Text
+          rstTmpMovimiento!IdLote = Me.txtLote.Text
           rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
           rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
           rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
@@ -908,9 +1032,9 @@ Private Sub cmdAdd_Click()
       ElseIf (Accion = Edit) Then
           rstTmpMovimiento!IdBodega = Me.txtBodegaOrigen.Text
           rstTmpMovimiento!DescrBodega = Me.txtDescrBodegaOrigen.Text
-          rstTmpMovimiento!IDProducto = Me.txtArticulo.Text
+          rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
           rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-          rstTmpMovimiento!IDLote = Me.txtLote.Text
+          rstTmpMovimiento!IdLote = Me.txtLote.Text
           rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
           rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
           rstTmpMovimiento!DescrTipo = Me.txtDescrTipoTransaccion.Text
@@ -1229,6 +1353,32 @@ Private Sub cmdUndo_Click()
     HabilitarBotones
     HabilitarControles
 End Sub
+ Public Function getDescrCatalogo(txtCodigo As TextBox, sFieldNameCode As String, sTableName As String, sFieldNameDescr As String, Optional bCodeChar As Boolean) As String
+Dim lbOk As Boolean
+Dim sDescr As String
+Dim sValor As String
+lbOk = False
+If txtCodigo.Text <> "" Then
+    If bCodeChar = True Then
+        sValor = "'" & txtCodigo.Text & "'"
+    Else
+        sValor = txtCodigo.Text
+    End If
+    
+    sDescr = GetDescrCat(sFieldNameCode, sValor, sTableName, sFieldNameDescr)
+Else
+    sDescr = ""
+End If
+getDescrCatalogo = sDescr
+End Function
+
+
+
+Private Sub SetTextBoxReadOnly()
+    fmtTextbox txtUsuario, "R"
+    fmtTextbox txtIDDocumento, "R"
+    fmtTextbox txtPaquete, "R"
+End Sub
 
 Private Sub Form_Load()
     Set rstTmpMovimiento = New ADODB.Recordset
@@ -1244,6 +1394,15 @@ Private Sub Form_Load()
     PreparaRst ' Prepara los Recordsets
     Set Me.TDBG.DataSource = rstTmpMovimiento
     Me.TDBG.Refresh
+    
+    Dim DatosPaquete As New Dictionary
+    getValueFieldsFromTable "invPAQUETE", "Paquete,Descr,Documento", "IDPaquete=" & Me.gsIDTipoTransaccion, DatosPaquete
+    Me.txtPaquete.Text = DatosPaquete("Paquete")
+    Me.txtIDDocumento.Text = DatosPaquete("Documento")
+    Me.lblTransaccion.Caption = DatosPaquete("Descr")
+    Me.txtUsuario.Text = gsUser
+    
+    SetTextBoxReadOnly
     
     Accion = Add
     HabilitarBotones
@@ -1416,4 +1575,33 @@ errores:
     gTrans = False
     'gConet.RollbackTrans
 End Sub
+
+Public Function GetDescrCat(sfldCodCat As String, sValorCodigo As String, sTabla As String, sfldNameDescr As String, Optional bFiltroAdicional As Boolean = False, Optional sFiltroAdicional As String = "") As String
+Dim sDescr As String
+On Error GoTo error
+  sDescr = ""
+  GSSQL = "SELECT  " & sfldNameDescr & _
+          " FROM " & gsCompania & "." & sTabla & _
+          " WHERE " & sfldCodCat & " = " & sValorCodigo  'Constuye la sentencia SQL
+  If bFiltroAdicional = True Then
+    GSSQL = GSSQL & " AND " & sFiltroAdicional
+  End If
+    
+  Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
+
+  If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
+    sDescr = ""  'Indica que ocurrió un error
+    gsOperacionError = "Error en la búsqueda del artículo !!!" & err.Description
+  ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
+    'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
+    sDescr = gRegistrosCmd(sfldNameDescr).value
+  End If
+  GetDescrCat = sDescr
+  gRegistrosCmd.Close
+  Exit Function
+error:
+  sDescr = ""
+  gsOperacionError = "Ocurrió un error en la operación de búsqueda de la descripción " & err.Description
+  Resume Next
+End Function
 

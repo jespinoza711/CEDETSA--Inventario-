@@ -429,7 +429,7 @@ Begin VB.Form frmCatalogos
       Left            =   240
       OleObjectBlob   =   "frmCatalogos.frx":2328
       TabIndex        =   11
-      Top             =   2280
+      Top             =   2310
       Width           =   12465
    End
 End
@@ -496,9 +496,9 @@ cargaGrid
 End Sub
 
 Private Sub cmdEditItem_Click()
-Dim lbok  As Boolean
+Dim lbOk  As Boolean
 If Me.txtCodigo.Text = "0" Then
-    lbok = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede modificarlo.", ICO_ADVERTENCIA, False)
+    lbOk = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede modificarlo.", ICO_ADVERTENCIA, False)
     Exit Sub
 End If
 bEdit = True
@@ -544,7 +544,7 @@ End If
 End Sub
 
 Private Sub cmdEliminar_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sMsg As String
 Dim sTipo As String
 Dim sFiltro As String
@@ -552,24 +552,24 @@ Dim sActivo As String
 Dim sUsaValor As String
 
 If txtCodigo.Text = "0" Then
-    lbok = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede modificarlo.", ICO_ADVERTENCIA, False)
+    lbOk = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede modificarlo.", ICO_ADVERTENCIA, False)
     Exit Sub
 End If
 
 
     If txtIDCatalogo.Text = "" Then
-        lbok = Mensaje("El ID del Catálogo no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El ID del Catálogo no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
 
 
     If txtIDTabla.Text = "" Then
-        lbok = Mensaje("El Código de la tabla no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El Código de la tabla no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
     If txtCodigo.Text = "" Then
-        lbok = Mensaje("El Código del elemento de la tabla no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El Código del elemento de la tabla no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -584,13 +584,13 @@ End If
         sUsaValor = "0"
     End If
     ' hay que validar la integridad referencial
-    lbok = Mensaje("Está seguro de eliminar el Registro " & rst("Descr").value, ICO_PREGUNTA, True)
-    If lbok Then
-                lbok = spGlobalUpdateCatalogo("D", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
+    lbOk = Mensaje("Está seguro de eliminar el Registro " & rst("Descr").value, ICO_PREGUNTA, True)
+    If lbOk Then
+                lbOk = spGlobalUpdateCatalogo("D", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
         
-        If lbok Then
+        If lbOk Then
             sMsg = "Borrado Exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
         End If
@@ -598,20 +598,20 @@ End If
 End Sub
 
 Private Sub cmdSave_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sMsg As String
 Dim sActivo As String
 Dim sbkDocumentos As String
 Dim sUsaValor As String
 Dim sFiltro As String
     If txtIDCatalogo.Text = "" Then
-        lbok = Mensaje("El ID del Catálogo no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El ID del Catálogo no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
 
 
     If txtIDTabla.Text = "" Then
-        lbok = Mensaje("El Código de la tabla no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El Código de la tabla no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -622,13 +622,13 @@ Dim sFiltro As String
 
     If Not Val_TextboxNum(txtValor) Then
         txtValor.Text = "0"
-        lbok = Mensaje("El Valor debe ser numérico", ICO_ERROR, False)
+        lbOk = Mensaje("El Valor debe ser numérico", ICO_ERROR, False)
         Exit Sub
     End If
     
     If Not Val_TextboxNum(txtIDTabla) Then
         txtIDTabla.Text = ""
-        lbok = Mensaje("El Código de la tabla debe ser numérico", ICO_ERROR, False)
+        lbOk = Mensaje("El Código de la tabla debe ser numérico", ICO_ERROR, False)
         Exit Sub
     End If
 
@@ -639,7 +639,7 @@ Dim sFiltro As String
     
 
     If txtCodigo.Text = "0" Then
-        lbok = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede agregarlo.", ICO_ADVERTENCIA, False)
+        lbOk = Mensaje("El valor No Definido ND es un valor protegido por el sistema... Ud no puede agregarlo.", ICO_ADVERTENCIA, False)
         Exit Sub
     End If
     
@@ -657,7 +657,7 @@ Dim sFiltro As String
     End If
     
     If txtDescr.Text = "" Then
-        lbok = Mensaje("La Descripción del elemento de la tabla no puede estar en blanco", ICO_ERROR, False)
+        lbOk = Mensaje("La Descripción del elemento de la tabla no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -666,11 +666,11 @@ Dim sFiltro As String
 If bAdd Then
 
 
-        lbok = spGlobalUpdateCatalogo("I", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
+        lbOk = spGlobalUpdateCatalogo("I", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
         
-        If lbok Then
+        If lbOk Then
             sMsg = "El Codigo ha sido registrado exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
             bEdit = False
@@ -682,10 +682,10 @@ bAdd = False
 End If ' si estoy adicionando
 If bEdit Then
     If Not (rst.EOF And rst.BOF) Then
-        lbok = spGlobalUpdateCatalogo("U", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
-        If lbok Then
+        lbOk = spGlobalUpdateCatalogo("U", txtIDTabla.Text, txtDescr.Text, sActivo, sUsaValor, txtNombreValor.Text, txtValor.Text, txtIDCatalogo.Text)
+        If lbOk Then
             sMsg = "Los datos fueron grabados Exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
             bEdit = False

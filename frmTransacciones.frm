@@ -2,11 +2,12 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmTransacciones 
+   BackColor       =   &H00F4D5BB&
    Caption         =   "Form1"
    ClientHeight    =   7035
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   11400
+   ClientWidth     =   11370
    BeginProperty Font 
       Name            =   "Microsoft Sans Serif"
       Size            =   8.25
@@ -19,47 +20,56 @@ Begin VB.Form frmTransacciones
    ForeColor       =   &H002F2F2F&
    LinkTopic       =   "Form1"
    ScaleHeight     =   7035
-   ScaleWidth      =   11400
-   StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton cmdUndo 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   10740
-      Picture         =   "frmTransacciones.frx":0000
-      Style           =   1  'Graphical
-      TabIndex        =   14
-      ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   2850
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdAdd 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   10710
-      Picture         =   "frmTransacciones.frx":0CCA
-      Style           =   1  'Graphical
+   ScaleWidth      =   11370
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.Frame Frame1 
+      BackColor       =   &H00F4D5BB&
+      Height          =   1485
+      Left            =   10530
       TabIndex        =   13
-      ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   2190
-      Width           =   555
+      Top             =   2040
+      Width           =   735
+      Begin VB.CommandButton cmdAdd 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   90
+         Picture         =   "frmTransacciones.frx":0000
+         Style           =   1  'Graphical
+         TabIndex        =   15
+         ToolTipText     =   "Agrega el item con los datos digitados..."
+         Top             =   180
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdUndo 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   90
+         Picture         =   "frmTransacciones.frx":0CCA
+         Style           =   1  'Graphical
+         TabIndex        =   14
+         ToolTipText     =   "Deshacer / Cancelar"
+         Top             =   810
+         Width           =   555
+      End
    End
    Begin VB.Frame Frame2 
+      BackColor       =   &H00F4D5BB&
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
@@ -69,13 +79,12 @@ Begin VB.Form frmTransacciones
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1470
+      Height          =   1380
       Left            =   120
       TabIndex        =   1
       Top             =   585
-      Width           =   11370
+      Width           =   11130
       Begin VB.TextBox txtPaquete 
-         Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -86,14 +95,13 @@ Begin VB.Form frmTransacciones
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H002F2F2F&
-         Height          =   330
-         Left            =   2460
+         Height          =   315
+         Left            =   2100
          TabIndex        =   10
-         Top             =   885
+         Top             =   780
          Width           =   1275
       End
       Begin VB.TextBox txtDescrPaquete 
-         Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -104,11 +112,11 @@ Begin VB.Form frmTransacciones
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H002F2F2F&
-         Height          =   330
-         Left            =   4410
+         Height          =   315
+         Left            =   4320
          TabIndex        =   9
-         Top             =   885
-         Width           =   5370
+         Top             =   780
+         Width           =   5460
       End
       Begin VB.CommandButton cmdDelclasif1 
          BeginProperty Font 
@@ -120,13 +128,13 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   320
-         Left            =   3915
+         Height          =   315
+         Left            =   3870
          Picture         =   "frmTransacciones.frx":1994
          Style           =   1  'Graphical
          TabIndex        =   8
-         Top             =   885
-         Width           =   300
+         Top             =   780
+         Width           =   330
       End
       Begin VB.CommandButton cmdPaquete 
          BeginProperty Font 
@@ -138,13 +146,13 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   320
-         Left            =   2040
-         Picture         =   "frmTransacciones.frx":1DD6
+         Height          =   315
+         Left            =   3450
+         Picture         =   "frmTransacciones.frx":365E
          Style           =   1  'Graphical
          TabIndex        =   7
-         Top             =   885
-         Width           =   300
+         Top             =   780
+         Width           =   330
       End
       Begin VB.CommandButton cmbBuscar 
          BeginProperty Font 
@@ -158,7 +166,7 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   570
          Left            =   10140
-         Picture         =   "frmTransacciones.frx":2118
+         Picture         =   "frmTransacciones.frx":39A0
          Style           =   1  'Graphical
          TabIndex        =   2
          Top             =   465
@@ -182,7 +190,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   54263809
+         Format          =   20971521
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
@@ -203,10 +211,11 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   54263809
+         Format          =   20971521
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
          Caption         =   "Paquete:"
          BeginProperty Font 
             Name            =   "Arial"
@@ -217,7 +226,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   315
          Left            =   840
          TabIndex        =   11
@@ -225,6 +234,7 @@ Begin VB.Form frmTransacciones
          Width           =   825
       End
       Begin VB.Label Label3 
+         BackStyle       =   0  'Transparent
          Caption         =   "Fecha Final:"
          BeginProperty Font 
             Name            =   "Arial"
@@ -235,7 +245,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   300
          Left            =   6450
          TabIndex        =   6
@@ -243,6 +253,7 @@ Begin VB.Form frmTransacciones
          Width           =   1335
       End
       Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
          Caption         =   "Fecha Inicial:"
          BeginProperty Font 
             Name            =   "Arial"
@@ -253,7 +264,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00000000&
          Height          =   300
          Left            =   840
          TabIndex        =   5
@@ -262,11 +273,11 @@ Begin VB.Form frmTransacciones
       End
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   4590
-      Left            =   150
-      OleObjectBlob   =   "frmTransacciones.frx":3DE2
+      Height          =   4710
+      Left            =   120
+      OleObjectBlob   =   "frmTransacciones.frx":566A
       TabIndex        =   12
-      Top             =   2250
+      Top             =   2130
       Width           =   10305
    End
    Begin VB.Label lbFormCaption 
@@ -294,7 +305,7 @@ Begin VB.Form frmTransacciones
    Begin VB.Image Image1 
       Height          =   885
       Left            =   -210
-      Picture         =   "frmTransacciones.frx":9E9F
+      Picture         =   "frmTransacciones.frx":B727
       Stretch         =   -1  'True
       Top             =   -330
       Width           =   11850
@@ -339,30 +350,6 @@ Private Sub cargaGrid()
     End If
 End Sub
 
-
-
-Private Sub cmdNuevo_Click()
-''Determinar el tipo de transaccion
-'    Select Case Me.txtCodTran.Text
-'        Case ParametrosGenerales.CodTranCompra ' en caso de que sea COMPRAS
-'            If UserMayAccess(gNombreUsuario, SECREALIZACOMPRAPRODUCTO, GIDMODULO) Then
-'                frmAgregarCompra.Accion = Add
-'                frmAgregarCompra.Show vbModal
-'            End If
-'        Case ParametrosGenerales.CodTranAjuste
-'            If UserMayAccess(gNombreUsuario, SECCREAAJUSTEPRODUCTO, GIDMODULO) Then
-'                frmAjustes.Accion = Add
-'                frmAjustes.Show vbModal
-'            End If
-'        Case ParametrosGenerales.CodTranAnulaFactura
-'            If UserMayAccess(gNombreUsuario, SECREALIZAANULACIONFACTURA, GIDMODULO) Then
-'                frmAnulacionFactura.Show vbModal
-'            End If
-'    End Select
-'    GetTransaccion rst, Me.txtCodTran.Text, Me.dtpFechaInicial.value, Me.dtpFechaFinal.value
-'    Me.tdgTransac.DataSource = rst
-    
-End Sub
 
 Private Sub cmdAdd_Click()
     If (Me.txtDescrPaquete.Text = "") Then
@@ -414,7 +401,8 @@ Private Sub Form_Load()
 
     Me.Caption = gsFormCaption
     Me.lbFormCaption = gsTitle
-    
+    fmtTextbox txtDescrPaquete, "R"
+    fmtTextbox txtPaquete, "R"
     Me.dtpFechaFinal.value = DateTime.Now
     Me.dtpFechaInicial.value = DateTime.DateAdd("M", -1, DateTime.Now)
     cargaGrid
@@ -446,4 +434,5 @@ Private Sub tdgTransac_DblClick()
 '            End If
 '    End Select
 End Sub
+
 

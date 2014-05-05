@@ -499,6 +499,7 @@ Private Sub cargaGrid()
     End If
 End Sub
 
+
 Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
     GetDataFromGridToControl
     HabilitarControles
