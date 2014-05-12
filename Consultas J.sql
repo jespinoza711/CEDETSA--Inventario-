@@ -151,7 +151,7 @@ AS
 GO 
 
 --DROP PROCEDURE dbo.invInsertCabMovimientos
-CREATE PROCEDURE dbo.invInsertCabMovimientos  @IDPaquete int,
+CREATE PROCEDURE [dbo].[invInsertCabMovimientos]  @IDPaquete int,
 	@Documento nvarchar(20) OUTPUT,@Fecha DATETIME,@Concepto NVARCHAR(255),@Referencia  nvarchar(20),@UserInsert AS NVARCHAR(20),
 	@UserUpdate  NVARCHAR(20)
 	
@@ -165,6 +165,9 @@ INSERT INTO dbo.invCABMOVIMIENTOS(IDPAQUETE, DOCUMENTO, FECHA, CONCEPTO,
             UserInsert, UserUpdate, FechaInsert, FechaUpdate,REFERENCIA)
 
 VALUES (@IDPaquete,@Documento,@Fecha,@Concepto,@UserInsert,@UserUpdate,GETDATE(),GETDATE(),@Referencia )
+
+
+SELECT @Documento Documento
 
 
 GO 
@@ -303,7 +306,7 @@ references dbo.invLOTE (IDLote)
 
 GO 
 --drop procedure dbo.invUpdateExistenciaBodegaLinea
-CREATE PROCEDURE dbo.invUpdateExistenciaBodegaLinea @IdBodega INT, @IdProducto INT,@IdLote INT,@Cantidad DECIMAL(28,8), @IdTipoTransaccion INT,@Usuario nvarchar(50)
+CREATE PROCEDURE [dbo].[invUpdateExistenciaBodegaLinea] @IdBodega INT, @IdProducto INT,@IdLote INT = NULL,@Cantidad DECIMAL(28,8), @IdTipoTransaccion INT,@Usuario nvarchar(50)
 AS
 
 
@@ -313,7 +316,7 @@ declare @i int,@iRwCnt int, @Lote int,  @CantidadLote decimal (28,8), @Completad
 SELECT @TRANSACCION= Transaccion,@FACTOR=Factor 
 	FROM dbo.invTIPOMOVIMIENTO WHERE IDTipo=@IdTipoTransaccion
 
-set @Cantidad = @Cantidad * @FACTOR
+set @Cantidad = abs(@Cantidad) * @FACTOR
 
 EXEC dbo.invUpdateExistenciaBodegaLote @IdBodega,@IdProducto,@IdLote,@Cantidad
 EXEC dbo.invUpdateExistenciaBodega @IdBodega,@IdProducto,@Cantidad
@@ -336,10 +339,12 @@ WHERE FC.Anulada=0
 
 GO 
 
-CREATE PROCEDURE dbo.invUpdateMasterExistenciaBodega @Documento AS NVARCHAR(20),@IDPaquete int, @IdTipoTransaccion INT,@Usuario nvarchar(50)
+CREATE PROCEDURE [dbo].[invUpdateMasterExistenciaBodega] @Documento AS NVARCHAR(20),@IDPaquete int, @IdTipoTransaccion INT,@Usuario nvarchar(50)
 AS 
 
-declare @i int,@iRwCnt int, @IDLote int,  @Cantidad decimal (28,8),@IdProducto AS INT, @IdBodega AS INT	
+declare @i int,@iRwCnt int, @IDLote int,  @Cantidad decimal (28,8),@IdProducto AS INT, @IdBodega AS INT	,@CostoLocal AS DECIMAL(28,8),
+@CostoDolar AS DECIMAL(28,8)
+
 
 Create Table #tmpMovimiento( 
 	ID int identity(1,1), 
@@ -347,12 +352,14 @@ Create Table #tmpMovimiento(
 	IDProducto INT, 
 	IdLote int, 
 	Cantidad decimal(28,8) default 0,
+	CostoLocal DECIMAL(28,8) DEFAULT 0,
+	CostoDolar DECIMAL(28,8) DEFAULT 0,
 	IDTipoTransaccion INT)
-	create clustered index idx_tmp on #ProductoLote(ID) WITH FILLFACTOR = 100
+	create clustered index idx_tmp on #tmpMovimiento(ID) WITH FILLFACTOR = 100
 
-INSERT INTO #tmpMovimiento(IDBodega, IDProducto, IdLote, Cantidad,
+INSERT INTO #tmpMovimiento(IDBodega, IDProducto, IdLote, Cantidad,CostoLocal,CostoDolar,
             IDTipoTransaccion)
-SELECT IDBODEGA,IDPRODUCTO,IDLOTE,CANTIDAD,IDTIPO
+SELECT IDBODEGA,IDPRODUCTO,IDLOTE,CANTIDAD,IDTIPO,COSTOLOCAL,COSTODOLAR
 FROM dbo.vinvMovimientos  WHERE DOCUMENTO=@Documento AND IDPAQUETE=@IDPaquete
 
 set @iRwCnt = @@ROWCOUNT
@@ -362,18 +369,24 @@ set @Cantidad = 0
 
 while @i <= @iRwCnt 
 	begin
-		select @IDLote = IdLote, @Cantidad = Cantidad, @IdBodega= IdBodega, @IdProducto= IdProducto ,@IdTipoTransaccion=IDTipoTransaccion
+		select @IDLote = IdLote, @Cantidad = Cantidad, @IdBodega= IdBodega, @IdProducto= IdProducto ,
+				@IdTipoTransaccion=IDTipoTransaccion,@CostoLocal=CostoLocal,@CostoDolar = CostoDolar
 		  from #tmpMovimiento where ID = @i
 		exec dbo.invUpdateExistenciaBodegaLinea @IdBodega, @IdProducto,@IdProducto, @Cantidad,@IdTipoTransaccion,@Usuario
+		IF (@IdTipoTransaccion IN (1,3,5,7,10)) --Actualizar el costo del producto si la transaccion es tipo ingreso
+		begin
+			--Calcular el costo promedio del producto
+			UPDATE dbo.invPRODUCTO SET CostoUltLocal = @CostoLocal,CostoUltDolar = @CostoDolar,
+					CostoUltPromLocal = CostoUltPromLocal,CostoUltPromDolar = CostoUltPromDolar 
+			WHERE IDProducto=@IdProducto
+		END
+		
 		set @i = @i + 1
 	end
 
 	
 GO  
 
-
-
-GO 
 
 CREATE PROCEDURE dbo.invGeneraPaqueteFactura(@IDBodega INT,@IDFactura INT,@IDCliente INT,@IDVendedor INT,@Fecha DATETIME,@Usuario AS NVARCHAR(50))
 AS 
@@ -449,6 +462,7 @@ SET @IDProducto=1
 SET @IDBodega=1
 */
 
+SET NOCOUNT ON
 declare @iRwCnt INT,@CantidadLote DECIMAL(28,8),@CantidadAsignada DECIMAL(28,8),@Completado BIT
 DECLARE @i INT,@IDLote INT
 

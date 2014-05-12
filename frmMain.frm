@@ -117,6 +117,7 @@ Private Sub Form_Load()
 StatusBar1.Panels(2).Text = gsUSUARIO
 StatusBar1.Panels(4).Text = gsNombreBaseDatos
 StatusBar1.Panels(6).Text = gsNombreServidor
+gTasaCambio = 21.5
 '  lbok = CargaParametros()
 '  If Not lbok Then
 '

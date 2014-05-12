@@ -37,7 +37,7 @@ Public GSSQL As String
     'Contiene la sentencia SQL a ejecutar o que generó el error
 Public gsOperacionError As String
 Public gsConetstr As String
-
+Public lbOk As Boolean
 
 Public gsNombreServidor As String 'Contiene el nombre del servidor
 Public gsNombreBaseDatos As String 'Contiene el nombre de la base de datos
@@ -544,6 +544,7 @@ Public Function ConexionBD() As Boolean    'Función que inicia la conexión a la 
  '   gConet.Open "Provider=SQLNCLI.1;Password=admin;Persist Security Info=True;User ID=SysUser;Initial Catalog=exactus;Data Source=serverg4s"
     gConet.Open lsConexion 'Realiza la conexión a la BD
     gConet.CommandTimeout = 300
+    gConet.Properties("Multiple Connections").value = False
     If (gConet.Errors.Count > 0) Then  'Si no hubo conexión
       lbOk = False  'No se cuenta con una conexión
     End If
@@ -555,6 +556,19 @@ error:
     lbOk = False
     gsOperacionError = "constr :" & lsConexion & err.Description
     ConexionBD = lbOk 'Asigna el valor de retorno
+End Function
+
+
+
+Public Function ConnectToDBOpen() As Boolean
+    If (gConet.State = adStateOpen) Then
+        gConet.Close
+    End If
+    gConet.CursorLocation = adUseClient
+    gConet.Open lsConexion
+     gConet.CommandTimeout = 300
+    gConet.Properties("Multiple Connections").value = False
+    ConnectToDBOpen = True
 End Function
 
 Public Function DesconectaBD() As Boolean
@@ -732,58 +746,7 @@ Public Function GetRecordset(strSource As String) As ADODB.Recordset
     Set GetRecordset = rs
 End Function
 
-Public Function invGetSugeridoLote(IdBodega As Integer, IdProducto As Integer, Cantidad As Double) As ADODB.Recordset
-    
-'Dim rst As ADODB.Recordset
-'Set rst = New ADODB.Recordset
-'rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
-'rst.CursorType = adOpenStatic  'Asigna un cursor dinamico
-'rst.CursorLocation = adUseClient ' Cursor local al cliente
-'rst.LockType = adLockOptimistic
-'
-'
-'On Error GoTo error
-'
-'  GSSQL = "invGetSugeridoLote " & IdBodega & "," & IdProducto & "," & Cantidad
-'
-'  Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
-'
-'  If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
-'      Set rst = Nothing ' "Error en la búsqueda del artículo !!!" & err.Description
-'  ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
-'    'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-'   Set rst = gRegistrosCmd
-'
-'  End If
-'
-'  Set invGetSugeridoLote = rst
-'   'gRegistrosCmd.Close
-'  Exit Function
-'error:
-'  Set rst = gRegistrosCmd
-'  gsOperacionError = "Ocurrió un error en la operación de búsqueda de la descripción " & err.Description
-'  Resume Next
- 
-    
 
-    Dim rs As ADODB.Recordset
-    Dim Cerrar As Boolean
-    Set rs = New ADODB.Recordset
-
-    Set rs.ActiveConnection = gConet
-
-
-    rs.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
-    rs.CursorLocation = adUseClient ' Cursor local al cliente
-    rs.LockType = adLockOptimistic
-'    rs.CursorLocation = adUseClient
-'    rs.CursorType = adOpenStatic
-'    rs.LockType = adLockBatchOptimistic
-    rs.Source = gsCompania & ".invGetSugeridoLote " & IdBodega & "," & IdProducto & "," & Cantidad
-    rs.Open
-    Set rs.ActiveConnection = Nothing
-    Set invGetSugeridoLote = rs
-End Function
 
 Public Function GetDisctinctRecordCount(rs As ADODB.Recordset) As Integer
 Dim sFacturaAnterior As String
@@ -2697,7 +2660,7 @@ Public Function ExisteUsuarioExactus(sUsuario As String) As Boolean
 Dim lbOk As Boolean
 On Error GoTo error
 lbOk = False
-  GSSQL = "SELECT * from " & DBO & "." & "Usuario where Usuario ='" & sUsuario & "'"
+  GSSQL = "SELECT * from " & dbo & "." & "Usuario where Usuario ='" & sUsuario & "'"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
@@ -3201,7 +3164,7 @@ Public Sub SetMsgError(sError As String, oError As error)
 End Sub
 
 
-Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As String, sFiltro As String, ByRef dicResult As Dictionary) As String
+Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As String, sFiltro As String, ByRef dicResult As Dictionary) As Boolean
     Dim lbOk As Boolean
     Dim sResultado As String
     Dim sOrden As String
@@ -3246,7 +3209,7 @@ Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As Stri
         lbOk = True
     End If
     
-    getValueFieldFromTable = lbOk
+    getValueFieldsFromTable = lbOk
     Set rst = Nothing
     Exit Function
 error:
@@ -3256,5 +3219,45 @@ error:
 End Function
 
 
+Public Function invGetSugeridoLote(IdBodega As Integer, IdProducto As Integer, Cantidad As Double) As ADODB.Recordset
+  
+    Dim rs As ADODB.Recordset
+    Dim Cerrar As Boolean
+    Set rs = New ADODB.Recordset
 
+    Set rs.ActiveConnection = gConet
+
+
+    rs.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+    rs.CursorLocation = adUseClient ' Cursor local al cliente
+    rs.LockType = adLockOptimistic
+'    rs.CursorLocation = adUseClient
+'    rs.CursorType = adOpenStatic
+'    rs.LockType = adLockBatchOptimistic
+    rs.Source = gsCompania & ".invGetSugeridoLote " & IdBodega & "," & IdProducto & "," & Cantidad
+    rs.Open
+    Set rs.ActiveConnection = Nothing
+    Set invGetSugeridoLote = rs
+End Function
+
+
+
+Public Function getDescrCatalogo(txtCodigo As TextBox, sFieldNameCode As String, sTableName As String, sFieldNameDescr As String, Optional bCodeChar As Boolean) As String
+Dim lbOk As Boolean
+Dim sDescr As String
+Dim sValor As String
+lbOk = False
+If txtCodigo.Text <> "" Then
+    If bCodeChar = True Then
+        sValor = "'" & txtCodigo.Text & "'"
+    Else
+        sValor = txtCodigo.Text
+    End If
+    
+    sDescr = GetDescrCat(sFieldNameCode, sValor, sTableName, sFieldNameDescr)
+Else
+    sDescr = ""
+End If
+getDescrCatalogo = sDescr
+End Function
 

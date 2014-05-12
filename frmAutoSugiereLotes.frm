@@ -365,12 +365,16 @@ Private Sub HabilitarBotones()
             cmdEliminar.Enabled = False
             cmdAdd.Enabled = False
             cmdEditItem.Enabled = False
+            cmdAceptar.Enabled = False
+            cmdCancelar.Enabled = False
         Case TypAccion.View
             cmdSave.Enabled = False
             cmdUndo.Enabled = False
             cmdEliminar.Enabled = True
             cmdAdd.Enabled = True
             cmdEditItem.Enabled = True
+            cmdAceptar.Enabled = True
+            cmdCancelar.Enabled = True
     End Select
 End Sub
 
@@ -435,6 +439,7 @@ Private Sub cmdEditItem_Click()
     GetDataFromGridToControl
     HabilitarBotones
     HabilitarControles
+    txtCantidad.SetFocus
 End Sub
 Private Sub GetDataFromGridToControl()
     If Not (grst.EOF And grst.BOF) Then
@@ -464,7 +469,7 @@ End Sub
 Private Sub ValidarCantidadLotes()
    Dim CantLotes As Double, CantidadEdicion As Double
     CantidadEdicion = IIf(Accion = View, 0, Val(txtCantidad.Text))
-    CantLotes = GetTotalLotes
+    CantLotes = GetTotalLotes(grst)
    If (CantLotes + CantidadEdicion) > Me.gdCantidad Then
         lbOk = Mensaje("La Cantidad del detalle de Lote no puede mayor a la cantidad total del producto", ICO_ERROR, False)
         Exit Sub
@@ -599,8 +604,9 @@ Private Sub Form_Load()
     HabilitarBotones
     HabilitarControles
     cargaGrid
-    If GetTotalLotes < gdCantidad Then
+    If GetTotalLotes(grst) < gdCantidad Then
         lbOk = Mensaje("No hay suficiente existencias para satisfacer el producto", ICO_ERROR, False)
+        Set grst = Nothing
     End If
 End Sub
     
@@ -628,10 +634,15 @@ Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
+    If (Accion = Edit) Or (Accion = Add) Then
+        Cancel = True
+        Exit Sub
+    End If
+
     If Not (grst Is Nothing) Then Set grst = Nothing
 End Sub
 
-Private Function GetTotalLotes() As Double
+Private Function GetTotalLotes(grst As ADODB.Recordset) As Double
 
     Dim dResult As Double
     dResult = 0
@@ -648,3 +659,19 @@ Private Function GetTotalLotes() As Double
     GetTotalLotes = dResult
 End Function
 
+
+
+Public Function GetTotalSugeridoLotes() As Double
+    Dim rst As New ADODB.Recordset
+    Dim dTotalSugeridoLotes
+    dTotalSugeridoLotes = 0
+    If rst.State = adStateOpen Then rst.Close
+    rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
+    rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+    rst.CursorLocation = adUseClient ' Cursor local al cliente
+    rst.LockType = adLockOptimistic
+    If rst.State = adStateOpen Then rst.Close
+    Set rst = invGetSugeridoLote(gsIDBodega, gsIdProducto, gdCantidad)
+    dTotalSugeridoLotes = GetTotalLotes(rst)
+    GetTotalSugeridoLotes = dTotalSugeridoLotes
+End Function
