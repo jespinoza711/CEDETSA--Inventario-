@@ -191,7 +191,7 @@ Begin VB.Form frmProductos
       Tabs            =   "frmProductos.frx":4FF2
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
          Height          =   7305
-         Left            =   30
+         Left            =   -99969
          TabIndex        =   1
          Top             =   360
          Width           =   13350
@@ -330,7 +330,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   56360961
+            Format          =   57344001
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -353,7 +353,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   56360961
+            Format          =   57344001
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -439,7 +439,7 @@ Begin VB.Form frmProductos
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
          Height          =   7305
-         Left            =   30
+         Left            =   -99969
          TabIndex        =   18
          Top             =   360
          Width           =   13350

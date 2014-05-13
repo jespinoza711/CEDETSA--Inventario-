@@ -264,7 +264,7 @@ INNER JOIN dbo.invPRODUCTO P ON E.IDPRODUCTO=P.IDProducto
 go 
 
 --ACTUALIZACION DEL INVENTARIO ----------
-
+--DROP PROCEDURE invUpdateExistenciaBodegaLote
 CREATE PROCEDURE dbo.invUpdateExistenciaBodegaLote(@IdBodega INT, @IdProducto INT,@IdLote INT,@Cantidad DECIMAL(28,8))
 as 
 IF (EXISTS(SELECT * FROM dbo.invEXISTENCIALOTE WHERE IDBODEGA=@IdBodega AND IDPRODUCTO=@IdProducto AND IDLOTE=@IdLote))
@@ -275,10 +275,11 @@ ELSE
 	VALUES(@IdBodega,@IdProducto,@IdLote,@Cantidad)
 GO 
 
+--DROP PROCEDURE dbo.invUpdateExistenciaBodega
 CREATE PROCEDURE dbo.invUpdateExistenciaBodega(@IdBodega INT, @IdProducto INT,@Cantidad DECIMAL(28,8))
 as 
 IF (EXISTS(SELECT * FROM dbo.invEXISTENCIABODEGA WHERE IDBODEGA=@IdBodega AND IDPRODUCTO=@IdProducto))
-	UPDATE dbo.invEXISTENCIALOTE SET EXISTENCIA=EXISTENCIA + @Cantidad 
+	UPDATE dbo.invEXISTENCIABODEGA SET EXISTENCIA=EXISTENCIA + @Cantidad 
 	WHERE IDBODEGA=@IdBodega and IDPRODUCTO=@IdProducto
 ELSE	
 	INSERT INTO dbo.invEXISTENCIABODEGA(IDBODEGA,IDPRODUCTO,EXISTENCIA)
@@ -311,14 +312,13 @@ AS
 
 
 DECLARE @TRANSACCION as NVARCHAR(20),@FACTOR AS SMALLINT
-declare @i int,@iRwCnt int, @Lote int,  @CantidadLote decimal (28,8), @Completado bit, @CantidadAsignada decimal(28,8),@CantDemandada decimal(28,8),@CantidadDemandada AS DECIMAL(28,8)
 
 SELECT @TRANSACCION= Transaccion,@FACTOR=Factor 
 	FROM dbo.invTIPOMOVIMIENTO WHERE IDTipo=@IdTipoTransaccion
 
 set @Cantidad = abs(@Cantidad) * @FACTOR
 
-EXEC dbo.invUpdateExistenciaBodegaLote @IdBodega,@IdProducto,@IdLote,@Cantidad
+EXEC dbo.invUpdateExistenciaBodegaLote  @IdBodega,@IdProducto,@IdLote,@Cantidad
 EXEC dbo.invUpdateExistenciaBodega @IdBodega,@IdProducto,@Cantidad
 
 GO 
@@ -339,6 +339,7 @@ WHERE FC.Anulada=0
 
 GO 
 
+--DROP procedure [dbo].[invUpdateMasterExistenciaBodega]
 CREATE PROCEDURE [dbo].[invUpdateMasterExistenciaBodega] @Documento AS NVARCHAR(20),@IDPaquete int, @IdTipoTransaccion INT,@Usuario nvarchar(50)
 AS 
 
@@ -359,8 +360,9 @@ Create Table #tmpMovimiento(
 
 INSERT INTO #tmpMovimiento(IDBodega, IDProducto, IdLote, Cantidad,CostoLocal,CostoDolar,
             IDTipoTransaccion)
-SELECT IDBODEGA,IDPRODUCTO,IDLOTE,CANTIDAD,IDTIPO,COSTOLOCAL,COSTODOLAR
+SELECT IDBODEGA,IDPRODUCTO,IDLOTE,CANTIDAD,COSTOLOCAL,COSTODOLAR,IDTIPO
 FROM dbo.vinvMovimientos  WHERE DOCUMENTO=@Documento AND IDPAQUETE=@IDPaquete
+
 
 set @iRwCnt = @@ROWCOUNT
 set @i = 1
@@ -372,7 +374,9 @@ while @i <= @iRwCnt
 		select @IDLote = IdLote, @Cantidad = Cantidad, @IdBodega= IdBodega, @IdProducto= IdProducto ,
 				@IdTipoTransaccion=IDTipoTransaccion,@CostoLocal=CostoLocal,@CostoDolar = CostoDolar
 		  from #tmpMovimiento where ID = @i
-		exec dbo.invUpdateExistenciaBodegaLinea @IdBodega, @IdProducto,@IdProducto, @Cantidad,@IdTipoTransaccion,@Usuario
+		  
+		exec dbo.invUpdateExistenciaBodegaLinea  @IdBodega, @IdProducto,@IDLote, @Cantidad,@IdTipoTransaccion,@Usuario
+		
 		IF (@IdTipoTransaccion IN (1,3,5,7,10)) --Actualizar el costo del producto si la transaccion es tipo ingreso
 		begin
 			--Calcular el costo promedio del producto
@@ -520,3 +524,54 @@ DROP TABLE #ProductoLote
 
 
 
+
+
+GO 
+
+
+Create Procedure dbo.invUpdateLote @Operacion nvarchar(1), @IDLote int, @LoteInterno nvarchar(255),@LoteProveedor nvarchar(255), @FechaVencimiento datetime , @FechaProduccion datetime
+as
+set nocount on
+declare @NextCodigo int, @Ok bit
+if @Operacion = 'I'
+begin
+	set @Ok = 0
+	set @NextCodigo = isnull((Select MAX(IDLote) + 1 from dbo.invLOTE ),1)
+	while @Ok = 0
+	begin
+		if not exists (Select IDLote from dbo.invLOTE where IdLote= @NextCodigo)
+		begin
+
+			insert dbo.invLOTE (IDLote, LoteInterno, LoteProveedor,
+			       FechaVencimiento, FechaFabricacion)
+			values (@NextCodigo, @LoteInterno, @LoteProveedor,@FechaVencimiento,@FechaProduccion)
+			set @Ok = 1
+		end
+		else
+		begin
+			set @Ok = 0
+			set @NextCodigo = isnull((Select MAX(IdLote) + 1 from dbo.invLOTE  ),1)		
+		end
+	end	
+end
+if @Operacion = 'U'
+begin
+ Update dbo.invLOTE SET LoteInterno =  @LoteInterno, LoteProveedor= @LoteProveedor, FechaVencimiento = @FechaVencimiento,FechaFabricacion = @FechaProduccion
+ WHERE IDLote = @IDLote
+end
+
+if @Operacion = 'D'
+begin
+	Delete from dbo.invLOTE
+	WHERE IDLote = @IDLote
+END
+
+GO 
+
+CREATE PROCEDURE dbo.invGetLotes @IDLote INT
+AS 
+SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion
+FROM dbo.invLOTE
+WHERE (IDLote=@IDLote OR @IDLote=-1)
+
+GO 

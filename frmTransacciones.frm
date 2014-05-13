@@ -165,11 +165,11 @@ Begin VB.Form frmTransacciones
             Strikethrough   =   0   'False
          EndProperty
          Height          =   570
-         Left            =   10140
+         Left            =   10110
          Picture         =   "frmTransacciones.frx":39A0
          Style           =   1  'Graphical
          TabIndex        =   2
-         Top             =   465
+         Top             =   450
          Width           =   600
       End
       Begin MSComCtl2.DTPicker dtpFechaInicial 
@@ -228,9 +228,9 @@ Begin VB.Form frmTransacciones
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   315
-         Left            =   840
+         Left            =   870
          TabIndex        =   11
-         Top             =   930
+         Top             =   810
          Width           =   825
       End
       Begin VB.Label Label3 
@@ -358,6 +358,8 @@ Private Sub cmdAdd_Click()
     End If
     
     Dim ofrmRegistrar As New frmRegistrarTransaccion
+    ofrmRegistrar.gsFormCaption = "Registrar Transacción"
+    ofrmRegistrar.gsTitle = "Registrar Transacción"
     ofrmRegistrar.gsIDTipoTransaccion = CInt(Trim(Me.txtPaquete.Text))
     ofrmRegistrar.Show vbModal
 End Sub

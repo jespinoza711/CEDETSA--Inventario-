@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBrowseCat 
    BorderStyle     =   5  'Sizable ToolWindow
    Caption         =   "Catálogo"
@@ -29,7 +29,7 @@ Begin VB.Form frmBrowseCat
    Begin VB.CommandButton cmdAdicionar 
       Enabled         =   0   'False
       Height          =   585
-      Left            =   7020
+      Left            =   7050
       Picture         =   "frmBrowseCat.frx":0BD4
       Style           =   1  'Graphical
       TabIndex        =   10
@@ -216,15 +216,41 @@ End Sub
 
 Private Sub cmdAdicionar_Click()
 Select Case UCase(gsNombrePantallaExtra)
-    Case "FRMUSUARIO":
-            Dim frm2 As frmUsuario
-            Set frm2 = New frmUsuario
+    Case "FRMMASTERLOTES":
+            Dim frm2 As New frmMasterLotes
+            frm2.gsFormCaption = "Maestro de Lotes"
+            frm2.gsTitle = "Maestro de Lotes"
             frm2.Show vbModal
             Set frm2 = Nothing
 End Select
 
-
-
+ If BrowseCatalogo(gsTablabrw, gsCampoCodigoTabla, gsCampoDescrTabla, gsMuestraExtra, gsFieldExtrabrw, gbFiltra, gsFiltro, gsOrderfld) Then
+      TDBG.Caption = "Selección"
+      TDBG.Columns(0).DataField = gsCampoCodigoTabla
+      TDBG.Columns(0).Caption = gsCampoCodigoTabla
+      TDBG.Columns(1).Caption = gsCampoDescrTabla
+      TDBG.Columns(1).DataField = gsCampoDescrTabla
+      
+      If UCase(gsMuestraExtra) = "SI" Then
+        If gdWidthExtra1 = 0 Then
+          gdWidthExtra1 = 1500
+        End If
+      
+        TDBG.Columns(2).Width = gdWidthExtra1
+        TDBG.Columns(2).Caption = gsFieldExtrabrw
+        TDBG.Columns(2).DataField = gsFieldExtrabrw
+      Else
+        TDBG.Columns(1).Width = TDBG.Columns(1).Width + 1000
+        TDBG.Columns(2).Visible = False
+      End If
+      gsCampoCodigoTabla = gsCodigobrw
+      gsCampoDescrTabla = gsDescrbrw
+  
+      Set TDBG.DataSource = gRegistrosBrw
+      TDBG.ReBind
+      gsCodigobrw = ""
+      gsDescrbrw = ""
+    End If
 End Sub
 
 Private Sub cmdBuscar_Click()
@@ -292,10 +318,13 @@ Set gRegistrosBrw = New ADODB.Recordset  'Inicializa la variable de los registro
         TDBG.Columns(1).Width = TDBG.Columns(1).Width + 1000
         TDBG.Columns(2).Visible = False
       End If
+      
       gsCampoCodigoTabla = gsCodigobrw
       gsCampoDescrTabla = gsDescrbrw
       
-    
+      
+      If (gsNombrePantallaExtra <> "") Then Me.cmdAdicionar.Enabled = True
+         
       
       Set TDBG.DataSource = gRegistrosBrw
       TDBG.ReBind

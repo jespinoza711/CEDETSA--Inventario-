@@ -348,7 +348,7 @@ End If
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sTipo As String
     Dim sFiltro As String
@@ -356,7 +356,7 @@ Private Sub cmdEliminar_Click()
     Dim sFactura As String
 
     If txtBodega.Text = "" Then
-        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
+        lbok = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If chkActivo.value = 1 Then
@@ -373,13 +373,13 @@ Private Sub cmdEliminar_Click()
     End If
     
     ' hay que validar la integridad referencial
-    lbOk = Mensaje("Está seguro de eliminar la Bodega " & rst("IDBodega").value, ICO_PREGUNTA, True)
-    If lbOk Then
-                lbOk = invUpdateBodega("D", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+    lbok = Mensaje("Está seguro de eliminar la Bodega " & rst("IDBodega").value, ICO_PREGUNTA, True)
+    If lbok Then
+                lbok = invUpdateBodega("D", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
         
-        If lbOk Then
+        If lbok Then
             sMsg = "Borrado Exitosamente ... "
-            lbOk = Mensaje(sMsg, ICO_OK, False)
+            lbok = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
         End If
@@ -387,13 +387,13 @@ Private Sub cmdEliminar_Click()
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
     If txtBodega.Text = "" Then
-        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
+        lbok = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If chkActivo.value = 1 Then
@@ -407,7 +407,7 @@ Private Sub cmdSave_Click()
         sFactura = "0"
     End If
     If txtDescrBodega.Text = "" Then
-        lbOk = Mensaje("La Descripción del Centro no puede estar en blanco", ICO_ERROR, False)
+        lbok = Mensaje("La Descripción del Centro no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -418,17 +418,17 @@ Private Sub cmdSave_Click()
         If Not (rst.EOF And rst.BOF) Then
             sFiltro = "IDBodega = '" & txtBodega.Text & "'"
             If ExiteRstKey(rst, sFiltro) Then
-               lbOk = Mensaje("Ya exista Bodega ", ICO_ERROR, False)
+               lbok = Mensaje("Ya exista Bodega ", ICO_ERROR, False)
                 txtBodega.SetFocus
             Exit Sub
             End If
         End If
     
-            lbOk = invUpdateBodega("I", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+            lbok = invUpdateBodega("I", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
             
-            If lbOk Then
+            If lbok Then
                 sMsg = "La Bodega ha sido registrada exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -436,20 +436,23 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                  sMsg = "Ha ocurrido un error tratando de Agregar la Bodega... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
     End If ' si estoy adicionando
         If Accion = Edit Then
             If Not (rst.EOF And rst.BOF) Then
-                lbOk = invUpdateBodega("U", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
-                If lbOk Then
-                    sMsg = "Ha ocurrido un error tratando de Actualizar la Bodega... "
-                    lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = invUpdateBodega("U", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+                If lbok Then
+                    sMsg = "La Bodega ha sido registrada exitosamente ... "
+                    lbok = Mensaje(sMsg, ICO_OK, False)
                     ' actualiza datos
                     cargaGrid
                     Accion = View
                     HabilitarControles
                     HabilitarBotones
+                Else
+                    sMsg = "Ha ocurrido un error tratando de Agregar la Bodega... "
+                    lbok = Mensaje(sMsg, ICO_ERROR, False)
                 End If
             End If
         

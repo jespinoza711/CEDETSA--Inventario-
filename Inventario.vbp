@@ -27,6 +27,7 @@ Form=frmTransacciones.frm
 Form=frmRegistrarTransaccion.frm
 Form=frmAutoSugiereLotes.frm
 Form=frmTest.frm
+Form=frmMasterLotes.frm
 Startup="Sub Main"
 HelpFile=""
 Title="Inventario"

@@ -9,7 +9,7 @@ Begin VB.Form frmRegistrarTransaccion
    ClientHeight    =   8445
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   13470
+   ClientWidth     =   15630
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -20,56 +20,101 @@ Begin VB.Form frmRegistrarTransaccion
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    ScaleHeight     =   8445
-   ScaleWidth      =   13470
+   ScaleWidth      =   15630
    StartUpPosition =   2  'CenterScreen
    Begin ActiveTabs.SSActiveTabs sTabTransaccion 
       Height          =   7005
-      Left            =   330
+      Left            =   300
       TabIndex        =   6
       Top             =   1320
-      Width           =   12120
-      _ExtentX        =   21378
+      Width           =   14295
+      _ExtentX        =   25215
       _ExtentY        =   12356
       _Version        =   131083
       TabCount        =   3
+      TagVariant      =   ""
       Tabs            =   "frmRegistrarTransaccion.frx":0000
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
          Left            =   -99969
          TabIndex        =   7
          Top             =   360
-         Width           =   12060
-         _ExtentX        =   21273
+         Width           =   14235
+         _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
          TabGuid         =   "frmRegistrarTransaccion.frx":00B3
+         Begin VB.CommandButton cmdEditItem 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   555
+            Left            =   12810
+            Picture         =   "frmRegistrarTransaccion.frx":00DB
+            Style           =   1  'Graphical
+            TabIndex        =   56
+            ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
+            Top             =   210
+            Width           =   555
+         End
+         Begin VB.CommandButton cmdEliminar 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   555
+            Left            =   13410
+            Picture         =   "frmRegistrarTransaccion.frx":0DA5
+            Style           =   1  'Graphical
+            TabIndex        =   55
+            ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
+            Top             =   210
+            Width           =   555
+         End
          Begin TrueOleDBGrid60.TDBGrid TDBG 
-            Height          =   5970
-            Left            =   240
-            OleObjectBlob   =   "frmRegistrarTransaccion.frx":00DB
+            Height          =   5670
+            Left            =   300
+            OleObjectBlob   =   "frmRegistrarTransaccion.frx":1A6F
             TabIndex        =   8
-            Top             =   420
-            Width           =   11595
+            Top             =   840
+            Width           =   13725
          End
       End
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   16
          Top             =   360
-         Width           =   12060
-         _ExtentX        =   21273
+         Width           =   14235
+         _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":8C90
+         TabGuid         =   "frmRegistrarTransaccion.frx":A624
          Begin VB.Frame Frame3 
-            Height          =   2205
-            Left            =   300
+            Height          =   2475
+            Left            =   1230
             TabIndex        =   39
-            Top             =   3180
+            Top             =   3330
             Width           =   11445
+            Begin VB.TextBox txtPrecioDolar 
+               Height          =   315
+               Left            =   2310
+               TabIndex        =   53
+               Top             =   1200
+               Width           =   1905
+            End
             Begin VB.CommandButton cmdAdd 
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
@@ -82,11 +127,11 @@ Begin VB.Form frmRegistrarTransaccion
                EndProperty
                Height          =   555
                Left            =   10590
-               Picture         =   "frmRegistrarTransaccion.frx":8CB8
+               Picture         =   "frmRegistrarTransaccion.frx":A64C
                Style           =   1  'Graphical
                TabIndex        =   50
                ToolTipText     =   "Agrega el item con los datos digitados..."
-               Top             =   1110
+               Top             =   1410
                Width           =   555
             End
             Begin VB.CheckBox chkAutoSugiereLotes 
@@ -94,7 +139,7 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   255
                Left            =   8520
                TabIndex        =   44
-               Top             =   1050
+               Top             =   1410
                Width           =   1845
             End
             Begin VB.TextBox txtCostoDolar 
@@ -107,10 +152,10 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelLote 
                Height          =   320
                Left            =   3840
-               Picture         =   "frmRegistrarTransaccion.frx":9982
+               Picture         =   "frmRegistrarTransaccion.frx":B316
                Style           =   1  'Graphical
                TabIndex        =   48
-               Top             =   1320
+               Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtDescrLote 
@@ -127,16 +172,16 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   285
                Left            =   4230
                TabIndex        =   49
-               Top             =   1350
+               Top             =   1710
                Width           =   6135
             End
             Begin VB.CommandButton cmdLote 
                Height          =   320
                Left            =   3480
-               Picture         =   "frmRegistrarTransaccion.frx":B64C
+               Picture         =   "frmRegistrarTransaccion.frx":CFE0
                Style           =   1  'Graphical
                TabIndex        =   47
-               Top             =   1320
+               Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtLote 
@@ -153,7 +198,7 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   285
                Left            =   2310
                TabIndex        =   46
-               Top             =   1350
+               Top             =   1710
                Width           =   1095
             End
             Begin VB.TextBox txtCantidad 
@@ -162,6 +207,24 @@ Begin VB.Form frmRegistrarTransaccion
                TabIndex        =   40
                Top             =   270
                Width           =   1905
+            End
+            Begin VB.Label Label12 
+               Caption         =   "Precio Dolar:"
+               BeginProperty Font 
+                  Name            =   "Arial"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H002F2F2F&
+               Height          =   300
+               Left            =   540
+               TabIndex        =   54
+               Top             =   1260
+               Width           =   1095
             End
             Begin VB.Label Label9 
                Caption         =   "Lote:"
@@ -178,7 +241,7 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   300
                Left            =   540
                TabIndex        =   45
-               Top             =   1320
+               Top             =   1680
                Width           =   735
             End
             Begin VB.Label Label10 
@@ -220,14 +283,14 @@ Begin VB.Form frmRegistrarTransaccion
          End
          Begin VB.Frame Frame2 
             Height          =   915
-            Left            =   300
+            Left            =   1230
             TabIndex        =   33
-            Top             =   2220
+            Top             =   2370
             Width           =   11445
             Begin VB.CommandButton cmdDelArticulo 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":B98E
+               Picture         =   "frmRegistrarTransaccion.frx":D322
                Style           =   1  'Graphical
                TabIndex        =   36
                Top             =   360
@@ -270,7 +333,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdArticulo 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":D658
+               Picture         =   "frmRegistrarTransaccion.frx":EFEC
                Style           =   1  'Graphical
                TabIndex        =   35
                Top             =   360
@@ -297,14 +360,14 @@ Begin VB.Form frmRegistrarTransaccion
          End
          Begin VB.Frame Frame1 
             Height          =   1980
-            Left            =   300
+            Left            =   1230
             TabIndex        =   17
-            Top             =   150
+            Top             =   300
             Width           =   11460
             Begin VB.CommandButton cmdDelBodegaOrigen 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":D99A
+               Picture         =   "frmRegistrarTransaccion.frx":F32E
                Style           =   1  'Graphical
                TabIndex        =   25
                Top             =   855
@@ -313,7 +376,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdBodegaDestino 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":F664
+               Picture         =   "frmRegistrarTransaccion.frx":10FF8
                Style           =   1  'Graphical
                TabIndex        =   29
                Top             =   1305
@@ -356,7 +419,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelBodegaDestino 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":F9A6
+               Picture         =   "frmRegistrarTransaccion.frx":1133A
                Style           =   1  'Graphical
                TabIndex        =   31
                Top             =   1305
@@ -365,7 +428,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdBodegaOrigen 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":11670
+               Picture         =   "frmRegistrarTransaccion.frx":13004
                Style           =   1  'Graphical
                TabIndex        =   24
                Top             =   855
@@ -408,7 +471,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdTipoTransaccion 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":119B2
+               Picture         =   "frmRegistrarTransaccion.frx":13346
                Style           =   1  'Graphical
                TabIndex        =   20
                Top             =   420
@@ -451,7 +514,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelTipoTransaccion 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":11CF4
+               Picture         =   "frmRegistrarTransaccion.frx":13688
                Style           =   1  'Graphical
                TabIndex        =   21
                Top             =   405
@@ -515,14 +578,14 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sTabPanelDocumento 
          Height          =   6615
-         Left            =   30
+         Left            =   -99969
          TabIndex        =   9
          Top             =   360
-         Width           =   12060
-         _ExtentX        =   21273
+         Width           =   14235
+         _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":139BE
+         TabGuid         =   "frmRegistrarTransaccion.frx":15352
          Begin VB.TextBox txtUsuario 
             Height          =   315
             Left            =   1350
@@ -535,12 +598,13 @@ Begin VB.Form frmRegistrarTransaccion
             Left            =   540
             TabIndex        =   13
             Top             =   1110
-            Width           =   11085
-            _ExtentX        =   19553
+            Width           =   13035
+            _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
+            Enabled         =   -1  'True
             ScrollBars      =   2
-            TextRTF         =   $"frmRegistrarTransaccion.frx":139E6
+            TextRTF         =   $"frmRegistrarTransaccion.frx":1537A
          End
          Begin MSComCtl2.DTPicker dtpFecha 
             Height          =   315
@@ -560,7 +624,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   57278465
+            Format          =   20840449
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
@@ -653,25 +717,6 @@ Begin VB.Form frmRegistrarTransaccion
       Top             =   780
       Width           =   975
    End
-   Begin VB.CommandButton cmdEliminar 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   12600
-      Picture         =   "frmRegistrarTransaccion.frx":13A5D
-      Style           =   1  'Graphical
-      TabIndex        =   53
-      ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3360
-      Width           =   555
-   End
    Begin VB.CommandButton cmdUndo 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -683,42 +728,23 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   12600
-      Picture         =   "frmRegistrarTransaccion.frx":14727
-      Style           =   1  'Graphical
-      TabIndex        =   54
-      ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   3990
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdEditItem 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   12585
+      Left            =   14820
       Picture         =   "frmRegistrarTransaccion.frx":153F1
       Style           =   1  'Graphical
       TabIndex        =   52
-      ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2730
+      ToolTipText     =   "Deshacer / Cancelar"
+      Top             =   2220
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   555
-      Left            =   12600
+      Left            =   14820
       Picture         =   "frmRegistrarTransaccion.frx":160BB
       Style           =   1  'Graphical
       TabIndex        =   51
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   1710
+      Top             =   1590
       Width           =   555
    End
    Begin VB.Label Label3 
@@ -745,9 +771,9 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       ForeColor       =   &H00FF0000&
       Height          =   300
-      Left            =   10590
+      Left            =   12690
       TabIndex        =   5
-      Top             =   810
+      Top             =   660
       Width           =   2640
    End
    Begin VB.Label Label1 
@@ -755,9 +781,9 @@ Begin VB.Form frmRegistrarTransaccion
       Caption         =   "Transacción:"
       ForeColor       =   &H00000000&
       Height          =   300
-      Left            =   9405
+      Left            =   11505
       TabIndex        =   4
-      Top             =   810
+      Top             =   660
       Width           =   1170
    End
    Begin VB.Label lbFormCaption 
@@ -780,7 +806,7 @@ Begin VB.Form frmRegistrarTransaccion
       Left            =   -210
       TabIndex        =   0
       Top             =   0
-      Width           =   13650
+      Width           =   15990
    End
    Begin VB.Image Image1 
       Height          =   885
@@ -788,7 +814,7 @@ Begin VB.Form frmRegistrarTransaccion
       Picture         =   "frmRegistrarTransaccion.frx":17D85
       Stretch         =   -1  'True
       Top             =   -300
-      Width           =   13815
+      Width           =   16185
    End
 End
 Attribute VB_Name = "frmRegistrarTransaccion"
@@ -835,6 +861,7 @@ Dim gTasaCambio As Double
 Dim tDatosDelProducto As typDatosProductos
 
 Public scontrol As String
+
 
 Private Sub HabilitarBotones()
     Select Case Accion
@@ -895,6 +922,9 @@ Public Sub HabilitarControles()
             txtCostoDolar.Text = ""
             fmtTextbox txtCostoDolar, "R"
             
+            txtPrecioDolar.Text = ""
+            fmtTextbox txtPrecioDolar, "R"
+            
             Me.cmdTipoTransaccion.Enabled = True
             Me.cmdDelTipoTransaccion.Enabled = True
             Me.cmdBodegaOrigen.Enabled = True
@@ -928,18 +958,20 @@ Public Sub HabilitarControles()
             
             fmtTextbox txtCantidad, "O"
             
-            fmtTextbox txtCostoDolar, "R"
+            fmtTextbox txtCostoDolar, "O"
+                  
+            fmtTextbox txtPrecioDolar, "O"
             
-            Me.cmdTipoTransaccion.Enabled = True
-            Me.cmdDelTipoTransaccion.Enabled = True
-            Me.cmdBodegaOrigen.Enabled = True
-            Me.cmdDelBodegaOrigen.Enabled = True
-            Me.cmdBodegaDestino.Enabled = True
-            Me.cmdDelBodegaDestino.Enabled = True
-            Me.cmdArticulo.Enabled = True
-            Me.cmdDelArticulo.Enabled = True
-            Me.cmdLote.Enabled = True
-            Me.cmdDelLote.Enabled = True
+            Me.cmdTipoTransaccion.Enabled = False
+            Me.cmdDelTipoTransaccion.Enabled = False
+            Me.cmdBodegaOrigen.Enabled = False
+            Me.cmdDelBodegaOrigen.Enabled = False
+            Me.cmdBodegaDestino.Enabled = False
+            Me.cmdDelBodegaDestino.Enabled = False
+            Me.cmdArticulo.Enabled = False
+            Me.cmdDelArticulo.Enabled = False
+            Me.cmdLote.Enabled = False
+            Me.cmdDelLote.Enabled = False
             Me.TDBG.Enabled = False
             
         Case TypAccion.View
@@ -964,6 +996,7 @@ Public Sub HabilitarControles()
             txtCantidad.Text = ""
             fmtTextbox txtCantidad, "R"
             fmtTextbox txtCostoDolar, "R"
+            fmtTextbox txtPrecioDolar, "R"
             txtCostoDolar.Text = ""
             
             Me.cmdTipoTransaccion.Enabled = False
@@ -1008,6 +1041,9 @@ Private Function ValCtrls() As Boolean
     ElseIf (Me.txtCostoDolar.Text = "") And (iTipoTransaccion = 1 Or iTipoTransaccion = 3 Or iTipoTransaccion = 7 Or iTipoTransaccion = 11) Then
         sMensajeError = "Por favor seleccione el Costo Dolar"
         Valida = False
+    ElseIf (Me.txtPrecioDolar.Text = "") And (iTipoTransaccion = 2) Then
+        sMensajeError = "Por favor seleccione el Precio del producto"
+        Valida = False
     End If
     ValCtrls = Valida
 End Function
@@ -1024,32 +1060,29 @@ Private Sub HabilitarAutoSugerirLotes(IsAutoSugiereLotes As Boolean)
         Me.cmdDelLote.Enabled = False
         bIsAutoSugiereLotes = True
     Else
-        Me.txtLote.Enabled = True
-        Me.txtDescrLote.Enabled = True
-        Me.cmdLote.Enabled = True
-        Me.cmdDelLote.Enabled = True
+        If (Accion = Add) Then
+            Me.txtLote.Enabled = True
+            Me.txtDescrLote.Enabled = True
+            Me.cmdLote.Enabled = True
+            Me.cmdDelLote.Enabled = True
+        End If
         bIsAutoSugiereLotes = False
     End If
 End Sub
 
 Private Sub cmdAdd_Click()
  
-    Dim dicDatosProducto As Dictionary
+   
   
     
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If Not ValCtrls Then
-        lbOk = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
+        lbok = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
         Exit Sub
     End If
     
     
-    If (getValueFieldsFromTable("invPRODUCTO", "CostoUltLocal,CostoUltDolar,CostoUltPromLocal,CostoUltPromDolar", "IdProducto=" & Me.txtArticulo.Text, dicDatosProducto) = True) Then
-        tDatosDelProducto.CostoPromDolar = CDbl(dicDatosProducto("CostUlPromDolar"))
-        tDatosDelProducto.CostoPromLocal = CDbl(dicDatosProducto("CostoUltPromLocal"))
-        tDatosDelProducto.CostoUltDolar = CDbl((dicDatosProducto("CostoUltDolar")))
-        tDatosDelProducto.CostoUltLocal = CDbl((dicDatosProducto("CostoUltLocal")))
-    End If
+ 
     
     If (Accion = Add) Then
         If (bIsAutoSugiereLotes = True) Then
@@ -1070,7 +1103,7 @@ Private Sub cmdAdd_Click()
             frmAutosugiere.gsDescrBodega = Me.txtDescrBodegaOrigen.Text
             dTotalSugeridoLotes = frmAutosugiere.GetTotalSugeridoLotes()
             If (dTotalSugeridoLotes < CDbl(Me.txtCantidad.Text)) Then
-                lbOk = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
+                lbok = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
                 Set rstLS = Nothing
                 Set frmAutosugiere = Nothing
             Else
@@ -1084,13 +1117,13 @@ Private Sub cmdAdd_Click()
                 rstLS.MoveFirst
                 While Not rstLS.EOF
                     If ExiteRstKey(rstTmpMovimiento, "BODEGAOrigen=" & Me.txtBodegaOrigen.Text & " AND BodegaDestino =" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & " AND IDPRODUCTO=" & Me.txtArticulo.Text & _
-                                                " AND IDLOTE=" & rstLS!IdLote & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-                        lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+                                                " AND IDLOTE=" & rstLS!IDLote & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
+                        lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
                         Exit Sub
                     End If
                     Set rstLote = New ADODB.Recordset
                       rstLote.ActiveConnection = gConet
-                    CargaDatosLotes rstLote, CInt(rstLS!IdLote)
+                    CargaDatosLotes rstLote, CInt(rstLS!IDLote)
                     ' Carga los datos del detalle de transacciones para ser grabados a la bd
                     rstTmpMovimiento.AddNew
                     rstTmpMovimiento!BodegaOrigen = Me.txtBodegaOrigen.Text
@@ -1100,12 +1133,12 @@ Private Sub cmdAdd_Click()
                     rstTmpMovimiento!DescrBodegaDestino = Me.txtDescrBodegaDestino.Text
                     rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
                     rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-                    rstTmpMovimiento!IdLote = rstLS!IdLote
+                    rstTmpMovimiento!IDLote = rstLS!IDLote
                     rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
                     rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
                     rstTmpMovimiento!LoteInterno = rstLote!LoteInterno
                     rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
-                    rstTmpMovimiento!DESCRTipo = Me.txtDescrTipoTransaccion.Text
+                    rstTmpMovimiento!DESCRTipo = sPaquete
                     rstTmpMovimiento!Cantidad = rstLS!Cantidad
                     rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
                     rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal  'GetLastCostoProm(me.txtcodProducto.Text, "C")
@@ -1121,9 +1154,9 @@ Private Sub cmdAdd_Click()
             End If
         Else
                 
-            If ExiteRstKey(rstTmpMovimiento, "BODEGAORigen=" & Me.txtBodegaOrigen.Text & " BodegaDestino=" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & "  AND IDPRODUCTO=" & Me.txtArticulo.Text & _
+            If ExiteRstKey(rstTmpMovimiento, "BODEGAORigen=" & Me.txtBodegaOrigen.Text & " and  BodegaDestino=" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & "  AND IDPRODUCTO=" & Me.txtArticulo.Text & _
                                           " AND IDLOTE=" & Me.txtLote.Text & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-              lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+              lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
         
               Exit Sub
             End If
@@ -1138,52 +1171,66 @@ Private Sub cmdAdd_Click()
             rstTmpMovimiento!DescrBodegaDestino = Me.txtBodegaDestino.Text
             rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
             rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-            rstTmpMovimiento!IdLote = Me.txtLote.Text
+            rstTmpMovimiento!IDLote = Me.txtLote.Text
             rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
             rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
             rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
             rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
-            rstTmpMovimiento!DESCRTipo = Me.txtDescrTipoTransaccion.Text
+            rstTmpMovimiento!DESCRTipo = sPaquete
             rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
             rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
             If (Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
-                rstTmpMovimiento!CostoLocal = Me.txtCostoDolar.Text 'GetLastCostoProm(me.txtcodProducto.Text, "C")
-                rstTmpMovimiento!CostoDolar = Me.txtCostoDolar.Text * gTasaCambio 'GetLastCostoProm(txtCodProdAI.Text, "D")
+                rstTmpMovimiento!CostoDolar = Me.txtCostoDolar.Text 'GetLastCostoProm(me.txtcodProducto.Text, "C")
+                rstTmpMovimiento!CostoLocal = CDbl(Me.txtCostoDolar.Text) * gTasaCambio 'GetLastCostoProm(txtCodProdAI.Text, "D")
             Else
                 rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal 'GetLastCostoProm(me.txtcodProducto.Text, "C")
                 rstTmpMovimiento!CostoDolar = tDatosDelProducto.CostoPromDolar
             End If
-            rstTmpMovimiento!PrecioLocal = 0 '(rstTransDETAI!cant * rstTransDETAI!Costo)
-            rstTmpMovimiento!PrecioDolar = 0 '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            If (Me.txtTipoTransaccion.Text = 2) Then
+                rstTmpMovimiento!PrecioLocal = CDbl(Me.txtPrecioDolar * gTasaCambio)  '(rstTransDETAI!cant * rstTransDETAI!Costo)
+                rstTmpMovimiento!PrecioDolar = CDbl(Me.txtPrecioDolar) '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            Else
+                rstTmpMovimiento!PrecioLocal = 0 '(rstTransDETAI!cant * rstTransDETAI!Costo)
+                rstTmpMovimiento!PrecioDolar = 0 '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            End If
             rstTmpMovimiento!UserInsert = gsUser
             rstTmpMovimiento.Update
             rstTmpMovimiento.MoveFirst
         End If
     ElseIf (Accion = Edit) Then
         ' Actualiza el rst temporal
-            rstTmpMovimiento!IdBodega = Me.txtBodegaOrigen.Text
-            rstTmpMovimiento!DescrBodega = Me.txtDescrBodegaOrigen.Text
+            rstTmpMovimiento!BodegaOrigen = Me.txtBodegaOrigen.Text
+            rstTmpMovimiento!DescrBodegaOrigen = Me.txtDescrBodegaOrigen.Text
+            rstTmpMovimiento!BodegaDestino = Me.txtBodegaDestino.Text
+            rstTmpMovimiento!DescrBodegaDestino = IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text)
             rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
             rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-            rstTmpMovimiento!IdLote = Me.txtLote.Text
+            rstTmpMovimiento!IDLote = Me.txtLote.Text
             rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
             rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
-            rstTmpMovimiento!DESCRTipo = Me.txtDescrTipoTransaccion.Text
+            rstTmpMovimiento!DESCRTipo = sPaquete
             rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
             rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
-            rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal 'GetLastCostoProm(me.txtcodProducto.Text, "C")
-            rstTmpMovimiento!CostoDolar = tDatosDelProducto.CostoPromDolar 'GetLastCostoProm(txtCodProdAI.Text, "D")
-            rstTmpMovimiento!PrecioLocal = 0 '(rstTransDETAI!cant * rstTransDETAI!Costo)
-            rstTmpMovimiento!PrecioDolar = 0 '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            
+            If (Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
+                rstTmpMovimiento!CostoDolar = Me.txtCostoDolar.Text 'GetLastCostoProm(me.txtcodProducto.Text, "C")
+                rstTmpMovimiento!CostoLocal = CDbl(Me.txtCostoDolar.Text) * gTasaCambio 'GetLastCostoProm(txtCodProdAI.Text, "D")
+            Else
+                rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal 'GetLastCostoProm(me.txtcodProducto.Text, "C")
+                rstTmpMovimiento!CostoDolar = tDatosDelProducto.CostoPromDolar
+            End If
+            If (Me.txtTipoTransaccion.Text = 2) Then
+                rstTmpMovimiento!PrecioLocal = CDbl(Me.txtPrecioDolar * gTasaCambio)  '(rstTransDETAI!cant * rstTransDETAI!Costo)
+                rstTmpMovimiento!PrecioDolar = CDbl(Me.txtPrecioDolar) '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            Else
+                rstTmpMovimiento!PrecioLocal = 0 '(rstTransDETAI!cant * rstTransDETAI!Costo)
+                rstTmpMovimiento!PrecioDolar = 0 '(rstTransDETAI!cant * rstTransDETAI!Costod)
+            End If
             rstTmpMovimiento!UserInsert = gsUser
             rstTmpMovimiento.Update
             
         End If
-      
-        
-    
-    
-    
+   
        Me.cmdSave.Enabled = True
     
       Set TDBG.DataSource = rstTmpMovimiento
@@ -1191,7 +1238,7 @@ Private Sub cmdAdd_Click()
       
       If Not (rstTmpMovimiento.EOF And rstTmpMovimiento.BOF) Then Me.sTabTransaccion.Tabs(3).Enabled = True Else Me.sTabTransaccion.Tabs(3).Enabled = False
       
-
+    Accion = Add
       'Me.dtgAjuste.Columns("Descr").FooterText = "Items de la transacción :     " & rstTransAI.RecordCount
 HabilitarControles
 HabilitarBotones
@@ -1199,7 +1246,8 @@ End Sub
 
 Private Sub cmdArticulo_Click()
 Dim frm As New frmBrowseCat
-    
+ Dim dicDatosProducto As Dictionary
+ 
     frm.gsCaptionfrm = "Artículos"
     frm.gsTablabrw = "vinvProducto"
     frm.gsCodigobrw = "IdProducto"
@@ -1210,7 +1258,17 @@ Dim frm As New frmBrowseCat
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
       Me.txtArticulo.Text = frm.gsCodigobrw
-      
+      'Traer el costo promedio del producto
+        If (getValueFieldsFromTable("invPRODUCTO", "CostoUltLocal,CostoUltDolar,CostoUltPromLocal,CostoUltPromDolar", "IdProducto=" & Me.txtArticulo.Text, dicDatosProducto) = True) Then
+            tDatosDelProducto.CostoPromDolar = CDbl(dicDatosProducto("CostUlPromDolar"))
+            tDatosDelProducto.CostoPromLocal = CDbl(dicDatosProducto("CostoUltPromLocal"))
+            tDatosDelProducto.CostoUltDolar = CDbl((dicDatosProducto("CostoUltDolar")))
+            tDatosDelProducto.CostoUltLocal = CDbl((dicDatosProducto("CostoUltLocal")))
+            Select Case Me.txtTipoTransaccion.Text
+                Case 1, 3, 7, 11:
+                    Me.txtCostoDolar.Text = tDatosDelProducto.CostoPromDolar
+            End Select
+        End If
     End If
     
     If frm.gsDescrbrw <> "" Then
@@ -1287,17 +1345,18 @@ Private Sub GetDataFromGridToControl() 'EDITAR
         Me.txtTipoTransaccion.Text = rstTmpMovimiento("IDTipo").value
         Me.txtDescrTipoTransaccion.Text = rstTmpMovimiento("DescrTipo").value
         'Contemplar para traslados
-        Me.txtDescrBodegaDestino.Text = rstTmpMovimiento("DescrBodega").value
+        Me.txtBodegaOrigen.Text = rstTmpMovimiento("BodegaOrigen").value
+        Me.txtDescrBodegaOrigen.Text = rstTmpMovimiento("DescrBodegaOrigen").value
+        Me.txtBodegaDestino.Text = rstTmpMovimiento("BodegaDestino").value
+        Me.txtDescrBodegaDestino.Text = rstTmpMovimiento("DescrBodegaDestino").value
         Me.txtCostoDolar.Text = rstTmpMovimiento("CostoDolar").value
-        Me.txtBodegaOrigen.Text = rstTmpMovimiento("IDBodega").value
-        Me.txtDescrBodegaOrigen.Text = rstTmpMovimiento("DescrBodega").value
+        Me.txtPrecioDolar.Text = rstTmpMovimiento("PrecioDolar").value
         Me.txtArticulo.Text = rstTmpMovimiento("IDProducto").value
         Me.txtDescrArticulo.Text = rstTmpMovimiento("DescrProducto").value
         Me.txtLote.Text = rstTmpMovimiento("IDLote").value
         Me.txtDescrLote.Text = rstTmpMovimiento("LoteInterno").value
         Me.txtCantidad.Text = rstTmpMovimiento("Cantidad").value
-        Me.txtCostoDolar.Text = rstTmpMovimiento("CostoDolar").value
-        
+        Me.sTabTransaccion.Tabs(2).Selected = True
         
     Else
       
@@ -1307,10 +1366,10 @@ Private Sub GetDataFromGridToControl() 'EDITAR
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     
-    lbOk = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
-    If (lbOk) Then
+    lbok = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
+    If (lbok) Then
         rstTmpMovimiento.Delete
         Accion = Add
         HabilitarBotones
@@ -1328,6 +1387,7 @@ Dim frm As New frmBrowseCat
     frm.gbTypeCodeStr = True
     frm.gsDescrbrw = "LoteInterno"
     frm.gbFiltra = False
+    frm.gsNombrePantallaExtra = "frmMasterLotes"
     'frm.gsFiltro = "IdPaquete='" & Me.gsIDTipoTransaccion & "'"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
@@ -1342,7 +1402,7 @@ Dim frm As New frmBrowseCat
 End Sub
 
 Private Sub cmdSave_Click()
-  Dim lbOk As Boolean
+  Dim lbok As Boolean
     'On Error GoTo errores
     
     If rstTmpMovimiento.RecordCount > 0 Then
@@ -1389,7 +1449,7 @@ Private Sub cmdSave_Click()
 '            lblProgress.Refresh
 '          '----------- Progress bar
           If (gTrans = True) Then
-            lbOk = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
+            lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
        
           
          ' lblNoTra.Caption = ""
@@ -1423,16 +1483,16 @@ Private Sub cmdSave_Click()
       gConet.RollbackTrans
       gBeginTransNoEnd = False
     End If
-    lbOk = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
+    lbok = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
     'InicializaFormulario
 
 End Sub
 
 Private Function invSaveCabeceraTransaccion() As String
   
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     On Error GoTo errores
-    lbOk = False
+    lbok = False
     Dim sDocumento As String
     Dim rst As ADODB.Recordset
 
@@ -1495,7 +1555,7 @@ Private Sub ActivarAccionesByTransacciones()
         sPaquete = dicValue("Transaccion")
         iFactor = CInt(dicValue("Factor"))
     Else
-        lbOk = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
+        lbok = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
     End If
     
     '    1   COM Compra  E
@@ -1518,16 +1578,17 @@ Private Sub ActivarAccionesByTransacciones()
             'If (idtipotran = 1 Or idtipotran = 3 Or idtipotran = 7 Or iTipoTran = 11) Then 'Las transacciones que necesitan costo
             Select Case iTipoTran
                 Case 1, 3, 7, 11: 'Todas las trasacciones de ingreso
-                    Me.txtCostoDolar.Text = ""
-                    Me.txtCostoDolar.Enabled = True
-                    fmtTextbox Me.txtCostoDolar, "O"
-                    Me.txtBodegaDestino.Enabled = False
-                    Me.txtBodegaDestino.Enabled = False
-                    Me.cmdBodegaDestino.Enabled = False
-                    Me.cmdDelBodegaDestino.Enabled = False
-                    Me.cmdDelArticulo.Enabled = False
-                    Me.TDBG.Columns(1).Visible = False
+                        If (Accion = Add) Then Me.txtCostoDolar.Text = ""
+                        Me.txtCostoDolar.Enabled = True
+                        fmtTextbox Me.txtCostoDolar, "O"
+                        Me.txtBodegaDestino.Enabled = False
+                        Me.txtBodegaDestino.Enabled = False
+                        Me.cmdBodegaDestino.Enabled = False
+                        Me.cmdDelBodegaDestino.Enabled = False
+                        fmtTextbox Me.txtPrecioDolar, "R"
+                        Me.TDBG.Columns(1).Visible = False
                 Case 5, 10, 12: 'todas las trasacciones de salida
+                    fmtTextbox Me.txtPrecioDolar, "R"
                     Me.txtCostoDolar.Text = ""
                     Me.txtCostoDolar.Enabled = False
                     fmtTextbox Me.txtCostoDolar, "R"
@@ -1535,12 +1596,14 @@ Private Sub ActivarAccionesByTransacciones()
                     Me.txtBodegaDestino.Enabled = False
                     Me.cmdBodegaDestino.Enabled = False
                     Me.cmdDelBodegaDestino.Enabled = False
-                    Me.cmdDelArticulo.Enabled = False
                     Me.TDBG.Columns(1).Visible = False
                     If (iTipoTran = 10) Then 'Los traslados
-                        txtBodegaDestino.Text = ""
+                        If (Accion = Add) Then
+                            txtBodegaDestino.Text = ""
+                            txtDescrBodegaDestino.Text = ""
+                        End If
                         fmtTextbox txtBodegaDestino, "O"
-                        txtDescrBodegaDestino.Text = ""
+                        
                         fmtTextbox txtDescrBodegaDestino, "R"
                         Me.txtBodegaDestino.Enabled = True
                         Me.cmdBodegaDestino.Enabled = True
@@ -1554,15 +1617,24 @@ Private Sub ActivarAccionesByTransacciones()
             HabilitarAutoSugerirLotes Me.chkAutoSugiereLotes.value
         Case 2, 4, 6, 8, 9: 'Todas las transacciones de salida
             If (iTipoTran = 9) Then 'Si es traslado activar la bodega destino
-                Me.txtBodegaDestino.Enabled = True
+                If (Accion = Add) Then
+                    Me.txtBodegaDestino.Text = ""
+                    Me.txtDescrBodegaDestino.Text = ""
+                End If
+                fmtTextbox Me.txtBodegaDestino, "O"
+                Me.cmdBodegaDestino.Enabled = True
                 Me.cmdDelBodegaDestino.Enabled = True
-                Me.cmdDelArticulo.Enabled = True
                 Me.TDBG.Columns(1).Visible = True
-            Else '
+            Else
                 Me.txtBodegaDestino.Enabled = False
                 Me.cmdDelBodegaDestino.Enabled = False
-                Me.cmdDelArticulo.Enabled = False
                 Me.TDBG.Columns(1).Visible = False
+            End If
+            If (iTipoTran = 2) Then
+                Me.txtPrecioDolar.Enabled = True
+                fmtTextbox Me.txtPrecioDolar, "O"
+                Me.txtPrecioDolar.Text = ""
+                fmtTextbox Me.txtPrecioDolar, "O"
             End If
             Me.txtCostoDolar.Text = ""
             Me.txtCostoDolar.Enabled = False
@@ -1611,6 +1683,9 @@ Private Sub Form_Load()
     rstTmpMovimiento.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
     rstTmpMovimiento.CursorLocation = adUseClient ' Cursor local al cliente
     rstTmpMovimiento.LockType = adLockOptimistic
+    
+    
+    gTasaCambio = 25.6
     
     Me.Caption = gsFormCaption
     Me.lbFormCaption = gsTitle
@@ -1664,9 +1739,9 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     'On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = "SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion"
     
       GSSQL = GSSQL & " FROM " & " dbo.invLOTE " 'Constuye la sentencia SQL
@@ -1675,7 +1750,7 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
       rst.Open GSSQL, , adOpenKeyset, adLockOptimistic
     
     If (rst.BOF And rst.EOF) Then  'Si no es válido
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
     End If
 End Sub
 
@@ -1713,13 +1788,13 @@ Private Sub txtBodegaOrigen_LostFocus()
 End Sub
 
 Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
- Dim lbOk As Boolean
+ Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If txtCantidad.Text <> "" Then
         
             If Not Val_TextboxNum(txtCantidad) Then
-              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCantidad.SetFocus
               Exit Sub
             End If
@@ -1728,7 +1803,7 @@ Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbOk = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
+            lbok = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1745,13 +1820,13 @@ Private Sub txtConcepto_Change()
 End Sub
 
 Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
- Dim lbOk As Boolean
+ Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If Me.txtCostoDolar.Text <> "" Then
         
             If Not Val_TextboxNum(txtCostoDolar) Then
-              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCostoDolar.SetFocus
               Exit Sub
             End If
@@ -1760,7 +1835,7 @@ Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbOk = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
+            lbok = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1770,15 +1845,16 @@ Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
 End Sub
 
 Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As String, sIDProducto As String, _
-    sIDlote As String, sDocumento As String, sFecha As String, sIDTipo As String, STransaccion As String, _
+    sIDLote As String, sDocumento As String, sFecha As String, sIDTipo As String, STransaccion As String, _
     sNaturaleza As String, sCantidad As String, sCostoDolar As String, sCostoLocal As String, _
     sPrecioDolar As String, sPrecioLocal As String, sUserInsert As String, sUserUpdate As String) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
    
     
-    lbOk = True
+    lbok = True
+    
       GSSQL = ""
-      GSSQL = gsCompania & ".invInsertMovimientos " & sIDPaquete & "," & sIDBodega & "," & sIDProducto & "," & sIDlote & ",'" & sDocumento & "','" & sFecha & "'," & sIDTipo & ",'"
+      GSSQL = gsCompania & ".invInsertMovimientos " & sIDPaquete & "," & sIDBodega & "," & sIDProducto & "," & sIDLote & ",'" & sDocumento & "','" & sFecha & "'," & sIDTipo & ",'"
       GSSQL = GSSQL & STransaccion & "','" & sNaturaleza & "'," & sCantidad & "," & sCostoDolar & "," & sCostoLocal & ","
       GSSQL = GSSQL & sPrecioDolar & "," & sPrecioLocal & ",'" & sUserInsert & "','" & sUserUpdate & "'"
         
@@ -1787,10 +1863,10 @@ Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As Str
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbOk = False
+          lbok = False
         End If
     
-    invSaveDetalleTransaccion = lbOk
+    invSaveDetalleTransaccion = lbok
     Exit Function
     
 
@@ -1800,10 +1876,10 @@ End Function
 
 Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, sPaquete As Integer, sIDTipoTransaccion As String, _
     sUsuario As String) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
    
     
-    lbOk = True
+    lbok = True
       GSSQL = ""
       GSSQL = gsCompania & ".invUpdateMasterExistenciaBodega '" & sDocumento & "'," & sPaquete & "," & sIDTipoTransaccion & ",'" & sUsuario & "'"
         
@@ -1812,10 +1888,10 @@ Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, 
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbOk = False
+          lbok = False
         End If
     
-    invMasterAcutalizaSaldosInventarioPaquete = lbOk
+    invMasterAcutalizaSaldosInventarioPaquete = lbok
     Exit Function
     
 
@@ -1850,6 +1926,34 @@ Private Sub SaveRstBatch(rst As ADODB.Recordset, sCodTra As String)
                                     rst.Fields("PrecioLocal").value, _
                                     rst.Fields("UserInsert").value, _
                                     rst.Fields("UserInsert").value)
+                                    
+            If (rst.Fields("IdTipo").value = 10 Or rst.Fields("IdTipo").value = 9) And bOk Then
+                If (rst.Fields("IdTipo").value = 10) Then
+                    rst.Fields("IdTipo").value = 9
+                    rst.Fields("DESCRTipo").value = "TRS"
+                Else
+                    rst.Fields("IdTipo").value = 10
+                    rst.Fields("DESCRTipo").value = "TRE"
+                End If
+                
+                bOk = invSaveDetalleTransaccion(Me.gsIDTipoTransaccion, _
+                                    rst.Fields("BodegaDestino").value, _
+                                    rst.Fields("IDProducto").value, _
+                                    rst.Fields("IDLote").value, _
+                                    sCodTra, _
+                                    rst.Fields("Fecha").value, _
+                                    rst.Fields("IdTipo").value, _
+                                    rst.Fields("DESCRTipo").value, _
+                                    cNaturaleza, _
+                                    Abs(rst.Fields("Cantidad").value), _
+                                    rst.Fields("CostoDolar").value, _
+                                    rst.Fields("CostoLocal").value, _
+                                    rst.Fields("PrecioDolar").value, _
+                                    rst.Fields("PrecioLocal").value, _
+                                    rst.Fields("UserInsert").value, _
+                                    rst.Fields("UserInsert").value)
+                
+            End If
                                 
 
             rst.MoveNext
@@ -1894,67 +1998,92 @@ End Function
 
 Private Sub LoadDescrTipoTransaccion(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDTipo", "vinvPaqueteTipoMovimiento", "DescrTipo")
         If sDescr <> "" Then
             txtDescrTipoTransaccion.Text = sDescr
         Else
-            lbOk = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodega(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             Me.txtDescrBodegaOrigen.Text = sDescr
         Else
-            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodegaDestino(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             txtDescrBodegaDestino.Text = sDescr
         Else
-            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrProducto(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProducto", "Descr")
         If sDescr <> "" Then
             txtDescrArticulo.Text = sDescr
         Else
-            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrLote(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProdcuto", "Descr")
         If sDescr <> "" Then
             txtDescrLote.Text = sDescr
         Else
-            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
+End Sub
+
+Private Sub txtPrecioDolar_KeyPress(KeyAscii As Integer)
+If KeyAscii = vbKeyReturn Then
+    If txtPrecioDolar.Text <> "" Then
+
+            If Not Val_TextboxNum(txtPrecioDolar) Then
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ADVERTENCIA, False)
+              txtPrecioDolar.SetFocus
+              Exit Sub
+            End If
+                
+                     
+             ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
+         
+        Else
+            lbok = Mensaje("Debe digitar el Precio Dolar", ICO_ERROR, False)
+           ' txtCosto.Text = ""
+            Exit Sub
+        End If
+        Me.cmdAdd.SetFocus
+        
+    End If
+End If
+
 End Sub
 
 Private Sub txtTipoTransaccion_KeyPress(KeyAscii As Integer)
