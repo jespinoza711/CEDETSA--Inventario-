@@ -1,7 +1,8 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMensajeError 
+   BackColor       =   &H00FEE3DA&
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Atención"
    ClientHeight    =   1920
@@ -61,6 +62,7 @@ Begin VB.Form frmMensajeError
       _ExtentY        =   2143
       _Version        =   393217
       BackColor       =   12648447
+      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   3
       AutoVerbMenu    =   -1  'True

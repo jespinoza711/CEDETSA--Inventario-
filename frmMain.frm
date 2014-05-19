@@ -137,7 +137,7 @@ End Sub
 
 
 Private Sub SSActiveToolBars1_ToolClick(ByVal tool As ActiveToolBars.SSTool)
-Dim lbok  As Boolean
+Dim lbOk  As Boolean
 Dim frm As New frmCatalogos
 
 
@@ -150,7 +150,7 @@ Dim frm As New frmCatalogos
                 frmCatalogos.Show vbModal
 
             Else
-                lbok = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
+                lbOk = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
             End If
         Case "ID_PRODUCTOS"
 '            If UserMayAccess(gsUSUARIO, A_ID_STATUS, C_MODULO) Then
@@ -170,7 +170,7 @@ Dim frm As New frmCatalogos
             Dim oFrmBodega As New frmBodega
             oFrmBodega.gsFormCaption = "Bodega"
             oFrmBodega.gsTitle = "Catálogo de Bodegas"
-            oFrmBodega.Show vbModal
+            oFrmBodega.Show
 '            Else
 '                lbok = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
 '            End If
@@ -180,7 +180,7 @@ Dim frm As New frmCatalogos
                 Dim ofrmVendedor As New frmVendedor
                 ofrmVendedor.gsFormCaption = "Vendedor"
                 ofrmVendedor.gsTitle = "Maestro de Vendedores"
-                ofrmVendedor.Show vbModal
+                ofrmVendedor.Show
 '            Else
 '                lbOk = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
 '            End If

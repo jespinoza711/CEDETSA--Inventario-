@@ -4,16 +4,98 @@ Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmProductos 
-   Caption         =   "Simulacion LightSwitch"
-   ClientHeight    =   8340
+   Caption         =   "Maestro de Productos"
+   ClientHeight    =   9150
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   11400
+   ClientWidth     =   17085
+   BeginProperty Font 
+      Name            =   "Tahoma"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8340
-   ScaleWidth      =   11400
-   StartUpPosition =   1  'CenterOwner
+   MDIChild        =   -1  'True
+   Picture         =   "frmProductos.frx":0000
+   ScaleHeight     =   9150
+   ScaleWidth      =   17085
    WindowState     =   2  'Maximized
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   -420
+      TabIndex        =   99
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
+   End
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   17085
+      TabIndex        =   96
+      Top             =   0
+      Width           =   17085
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   98
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Actualización del Maestro de Productos"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   97
+         Top             =   420
+         Width           =   2400
+      End
+      Begin VB.Image Image 
+         Height          =   540
+         Index           =   2
+         Left            =   150
+         Picture         =   "frmProductos.frx":0CCA
+         Top             =   45
+         Width           =   585
+      End
+   End
    Begin VB.CommandButton cmdUndo 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -25,12 +107,13 @@ Begin VB.Form frmProductos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   4860
-      Picture         =   "frmProductos.frx":0000
+      Left            =   3420
+      Picture         =   "frmProductos.frx":183C
       Style           =   1  'Graphical
-      TabIndex        =   96
+      TabIndex        =   95
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   4185
+      Top             =   4605
+      Visible         =   0   'False
       Width           =   555
    End
    Begin VB.CommandButton cmdEliminar 
@@ -44,12 +127,13 @@ Begin VB.Form frmProductos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   4860
-      Picture         =   "frmProductos.frx":0CCA
+      Left            =   3420
+      Picture         =   "frmProductos.frx":2506
       Style           =   1  'Graphical
-      TabIndex        =   95
+      TabIndex        =   94
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   2985
+      Top             =   3405
+      Visible         =   0   'False
       Width           =   555
    End
    Begin VB.CommandButton cmdAdd 
@@ -63,23 +147,34 @@ Begin VB.Form frmProductos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   4860
-      Picture         =   "frmProductos.frx":1994
+      Left            =   3420
+      Picture         =   "frmProductos.frx":31D0
       Style           =   1  'Graphical
-      TabIndex        =   94
+      TabIndex        =   93
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   1785
+      Top             =   2205
+      Visible         =   0   'False
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   555
-      Left            =   4860
-      Picture         =   "frmProductos.frx":265E
+      Left            =   3420
+      Picture         =   "frmProductos.frx":3E9A
       Style           =   1  'Graphical
-      TabIndex        =   93
+      TabIndex        =   92
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   3585
+      Top             =   4005
+      Visible         =   0   'False
       Width           =   555
    End
    Begin VB.CommandButton cmdEditItem 
@@ -93,31 +188,32 @@ Begin VB.Form frmProductos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   4860
-      Picture         =   "frmProductos.frx":4328
+      Left            =   3420
+      Picture         =   "frmProductos.frx":5B64
       Style           =   1  'Graphical
-      TabIndex        =   92
+      TabIndex        =   91
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2385
+      Top             =   2805
+      Visible         =   0   'False
       Width           =   555
    End
    Begin MSComctlLib.ListView ListView1 
-      Height          =   7575
+      Height          =   6885
       Left            =   120
       TabIndex        =   64
-      Top             =   1080
-      Width           =   4695
-      _ExtentX        =   8281
-      _ExtentY        =   13361
+      Top             =   1500
+      Width           =   3765
+      _ExtentX        =   6641
+      _ExtentY        =   12144
       LabelWrap       =   -1  'True
       HideSelection   =   -1  'True
       _Version        =   393217
-      ForeColor       =   3092271
+      ForeColor       =   4210752
       BackColor       =   -2147483643
       BorderStyle     =   1
       Appearance      =   1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -129,7 +225,7 @@ Begin VB.Form frmProductos
    End
    Begin VB.TextBox txtCodigo 
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -137,16 +233,16 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00404040&
       Height          =   285
-      Left            =   6360
+      Left            =   4860
       TabIndex        =   60
-      Top             =   720
+      Top             =   930
       Width           =   1095
    End
    Begin VB.TextBox txtDescr 
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -154,12 +250,12 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00404040&
       Height          =   285
-      Left            =   8760
+      Left            =   7680
       TabIndex        =   59
-      Top             =   720
-      Width           =   7695
+      Top             =   930
+      Width           =   6945
    End
    Begin VB.CheckBox chkActivo 
       Caption         =   "Activo ?"
@@ -173,34 +269,70 @@ Begin VB.Form frmProductos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   16680
+      Left            =   15120
       TabIndex        =   58
-      Top             =   720
+      Top             =   930
       Width           =   1095
    End
    Begin ActiveTabs.SSActiveTabs SSActiveTabs1 
-      Height          =   7695
-      Left            =   5445
+      Height          =   6885
+      Left            =   4035
       TabIndex        =   0
-      Top             =   1065
-      Width           =   13410
-      _ExtentX        =   23654
-      _ExtentY        =   13573
+      Top             =   1485
+      Width           =   12780
+      _ExtentX        =   22543
+      _ExtentY        =   12144
       _Version        =   131083
       TabCount        =   3
-      Tabs            =   "frmProductos.frx":4FF2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontSelectedTab {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontHotTracking {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Arial"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Tabs            =   "frmProductos.frx":682E
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
-         Height          =   7305
+         Height          =   6495
          Left            =   -99969
          TabIndex        =   1
          Top             =   360
-         Width           =   13350
-         _ExtentX        =   23548
-         _ExtentY        =   12885
+         Width           =   12720
+         _ExtentX        =   22437
+         _ExtentY        =   11456
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":50C3
+         TabGuid         =   "frmProductos.frx":68FF
          Begin VB.CommandButton Command1 
             Caption         =   "Refrescar"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   375
             Left            =   10440
             TabIndex        =   10
@@ -208,9 +340,18 @@ Begin VB.Form frmProductos
             Width           =   1575
          End
          Begin VB.CommandButton cmdBodMov 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   1440
-            Picture         =   "frmProductos.frx":50EB
+            Picture         =   "frmProductos.frx":6927
             Style           =   1  'Graphical
             TabIndex        =   9
             Top             =   360
@@ -251,27 +392,54 @@ Begin VB.Form frmProductos
             Width           =   1095
          End
          Begin VB.CommandButton cmdDelBodMov 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   3240
-            Picture         =   "frmProductos.frx":542D
+            Picture         =   "frmProductos.frx":6C69
             Style           =   1  'Graphical
             TabIndex        =   6
             Top             =   360
             Width           =   300
          End
          Begin VB.CommandButton cmdDelTipoMov 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   9960
-            Picture         =   "frmProductos.frx":586F
+            Picture         =   "frmProductos.frx":70AB
             Style           =   1  'Graphical
             TabIndex        =   5
             Top             =   360
             Width           =   315
          End
          Begin VB.CommandButton cmdTipoMov 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   8160
-            Picture         =   "frmProductos.frx":5CB1
+            Picture         =   "frmProductos.frx":74ED
             Style           =   1  'Graphical
             TabIndex        =   4
             Top             =   360
@@ -330,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   57344001
+            Format          =   61472769
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -353,16 +521,16 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   57344001
+            Format          =   61472769
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
-            Height          =   5895
-            Left            =   360
-            OleObjectBlob   =   "frmProductos.frx":5FF3
+            Height          =   5145
+            Left            =   150
+            OleObjectBlob   =   "frmProductos.frx":782F
             TabIndex        =   13
-            Top             =   1320
-            Width           =   12225
+            Top             =   1290
+            Width           =   12375
          End
          Begin VB.Label Label3 
             Caption         =   "Bodega:"
@@ -438,19 +606,28 @@ Begin VB.Form frmProductos
          End
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
-         Height          =   7305
+         Height          =   6495
          Left            =   -99969
          TabIndex        =   18
          Top             =   360
-         Width           =   13350
-         _ExtentX        =   23548
-         _ExtentY        =   12885
+         Width           =   12720
+         _ExtentX        =   22437
+         _ExtentY        =   11456
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":CA93
+         TabGuid         =   "frmProductos.frx":E2CF
          Begin VB.CommandButton cmdDelBodega 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   3720
-            Picture         =   "frmProductos.frx":CABB
+            Picture         =   "frmProductos.frx":E2F7
             Style           =   1  'Graphical
             TabIndex        =   24
             Top             =   240
@@ -491,9 +668,18 @@ Begin VB.Form frmProductos
             Width           =   4455
          End
          Begin VB.CommandButton cmdBodega 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   320
             Left            =   1920
-            Picture         =   "frmProductos.frx":CEFD
+            Picture         =   "frmProductos.frx":E739
             Style           =   1  'Graphical
             TabIndex        =   21
             Top             =   240
@@ -501,6 +687,15 @@ Begin VB.Form frmProductos
          End
          Begin VB.CommandButton cmdRefresExistencia 
             Caption         =   "Refrescar"
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   375
             Left            =   9120
             TabIndex        =   20
@@ -508,12 +703,12 @@ Begin VB.Form frmProductos
             Width           =   1575
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGExistencia 
-            Height          =   6135
-            Left            =   360
-            OleObjectBlob   =   "frmProductos.frx":D23F
+            Height          =   5745
+            Left            =   120
+            OleObjectBlob   =   "frmProductos.frx":EA7B
             TabIndex        =   19
-            Top             =   720
-            Width           =   12735
+            Top             =   660
+            Width           =   12465
          End
          Begin VB.Label Label2 
             Caption         =   "Bodega:"
@@ -528,6 +723,7 @@ Begin VB.Form frmProductos
             EndProperty
             ForeColor       =   &H002F2F2F&
             Height          =   255
+            Index           =   1
             Left            =   720
             TabIndex        =   25
             Top             =   240
@@ -535,26 +731,35 @@ Begin VB.Form frmProductos
          End
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
-         Height          =   7305
+         Height          =   6495
          Index           =   0
          Left            =   30
          TabIndex        =   26
          Top             =   360
-         Width           =   13350
-         _ExtentX        =   23548
-         _ExtentY        =   12885
+         Width           =   12720
+         _ExtentX        =   22437
+         _ExtentY        =   11456
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":11462
+         TabGuid         =   "frmProductos.frx":12C9E
          Begin VB.Frame Frame1 
-            Height          =   2655
-            Left            =   120
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2895
+            Left            =   210
             TabIndex        =   65
-            Top             =   3840
-            Width           =   13575
+            Top             =   3450
+            Width           =   12345
             Begin VB.CheckBox chkBajaPrecioProveedor 
                Caption         =   "Se afecta el Precio con un Descuento/Alza del Proveedor?"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -562,7 +767,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   120
                TabIndex        =   80
@@ -572,7 +777,7 @@ Begin VB.Form frmProductos
             Begin VB.CheckBox chkBajaPrecioDistribuidor 
                Caption         =   "Se afecta el Precio con un Descuento/Alza del Distribuidor?"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -580,7 +785,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   5640
                TabIndex        =   79
@@ -588,9 +793,18 @@ Begin VB.Form frmProductos
                Width           =   5535
             End
             Begin VB.CommandButton cmdDelProveedor 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   3120
-               Picture         =   "frmProductos.frx":1148A
+               Picture         =   "frmProductos.frx":12CC6
                Style           =   1  'Graphical
                TabIndex        =   78
                Top             =   360
@@ -598,7 +812,7 @@ Begin VB.Form frmProductos
             End
             Begin VB.TextBox txtCodProveedor 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -606,7 +820,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   1920
                TabIndex        =   77
@@ -615,7 +829,7 @@ Begin VB.Form frmProductos
             End
             Begin VB.TextBox txtDescrProveedor 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -623,7 +837,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3600
                TabIndex        =   76
@@ -631,9 +845,18 @@ Begin VB.Form frmProductos
                Width           =   8415
             End
             Begin VB.CommandButton cmdProveedor 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   1320
-               Picture         =   "frmProductos.frx":118CC
+               Picture         =   "frmProductos.frx":13108
                Style           =   1  'Graphical
                TabIndex        =   75
                Top             =   360
@@ -649,7 +872,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   5640
                TabIndex        =   74
@@ -659,7 +882,7 @@ Begin VB.Form frmProductos
             End
             Begin VB.TextBox txtCostoUltPromDolar 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -667,16 +890,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H00FF0000&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   12000
+               Left            =   10950
                TabIndex        =   73
-               Top             =   2160
+               Top             =   2130
                Width           =   1095
             End
             Begin VB.TextBox txtCostoUltPromLocal 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -684,16 +907,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   8400
+               Left            =   7890
                TabIndex        =   72
                Top             =   2160
                Width           =   1095
             End
             Begin VB.TextBox txtCostoUltDolar 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -701,16 +924,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   5040
+               Left            =   4740
                TabIndex        =   71
                Top             =   2160
                Width           =   1095
             End
             Begin VB.TextBox txtCostoUltLocal 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -718,16 +941,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   1920
+               Left            =   1650
                TabIndex        =   70
                Top             =   2160
                Width           =   1095
             End
             Begin VB.TextBox txtPrecioFOBLocal 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -735,16 +958,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H00FF0000&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   12000
+               Left            =   10950
                TabIndex        =   69
-               Top             =   1680
+               Top             =   1650
                Width           =   1095
             End
             Begin VB.TextBox txtPrecioCIFLocal 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -752,16 +975,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   8400
+               Left            =   7890
                TabIndex        =   68
                Top             =   1680
                Width           =   1095
             End
             Begin VB.TextBox txtPrecioFarmaciaLocal 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -769,16 +992,16 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H00FF0000&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   5040
+               Left            =   4740
                TabIndex        =   67
                Top             =   1680
                Width           =   1095
             End
             Begin VB.TextBox txtPrecioPublico 
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -786,17 +1009,26 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H00FF0000&
+               ForeColor       =   &H00404040&
                Height          =   285
-               Left            =   1920
+               Left            =   1650
                TabIndex        =   66
                Top             =   1680
                Width           =   1095
             End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   7
+               Left            =   6810
+               TabIndex        =   108
+               Top             =   1200
+               Width           =   225
+            End
             Begin VB.Label lblProveedor 
                Caption         =   "Proveedor:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -804,7 +1036,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   120
                TabIndex        =   90
@@ -814,7 +1046,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblPorcDescAlzaProveedor 
                Caption         =   "Porcentaje Alza/Baja Proveedor en Precios:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -822,7 +1054,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   120
                TabIndex        =   89
@@ -832,7 +1064,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCostoUltPromDolar 
                Caption         =   "Costo Ult Promedio $:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -840,8 +1072,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   9840
+               Left            =   9150
                TabIndex        =   88
                Top             =   2160
                Width           =   1935
@@ -849,7 +1082,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCostoUltPromLocal 
                Caption         =   "Costo Ult Promedio C$:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -857,9 +1090,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   6240
+               Left            =   5970
                TabIndex        =   87
                Top             =   2160
                Width           =   2055
@@ -867,7 +1100,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCostoUltDolar 
                Caption         =   "Costo Ultimo $ :"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -875,9 +1108,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   3240
+               Left            =   3030
                TabIndex        =   86
                Top             =   2160
                Width           =   1815
@@ -885,7 +1118,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCostoUltLocal 
                Caption         =   "Costo Ultimo C$:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -893,7 +1126,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   120
                TabIndex        =   85
@@ -903,7 +1136,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblPrecioFOBLocal 
                Caption         =   "Precio/Costo FOB C$:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -911,8 +1144,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   9840
+               Left            =   9150
                TabIndex        =   84
                Top             =   1680
                Width           =   1935
@@ -920,7 +1154,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCostoCIF 
                Caption         =   "Precio/Costo CIF C$:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -928,9 +1162,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   6360
+               Left            =   6090
                TabIndex        =   83
                Top             =   1680
                Width           =   1935
@@ -938,7 +1172,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblPrecioFarmacia 
                Caption         =   "Precio Farmacia C$ :"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -946,9 +1180,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   3240
+               Left            =   3030
                TabIndex        =   82
                Top             =   1680
                Width           =   1815
@@ -956,7 +1190,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblPrecioPublico 
                Caption         =   "Precio Público C$:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -964,7 +1198,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   120
                TabIndex        =   81
@@ -973,15 +1207,15 @@ Begin VB.Form frmProductos
             End
          End
          Begin VB.Frame Frame2 
-            Height          =   3375
-            Left            =   120
+            Height          =   3195
+            Left            =   210
             TabIndex        =   27
-            Top             =   240
-            Width           =   13575
+            Top             =   150
+            Width           =   12315
             Begin VB.CheckBox chkEsMuestra 
                Caption         =   "Muestra Médica ?"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -989,8 +1223,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   10320
+               Left            =   9210
                TabIndex        =   51
                Top             =   600
                Width           =   1935
@@ -998,7 +1233,7 @@ Begin VB.Form frmProductos
             Begin VB.CheckBox chkEtico 
                Caption         =   "Etico ?"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1006,8 +1241,9 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   10320
+               Left            =   9210
                TabIndex        =   50
                Top             =   1080
                Width           =   1095
@@ -1015,7 +1251,7 @@ Begin VB.Form frmProductos
             Begin VB.CheckBox chkControlado 
                Caption         =   "Controlado ?"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1023,153 +1259,145 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
-               Left            =   10320
+               Left            =   9210
                TabIndex        =   49
                Top             =   1560
                Width           =   1575
             End
             Begin VB.CommandButton cmdDelclasif3 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":11C0E
+               Picture         =   "frmProductos.frx":1344A
                Style           =   1  'Graphical
                TabIndex        =   48
-               Top             =   1320
+               Top             =   1290
                Width           =   300
             End
             Begin VB.TextBox txtClasif3 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2160
                TabIndex        =   47
-               Top             =   1320
+               Top             =   1290
                Width           =   855
             End
             Begin VB.TextBox txtDecrClasif3 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3720
                TabIndex        =   46
-               Top             =   1320
-               Width           =   6135
+               Top             =   1290
+               Width           =   5085
             End
             Begin VB.CommandButton cmdClasif3 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":12050
+               Picture         =   "frmProductos.frx":1388C
                Style           =   1  'Graphical
                TabIndex        =   45
-               Top             =   1320
+               Top             =   1290
                Width           =   300
             End
             Begin VB.CommandButton cmdDelclasif2 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":12392
+               Picture         =   "frmProductos.frx":13BCE
                Style           =   1  'Graphical
                TabIndex        =   44
-               Top             =   855
+               Top             =   825
                Width           =   300
             End
             Begin VB.TextBox txtClasif2 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2160
                TabIndex        =   43
-               Top             =   840
+               Top             =   810
                Width           =   855
             End
             Begin VB.TextBox txtDecrClasif2 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3720
                TabIndex        =   42
-               Top             =   840
-               Width           =   6135
+               Top             =   810
+               Width           =   5085
             End
             Begin VB.CommandButton cmdClasif2 
-               Height          =   320
-               Left            =   1560
-               Picture         =   "frmProductos.frx":127D4
-               Style           =   1  'Graphical
-               TabIndex        =   41
-               Top             =   840
-               Width           =   300
-            End
-            Begin VB.TextBox txtCodigoBarra 
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               Height          =   320
+               Left            =   1560
+               Picture         =   "frmProductos.frx":14010
+               Style           =   1  'Graphical
+               TabIndex        =   41
+               Top             =   810
+               Width           =   300
+            End
+            Begin VB.TextBox txtCodigoBarra 
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2160
                TabIndex        =   40
-               Top             =   2760
+               Top             =   2640
                Width           =   3975
             End
             Begin VB.CommandButton cmdDelclasif1 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":12B16
+               Picture         =   "frmProductos.frx":14352
                Style           =   1  'Graphical
                TabIndex        =   39
                Top             =   360
                Width           =   300
             End
             Begin VB.TextBox txtClasif1 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2160
                TabIndex        =   38
@@ -1177,139 +1405,184 @@ Begin VB.Form frmProductos
                Width           =   855
             End
             Begin VB.TextBox txtDecrClasif1 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3720
                TabIndex        =   37
                Top             =   360
-               Width           =   6135
+               Width           =   5085
             End
             Begin VB.CommandButton cmdClasif1 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":12F58
+               Picture         =   "frmProductos.frx":14794
                Style           =   1  'Graphical
                TabIndex        =   36
                Top             =   360
                Width           =   300
             End
             Begin VB.CommandButton cmdDelPresentacion 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":1329A
+               Picture         =   "frmProductos.frx":14AD6
                Style           =   1  'Graphical
                TabIndex        =   35
-               Top             =   2280
+               Top             =   2190
                Width           =   300
             End
             Begin VB.TextBox txtIDPresentacion 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2160
                TabIndex        =   34
-               Top             =   2280
+               Top             =   2190
                Width           =   855
             End
             Begin VB.TextBox txtDescrPresentacion 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3720
                TabIndex        =   33
-               Top             =   2280
-               Width           =   6135
+               Top             =   2190
+               Width           =   5085
             End
             Begin VB.CommandButton cmdPresentacion 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":136DC
+               Picture         =   "frmProductos.frx":14F18
                Style           =   1  'Graphical
                TabIndex        =   32
-               Top             =   2280
+               Top             =   2190
                Width           =   300
             End
             Begin VB.CommandButton cmdImpuesto 
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":13A1E
+               Picture         =   "frmProductos.frx":1525A
                Style           =   1  'Graphical
                TabIndex        =   31
-               Top             =   1800
+               Top             =   1740
                Width           =   300
             End
             Begin VB.TextBox txtDescrImpuesto 
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   8.25
-                  Charset         =   0
-                  Weight          =   700
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   3720
                TabIndex        =   30
-               Top             =   1800
-               Width           =   6135
+               Top             =   1740
+               Width           =   5085
             End
             Begin VB.TextBox txtImpuesto 
+               ForeColor       =   &H00404040&
+               Height          =   285
+               Left            =   2160
+               TabIndex        =   29
+               Top             =   1740
+               Width           =   855
+            End
+            Begin VB.CommandButton cmdDelImpuesto 
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
-               Height          =   285
-               Left            =   2160
-               TabIndex        =   29
-               Top             =   1800
-               Width           =   855
-            End
-            Begin VB.CommandButton cmdDelImpuesto 
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":13D60
+               Picture         =   "frmProductos.frx":1559C
                Style           =   1  'Graphical
                TabIndex        =   28
-               Top             =   1800
+               Top             =   1740
                Width           =   300
+            End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   6
+               Left            =   8880
+               TabIndex        =   107
+               Top             =   2190
+               Width           =   225
+            End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   5
+               Left            =   8880
+               TabIndex        =   106
+               Top             =   1740
+               Width           =   225
+            End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   4
+               Left            =   8880
+               TabIndex        =   105
+               Top             =   1290
+               Width           =   225
+            End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   3
+               Left            =   8880
+               TabIndex        =   104
+               Top             =   810
+               Width           =   225
+            End
+            Begin VB.Label Label 
+               Caption         =   "*"
+               Height          =   255
+               Index           =   0
+               Left            =   8880
+               TabIndex        =   102
+               Top             =   360
+               Width           =   225
             End
             Begin VB.Label lblClasif3 
                Caption         =   "Clasificación3:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1317,7 +1590,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   57
@@ -1327,7 +1600,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblClasif2 
                Caption         =   "Clasificación2:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1335,7 +1608,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   56
@@ -1345,7 +1618,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblCodigoBarra 
                Caption         =   "Código Barra:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1353,17 +1626,17 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   55
-               Top             =   2760
+               Top             =   2640
                Width           =   1335
             End
             Begin VB.Label lblClasif1 
                Caption         =   "Clasificación1:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1371,7 +1644,7 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   54
@@ -1381,7 +1654,7 @@ Begin VB.Form frmProductos
             Begin VB.Label lblPresentación 
                Caption         =   "Presentación:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1389,17 +1662,17 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   53
-               Top             =   2280
+               Top             =   2250
                Width           =   1335
             End
             Begin VB.Label lblImpuesto 
                Caption         =   "Impuesto:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -1407,11 +1680,11 @@ Begin VB.Form frmProductos
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   240
                TabIndex        =   52
-               Top             =   1800
+               Top             =   1770
                Width           =   1215
             End
          End
@@ -1420,46 +1693,64 @@ Begin VB.Form frmProductos
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   1695
       Left            =   5400
-      OleObjectBlob   =   "frmProductos.frx":141A2
+      OleObjectBlob   =   "frmProductos.frx":159DE
       TabIndex        =   61
-      Top             =   8640
+      Top             =   9270
       Visible         =   0   'False
       Width           =   12585
    End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Catálogo de Vendedor"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   375
-      Left            =   -30
-      TabIndex        =   91
+   Begin VB.Label Label 
+      Caption         =   "*"
+      Height          =   255
+      Index           =   2
+      Left            =   0
+      TabIndex        =   103
       Top             =   0
-      Width           =   19140
+      Width           =   225
    End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   -555
-      Picture         =   "frmProductos.frx":19F7F
-      Stretch         =   -1  'True
-      Top             =   -315
-      Width           =   19590
+   Begin VB.Label Label8 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "Los elemento con el signo de un (*) son requeridos."
+      ForeColor       =   &H00404040&
+      Height          =   195
+      Left            =   4500
+      TabIndex        =   101
+      Top             =   8490
+      Width           =   3705
+   End
+   Begin VB.Image Image 
+      Height          =   480
+      Index           =   0
+      Left            =   4020
+      Picture         =   "frmProductos.frx":1B7BB
+      Top             =   8340
+      Width           =   480
+   End
+   Begin VB.Label Label15 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "Press ENTER to proceed"
+      ForeColor       =   &H00404040&
+      Height          =   195
+      Left            =   480
+      TabIndex        =   100
+      Top             =   150
+      Width           =   1740
+   End
+   Begin VB.Image Image 
+      Height          =   480
+      Index           =   1
+      Left            =   0
+      Picture         =   "frmProductos.frx":1C085
+      Top             =   0
+      Width           =   480
    End
    Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
       Caption         =   "Código :"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -1467,17 +1758,18 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00404040&
       Height          =   255
-      Left            =   5040
+      Left            =   4140
       TabIndex        =   63
-      Top             =   720
+      Top             =   960
       Width           =   735
    End
    Begin VB.Label Label4 
+      BackStyle       =   0  'Transparent
       Caption         =   "Descripción :"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -1485,11 +1777,11 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00404040&
       Height          =   255
-      Left            =   7560
+      Left            =   6570
       TabIndex        =   62
-      Top             =   720
+      Top             =   960
       Width           =   1095
    End
 End
@@ -1588,6 +1880,8 @@ Public Sub HabilitarControles()
             Me.cmdImpuesto.Enabled = True
             Me.cmdPresentacion.Enabled = True
             Me.cmdProveedor.Enabled = True
+            Me.SSActiveTabs1.Tabs(2).Enabled = False
+            Me.SSActiveTabs1.Tabs(3).Enabled = False
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
             txtCodigo.Enabled = True
@@ -1631,6 +1925,8 @@ Public Sub HabilitarControles()
             Me.cmdImpuesto.Enabled = True
             Me.cmdPresentacion.Enabled = True
             Me.cmdProveedor.Enabled = True
+            Me.SSActiveTabs1.Tabs(2).Enabled = False
+            Me.SSActiveTabs1.Tabs(3).Enabled = False
             Me.TDBG.Enabled = False
         Case TypAccion.View
             txtCodigo.Enabled = False
@@ -1664,15 +1960,70 @@ Public Sub HabilitarControles()
             Me.cmdImpuesto.Enabled = False
             Me.cmdPresentacion.Enabled = False
             Me.cmdProveedor.Enabled = False
+            Me.SSActiveTabs1.Tabs(2).Enabled = True
+            Me.SSActiveTabs1.Tabs(3).Enabled = True
             Me.TDBG.Enabled = True
     End Select
 End Sub
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+    On Error GoTo err
+    Select Case srcPerformWhat
+        Case "New"
+            cmdAdd_Click
+        Case "Edit"
+            cmdEditItem_Click
+        Case "Delete"
+            cmdEliminar_Click
+        Case "Refresh"
+            MsgBox "Refrescar"
+        Case "Print"
+            MsgBox "Imprimir"
+        Case "Close"
+            Unload Me
+        Case "Save"
+            cmdSave_Click
+    End Select
+    Exit Sub
+    'Trap the error
+err:
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
+               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
+               err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+End Sub
+
+
 
 Private Sub cmdAdd_Click()
     Accion = Add
     HabilitarBotones
     HabilitarControles
     txtDescr.SetFocus
+End Sub
+
+Private Sub cmdBodega_Click()
+   Dim frm As New frmBrowseCat
+    
+    frm.gsCaptionfrm = "Bodega"
+    frm.gsTablabrw = "invBODEGA"
+    frm.gsCodigobrw = "IDBodega"
+    frm.gbTypeCodeStr = True
+    frm.gsDescrbrw = "Descr"
+    frm.gbFiltra = False
+    'frm.gsFiltro = "IdPaquete='" & Me.gsIDTipoTransaccion & "'"
+    frm.Show vbModal
+    If frm.gsCodigobrw <> "" Then
+      Me.txtBodega.Text = frm.gsCodigobrw
+      
+    End If
+    
+    If frm.gsDescrbrw <> "" Then
+      Me.txtBodega.Text = frm.gsDescrbrw
+      fmtTextbox txtBodega, "R"
+    End If
 End Sub
 
 Private Sub cmdClasif1_Click()
@@ -1877,7 +2228,7 @@ Private Sub cmdEliminar_Click()
                     lbOk = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
-                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo)
+                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, "")
             
             If lbOk Then
                 sMsg = "Borrado Exitosamente ... "
@@ -2087,8 +2438,14 @@ Private Sub cmdUndo_Click()
     HabilitarBotones
 End Sub
 
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
     Dim lbOk As Boolean
+    MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -2109,6 +2466,9 @@ Private Sub Form_Load()
     rst3.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
     rst3.CursorLocation = adUseClient ' Cursor local al cliente
     rst3.LockType = adLockOptimistic
+
+    Me.Caption = gsFormCaption
+    Me.lbFormCaption = gsTitle
 
     Accion = View
     HabilitarControles
@@ -2161,7 +2521,7 @@ Private Sub InicializaListView()
             rst.MoveFirst
             While Not rst.EOF
             
-            sItem = Trim(Right("00000" + Trim(Str(rst("IDProducto").value)), 5)) + "-" + rst("Descr").value
+            sItem = Trim(right("00000" + Trim(Str(rst("IDProducto").value)), 5)) + "-" + rst("Descr").value
             If Len(sItem) > 50 Then
                 sItem = Mid(sItem, 1, 50) & vbLf & Mid(sItem, 51, Len(sItem))
                 
@@ -2205,6 +2565,9 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     If Not (rst2 Is Nothing) Then Set rst2 = Nothing
+     SetupFormToolbar ("no name")
+    'Main.SubtractForm Me.Name
+    Set frmProductos = Nothing
 End Sub
 
 Private Sub ListView1_Click()
@@ -2228,9 +2591,7 @@ Private Sub ShowSelectedItem()
             rst.Find sFiltro
             'rst.Bookmark = getPositionRecord(rst, sFiltro)
             GetDataFromGridToControl
-            
         End With
-    
     End If
 End Sub
 

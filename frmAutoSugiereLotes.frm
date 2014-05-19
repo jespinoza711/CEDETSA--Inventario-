@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmAutoSugiereLotes 
+   BackColor       =   &H00FEE3DA&
    Caption         =   "v"
    ClientHeight    =   7290
    ClientLeft      =   60
@@ -63,12 +64,14 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   1155
    End
    Begin VB.Frame Frame1 
+      BackColor       =   &H00FEE3DA&
       Height          =   1665
       Left            =   240
       TabIndex        =   11
       Top             =   540
       Width           =   8175
       Begin VB.TextBox txtCantidadTotal 
+         Appearance      =   0  'Flat
          Height          =   315
          Left            =   1650
          TabIndex        =   19
@@ -76,6 +79,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   975
       End
       Begin VB.TextBox txtIdBodega 
+         Appearance      =   0  'Flat
          Height          =   315
          Left            =   1650
          TabIndex        =   16
@@ -83,6 +87,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   975
       End
       Begin VB.TextBox txtDescrBodega 
+         Appearance      =   0  'Flat
          Height          =   315
          Left            =   2730
          TabIndex        =   15
@@ -90,6 +95,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   4935
       End
       Begin VB.TextBox txtProducto 
+         Appearance      =   0  'Flat
          Height          =   315
          Left            =   1650
          TabIndex        =   13
@@ -97,6 +103,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   975
       End
       Begin VB.TextBox txtDescrProducto 
+         Appearance      =   0  'Flat
          Height          =   315
          Left            =   2730
          TabIndex        =   12
@@ -104,6 +111,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   4935
       End
       Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
          Caption         =   "Cantidad Total:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -121,6 +129,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   1365
       End
       Begin VB.Label Label3 
+         BackStyle       =   0  'Transparent
          Caption         =   "Bodega:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -138,6 +147,7 @@ Begin VB.Form frmAutoSugiereLotes
          Width           =   765
       End
       Begin VB.Label Label 
+         BackStyle       =   0  'Transparent
          Caption         =   "Producto:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -243,6 +253,7 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   555
    End
    Begin VB.TextBox txtCantidad 
+      Appearance      =   0  'Flat
       Height          =   315
       Left            =   1170
       TabIndex        =   3
@@ -250,6 +261,7 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   975
    End
    Begin VB.TextBox txtLoteInterno 
+      Appearance      =   0  'Flat
       Height          =   315
       Left            =   3060
       TabIndex        =   2
@@ -257,6 +269,7 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   4785
    End
    Begin VB.TextBox txtIdLote 
+      Appearance      =   0  'Flat
       Height          =   315
       Left            =   1170
       TabIndex        =   0
@@ -302,6 +315,7 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   11490
    End
    Begin VB.Label Label2 
+      BackStyle       =   0  'Transparent
       Caption         =   "Cantidad:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -315,10 +329,11 @@ Begin VB.Form frmAutoSugiereLotes
       Height          =   255
       Left            =   300
       TabIndex        =   4
-      Top             =   2580
+      Top             =   2910
       Width           =   765
    End
    Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
       Caption         =   "Lote:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -332,7 +347,7 @@ Begin VB.Form frmAutoSugiereLotes
       Height          =   255
       Left            =   300
       TabIndex        =   1
-      Top             =   2190
+      Top             =   2520
       Width           =   765
    End
 End
@@ -381,30 +396,30 @@ End Sub
 Public Sub HabilitarControles()
     Select Case Accion
         Case TypAccion.Add
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             txtCantidad.Enabled = True
             cmdLote.Enabled = True
             cmdClear.Enabled = True
             txtCantidad.Text = ""
-            txtIdLote.Text = ""
+            txtIDLote.Text = ""
             txtLoteInterno.Text = ""
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "O"
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "R"
             txtCantidad.Enabled = True
             Me.TDBG.Enabled = False
         Case TypAccion.View
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtCantidad, "O"
             fmtTextbox txtLoteInterno, "R"
             Me.TDBG.Enabled = True
@@ -430,7 +445,7 @@ Private Sub cmdCancelar_Click()
 End Sub
 
 Private Sub cmdClear_Click()
-    Me.txtIdLote.Text = ""
+    Me.txtIDLote.Text = ""
     Me.txtLoteInterno.Text = ""
 End Sub
 
@@ -443,11 +458,11 @@ Private Sub cmdEditItem_Click()
 End Sub
 Private Sub GetDataFromGridToControl()
     If Not (grst.EOF And grst.BOF) Then
-        txtIdLote.Text = grst("IDLote").value
+        txtIDLote.Text = grst("IDLote").value
         txtLoteInterno.Text = grst("LoteInterno").value
         txtCantidad.Text = grst("Cantidad").value
     Else
-        txtIdLote.Text = ""
+        txtIDLote.Text = ""
         txtLoteInterno.Text = ""
         txtCantidad.Text = ""
     End If
@@ -485,7 +500,7 @@ Private Sub cmdSave_Click()
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
-        If txtIdLote.Text = "" Then
+        If txtIDLote.Text = "" Then
             lbOk = Mensaje("El Lote no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
@@ -507,7 +522,7 @@ Private Sub cmdSave_Click()
     
     
     If (Accion = Add) Then
-          If ExiteRstKey(grst, "IDLote=" & Me.txtIdLote.Text & " AND IDPRODUCTO=" & Me.gsIdProducto & _
+          If ExiteRstKey(grst, "IDLote=" & Me.txtIDLote.Text & " AND IDPRODUCTO=" & Me.gsIdProducto & _
                                         " AND IdBodega=" & gsIDBodega) Then
             lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
 
@@ -517,11 +532,11 @@ Private Sub cmdSave_Click()
           ' Carga los datos del detalle de transacciones para ser grabados a la bd
         
         Dim datosLote As New Dictionary
-        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIdLote.Text, datosLote
+        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIDLote.Text, datosLote
         grst.AddNew
         grst!IdBodega = Me.gsIDBodega
         grst!IdProducto = Me.gsIdProducto
-        grst!IdLote = Me.txtIdLote.Text
+        grst!IdLote = Me.txtIDLote.Text
         grst!Cantidad = Me.txtCantidad.Text
         grst!FechaVencimiento = datosLote("FechaVencimiento")
         grst!FechaFabricacion = datosLote("FechaFabricacion")
@@ -534,7 +549,7 @@ Private Sub cmdSave_Click()
     ElseIf (Accion = Edit) Then
       grst!IdBodega = gsIDBodega
       grst!IdProducto = gsIdProducto
-      grst!IdLote = Me.txtIdLote.Text
+      grst!IdLote = Me.txtIDLote.Text
       grst!Cantidad = Me.txtCantidad.Text
       grst.Update
     End If
@@ -566,7 +581,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = " IdProducto=" & gsIdProducto & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-      Me.txtIdLote.Text = frm.gsCodigobrw
+      Me.txtIDLote.Text = frm.gsCodigobrw
       
     End If
     

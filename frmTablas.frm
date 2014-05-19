@@ -406,10 +406,9 @@ Public Sub HabilitarControles()
             chkActivo.Enabled = False
             'txtTipo.Enabled = False
             cmdTipo.Enabled = False
-            fmtTextbox txtVendedor, "R"
-            fmtTextbox txtTipo, "R"
-            fmtTextbox txtDescrTipo, "R"
-            fmtTextbox txtNombre, "R"
+            fmtTextbox Me.txtCodigo, "R"
+            fmtTextbox txtDescr, "R"
+            Me.chkActivo.Enabled = False
     End Select
 End Sub
 
@@ -443,14 +442,14 @@ End If
 End Sub
 
 Private Sub cmdEliminar_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sMsg As String
 Dim sTipo As String
 Dim sFiltro As String
 Dim sActivo As String
 
     If txtCodigo.Text = "" Then
-        lbok = Mensaje("El Departamento no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El Departamento no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If chkActivo.value = 1 Then
@@ -459,13 +458,13 @@ Dim sActivo As String
         sActivo = "0"
     End If
     ' hay que validar la integridad referencial
-    lbok = Mensaje("Está seguro de eliminar el Centro de Costo " & rst("Departamento").value, ICO_PREGUNTA, True)
-    If lbok Then
-                lbok = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "D")
+    lbOk = Mensaje("Está seguro de eliminar el Centro de Costo " & rst("Departamento").value, ICO_PREGUNTA, True)
+    If lbOk Then
+               ' lbOk = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "D")
         
-        If lbok Then
+        If lbOk Then
             sMsg = "Borrado Exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
         End If
@@ -473,12 +472,12 @@ Dim sActivo As String
 End Sub
 
 Private Sub cmdSave_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sMsg As String
 Dim sActivo As String
 Dim sFiltro As String
     If txtCodigo.Text = "" Then
-        lbok = Mensaje("El Departamento no pueden estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("El Departamento no pueden estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If Me.chkActivo.value = 1 Then
@@ -488,7 +487,7 @@ Dim sFiltro As String
     End If
     
     If txtDescr.Text = "" Then
-        lbok = Mensaje("La Descripción del Departamento no puede estar en blanco", ICO_ERROR, False)
+        lbOk = Mensaje("La Descripción del Departamento no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -499,38 +498,38 @@ If bAdd Then
     If Not (rst.EOF And rst.BOF) Then
         sFiltro = "Departamento = '" & txtCodigo.Text & "'"
         If ExiteRstKey(rst, sFiltro) Then
-           lbok = Mensaje("Ya existe ese Departamento ", ICO_ERROR, False)
+           lbOk = Mensaje("Ya existe ese Departamento ", ICO_ERROR, False)
             txtCodigo.SetFocus
         Exit Sub
         End If
     End If
 
-        lbok = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "I")
+        'lbOk = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "I")
         
-        If lbok Then
+        If lbOk Then
             sMsg = "El Departamento ha sido registrado exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
             bEdit = False
             bAdd = False
-            initControles
-            IniciaIconos
+            'initControles
+          '  IniciaIconos
         End If
 bAdd = False
 End If ' si estoy adicionando
 If bEdit Then
     If Not (rst.EOF And rst.BOF) Then
-        lbok = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "E")
-        If lbok Then
+      ' lbOk = sgvActualizaDepartamento(txtCodigo.Text, txtDescr.Text, sActivo, "E")
+        If lbOk Then
             sMsg = "Los datos fueron grabados Exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
             bEdit = False
             bAdd = False
-            initControles
-            IniciaIconos
+'            initControles
+'            IniciaIconos
         End If
     End If
 bEdit = False

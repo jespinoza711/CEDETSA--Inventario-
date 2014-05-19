@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmTransacciones 
-   BackColor       =   &H00F4D5BB&
+   BackColor       =   &H00FEE3DA&
    Caption         =   "Form1"
    ClientHeight    =   7035
    ClientLeft      =   165
@@ -19,11 +19,11 @@ Begin VB.Form frmTransacciones
    EndProperty
    ForeColor       =   &H002F2F2F&
    LinkTopic       =   "Form1"
+   MDIChild        =   -1  'True
    ScaleHeight     =   7035
    ScaleWidth      =   11370
-   StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
-      BackColor       =   &H00F4D5BB&
+      BackColor       =   &H00FEE3DA&
       Height          =   1485
       Left            =   10530
       TabIndex        =   13
@@ -69,7 +69,7 @@ Begin VB.Form frmTransacciones
       End
    End
    Begin VB.Frame Frame2 
-      BackColor       =   &H00F4D5BB&
+      BackColor       =   &H00FEE3DA&
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
@@ -85,6 +85,7 @@ Begin VB.Form frmTransacciones
       Top             =   585
       Width           =   11130
       Begin VB.TextBox txtPaquete 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -102,6 +103,7 @@ Begin VB.Form frmTransacciones
          Width           =   1275
       End
       Begin VB.TextBox txtDescrPaquete 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -190,7 +192,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   20971521
+         Format          =   61472769
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
@@ -211,7 +213,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   20971521
+         Format          =   61472769
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 
@@ -326,13 +328,13 @@ Private Sub cmbBuscar_Click()
 End Sub
 
 Private Sub cmdBuscarTranasaccion_Click()
-    frmCatalogoTransacciones.Show vbModal
-    Me.txtCodTran.Text = frmCatalogoTransacciones.sCodigo
-    Me.txtDescrTran.Text = frmCatalogoTransacciones.sDescripcion
-       
-    GetTransaccion rst, Me.txtCodTran.Text, Me.dtpFechaInicial.value, Me.dtpFechaFinal.value
-    Me.tdgTransac.DataSource = rst
-    
+'    frmCatalogoTransacciones.Show vbModal
+'    Me.txtCodTran.Text = frmCatalogoTransacciones.sCodigo
+'    Me.txtDescrTran.Text = frmCatalogoTransacciones.sDescripcion
+'
+'    GetTransaccion rst, Me.txtCodTran.Text, Me.dtpFechaInicial.value, Me.dtpFechaFinal.value
+'    Me.tdgTransac.DataSource = rst
+'
 End Sub
 
 Private Sub cargaGrid()
@@ -393,7 +395,13 @@ Private Sub cmdPaquete_Click()
     End If
 End Sub
 
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+    MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -438,3 +446,8 @@ Private Sub tdgTransac_DblClick()
 End Sub
 
 
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no name")
+    'Main.SubtractForm Me.Name
+    Set frmTransacciones = Nothing
+End Sub

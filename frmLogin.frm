@@ -89,6 +89,13 @@ Begin VB.Form frmLogin
       Top             =   3480
       Width           =   1020
    End
+   Begin VB.Image Image1 
+      Height          =   780
+      Left            =   270
+      Picture         =   "frmLogin.frx":030A
+      Top             =   210
+      Width           =   720
+   End
    Begin VB.Label lblVersion 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
@@ -161,7 +168,7 @@ End Sub
 
 
 Private Sub cmdOK_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
     'check for correct password
     txtUserName.Text = UCase(txtUserName.Text)
     If UserCouldIN(txtUserName.Text, txtPassword.Text) Then
@@ -172,19 +179,19 @@ Dim lbok As Boolean
         gsUSUARIO = txtUserName.Text
         'Marchoso1.Filename = ""
         Me.Hide
-        lbok = LoadAccess(txtUserName.Text, txtPassword.Text, C_MODULO)
-        If Not lbok Then
-            lbok = Mensaje("No se pudieron cargar los accesos del usuario ", ICO_ERROR, False)
+        lbOk = LoadAccess(txtUserName.Text, txtPassword.Text, C_MODULO)
+        If Not lbOk Then
+            lbOk = Mensaje("No se pudieron cargar los accesos del usuario ", ICO_ERROR, False)
             End
         Else
             'lbok = CargaParametros()
-            If Not lbok Then
-                lbok = Mensaje("No se ha configurado el Sistema... los parametros no se han definido ", ICO_ERROR, False)
+            If Not lbOk Then
+                lbOk = Mensaje("No se ha configurado el Sistema... los parametros no se han definido ", ICO_ERROR, False)
                 End
             End If
         End If
     Else
-        lbok = Mensaje("Login o Password incorrectos...", ICO_ERROR, False)
+        lbOk = Mensaje("Login o Password incorrectos...", ICO_ERROR, False)
         txtPassword.SetFocus
         SendKeys "{Home}+{End}"
     End If

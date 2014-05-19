@@ -1,113 +1,125 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmBodega 
+   BackColor       =   &H00FEE3DA&
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Bodegas"
-   ClientHeight    =   5340
+   ClientHeight    =   6825
    ClientLeft      =   105
    ClientTop       =   435
-   ClientWidth     =   8100
+   ClientWidth     =   9660
+   Icon            =   "frmBodega.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5340
-   ScaleWidth      =   8100
+   ScaleHeight     =   6825
+   ScaleWidth      =   9660
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton cmdUndo 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   7350
-      Picture         =   "frmBodega.frx":0000
-      Style           =   1  'Graphical
-      TabIndex        =   13
-      ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   4575
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdEliminar 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   7350
-      Picture         =   "frmBodega.frx":0CCA
-      Style           =   1  'Graphical
-      TabIndex        =   12
-      ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3375
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdAdd 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   7350
-      Picture         =   "frmBodega.frx":1994
-      Style           =   1  'Graphical
-      TabIndex        =   11
-      ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   2175
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdSave 
-      Enabled         =   0   'False
-      Height          =   555
-      Left            =   7350
-      Picture         =   "frmBodega.frx":265E
-      Style           =   1  'Graphical
-      TabIndex        =   10
-      ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   3975
-      Width           =   555
-   End
-   Begin VB.CommandButton cmdEditItem 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   7350
-      Picture         =   "frmBodega.frx":4328
-      Style           =   1  'Graphical
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.Frame Frame1 
+      BackColor       =   &H00FEE3DA&
+      Height          =   765
+      Left            =   30
       TabIndex        =   9
-      ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2775
-      Width           =   555
+      Top             =   390
+      Width           =   9585
+      Begin VB.CommandButton cmdEditItem 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   660
+         Picture         =   "frmBodega.frx":08CA
+         Style           =   1  'Graphical
+         TabIndex        =   14
+         ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
+         Top             =   150
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdSave 
+         Enabled         =   0   'False
+         Height          =   555
+         Left            =   1860
+         Picture         =   "frmBodega.frx":1594
+         Style           =   1  'Graphical
+         TabIndex        =   13
+         ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
+         Top             =   150
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdAdd 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   60
+         Picture         =   "frmBodega.frx":325E
+         Style           =   1  'Graphical
+         TabIndex        =   12
+         ToolTipText     =   "Agrega el item con los datos digitados..."
+         Top             =   150
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdEliminar 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   1260
+         Picture         =   "frmBodega.frx":3F28
+         Style           =   1  'Graphical
+         TabIndex        =   11
+         ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
+         Top             =   150
+         Width           =   555
+      End
+      Begin VB.CommandButton cmdUndo 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   2460
+         Picture         =   "frmBodega.frx":4BF2
+         Style           =   1  'Graphical
+         TabIndex        =   10
+         ToolTipText     =   "Deshacer / Cancelar"
+         Top             =   150
+         Width           =   555
+      End
    End
    Begin VB.Frame Frame2 
+      BackColor       =   &H00FEE3DA&
       Height          =   1335
-      Left            =   180
+      Left            =   210
       TabIndex        =   1
-      Top             =   690
-      Width           =   7740
+      Top             =   1260
+      Width           =   9150
       Begin VB.CheckBox chkFactura 
+         BackColor       =   &H00FEE3DA&
          Caption         =   "Se Factura en esta Bodega ?"
          BeginProperty Font 
             Name            =   "Arial"
@@ -119,12 +131,13 @@ Begin VB.Form frmBodega
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   2040
+         Left            =   210
          TabIndex        =   0
          Top             =   840
          Width           =   2895
       End
       Begin VB.TextBox txtBodega 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -142,6 +155,7 @@ Begin VB.Form frmBodega
          Width           =   855
       End
       Begin VB.TextBox txtDescrBodega 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -153,12 +167,13 @@ Begin VB.Form frmBodega
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   3360
+         Left            =   3930
          TabIndex        =   3
          Top             =   360
-         Width           =   4095
+         Width           =   5115
       End
       Begin VB.CheckBox chkActivo 
+         BackColor       =   &H00FEE3DA&
          Caption         =   "Activo ?"
          BeginProperty Font 
             Name            =   "Arial"
@@ -170,12 +185,13 @@ Begin VB.Form frmBodega
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   5160
+         Left            =   7770
          TabIndex        =   2
          Top             =   840
          Width           =   1215
       End
       Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
          Caption         =   "Bodega:"
          BeginProperty Font 
             Name            =   "Arial"
@@ -193,6 +209,7 @@ Begin VB.Form frmBodega
          Width           =   795
       End
       Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
          Caption         =   "Descripción:"
          BeginProperty Font 
             Name            =   "Arial"
@@ -204,19 +221,19 @@ Begin VB.Form frmBodega
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   2160
+         Left            =   2640
          TabIndex        =   5
          Top             =   360
          Width           =   1125
       End
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   3135
-      Left            =   180
-      OleObjectBlob   =   "frmBodega.frx":4FF2
+      Height          =   3915
+      Left            =   210
+      OleObjectBlob   =   "frmBodega.frx":58BC
       TabIndex        =   7
-      Top             =   2100
-      Width           =   7065
+      Top             =   2640
+      Width           =   9165
    End
    Begin VB.Label lbFormCaption 
       Alignment       =   2  'Center
@@ -235,18 +252,10 @@ Begin VB.Form frmBodega
       EndProperty
       ForeColor       =   &H002F2F2F&
       Height          =   375
-      Left            =   -1095
+      Left            =   -690
       TabIndex        =   8
       Top             =   0
-      Width           =   10140
-   End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   -15
-      Picture         =   "frmBodega.frx":A3D3
-      Stretch         =   -1  'True
-      Top             =   -315
-      Width           =   11490
+      Width           =   10710
    End
 End
 Attribute VB_Name = "frmBodega"
@@ -348,7 +357,7 @@ End If
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     Dim sMsg As String
     Dim sTipo As String
     Dim sFiltro As String
@@ -356,7 +365,7 @@ Private Sub cmdEliminar_Click()
     Dim sFactura As String
 
     If txtBodega.Text = "" Then
-        lbok = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If chkActivo.value = 1 Then
@@ -373,13 +382,13 @@ Private Sub cmdEliminar_Click()
     End If
     
     ' hay que validar la integridad referencial
-    lbok = Mensaje("Está seguro de eliminar la Bodega " & rst("IDBodega").value, ICO_PREGUNTA, True)
-    If lbok Then
-                lbok = invUpdateBodega("D", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+    lbOk = Mensaje("Está seguro de eliminar la Bodega " & rst("IDBodega").value, ICO_PREGUNTA, True)
+    If lbOk Then
+                lbOk = invUpdateBodega("D", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura, True)
         
-        If lbok Then
+        If lbOk Then
             sMsg = "Borrado Exitosamente ... "
-            lbok = Mensaje(sMsg, ICO_OK, False)
+            lbOk = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
         End If
@@ -387,13 +396,13 @@ Private Sub cmdEliminar_Click()
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
     If txtBodega.Text = "" Then
-        lbok = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
+        lbOk = Mensaje("La Bodega no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     If chkActivo.value = 1 Then
@@ -407,7 +416,7 @@ Private Sub cmdSave_Click()
         sFactura = "0"
     End If
     If txtDescrBodega.Text = "" Then
-        lbok = Mensaje("La Descripción del Centro no puede estar en blanco", ICO_ERROR, False)
+        lbOk = Mensaje("La Descripción del Centro no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -418,17 +427,17 @@ Private Sub cmdSave_Click()
         If Not (rst.EOF And rst.BOF) Then
             sFiltro = "IDBodega = '" & txtBodega.Text & "'"
             If ExiteRstKey(rst, sFiltro) Then
-               lbok = Mensaje("Ya exista Bodega ", ICO_ERROR, False)
+               lbOk = Mensaje("Ya exista Bodega ", ICO_ERROR, False)
                 txtBodega.SetFocus
             Exit Sub
             End If
         End If
     
-            lbok = invUpdateBodega("I", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
+            lbOk = invUpdateBodega("I", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura, True)
             
-            If lbok Then
+            If lbOk Then
                 sMsg = "La Bodega ha sido registrada exitosamente ... "
-                lbok = Mensaje(sMsg, ICO_OK, False)
+                lbOk = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -436,15 +445,15 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                  sMsg = "Ha ocurrido un error tratando de Agregar la Bodega... "
-                lbok = Mensaje(sMsg, ICO_ERROR, False)
+                lbOk = Mensaje(sMsg, ICO_ERROR, False)
             End If
     End If ' si estoy adicionando
         If Accion = Edit Then
             If Not (rst.EOF And rst.BOF) Then
-                lbok = invUpdateBodega("U", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura)
-                If lbok Then
+                lbOk = invUpdateBodega("U", txtBodega.Text, txtDescrBodega.Text, sActivo, sFactura, True)
+                If lbOk Then
                     sMsg = "La Bodega ha sido registrada exitosamente ... "
-                    lbok = Mensaje(sMsg, ICO_OK, False)
+                    lbOk = Mensaje(sMsg, ICO_OK, False)
                     ' actualiza datos
                     cargaGrid
                     Accion = View
@@ -452,7 +461,7 @@ Private Sub cmdSave_Click()
                     HabilitarBotones
                 Else
                     sMsg = "Ha ocurrido un error tratando de Agregar la Bodega... "
-                    lbok = Mensaje(sMsg, ICO_ERROR, False)
+                    lbOk = Mensaje(sMsg, ICO_ERROR, False)
                 End If
             End If
         
@@ -467,7 +476,13 @@ Private Sub cmdUndo_Click()
     HabilitarControles
 End Sub
 
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+    MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -511,4 +526,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
+     SetupFormToolbar ("no name")
+    'Main.SubtractForm Me.Name
+    Set frmBodega = Nothing
 End Sub

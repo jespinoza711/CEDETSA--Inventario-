@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBusqGral 
+   BackColor       =   &H00FEE3DA&
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Búsqueda"
    ClientHeight    =   3150
@@ -16,12 +17,14 @@ Begin VB.Form frmBusqGral
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame frmIntrod 
+      BackColor       =   &H00FEE3DA&
       Height          =   615
       Left            =   120
       TabIndex        =   7
       Top             =   0
       Width           =   6975
       Begin VB.Label lblIntrod 
+         BackStyle       =   0  'Transparent
          Caption         =   "Digite una aproximación de lo que Ud busca en el campo correspondiente"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -75,12 +78,14 @@ Begin VB.Form frmBusqGral
       Width           =   1455
    End
    Begin VB.Frame Frame1 
+      BackColor       =   &H00FEE3DA&
       Height          =   1335
       Left            =   240
       TabIndex        =   4
-      Top             =   720
+      Top             =   750
       Width           =   6615
       Begin VB.TextBox txtDescr 
+         Appearance      =   0  'Flat
          ForeColor       =   &H002F2F2F&
          Height          =   285
          Left            =   1320
@@ -89,6 +94,7 @@ Begin VB.Form frmBusqGral
          Width           =   4935
       End
       Begin VB.TextBox txtCodigo 
+         Appearance      =   0  'Flat
          ForeColor       =   &H002F2F2F&
          Height          =   285
          Left            =   1320
@@ -97,6 +103,7 @@ Begin VB.Form frmBusqGral
          Width           =   1575
       End
       Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
          Caption         =   "Descr :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -115,6 +122,7 @@ Begin VB.Form frmBusqGral
          Width           =   735
       End
       Begin VB.Label lblCodigo 
+         BackStyle       =   0  'Transparent
          Caption         =   "Código :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -177,18 +185,18 @@ Option Explicit
 Public bCodChar As Boolean
 
 Private Sub cmdAceptar_Click()
-Dim lbok As Boolean
+Dim lbOk As Boolean
 
 
 If txtCodigo.Text = "" And txtDescr.Text = "" Then
-  lbok = Mensaje("Por favor, digite un criterio de búsqueda ...", ICO_INFORMACION, False)
+  lbOk = Mensaje("Por favor, digite un criterio de búsqueda ...", ICO_INFORMACION, False)
   txtCodigo.SetFocus
   Exit Sub
 End If
 
 
 If txtCodigo.Text <> "" And txtDescr.Text <> "" Then
-   lbok = Mensaje("Debe seleccionar un solo criterio por favor ", ICO_INFORMACION, False)
+   lbOk = Mensaje("Debe seleccionar un solo criterio por favor ", ICO_INFORMACION, False)
    txtCodigo.Text = ""
    txtDescr.Text = ""
   txtCodigo.SetFocus
@@ -196,7 +204,7 @@ If txtCodigo.Text <> "" And txtDescr.Text <> "" Then
 End If
 If txtCodigo.Text <> "" Then
     If OnlythisChar(txtCodigo.Text, "*") Then
-       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -204,7 +212,7 @@ If txtCodigo.Text <> "" Then
     End If
     
     If OnlythisChar(txtCodigo.Text, "%") Then
-       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -214,7 +222,7 @@ End If
 
 If txtDescr.Text <> "" Then
     If OnlythisChar(txtDescr.Text, "*") Then
-       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -222,7 +230,7 @@ If txtDescr.Text <> "" Then
     End If
     
     If OnlythisChar(txtDescr.Text, "%") Then
-       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus

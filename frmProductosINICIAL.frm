@@ -22,7 +22,6 @@ Begin VB.Form frmProductosINICIAL
       _ExtentY        =   5741
       _Version        =   131083
       TabCount        =   4
-      TagVariant      =   ""
       Tabs            =   "frmProductosINICIAL.frx":0000
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
          Height          =   2865
@@ -164,7 +163,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   20971521
+            Format          =   61472769
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -186,7 +185,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   20971521
+            Format          =   61472769
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -1745,10 +1744,10 @@ Dim sBajaPrecioProveedor As String
     ' if exists dependencias then No se puede eliminar
     lbOk = Mensaje("Está seguro de eliminar el Producto " & rst("Descr").value, ICO_PREGUNTA, True)
     If lbOk Then
-                lbOk = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
-                txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
-                txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
-                txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo)
+'                lbOk = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+'                txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
+'                txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
+'                txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo)
         
         If lbOk Then
             sMsg = "Borrado Exitosamente ... "

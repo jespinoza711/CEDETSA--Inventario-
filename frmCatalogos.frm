@@ -1,17 +1,19 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmCatalogos 
+   BackColor       =   &H00FEE3DA&
    Caption         =   "Catalogos"
    ClientHeight    =   8205
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   11100
+   ClientWidth     =   13800
    Icon            =   "frmCatalogos.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   8205
-   ScaleWidth      =   11100
+   ScaleWidth      =   13800
    StartUpPosition =   1  'CenterOwner
    Begin VB.CheckBox chkVerTabla 
+      BackColor       =   &H00FEE3DA&
       Caption         =   "Filtrar Tabla Seleccionada?"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -48,6 +50,7 @@ Begin VB.Form frmCatalogos
       Width           =   495
    End
    Begin VB.Frame Frame2 
+      BackColor       =   &H00FEE3DA&
       Height          =   2055
       Left            =   720
       TabIndex        =   6
@@ -89,6 +92,7 @@ Begin VB.Form frmCatalogos
          Width           =   2535
       End
       Begin VB.CheckBox chkUsaValor 
+         BackColor       =   &H00FEE3DA&
          Caption         =   "Usa Valor ?"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -168,6 +172,7 @@ Begin VB.Form frmCatalogos
          Width           =   300
       End
       Begin VB.CheckBox chkDejarTabla 
+         BackColor       =   &H00FEE3DA&
          Caption         =   "Dejar seteada la Tabla ?"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -220,6 +225,7 @@ Begin VB.Form frmCatalogos
          Width           =   7095
       End
       Begin VB.CheckBox chkActivo 
+         BackColor       =   &H00FEE3DA&
          Caption         =   "Activo ?"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -237,6 +243,7 @@ Begin VB.Form frmCatalogos
          Width           =   1095
       End
       Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
          Caption         =   "Valor :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -254,6 +261,7 @@ Begin VB.Form frmCatalogos
          Width           =   615
       End
       Begin VB.Label Label3 
+         BackStyle       =   0  'Transparent
          Caption         =   "Nombre Valor :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -271,6 +279,7 @@ Begin VB.Form frmCatalogos
          Width           =   1455
       End
       Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
          Caption         =   "IDCatalogo :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -288,6 +297,7 @@ Begin VB.Form frmCatalogos
          Width           =   1095
       End
       Begin VB.Label Label5 
+         BackStyle       =   0  'Transparent
          Caption         =   "Tabla :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -305,6 +315,7 @@ Begin VB.Form frmCatalogos
          Width           =   615
       End
       Begin VB.Label Label6 
+         BackStyle       =   0  'Transparent
          Caption         =   "Descr :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -322,6 +333,7 @@ Begin VB.Form frmCatalogos
          Width           =   735
       End
       Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
          Caption         =   "Código :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -339,6 +351,7 @@ Begin VB.Form frmCatalogos
          Width           =   735
       End
       Begin VB.Label lblDescr 
+         BackStyle       =   0  'Transparent
          Caption         =   "Descripción :"
          BeginProperty Font 
             Name            =   "MS Sans Serif"

@@ -10,6 +10,25 @@ Public Const C_MODULO = 1000
 Public Const A_CATALOGOS = 1
 Public Const A_PRODUCTOS = 2
 
+'Seccion del MDI
+
+Public Type MENU_BUTTONS_INFO
+  form_name As String
+  form_buttons As String
+End Type
+
+Public ButtonsAvailable() As MENU_BUTTONS_INFO
+
+
+Public Declare Function GetCursorPos Lib "user32" _
+            (lpPoint As POINTAPI) As Long
+            
+Public Type POINTAPI
+        X As Long
+        Y As Long
+End Type
+
+
 
 Public gdFechaCortePreparacion As Date
 Public gsCompaniaActiva As String
@@ -37,7 +56,7 @@ Public GSSQL As String
     'Contiene la sentencia SQL a ejecutar o que generó el error
 Public gsOperacionError As String
 Public gsConetstr As String
-Public lbok As Boolean
+Public lbOk As Boolean
 
 Public gsNombreServidor As String 'Contiene el nombre del servidor
 Public gsNombreBaseDatos As String 'Contiene el nombre de la base de datos
@@ -110,11 +129,11 @@ Sub Main()
 
 
     
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     
     gbEquipo64Bits = Is64bit()
     If Not LeerConfiguracion = True Then
-      lbok = Mensaje("Error al leer el archivo de configuración ", ICO_ERROR, False)
+      lbOk = Mensaje("Error al leer el archivo de configuración ", ICO_ERROR, False)
       End
     End If
     
@@ -126,10 +145,10 @@ Sub Main()
             Dim frm As frmLogin
             Set frm = New frmLogin
             frm.Show vbModal
-            lbok = frm.LoginSucceeded
-            If lbok Then
+            lbOk = frm.LoginSucceeded
+            If lbOk Then
               Unload frm
-              frmMain.Show
+              MDIMain.Show
               'frmPrepare.Show
               'frmAnalisisVencimiento.Show
             Else
@@ -138,7 +157,7 @@ Sub Main()
             End If
         End If
     Else
-      lbok = Mensaje("No pudo conectarse a la base de datos :" & gsOperacionError, ICO_ERROR, False)
+      lbOk = Mensaje("No pudo conectarse a la base de datos :" & gsOperacionError, ICO_ERROR, False)
       End
     End If
     
@@ -250,25 +269,25 @@ Private Sub LoginForCommandLine()
     If UserCouldIN(sUsuario, sPass) Then
         gsUSUARIO = sUsuario
     
-        lbok = LoadAccess(sUsuario, sPass, C_MODULO)
-        If Not lbok Then
-            lbok = Mensaje("No se pudieron cargar los accesos del usuario ", ICO_ERROR, False)
+        lbOk = LoadAccess(sUsuario, sPass, C_MODULO)
+        If Not lbOk Then
+            lbOk = Mensaje("No se pudieron cargar los accesos del usuario ", ICO_ERROR, False)
             End
         Else
         'lbok = CargaParametros()
-            If Not lbok Then
-                lbok = Mensaje("No se ha configurado el Sistema... los parametros no se han definido ", ICO_ERROR, False)
+            If Not lbOk Then
+                lbOk = Mensaje("No se ha configurado el Sistema... los parametros no se han definido ", ICO_ERROR, False)
                 End
             End If
         End If
     Else
-        lbok = Mensaje("Login o Password incorrectos...", ICO_ERROR, False)
+        lbOk = Mensaje("Login o Password incorrectos...", ICO_ERROR, False)
         End
     End If
     
     
-    If lbok Then
-        frmMain.Show
+    If lbOk Then
+        MDIMain.Show
     Else
         End
     End If
@@ -298,73 +317,73 @@ End Function
 
 
 Public Function Update_Parametros(sNombreEmpresa As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & "." & "uspparmaUpdateParametros '" & sNombreEmpresa & "'"
   
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = " ."
-      lbok = False
+      lbOk = False
         
     End If
 
-Update_Parametros = lbok
+Update_Parametros = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Update_UltimoDiaCerrado(sUltAnioCerrado As String, sUltMesCerrado As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & "." & "sgvUpdateUltimoMesCerrado " & sUltAnioCerrado & "," & sUltMesCerrado
   
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = " ."
-      lbok = False
+      lbOk = False
         
     End If
 
-Update_UltimoDiaCerrado = lbok
+Update_UltimoDiaCerrado = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Update_AnulaEsquela(sEsquela As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = "Update " & gsCompania & "." & "sgvEsquela set Anulada=1 where Consecutivo='" & sEsquela & "'"
   
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = " ."
-      lbok = False
+      lbOk = False
         
     End If
 
-Update_AnulaEsquela = lbok
+Update_AnulaEsquela = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -372,17 +391,17 @@ End Function
 
 
 Public Function FechaEnMesAbierto(dFecha As Date) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim dUltimoMesCerrado As Date
 Dim dFirstDayAllow As Date
-lbok = False
+lbOk = False
 
 dUltimoMesCerrado = UltimoMesCerradoFirstDay
 dFirstDayAllow = DateAdd("m", 1, dUltimoMesCerrado)
 If dFecha >= dFirstDayAllow Then
-    lbok = True
+    lbOk = True
 End If
-FechaEnMesAbierto = lbok
+FechaEnMesAbierto = lbOk
 End Function
 
 
@@ -395,7 +414,7 @@ Private Function LimpiaNulos(ByVal psParam As String) As String   'Toma una hile
   lnTam = CInt(Len(psParam)) 'Obtiene el tamaño de la hilera
   lnCont = InStr(1, psParam, Chr(0), 1) - 1
   If lnCont <> -1 Then
-  lsHilera = Left(psParam, lnCont) & Space(lnTam - lnCont)  'Asigna espacios al resto
+  lsHilera = left(psParam, lnCont) & Space(lnTam - lnCont)  'Asigna espacios al resto
   Else
   lsHilera = psParam
   End If
@@ -407,7 +426,7 @@ Public Sub ValidaLargo( _
   ByVal psTexto As String, _
   ByRef KeyAscii As Integer, _
   ByVal pnLargo As Integer)
-  Dim lbok As Boolean
+  Dim lbOk As Boolean
 On Error GoTo err
   
   If (pnLargo <= Len(psTexto)) Then 'Si se alcanzó el límite
@@ -418,7 +437,7 @@ On Error GoTo err
   Exit Sub
 
 err:
-    lbok = Mensaje("Función: ValidaLargo ..." & err.Description, ICO_ERROR, False)
+    lbOk = Mensaje("Función: ValidaLargo ..." & err.Description, ICO_ERROR, False)
     Resume Next
 End Sub
 
@@ -474,7 +493,7 @@ Dim sTitle As String
     If Not cancelar Then
 
       frmMensajeError.btnNo.Visible = False
-      frmMensajeError.btnSi.Left = 1718
+      frmMensajeError.btnSi.left = 1718
     Else
       frmMensajeError.btnNo.TabIndex = 0
     End If
@@ -534,28 +553,28 @@ End Function
 
 Public Function ConexionBD() As Boolean    'Función que inicia la conexión a la base de datos
   Dim sPassword As String
-  Dim lbok As Boolean 'Indica que el proceso está bien
+  Dim lbOk As Boolean 'Indica que el proceso está bien
   Dim lsConexion As String  'Va a almacenar la hilera de conexión a la base de datos
   On Error GoTo error:  'Para capturar el evento de error
   
   Set gConet = New ADODB.Connection 'Inicializa la variable de conexión
-  lbok = True
+  lbOk = True
     lsConexion = GetConectString(gsTypeDB, gsNombreServidor, gsNombreBaseDatos, gsUser, gsPassword)
  '   gConet.Open "Provider=SQLNCLI.1;Password=admin;Persist Security Info=True;User ID=SysUser;Initial Catalog=exactus;Data Source=serverg4s"
     gConet.Open lsConexion 'Realiza la conexión a la BD
     gConet.CommandTimeout = 300
     'gConet.Properties("Multiple Connections").value = False
     If (gConet.Errors.Count > 0) Then  'Si no hubo conexión
-      lbok = False  'No se cuenta con una conexión
+      lbOk = False  'No se cuenta con una conexión
     End If
     gsConetstr = lsConexion
-    ConexionBD = lbok 'Asigna el valor de retorno
+    ConexionBD = lbOk 'Asigna el valor de retorno
   Exit Function
   
 error:
-    lbok = False
+    lbOk = False
     gsOperacionError = "constr :" & lsConexion & err.Description
-    ConexionBD = lbok 'Asigna el valor de retorno
+    ConexionBD = lbOk 'Asigna el valor de retorno
 End Function
 
 
@@ -572,16 +591,16 @@ Public Function ConnectToDBOpen() As Boolean
 End Function
 
 Public Function DesconectaBD() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 If gConet.State = adStateOpen Then
-  lbok = True
+  lbOk = True
   gConet.Close
 End If
-DesconectaBD = lbok
+DesconectaBD = lbOk
 Exit Function
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 End Function
 
@@ -634,10 +653,10 @@ End Function
 Public Function LeerConfiguracion() As Boolean
   'Lee del archivo INI
   Dim lsTemp As String * 30
-  Dim lbok As Boolean
+  Dim lbOk As Boolean
 
   On Error GoTo error
-  lbok = True
+  lbOk = True
   '***************SECCION DE SERVIDOR
   gsTypeDB = ""
   GetPrivateProfileString "SERVIDOR", "TYPEDB", _
@@ -686,18 +705,18 @@ Public Function LeerConfiguracion() As Boolean
   If gsPassword = "" Or gsPassword = "NO" Then GoTo error
   
 
-  LeerConfiguracion = lbok
+  LeerConfiguracion = lbOk
   Exit Function
 
 error:  'En caso de haber un error
-  lbok = False
-  LeerConfiguracion = lbok
+  lbOk = False
+  LeerConfiguracion = lbOk
 End Function
 
 Public Sub CargaNominas(rst As ADODB.Recordset, sTipo As String, cbo As ComboBox)
-Dim lbok As Boolean
+Dim lbOk As Boolean
 'On Error GoTo error
-lbok = True
+lbOk = True
   GSSQL = "Select Nomina "
   GSSQL = GSSQL & " FROM " & "." & "zNominaTransfGFS "  'Constuye la sentencia SQL
   GSSQL = GSSQL & " WHERE TIPO ='" & sTipo & "'"
@@ -773,10 +792,10 @@ End Function
 
 Public Function SustituyeChar(strFuente As String, sChar As String, sNewChar As String)
 Dim i As Integer
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim strTemporal As String
 Dim strResult As String
-lbok = False
+lbOk = False
 i = 1
 If strFuente <> "" Then
 
@@ -791,7 +810,7 @@ strTemporal = strFuente
       Exit Function
     End If
     strResult = ""
-      While Not lbok And i <= Len(strFuente)
+      While Not lbOk And i <= Len(strFuente)
         If InStr(strTemporal, sChar) <> 0 Then
            i = InStr(strTemporal, sChar) ' posición del caracter
            strResult = strResult & Mid(strTemporal, 1, i - 1) & sNewChar '& Mid(strTemporal, i + 1)
@@ -799,7 +818,7 @@ strTemporal = strFuente
            i = i + 1
         Else
            strResult = strResult & strTemporal
-           lbok = True
+           lbOk = True
         End If
       Wend
     SustituyeChar = strResult
@@ -810,19 +829,19 @@ End Function
 
 Public Function OnlythisChar(strFuente As String, sChar As String) As Boolean
 Dim i As Integer
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim stmpChar As String
 stmpChar = ""
-lbok = True
+lbOk = True
 i = 1
-While i <= Len(strFuente) And lbok
+While i <= Len(strFuente) And lbOk
 stmpChar = Mid(strFuente, i, 1)
 If stmpChar <> sChar Then
-    lbok = False
+    lbOk = False
 End If
 i = i + 1
 Wend
-OnlythisChar = lbok
+OnlythisChar = lbOk
 End Function
 
 ' Formato de un text box
@@ -843,24 +862,24 @@ End Select
 End Sub
 ' Valida un control text box para un dato que debe ser NUMERO
 Public Function Val_TextboxNum(txtbox As TextBox)
-Dim lbok As Boolean
-lbok = True
+Dim lbOk As Boolean
+lbOk = True
 If Trim(txtbox.Text) = "" Then
 
-  lbok = False
-  Val_TextboxNum = lbok
+  lbOk = False
+  Val_TextboxNum = lbOk
   Exit Function
 End If
 
 
 If Not IsNumeric(txtbox.Text) Then
   
-  lbok = False
-  Val_TextboxNum = lbok
+  lbOk = False
+  Val_TextboxNum = lbOk
 
 End If
 
-Val_TextboxNum = lbok
+Val_TextboxNum = lbOk
 
 End Function
 
@@ -902,21 +921,21 @@ End Function
 ' Abre Excel y el archivo que se le pasa como parametro
 ' iAbrir = 0 --> no abrir; iabrir = 1 --> abrir
 Public Function OpenExcel(iAbrir As Integer, sNombre As String) As Boolean
-Dim lbok As Boolean
-lbok = False
+Dim lbOk As Boolean
+lbOk = False
 On Error GoTo errores
 Dim objExcel
 If iAbrir > 0 Then
 Set objExcel = CreateObject("Excel.Application")
   objExcel.Visible = True
   objExcel.Workbooks.Open sNombre
-  lbok = True
+  lbOk = True
 End If
-  OpenExcel = lbok
+  OpenExcel = lbOk
 Exit Function
 errores:
   MsgBox "Error al abrir la aplicación Excel", vbOKOnly, "Error "
-  lbok = False
+  lbOk = False
   Resume Next
 End Function
 
@@ -943,10 +962,10 @@ GetNameMonth = sMes
 End Function
 
 Public Function ExiteRstKey(rstFuente As ADODB.Recordset, sFiltro As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim rstClone As ADODB.Recordset
 Dim bmPos As Variant
-lbok = False
+lbOk = False
 If Not (rstFuente.EOF And rstFuente.BOF) Then
     Set rstClone = New ADODB.Recordset
         bmPos = rstFuente.Bookmark
@@ -954,39 +973,39 @@ If Not (rstFuente.EOF And rstFuente.BOF) Then
         Set rstClone = rstFuente.Clone
         rstClone.Filter = sFiltro
         If Not rstClone.EOF Then ' Si existe
-          lbok = True
+          lbOk = True
         End If
         rstFuente.Filter = adFilterNone
         rstFuente.Bookmark = bmPos
     rstClone.Filter = adFilterNone
 End If
-ExiteRstKey = lbok
+ExiteRstKey = lbOk
 End Function
 
 
 
 Public Function UserMayAccess(sUsuario As String, iAccion As Integer, iModulo As Integer) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo errores
 Dim sCriterioAcceso As String
 sCriterioAcceso = "USUARIO ='" & UCase(sUsuario) & "' AND IDACCION=" & Str(iAccion) & " AND IDMODULO=" & Str(iModulo)
 If ExiteRstKey(grRecordsetAcceso, sCriterioAcceso) Then
-    lbok = True
+    lbOk = True
 Else
-    lbok = False
+    lbOk = False
 End If
-UserMayAccess = lbok
+UserMayAccess = lbOk
 Exit Function
 errores:
-lbok = False
-UserMayAccess = lbok
+lbOk = False
+UserMayAccess = lbOk
 End Function
 
 ' carga parametros de la preparacion diferencial cambiario CC
 Public Function CargaParametrosPreparacionDifCC() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = True
+lbOk = True
   GSSQL = "SELECT top 1 FechaCorte " & _
           " FROM " & gsCompania & "." & "parmaPreparacionProcesoDiferencial "
 
@@ -994,28 +1013,28 @@ lbok = True
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
 
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     gParametrosPrepDifCC.FechaCorte = gRegistrosCmd("FechaCorte").value
     
-    lbok = True
+    lbOk = True
   End If
-  CargaParametrosPreparacionDifCC = lbok
+  CargaParametrosPreparacionDifCC = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
 
 End Function
 
 Public Function CargaParametrosPreparacionDifCP() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = True
+lbOk = True
   GSSQL = "SELECT top 1 FechaCorte " & _
           " FROM " & gsCompania & "." & "parmaPreparacionProcesoDiferencialCP "
 
@@ -1023,19 +1042,19 @@ lbok = True
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
 
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     gParametrosPrepDifCC.FechaCorte = gRegistrosCmd("FechaCorte").value
     
-    lbok = True
+    lbOk = True
   End If
-  CargaParametrosPreparacionDifCP = lbok
+  CargaParametrosPreparacionDifCP = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
 
@@ -1062,87 +1081,87 @@ Public Sub Destructor()
 End Sub
 
 Public Function Update_TipoCambio(sTipoCambio As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & "." & "repActualizaTipoCambioContrato " & sTipoCambio
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
     End If
 
-Update_TipoCambio = lbok
+Update_TipoCambio = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 
 Public Function Cierra_Periodo(sEmpleado As String, sPeriodo As String, sFecha As String, sPeriodoNuevo As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".sgvGetDetalleMovimientosEmpleado" & " '" & sEmpleado & "', '" & sPeriodo & "' , '" & sFecha & "', 1, 1, " & sPeriodoNuevo
 gConet.BeginTrans
 gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       gConet.RollbackTrans
-      Cierra_Periodo = lbok
+      Cierra_Periodo = lbOk
       Exit Function
     End If
 
-Cierra_Periodo = lbok
+Cierra_Periodo = lbOk
 gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Baja_Empleado(sEmpleado As String, sPeriodo As String, sFecha As String, sComentario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".sgvGetDetalleMovimientosEmpleado" & " '" & sEmpleado & "', " & sPeriodo & " , '" & sFecha & "', 1, null, null, 1,0, '" & gsUSUARIO & "','S', '" & sComentario & "'"
 gConet.BeginTrans
 gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       gConet.RollbackTrans
-      Baja_Empleado = lbok
+      Baja_Empleado = lbOk
       Exit Function
     End If
 
-Baja_Empleado = lbok
+Baja_Empleado = lbOk
 gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Prepara_AnalisisAntiguedad(sUsuario As String, sFecha As String, sCodCliente As String, sCodCategoria As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaPrepareAnalisisVencimiento" & " '" & sUsuario & "' , '" & sFecha & "' , '" & sCodCliente & "','" & sCodCategoria & "'"
 'gConet.BeginTrans
 
@@ -1150,27 +1169,27 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      Prepara_AnalisisAntiguedad = lbok
+      Prepara_AnalisisAntiguedad = lbOk
       Exit Function
     End If
 
-Prepara_AnalisisAntiguedad = lbok
+Prepara_AnalisisAntiguedad = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function uspparmaGetClasificacionporPago(sCodCliente As String, sFechaInicio As String, sFechaFin As String, sCodCategoria As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaGetClasificacionporPago" & " '" & sCodCliente & "' , '" & sFechaInicio & "' , '" & sFechaFin & "','" & sCodCategoria & "'"
 'gConet.BeginTrans
 
@@ -1178,18 +1197,18 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      uspparmaGetClasificacionporPago = lbok
+      uspparmaGetClasificacionporPago = lbOk
       Exit Function
     End If
 
-uspparmaGetClasificacionporPago = lbok
+uspparmaGetClasificacionporPago = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1197,28 +1216,28 @@ End Function
 
 
 Public Function Prepara_Reportes(sPeriodo As String, sFecha As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".sgvGetDetalleMovimientosEmpleado" & " '*', '" & sPeriodo & "' , '" & sFecha & "', null, null,null,null, 1,'" & gsUSUARIO & "'"
 gConet.BeginTrans
 gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       gConet.RollbackTrans
-      Prepara_Reportes = lbok
+      Prepara_Reportes = lbOk
       Exit Function
     End If
 
-Prepara_Reportes = lbok
+Prepara_Reportes = lbOk
 gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1227,10 +1246,10 @@ End Function
 
 ' Carga Parámetros del sistema
 Public Function CargaParametros() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iResultado As Integer
 On Error GoTo error
-lbok = True
+lbOk = True
   GSSQL = "SELECT * " & _
           " FROM " & gsCompania & "." & "INVPARAMETROS "
           
@@ -1238,19 +1257,19 @@ lbok = True
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     
     gparametros.NombreEmpresa = gRegistrosCmd("NombreEmpresa").value
 
-    lbok = True
+    lbOk = True
   End If
-  CargaParametros = lbok
+  CargaParametros = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -1260,7 +1279,7 @@ End Function
 
 ' devuelve Proximo Consecutivo de la esquela
 Public Function getNextConsecEsquela() As String
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sConsecutivo As String
 On Error GoTo error
 sConsecutivo = ""
@@ -1287,26 +1306,26 @@ error:
 End Function
 
 Public Function sgvRangoExistente(sInicio As String, sFin As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT * from " & gsCompania & "." & "sgvAlertas where " & sInicio & " between Inicio and Fin or " & sFin & " between inicio and fin "
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  sgvRangoExistente = lbok
+  sgvRangoExistente = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -1314,7 +1333,7 @@ End Function
 
 
 Public Function sgvEMPLEADOBAJA(sEmpleado As String) As String
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iBAJA As Integer
 On Error GoTo error
 sConsecutivo = ""
@@ -1343,7 +1362,7 @@ End Function
 
 
 Public Function esSaldoInicialPeriodo(sTipoAccion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iesPeriodo As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -1370,7 +1389,7 @@ error:
 End Function
 
 Public Function ExisteSaldoInicialPeriodo() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iesPeriodo As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -1468,14 +1487,14 @@ End Function
 
 Public Function UpdateUsuarioModuloRole(sUsuario As String, sModulo As String, lst As ListBox) As Boolean
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim rst As ADODB.Recordset
 Dim sFiltro As String
 Dim iRole As Integer
 Dim i As Integer
 Dim lsRole As String
 Dim lbHayRegistros As Boolean
-lbok = False
+lbOk = False
 lbHayRegistros = False
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
@@ -1506,13 +1525,13 @@ For i = 0 To lst.ListCount - 1
     sFiltro = "IDRole =" & lsRole
     If lst.Selected(i) And Not lbHayRegistros Then
         ' Insertar Registro lst.Selected(i) = True
-            lbok = Insert_UsuarioRole(sModulo, lsRole, sUsuario)
+            lbOk = Insert_UsuarioRole(sModulo, lsRole, sUsuario)
     
     End If
     If Not lst.Selected(i) And lbHayRegistros Then
         If ExiteRstKey(rst, sFiltro) Then
         ' Eliminar el Registro
-            lbok = Delete_UsuarioRole(sModulo, lsRole, sUsuario)
+            lbOk = Delete_UsuarioRole(sModulo, lsRole, sUsuario)
         End If
     End If
 Next i
@@ -1521,19 +1540,19 @@ Next i
 
 
 Set rst = Nothing
-UpdateUsuarioModuloRole = lbok
+UpdateUsuarioModuloRole = lbOk
 Exit Function
 errores:
-lbok = False
-UpdateUsuarioModuloRole = lbok
+lbOk = False
+UpdateUsuarioModuloRole = lbOk
 
 End Function
 
 Public Function Insert_UsuarioRole(sModulo As String, sRole As String, sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = "INSERT  " & gsCompania & "." & "secUSUARIOROLE (IDMODULO, IDROLE, USUARIO)"
   GSSQL = GSSQL & " VALUES (" & sModulo & " , " & sRole & " , '" & sUsuario & "')"
 
@@ -1541,14 +1560,14 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
     End If
 
-Insert_UsuarioRole = lbok
+Insert_UsuarioRole = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1556,11 +1575,11 @@ End Function
 
 Public Function LoadModuloRole(sModulo As String, lst As ListBox) As Boolean
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sItem As String
 Dim rst As ADODB.Recordset
 
-lbok = False
+lbOk = False
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -1587,11 +1606,11 @@ While Not rst.EOF
 Wend
 End If
 Set rst = Nothing
-LoadModuloRole = lbok
+LoadModuloRole = lbOk
 Exit Function
 errores:
-lbok = False
-LoadModuloRole = lbok
+lbOk = False
+LoadModuloRole = lbOk
 End Function
 
 Public Sub UncheckListBox(lst As ListBox)
@@ -1606,12 +1625,12 @@ End Sub
 
 Public Function LoadRoleModulo(sUsuario As String, sModulo As String, lst As ListBox) As Boolean
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim rst As ADODB.Recordset
 Dim sFiltro As String
 Dim iRole As Integer
 Dim i As Integer
-lbok = True
+lbOk = True
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -1645,11 +1664,11 @@ End If
 
 
 Set rst = Nothing
-LoadRoleModulo = lbok
+LoadRoleModulo = lbOk
 Exit Function
 errores:
-lbok = False
-LoadRoleModulo = lbok
+lbOk = False
+LoadRoleModulo = lbOk
 End Function
 
 Public Function GetCodeBeforeMinus(gsDato As String) As String
@@ -1658,7 +1677,7 @@ Dim sResult As String
 sResult = ""
 i = InStr(1, gsDato, "-", vbTextCompare)
 If i > 0 Then
-    sResult = Trim(Left(gsDato, i - 1))
+    sResult = Trim(left(gsDato, i - 1))
 End If
 GetCodeBeforeMinus = sResult
 End Function
@@ -1669,7 +1688,7 @@ Dim sResult As String
 sResult = ""
 i = InStr(1, gsDato, vbTab, vbTextCompare)
 If i > 0 Then
-    sResult = Trim(Left(gsDato, i - 1))
+    sResult = Trim(left(gsDato, i - 1))
 End If
 GetCodeBeforevbTab = sResult
 End Function
@@ -1677,11 +1696,11 @@ End Function
 
 Public Function LoadAccionRole(sModulo As String, sRole As String, lst As ListBox) As Boolean
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sItem As String
 Dim rst As ADODB.Recordset
 
-lbok = False
+lbOk = False
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -1708,18 +1727,18 @@ Else
 lst.Clear
 End If
 Set rst = Nothing
-LoadAccionRole = lbok
+LoadAccionRole = lbOk
 Exit Function
 errores:
-lbok = False
-LoadAccionRole = lbok
+lbOk = False
+LoadAccionRole = lbOk
 End Function
 
 Public Function Delete_UsuarioRole(sModulo As String, sRole As String, sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = "DELETE FROM " & gsCompania & "." & "secUSUARIOROLE "
   GSSQL = GSSQL & " WHERE IDMODULO =" & sModulo & " AND IDROLE = " & sRole & " AND USUARIO = " & "'" & sUsuario & "'"
 
@@ -1727,24 +1746,24 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto el UsuarioRole."
-      lbok = False
+      lbOk = False
     End If
 
-Delete_UsuarioRole = lbok
+Delete_UsuarioRole = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function sgvActualizaSaldoEmpleado(sOperacion As String, sPeriodo As String, sTipo_Accion As String, sEmpleado As String, _
     sFecha As String, sCantDias As String, sComentario As String, sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & ".sgvActualizaSaldoEmpleado '" & sOperacion & "'," & sPeriodo & ", '" & sTipo_Accion & "','" & sEmpleado & "', '" & _
   sFecha & "', " & sCantDias & ", '" & sComentario & "','" & sUsuario & "'"
 
@@ -1752,24 +1771,24 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvActualizaSaldoEmpleado = lbok
+sgvActualizaSaldoEmpleado = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function uspsgvSetBajaEmpleado(sEmpleado As String, sPeriodo As String, _
     sFecha As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & ".uspsgvSetBajaEmpleado '" & sEmpleado & "'," & sPeriodo & ", '" & _
   sFecha & "'"
 
@@ -1777,14 +1796,14 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-uspsgvSetBajaEmpleado = lbok
+uspsgvSetBajaEmpleado = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1793,10 +1812,10 @@ End Function
 Public Function sgvActualizaTipoAccion(sTipo_Accion As String, sDescr As String, sPrioridad As String, sFactor As String, _
     sflgRRHH As String, sAfectaVacaciones As String, sCalculoVacacional As String, sEsAjuste As String, sEsSaldoInicialPeriodo As String, sEsSaldoSalidaEmpleado As String, _
     sActivo As String, sSeRepiteMes As String, sUnaVezPeriodo As String, sUnaVezMes As String, sMaximoUno As String, sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & ".sgvActualizaTipoAccion '" & sTipo_Accion & "','" & sDescr & "' , " & sPrioridad & ", " & sFactor & ", " & sflgRRHH & "," & sAfectaVacaciones & "," _
   & sCalculoVacacional & "," & sEsAjuste & "," & sEsSaldoInicialPeriodo & "," & sEsSaldoSalidaEmpleado & "," & sActivo & "," & sSeRepiteMes & "," & sUnaVezPeriodo & "," & sUnaVezMes & "," & sMaximoUno & ",'" & sOperacion & "'"
 
@@ -1804,23 +1823,23 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvActualizaTipoAccion = lbok
+sgvActualizaTipoAccion = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function sgvUpdatesgvHeaderEsquelas(sOperacion As String, sEmpleado As String, sAnio As String, sMes As String, sConsecutivo As String, sFechaCreacion As String, sFechaSaldo As String, sSaldo As String, sDiasSolicitados As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 sFechaCreacion = Format(sFechaCreacion, "YYYYmmdd")
 sFechaSaldo = Format(sFechaSaldo, "YYYYmmdd")
 
@@ -1830,24 +1849,24 @@ sFechaSaldo = Format(sFechaSaldo, "YYYYmmdd")
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvUpdatesgvHeaderEsquelas = lbok
+sgvUpdatesgvHeaderEsquelas = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 
 Public Function sgvUpdatesgvEsqueladetalle(sOperacion As String, sEmpleado As String, sAnio As String, sMes As String, sConsecutivo As String, sDiaSolicitado As String, sCantidad As String, sComentario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 sDiaSolicitado = Format(sDiaSolicitado, "YYYYmmdd")
 
 
@@ -1857,24 +1876,24 @@ sDiaSolicitado = Format(sDiaSolicitado, "YYYYmmdd")
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvUpdatesgvEsqueladetalle = lbok
+sgvUpdatesgvEsqueladetalle = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 
 Public Function invUpdateBodega(sOperacion As String, sIDBodega As String, sDescrBodega As String, sActivo As String, sFactura As String, sPreFactura As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
   GSSQL = gsCompania & ".invUpdateBodega '" & sOperacion & "'," & sIDBodega & ",'" & sDescrBodega & "'," & sActivo & "," & sFactura & ",'" & sPreFactura & "'"
 
@@ -1884,14 +1903,14 @@ lbok = True
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         'gsOperacionError = "Eliminando el Beneficiado."
         SetMsgError "Ocurrió un error actualizando La bodega. ", err
-      lbok = False
+      lbOk = False
     End If
 
-invUpdateBodega = lbok
+invUpdateBodega = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1899,10 +1918,10 @@ End Function
 
 
 Public Function invUpdateLote(sOperacion As String, sIDLote As String, sLoteInterno As String, sLoteProveedor As String, sFechaVencimiento As String, sFechaProduccion) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
   GSSQL = gsCompania & ".invUpdateLote '" & sOperacion & "'," & sIDLote & ",'" & sLoteInterno & "','" & sLoteProveedor & "','" & sFechaVencimiento & "','" & sFechaProduccion & "'"
 
@@ -1912,14 +1931,14 @@ lbok = True
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         'gsOperacionError = "Eliminando el Beneficiado."
         SetMsgError "Ocurrió un error actualizando el Lote. ", err
-      lbok = False
+      lbOk = False
     End If
 
-invUpdateLote = lbok
+invUpdateLote = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1931,10 +1950,10 @@ sCostoUltDolar As String, sCostoUltPromLocal As String, sCostoUltPromDolar As St
 sPrecioFarmaciaLocal As String, sPrecioCIFLocal As String, sPrecioFOBLocal As String, sIDPresentacion As String, _
 sBajaPrecioProveedor As String, sPorcDescAlzaProveedor As String, sUserInsert As String, sUserUpdate As String, _
 sActivo As String, sCodigoBarra As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = ""
   GSSQL = gsCompania & ".invUpdateProducto '" & sOperacion & "'," & sIDProducto & ",'" & sDescr & "','" & sImpuesto & "',"
   GSSQL = GSSQL & sEsMuestra & "," & sEsControlado & ",'" & sClasif1 & "','" & sClasif2 & "','" & sClasif3 & "'," & sEsEtico & ","
@@ -1948,39 +1967,39 @@ lbok = True
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
       SetMsgError "Ocurrió un error actualizando el producto. ", err
-      lbok = False
+      lbOk = False
     End If
 
-invUpdateProducto = lbok
+invUpdateProducto = lbOk
 Exit Function
 
 error:
   
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function sgvActualizaAlerta(sCodigo As String, sDescr As String, sInicio As String, sFin As String, _
         sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
   GSSQL = gsCompania & ".sgvActualizaAlertas " & sCodigo & ",'" & sDescr & "' , " & sInicio & ", " & sFin & ",'" & sOperacion & "'"
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvActualizaAlerta = lbok
+sgvActualizaAlerta = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -1989,10 +2008,10 @@ End Function
 
 Public Function sgvActualizaPeriodo(sPeriodo As String, sFechaInicio As String, sFechaFinal As String, sEstado As String, _
         sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
 sFechaInicio = Format(sFechaInicio, "yyyymmdd") & " 00:00:00.000"
 sFechaFinal = Format(sFechaFinal, "yyyymmdd") & " 23:59:59.000"
@@ -2004,24 +2023,24 @@ sFechaFinal = Format(sFechaFinal, "yyyymmdd") & " 23:59:59.000"
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-sgvActualizaPeriodo = lbok
+sgvActualizaPeriodo = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function secUpdateUsuario(sUsuario As String, sNombre As String, sPassword As String, sActivo As String, sIDCDIS As String, _
         sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
 
   GSSQL = gsCompania & ".secUpdateUsuario '" & sOperacion & "','" & sUsuario & "','" & sNombre & "' , '" & sPassword & "', '" & sActivo & "'," & sIDCDIS
@@ -2031,24 +2050,24 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-secUpdateUsuario = lbok
+secUpdateUsuario = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function secUpdateEmpleado(sEmpleado As String, sNombre As String, sFecha_Ingreso As String, sFecha_Salida As String, sSalario_Referencia As String, sActivo As String, _
        sDepartamento As String, sCentro As String, sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
 'sFecha_Ingreso = Format(sFecha_Ingreso, "yyyymmdd")
 'sFecha_Salida = Format(sFecha_Salida, "yyyymmdd")
@@ -2060,24 +2079,24 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-secUpdateEmpleado = lbok
+secUpdateEmpleado = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 
 Public Function secActualizaRoleUsuario(sIDModulo As String, sUsuario As String, sIDRole As String, sOperacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
   GSSQL = gsCompania & ".secActualizaRoleUsuario " & sIDModulo & ",'" & sUsuario & "' , " & sIDRole & ", '" & sOperacion & "'"
 
@@ -2086,14 +2105,14 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el Beneficiado."
-      lbok = False
+      lbOk = False
     End If
 
-secActualizaRoleUsuario = lbok
+secActualizaRoleUsuario = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -2108,28 +2127,28 @@ End Function
 
 
 Public Function sgvGetCicloAbierto() As String
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sResultado As String
 On Error GoTo error
-lbok = True
+lbOk = True
   GSSQL = "SELECT " & gsCompania & "." & "sgvGetCicloAbierto() Periodo "
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
     sResultado = "-1"
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     sResultado = Str(gRegistrosCmd("Periodo").value)
-    lbok = True
+    lbOk = True
   End If
   sgvGetCicloAbierto = sResultado
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2198,10 +2217,10 @@ End Function
 
 
 Public Function Update_Password(sUsuario As String, sNewPassword As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 'sNewPassword = zEncrypt(sNewPassword)
   GSSQL = "UPDATE " & gsCompania & ".secUSUARIO SET Password= '" & sNewPassword & "'"
   GSSQL = GSSQL & " WHERE USUARIO ='" & sUsuario & "'"
@@ -2210,14 +2229,14 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
     End If
 
-Update_Password = lbok
+Update_Password = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -2292,9 +2311,9 @@ End Function
 Public Function ExistCodeInTable(sfldnameCodigo As String, bCodigoStr As Boolean, sValueCodigo As String, sTabla As String, Optional bFiltroAdicional As Boolean = False, Optional sFiltroAdicional As String = "") As Boolean
 Dim sDescr As String
 Dim sValor As String
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
 
   If bCodigoStr Then
     sValor = "'" & sValueCodigo & "'"
@@ -2312,13 +2331,13 @@ lbok = False
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
-    lbok = False
+    lbOk = False
     gsOperacionError = "Error en la búsqueda del artículo !!!" & err.Description
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True ' Si Existe el codigo
+    lbOk = True ' Si Existe el codigo
   End If
-  ExistCodeInTable = lbok
+  ExistCodeInTable = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
@@ -2372,7 +2391,7 @@ End Function
 
 
 Public Function ExistePreparacion(sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim bTienePreparacion As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -2400,10 +2419,10 @@ End Function
 
 
 Public Function uspparmaUpdateCliente(sCliente As String, sSupervisor As String, sCanal As String, sStatus As String, sResponsable As String, sEsPreventa As String, sCDIS As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
 
   GSSQL = gsCompania & ".uspparmaUpdateCliente '" & sCliente & "'," & sSupervisor & " , " & sCanal & ", " & sStatus & " , " & sResponsable & "," & sEsPreventa & "," & sCDIS
@@ -2413,14 +2432,14 @@ lbok = True
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Error al Actualizar el Cliente."
-      lbok = False
+      lbOk = False
     End If
 
-uspparmaUpdateCliente = lbok
+uspparmaUpdateCliente = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -2459,32 +2478,32 @@ Resume Next
 End Function
 
 Public Function uspparmaUpdateAplicacionesFromAsiento(sAsiento As String, sFecha As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & "." & "uspparmaUpdateAplicacionesFromAsiento '" & sAsiento & "','" & sFecha & "'"
     gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
     End If
 
-uspparmaUpdateAplicacionesFromAsiento = lbok
+uspparmaUpdateAplicacionesFromAsiento = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Prepara_DiferencialCC(sUsuario As String, sFecha As String, sTipoCambio As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaPrepareDiferencialCC" & " '" & sUsuario & "' , '" & sFecha & "' , " & sTipoCambio
 'gConet.BeginTrans
 
@@ -2492,28 +2511,28 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      Prepara_DiferencialCC = lbok
+      Prepara_DiferencialCC = lbOk
       Exit Function
     End If
 
-Prepara_DiferencialCC = lbok
+Prepara_DiferencialCC = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function uspparmaInsertPrepDiferencialCC(sFechaUltProc As String, sFechaCorte As String, sTipoCambio As String, sPaquete As String, _
 sDescrPaquete As String, sTipo As String, sDescrTipo As String, sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaInsertPrepDiferencialCC" & " '" & sFechaUltProc & "' , '" & sFechaCorte & "' , " & _
 sTipoCambio & ",'" & sPaquete & "','" & sDescrPaquete & "','" & sTipo & "','" & sDescrTipo & "','" & sUsuario & "'"
 'gConet.BeginTrans
@@ -2522,27 +2541,27 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      uspparmaInsertPrepDiferencialCC = lbok
+      uspparmaInsertPrepDiferencialCC = lbOk
       Exit Function
     End If
 
-uspparmaInsertPrepDiferencialCC = lbok
+uspparmaInsertPrepDiferencialCC = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Prepara_DiferencialCambiario(sModo As String, sFecha As String, sFechaCorte As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaSetProcesoDifCamb" & "'" & sModo & "' , '" & sFecha & "','" & sFechaCorte & "'"
 'gConet.BeginTrans
 
@@ -2550,27 +2569,27 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      Prepara_DiferencialCambiario = lbok
+      Prepara_DiferencialCambiario = lbOk
       Exit Function
     End If
 
-Prepara_DiferencialCambiario = lbok
+Prepara_DiferencialCambiario = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function Prepara_DiferencialCambiarioCP(sModo As String, sFecha As String, sFechaCorte As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaSetProcesoDifCambCP" & "'" & sModo & "' , '" & sFecha & "','" & sFechaCorte & "'"
 'gConet.BeginTrans
 
@@ -2578,18 +2597,18 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "Eliminando el producto del Proveedor."
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      Prepara_DiferencialCambiarioCP = lbok
+      Prepara_DiferencialCambiarioCP = lbOk
       Exit Function
     End If
 
-Prepara_DiferencialCambiarioCP = lbok
+Prepara_DiferencialCambiarioCP = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -2598,10 +2617,10 @@ End Function
 
 
 Public Function parmaExistePreparacionCC() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iResultado As Integer
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT " & gsCompania & "." & "parmagetExistePreparacionCC() Status"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
@@ -2614,13 +2633,13 @@ lbok = False
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     iResultado = gRegistrosCmd("Status").value
   End If
-  If iResultado = 1 Then lbok = True Else lbok = False
-  parmaExistePreparacionCC = lbok
+  If iResultado = 1 Then lbOk = True Else lbOk = False
+  parmaExistePreparacionCC = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
   iResultado = 0
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2628,10 +2647,10 @@ End Function
 
 
 Public Function parmaExistePreparacionCP() As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iResultado As Integer
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT " & gsCompania & "." & "parmagetExistePreparacionCP() Status"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
@@ -2644,23 +2663,23 @@ lbok = False
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     iResultado = gRegistrosCmd("Status").value
   End If
-  If iResultado = 1 Then lbok = True Else lbok = False
-  parmaExistePreparacionCP = lbok
+  If iResultado = 1 Then lbOk = True Else lbOk = False
+  parmaExistePreparacionCP = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
   iResultado = 0
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
 End Function
 
 Public Function uspparmaAplicaRecibosLiquidacion(sLiquidacion As String, sUsuario As String, sTotalPago As String, sFechaRecibo As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 GSSQL = gsCompania & ".uspparmaAplicaRecibosLiquidacion " & "'" & sLiquidacion & "' , '" & sUsuario & "', " & sTotalPago & ", '" & sFechaRecibo & "'"
 'gConet.BeginTrans
 
@@ -2668,43 +2687,43 @@ gConet.Execute GSSQL, , adCmdText + adExecuteNoRecords 'Ejecuta la sentencia
 
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       gsOperacionError = "aplicando"
-      lbok = False
+      lbOk = False
       'gConet.RollbackTrans
-      uspparmaAplicaRecibosLiquidacion = lbok
+      uspparmaAplicaRecibosLiquidacion = lbOk
       Exit Function
     End If
 
-uspparmaAplicaRecibosLiquidacion = lbok
+uspparmaAplicaRecibosLiquidacion = lbOk
 'gConet.CommitTrans
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
 
 Public Function ExisteUsuarioExactus(sUsuario As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT * from " & dbo & "." & "Usuario where Usuario ='" & sUsuario & "'"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  ExisteUsuarioExactus = lbok
+  ExisteUsuarioExactus = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2757,7 +2776,7 @@ End Function
 
 Public Function parmaUpdateparmaDocumentsToApply(sOperation As String, sCliente As String, sDocumento As String, sFecha As String, _
 sTipo As String, sValor As String, sIDFile As String, sflgAplicado As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iResultado As Integer
 Dim gRegistrosCmd As ADODB.Recordset
 Dim sResultado As String
@@ -2765,7 +2784,7 @@ Dim sResultado As String
 On Error GoTo error
 
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & ".[parmaUpdateparmaDocumentsToApply]  '" & sOperation & "','" & sCliente & "' ,'" & sDocumento & "','" & sFecha & "','" & _
     sTipo & "'," & sValor & "," & sIDFile & "," & sflgAplicado
 
@@ -2773,19 +2792,19 @@ lbok = True
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
 
   Else 'If Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
 
     'sResultado = gRegistrosCmd("Resultado").value
 
-    lbok = True
+    lbOk = True
   End If
-  parmaUpdateparmaDocumentsToApply = lbok
+  parmaUpdateparmaDocumentsToApply = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
 
@@ -2793,52 +2812,52 @@ End Function
 
 
 Public Function ExisteCliente(sCliente As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT * from " & gsCompania & "." & "CLIENTE where CLIENTE = '" & sCliente & "'"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  ExisteCliente = lbok
+  ExisteCliente = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
 End Function
 
 Public Function ExisteLiquidacion(sLiquidacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT * from " & gsCompania & "." & "parmaAS400Liquidacion where idliquidacion = '" & sLiquidacion & "'"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  ExisteLiquidacion = lbok
+  ExisteLiquidacion = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2846,7 +2865,7 @@ End Function
 
 Public Function parmaActualizaLiquidacionDesdeAS400(sIDLiquidacion As String, sFecha As String, sVendedor As String, sAux1 As String, sAux2 As String, sAux3 As String, _
 sTotalLiquidacion As String, sTotalFaltante) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim iResultado As Integer
 Dim gRegistrosCmd As ADODB.Recordset
 Dim sResultado As String
@@ -2854,14 +2873,14 @@ Dim sResultado As String
 On Error GoTo error
 
 
-lbok = True
+lbOk = True
   GSSQL = gsCompania & ".[parmaUpdateLiquidacionAS400]  'I','" & sIDLiquidacion & "','" & sFecha & "' ," & sTotalLiquidacion & "," & sTotalFaltante & ""
 gConet.BeginTrans
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
     GoTo error
   End If
     
@@ -2871,7 +2890,7 @@ gConet.BeginTrans
         Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
             If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
               gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-              lbok = False  'Indica que no es válido
+              lbOk = False  'Indica que no es válido
               GoTo error
             End If
      End If
@@ -2881,7 +2900,7 @@ gConet.BeginTrans
         Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-          lbok = False  'Indica que no es válido
+          lbOk = False  'Indica que no es válido
           GoTo error
         End If
     End If
@@ -2890,7 +2909,7 @@ gConet.BeginTrans
      Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
            gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-           lbok = False  'Indica que no es válido
+           lbOk = False  'Indica que no es válido
            GoTo error
         End If
     End If
@@ -2899,25 +2918,25 @@ gConet.BeginTrans
        Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
            gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-           lbok = False  'Indica que no es válido
+           lbOk = False  'Indica que no es válido
            GoTo error
         End If
     End If
                        
         
-        If lbok Then
+        If lbOk Then
             
             GSSQL = gsCompania & ".[parmaUpdateLiquidacionAS400]  'F','" & sIDLiquidacion & "'"
             Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
             If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
                gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-               lbok = False  'Indica que no es válido
+               lbOk = False  'Indica que no es válido
                GoTo error
             End If
             
         End If
 
-    If lbok = False Then
+    If lbOk = False Then
         gConet.RollbackTrans
     Else
         gConet.CommitTrans
@@ -2925,23 +2944,23 @@ gConet.BeginTrans
     
     
   
-  parmaActualizaLiquidacionDesdeAS400 = lbok
+  parmaActualizaLiquidacionDesdeAS400 = lbOk
   
   'gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   gConet.RollbackTrans
-   parmaActualizaLiquidacionDesdeAS400 = lbok
+   parmaActualizaLiquidacionDesdeAS400 = lbOk
 
 End Function
 
 
 Public Function ExisteNotasAnuladas(sLiquidacion As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT * from " & gsCompania & "." & "Documentos_CC where Tipo = 'N/D' AND Documento like '%" & Mid(sLiquidacion, 1, 8) & "%' and Anulado='S' AND CLIENTE IN " & _
   " (SELECT CLIENTE FROM " & gsCompania & ".parmaAS400LiquidacionDetFaltante WHERE IDLIQUIDACION = '" & sLiquidacion & "')"
           
@@ -2949,17 +2968,17 @@ lbok = False
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  ExisteNotasAnuladas = lbok
+  ExisteNotasAnuladas = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2967,9 +2986,9 @@ End Function
 
 
 Public Function SaldosNotasMenorQueFaltante(sLiquidacion As String, dFaltante As Double) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "SELECT Sum(Saldo) Saldo from " & gsCompania & "." & "Documentos_CC where Tipo = 'N/D' AND Documento like '%" & Mid(sLiquidacion, 1, 8) & "%' and Anulado='N'" & " AND CLIENTE IN " & _
   " (SELECT CLIENTE FROM " & gsCompania & ".parmaAS400LiquidacionDetFaltante WHERE IDLIQUIDACION = '" & sLiquidacion & "')"
           
@@ -2977,19 +2996,19 @@ lbok = False
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   ElseIf Not (gRegistrosCmd.BOF And gRegistrosCmd.EOF) Then  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
     If Round(gRegistrosCmd(0).value, 2) < dFaltante Then
-        lbok = True
+        lbOk = True
     End If
   End If
-  SaldosNotasMenorQueFaltante = lbok
+  SaldosNotasMenorQueFaltante = lbOk
   gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -2997,26 +3016,26 @@ End Function
 
 
 Public Function CambiaStatusLiquidacion(sLiquidacion As String, sStatus As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
   GSSQL = "Update " & gsCompania & "." & "parmaAS400Liquidacion set statusCobro = '" & sStatus & "' where idliquidacion = '" & sLiquidacion & "'"
           
   Set gRegistrosCmd = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = False
+    lbOk = False
     
   Else
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    lbok = True
+    lbOk = True
   End If
-  CambiaStatusLiquidacion = lbok
+  CambiaStatusLiquidacion = lbOk
   'gRegistrosCmd.Close
   Exit Function
 error:
-  lbok = False
+  lbOk = False
   gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
   Resume Next
                     
@@ -3024,11 +3043,11 @@ End Function
 
 
 Public Function spGlobalUpdateCatalogo(sOperacion As String, sIDTable As String, sDescr As String, sActivo As String, sUsaValor As String, sNombreValor As String, sValor As String, Optional sIDCatalogo As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sIDCat As String
 On Error GoTo error
 
-lbok = True
+lbOk = True
     If sIDCatalogo = "" Then
         sIDCat = "ND"
     Else
@@ -3044,14 +3063,14 @@ lbok = True
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
       'gsOperacionError = "Eliminando el Registro."
       SetMsgError "Eliminando el Registro.", err
-      lbok = False
+      lbOk = False
     End If
 
-spGlobalUpdateCatalogo = lbok
+spGlobalUpdateCatalogo = lbOk
 Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
 End Function
@@ -3080,11 +3099,11 @@ End Function
 
 Public Function LoadAccess(sUsuario As String, sPassword As String, sModulo As String)
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim lsFilename As String
 Dim rst As ADODB.Recordset
 Dim rstCSV As ADODB.Recordset
-lbok = False
+lbOk = False
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -3101,20 +3120,20 @@ Set rst = GetRecordset(GSSQL)
 
 If Not (rst.EOF And rst.BOF) Then
     Set grRecordsetAcceso = rst
-    lbok = True
+    lbOk = True
 End If
-LoadAccess = lbok
+LoadAccess = lbOk
 Exit Function
 errores:
-lbok = False
-LoadAccess = lbok
+lbOk = False
+LoadAccess = lbOk
 End Function
 
 Public Function UserCouldIN(sUsuario As String, sPassword As String)
 On Error GoTo errores
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim rst As ADODB.Recordset
-lbok = False
+lbOk = False
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -3130,7 +3149,7 @@ If rst.State = adStateOpen Then rst.Close
 rst.Open GSSQL
 If Not (rst.EOF And rst.BOF) Then
     Set grRecordsetAcceso = rst
-    lbok = True
+    lbOk = True
 '    If zDecrypt(rst("Password").value) = sPassword Then
 '        Set grRecordsetAcceso = rst
 '        lbok = True
@@ -3138,18 +3157,18 @@ If Not (rst.EOF And rst.BOF) Then
 '        lbok = False
 '    End If
 End If
-UserCouldIN = lbok
+UserCouldIN = lbOk
 Exit Function
 errores:
-lbok = False
-UserCouldIN = lbok
+lbOk = False
+UserCouldIN = lbOk
 End Function
 
 Public Function fafUpdateVendedor(sOperacion As String, sIDVendedor As String, sNombre As String, sTipo As String, sActivo As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
 
-lbok = True
+lbOk = True
 
   GSSQL = gsCompania & ".fafUpdateVendedor '" & sOperacion & "'," & sIDVendedor & ",'" & sNombre & "'," & sActivo & ",'" & sTipo & "'"
 
@@ -3159,31 +3178,31 @@ lbok = True
     If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
        'gsOperacionError = "Eliminando el Beneficiado."
        SetMsgError "Eliminando el Vendedor.", err
-      lbok = False
+      lbOk = False
     End If
 
-fafUpdateVendedor = lbok
-Exit Sub
+fafUpdateVendedor = lbOk
+Exit Function
 
 error:
-  lbok = False
+  lbOk = False
   Resume Next
 
-End Sub
+End Function
 
 
 
 Public Function ExiteItem(rst As ADODB.Recordset, sCondicion As String) As Boolean
-Dim lbok As Boolean
-lbok = False
+Dim lbOk As Boolean
+lbOk = False
 If Not rst.EOF Then
   rst.MoveFirst
   rst.Find sCondicion, 0, adSearchForward, 0
   If Not rst.EOF Then
-    lbok = True
+    lbOk = True
   End If
 End If
-ExiteItem = lbok
+ExiteItem = lbOk
 End Function
 
 
@@ -3193,7 +3212,7 @@ End Sub
 
 
 Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As String, sFiltro As String, ByRef dicResult As Dictionary) As Boolean
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     Dim sResultado As String
     Dim sOrden As String
     Dim rst As ADODB.Recordset
@@ -3201,7 +3220,7 @@ Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As Stri
     
     Set dicResult = New Dictionary
     On Error GoTo error
-    lbok = False
+    lbOk = False
     sResultado = "ND"
     
     Set rst = New ADODB.Recordset
@@ -3210,7 +3229,7 @@ Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As Stri
     rst.CursorLocation = adUseClient ' Cursor local al cliente
     rst.LockType = adLockOptimistic
     
-    lbok = True
+    lbOk = True
       
     'Armar el listado de Campos
       
@@ -3234,15 +3253,15 @@ Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As Stri
         For i = 0 To UBound(arrFields)
             dicResult.Add arrFields(i), rst(arrFields(i)).value
         Next i
-        lbok = True
+        lbOk = True
     End If
     
-    getValueFieldsFromTable = lbok
+    getValueFieldsFromTable = lbOk
     Set rst = Nothing
     Exit Function
 error:
-      lbok = False
-      getValueFieldFromTable = lbok
+      lbOk = False
+      getValueFieldFromTable = lbOk
     
 End Function
 
@@ -3271,10 +3290,10 @@ End Function
 
 
 Public Function getDescrCatalogo(txtCodigo As TextBox, sFieldNameCode As String, sTableName As String, sFieldNameDescr As String, Optional bCodeChar As Boolean) As String
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sDescr As String
 Dim sValor As String
-lbok = False
+lbOk = False
 If txtCodigo.Text <> "" Then
     If bCodeChar = True Then
         sValor = "'" & txtCodigo.Text & "'"
@@ -3292,9 +3311,9 @@ End Function
 
 
 Public Function ExisteDependencia(sTablaRelacion As String, sFldname As String, sValFld As String, sType As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 On Error GoTo error
-lbok = False
+lbOk = False
 Dim rs As ADODB.Recordset
   gstrSQL = "SELECT TOP 1 " & sFldname
   gstrSQL = gstrSQL & " FROM " & sTablaRelacion
@@ -3307,18 +3326,209 @@ Dim rs As ADODB.Recordset
   Set rs = gConet.Execute(gstrSQL, , adCmdText)  'Ejecuta la sentencia
 
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
-    lbok = False  'Indica que ocurrió un error
+    lbOk = False  'Indica que ocurrió un error
     sMensajeError = "Error en la búsqueda  !!!" & err.Description
   ElseIf Not (rs.BOF And rs.EOF) Then  'Si no es válido
     
-    lbok = True  'Indica que ya existe
+    lbOk = True  'Indica que ya existe
   End If
   rs.Close
 
-ExisteDependencia = lbok
+ExisteDependencia = lbOk
 Exit Function
 error:
-    lbok = False
+    lbOk = False
     Resume Next
 End Function
+
+
+
+Public Sub SetupMenuButtons()
+'
+' Each form window has its own set of Toolbar buttons.
+' Including the split there are 20 buttons.
+' Buttons that are to be made visible are indicated by the presence of a letter in the string
+' The value of that letter indicates the position in the toolbar list of the button that we want.
+' For Example the string "CDEST" means make visible buttons in the toolbar array at index positions:
+' 1, 2, 3, 17, 18
+' 1 = Left, 2 = Right, 3 = separator, 17 = User's Guide, 18 = About
+
+
+    ReDim ButtonsAvailable(0 To 19)
+    
+    ButtonsAvailable(0).form_buttons = "CDEST"
+    ButtonsAvailable(0).form_name = "no form"
+    
+    ButtonsAvailable(1).form_buttons = "CDEILOPQRU"
+    ButtonsAvailable(1).form_name = "frmProductos"
+    
+    ButtonsAvailable(2).form_buttons = "CDELPQRU"
+    ButtonsAvailable(2).form_name = "Form1"
+    
+    ButtonsAvailable(3).form_buttons = "CDEIJLNPRU"
+    ButtonsAvailable(3).form_name = "frmAccCustomer"
+    
+    ButtonsAvailable(4).form_buttons = "CDELPQRU"
+    ButtonsAvailable(4).form_name = "frmCustomerWB"
+    
+    ButtonsAvailable(5).form_buttons = "CDEIKLOPRU"
+    ButtonsAvailable(5).form_name = "frmSalesman"
+    
+    ButtonsAvailable(6).form_buttons = "CDEIKLOPRU"
+    ButtonsAvailable(6).form_name = "frmVan"
+    
+    ButtonsAvailable(7).form_buttons = "CDEIKLOPQRU"
+    ButtonsAvailable(7).form_name = "frmPDCManager"
+    
+    ButtonsAvailable(8).form_buttons = "CDEGHLMPQRU"
+    ButtonsAvailable(8).form_name = "frmDueChecks"
+    
+    ButtonsAvailable(9).form_buttons = "CDEIKLOPQRU"
+    ButtonsAvailable(9).form_name = "frmSupplier"
+    
+    ButtonsAvailable(10).form_buttons = "CDEIKLOPRU"
+    ButtonsAvailable(10).form_name = "frmCategories"
+    
+    ButtonsAvailable(11).form_buttons = "CDEIKLOPQRU"
+    ButtonsAvailable(11).form_name = "frmProduct"
+    
+    ButtonsAvailable(12).form_buttons = "CDEFLPQRU"
+    ButtonsAvailable(12).form_name = "frmStockMonitoring"
+    
+    ButtonsAvailable(13).form_buttons = "CDEIKLOPQRU"
+    ButtonsAvailable(13).form_name = "frmStockReceive"
+    
+    ButtonsAvailable(14).form_buttons = "CDEIJLNPQRU"
+    ButtonsAvailable(14).form_name = "frmLoading"
+    
+    ButtonsAvailable(15).form_buttons = "CDEIJLNPRU"
+    ButtonsAvailable(15).form_name = "frmInvoice"
+    
+    ButtonsAvailable(16).form_buttons = "CDEIJLNPRU"
+    ButtonsAvailable(16).form_name = "frmVanCollection"
+    
+    ButtonsAvailable(17).form_buttons = "CDEIJLNPRU"
+    ButtonsAvailable(17).form_name = "frmVanInventory"
+    
+    ButtonsAvailable(18).form_buttons = "CDEIJLNPRU"
+    ButtonsAvailable(18).form_name = "frmVanRemmitance"
+       
+    
+End Sub
+
+Public Sub LoadForm(ByRef srcForm As Form)
+    srcForm.Show
+    srcForm.WindowState = vbMaximized
+    srcForm.SetFocus
+End Sub
+
+
+Public Sub SetupFormToolbar(frm As String)
+' Given a form name set up the toolbar buttons appropriate for that form
+    Dim pattern As String
+    Dim p As Integer
+    Dim j As Integer
+    Dim i As Integer
+    Dim visibility(1 To 19) As Boolean
+    Dim foundfrm As Boolean
+    
+    foundfrm = False
+    For i = 1 To 19
+        visibility(i) = False                   'Initially assume all toolbar buttons are invisible
+    Next i
+    
+    pattern = ""
+    
+    For i = 0 To 18                             'There are 19 types of forms from type 0 to type 18
+        If frm = ButtonsAvailable(i).form_name Then
+            pattern = ButtonsAvailable(i).form_buttons
+            For j = 1 To Len(pattern)
+                p = Asc(Mid(pattern, j, 1)) - 66    'if it was "C" than p = 1
+               
+                visibility(p) = True
+              
+            Next j
+            For j = 1 To 19
+                MDIMain.tbMenu.Buttons.Item(j).Visible = visibility(j)
+            Next j
+            foundfrm = True
+            Exit For
+        End If
+    Next i              'only continue of form name didn't match
+    
+    If foundfrm = False Then        'If the form name was not found then default to buttons pattern for "no form"
+        pattern = ButtonsAvailable(0).form_buttons
+        For j = 1 To Len(pattern)
+                p = Asc(Mid(pattern, j, 1)) - 66
+                visibility(p) = True
+              
+            Next j
+            For j = 1 To 19
+                MDIMain.tbMenu.Buttons.Item(j).Visible = visibility(j)
+            Next j
+        
+    End If
+    
+    
+
+End Sub
+
+
+
+'Procedure used to center form
+Public Sub centerForm(ByRef sForm As Form, ByVal sHeight As Integer, ByVal sWidth As Integer)
+    sForm.Move (sWidth - sForm.Width) / 2, (sHeight - sForm.Height) / 2
+End Sub
+'Procedure used to center object horizontal
+Public Sub center_obj_horizontal(ByVal sParentObj As Variant, ByRef sMoveObj As Variant)
+    sMoveObj.left = (sParentObj - sMoveObj.Width) / 2
+End Sub
+'Procedure used to center vertical
+Public Sub center_obj_vertical(ByVal sParentObj As Variant, ByRef sMoveObj As Variant)
+    sMoveObj.top = (sParentObj.Height - sMoveObj.Height) / 2
+End Sub
+
+Public Sub HighlightInWin(ByVal srcKey As String)
+    With MDIMain.lvWin
+        If .ListItems.Count > 0 Then
+            If .SelectedItem.Key <> srcKey Then
+                Dim c As Integer
+                For c = 1 To .ListItems.Count
+                    If .ListItems(c).Key = srcKey Then
+                        .ListItems(c).Selected = True
+                        .ListItems(c).EnsureVisible
+                        Exit For
+                    End If
+                Next c
+            End If
+        End If
+    End With
+End Sub
+
+Public Function IsWindowInListbox(s As String, LBox As ListBox) As Integer
+'s is the name of a window's caption
+'Scan the strings in the listbox  comparing each string to s
+'If found return the index number of that string (zero based)
+'if not found return -1
+'
+Dim ls As String
+Dim i As Integer
+    If (LBox.ListCount = 0) Then
+        IsWindowInListbox = -1
+        Exit Function
+    End If
+    For i = 0 To LBox.ListCount - 1
+        ls = LBox.List(i)
+        If ls = s Then
+            IsWindowInListbox = i
+            Exit Function
+        End If
+    Next i
+    
+    IsWindowInListbox = -1
+End Function
+
+
+
+
 

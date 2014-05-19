@@ -4,12 +4,12 @@ Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmRegistrarTransaccion 
-   BackColor       =   &H00F4D5BB&
+   BackColor       =   &H00FEE3DA&
    Caption         =   "Form1"
    ClientHeight    =   8445
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   15630
+   ClientWidth     =   11400
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -19,22 +19,32 @@ Begin VB.Form frmRegistrarTransaccion
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
+   Icon            =   "frmRegistrarTransaccion.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   8445
-   ScaleWidth      =   15630
+   ScaleWidth      =   11400
    StartUpPosition =   2  'CenterScreen
    Begin ActiveTabs.SSActiveTabs sTabTransaccion 
       Height          =   7005
-      Left            =   300
+      Left            =   270
       TabIndex        =   6
-      Top             =   1320
+      Top             =   1350
       Width           =   14295
       _ExtentX        =   25215
       _ExtentY        =   12356
       _Version        =   131083
       TabCount        =   3
-      TagVariant      =   ""
-      Tabs            =   "frmRegistrarTransaccion.frx":0000
+      BeginProperty FontSelectedTab {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Tabs            =   "frmRegistrarTransaccion.frx":08CA
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
          Left            =   -99969
@@ -44,7 +54,7 @@ Begin VB.Form frmRegistrarTransaccion
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":00B3
+         TabGuid         =   "frmRegistrarTransaccion.frx":097D
          Begin VB.CommandButton cmdEditItem 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -57,7 +67,7 @@ Begin VB.Form frmRegistrarTransaccion
             EndProperty
             Height          =   555
             Left            =   12810
-            Picture         =   "frmRegistrarTransaccion.frx":00DB
+            Picture         =   "frmRegistrarTransaccion.frx":09A5
             Style           =   1  'Graphical
             TabIndex        =   56
             ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
@@ -76,7 +86,7 @@ Begin VB.Form frmRegistrarTransaccion
             EndProperty
             Height          =   555
             Left            =   13410
-            Picture         =   "frmRegistrarTransaccion.frx":0DA5
+            Picture         =   "frmRegistrarTransaccion.frx":166F
             Style           =   1  'Graphical
             TabIndex        =   55
             ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
@@ -86,7 +96,7 @@ Begin VB.Form frmRegistrarTransaccion
          Begin TrueOleDBGrid60.TDBGrid TDBG 
             Height          =   5670
             Left            =   300
-            OleObjectBlob   =   "frmRegistrarTransaccion.frx":1A6F
+            OleObjectBlob   =   "frmRegistrarTransaccion.frx":2339
             TabIndex        =   8
             Top             =   840
             Width           =   13725
@@ -94,14 +104,14 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
-         Left            =   30
+         Left            =   -99969
          TabIndex        =   16
          Top             =   360
          Width           =   14235
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":A624
+         TabGuid         =   "frmRegistrarTransaccion.frx":AEFE
          Begin VB.Frame Frame3 
             Height          =   2475
             Left            =   1230
@@ -109,6 +119,16 @@ Begin VB.Form frmRegistrarTransaccion
             Top             =   3330
             Width           =   11445
             Begin VB.TextBox txtPrecioDolar 
+               Appearance      =   0  'Flat
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   315
                Left            =   2310
                TabIndex        =   53
@@ -127,7 +147,7 @@ Begin VB.Form frmRegistrarTransaccion
                EndProperty
                Height          =   555
                Left            =   10590
-               Picture         =   "frmRegistrarTransaccion.frx":A64C
+               Picture         =   "frmRegistrarTransaccion.frx":AF26
                Style           =   1  'Graphical
                TabIndex        =   50
                ToolTipText     =   "Agrega el item con los datos digitados..."
@@ -136,13 +156,32 @@ Begin VB.Form frmRegistrarTransaccion
             End
             Begin VB.CheckBox chkAutoSugiereLotes 
                Caption         =   "Auto Sugiere Lotes"
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   255
-               Left            =   8520
+               Left            =   8220
                TabIndex        =   44
                Top             =   1410
-               Width           =   1845
+               Width           =   2145
             End
             Begin VB.TextBox txtCostoDolar 
+               Appearance      =   0  'Flat
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   315
                Left            =   2310
                TabIndex        =   42
@@ -152,13 +191,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelLote 
                Height          =   320
                Left            =   3840
-               Picture         =   "frmRegistrarTransaccion.frx":B316
+               Picture         =   "frmRegistrarTransaccion.frx":BBF0
                Style           =   1  'Graphical
                TabIndex        =   48
                Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtDescrLote 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -178,13 +218,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdLote 
                Height          =   320
                Left            =   3480
-               Picture         =   "frmRegistrarTransaccion.frx":CFE0
+               Picture         =   "frmRegistrarTransaccion.frx":D8BA
                Style           =   1  'Graphical
                TabIndex        =   47
                Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtLote 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -202,6 +243,16 @@ Begin VB.Form frmRegistrarTransaccion
                Width           =   1095
             End
             Begin VB.TextBox txtCantidad 
+               Appearance      =   0  'Flat
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
                Height          =   285
                Left            =   2310
                TabIndex        =   40
@@ -211,7 +262,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label12 
                Caption         =   "Precio Dolar:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -224,12 +275,12 @@ Begin VB.Form frmRegistrarTransaccion
                Left            =   540
                TabIndex        =   54
                Top             =   1260
-               Width           =   1095
+               Width           =   1215
             End
             Begin VB.Label Label9 
                Caption         =   "Lote:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -247,7 +298,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label10 
                Caption         =   "Cantidad:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -265,7 +316,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label11 
                Caption         =   "Costo Dolar:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -290,13 +341,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelArticulo 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":D322
+               Picture         =   "frmRegistrarTransaccion.frx":DBFC
                Style           =   1  'Graphical
                TabIndex        =   36
                Top             =   360
                Width           =   300
             End
             Begin VB.TextBox txtArticulo 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -310,10 +362,11 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   285
                Left            =   2310
                TabIndex        =   34
-               Top             =   360
+               Top             =   390
                Width           =   1095
             End
             Begin VB.TextBox txtDescrArticulo 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -333,7 +386,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdArticulo 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":EFEC
+               Picture         =   "frmRegistrarTransaccion.frx":F8C6
                Style           =   1  'Graphical
                TabIndex        =   35
                Top             =   360
@@ -342,7 +395,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label8 
                Caption         =   "Articulo:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -367,7 +420,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelBodegaOrigen 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":F32E
+               Picture         =   "frmRegistrarTransaccion.frx":FC08
                Style           =   1  'Graphical
                TabIndex        =   25
                Top             =   855
@@ -376,13 +429,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdBodegaDestino 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":10FF8
+               Picture         =   "frmRegistrarTransaccion.frx":118D2
                Style           =   1  'Graphical
                TabIndex        =   29
                Top             =   1305
                Width           =   300
             End
             Begin VB.TextBox txtDescrBodegaDestino 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -400,6 +454,7 @@ Begin VB.Form frmRegistrarTransaccion
                Width           =   6675
             End
             Begin VB.TextBox txtBodegaDestino 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -419,7 +474,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelBodegaDestino 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":1133A
+               Picture         =   "frmRegistrarTransaccion.frx":11C14
                Style           =   1  'Graphical
                TabIndex        =   31
                Top             =   1305
@@ -428,13 +483,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdBodegaOrigen 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":13004
+               Picture         =   "frmRegistrarTransaccion.frx":138DE
                Style           =   1  'Graphical
                TabIndex        =   24
                Top             =   855
                Width           =   300
             End
             Begin VB.TextBox txtDescrBodegaOrigen 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -452,6 +508,7 @@ Begin VB.Form frmRegistrarTransaccion
                Width           =   6675
             End
             Begin VB.TextBox txtBodegaOrigen 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -471,13 +528,14 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdTipoTransaccion 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":13346
+               Picture         =   "frmRegistrarTransaccion.frx":13C20
                Style           =   1  'Graphical
                TabIndex        =   20
                Top             =   420
                Width           =   300
             End
             Begin VB.TextBox txtDescrTipoTransaccion 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -495,6 +553,7 @@ Begin VB.Form frmRegistrarTransaccion
                Width           =   6675
             End
             Begin VB.TextBox txtTipoTransaccion 
+               Appearance      =   0  'Flat
                BeginProperty Font 
                   Name            =   "MS Sans Serif"
                   Size            =   8.25
@@ -514,7 +573,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CommandButton cmdDelTipoTransaccion 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":13688
+               Picture         =   "frmRegistrarTransaccion.frx":13F62
                Style           =   1  'Graphical
                TabIndex        =   21
                Top             =   405
@@ -523,7 +582,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label lblBodegaDestino 
                Caption         =   "Bodega Destino:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -541,7 +600,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label6 
                Caption         =   "Bodega Origen:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -559,7 +618,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.Label Label5 
                Caption         =   "Tipo Transacción:"
                BeginProperty Font 
-                  Name            =   "Arial"
+                  Name            =   "MS Sans Serif"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -578,15 +637,24 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sTabPanelDocumento 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   9
          Top             =   360
          Width           =   14235
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":15352
+         TabGuid         =   "frmRegistrarTransaccion.frx":15C2C
          Begin VB.TextBox txtUsuario 
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
             Height          =   315
             Left            =   1350
             TabIndex        =   14
@@ -604,7 +672,7 @@ Begin VB.Form frmRegistrarTransaccion
             _Version        =   393217
             Enabled         =   -1  'True
             ScrollBars      =   2
-            TextRTF         =   $"frmRegistrarTransaccion.frx":1537A
+            TextRTF         =   $"frmRegistrarTransaccion.frx":15C54
          End
          Begin MSComCtl2.DTPicker dtpFecha 
             Height          =   315
@@ -624,13 +692,13 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   20840449
+            Format          =   61472769
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
             Caption         =   "Usuario:"
             BeginProperty Font 
-               Name            =   "Arial"
+               Name            =   "MS Sans Serif"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -648,7 +716,7 @@ Begin VB.Form frmRegistrarTransaccion
          Begin VB.Label Label2 
             Caption         =   "Fecha:"
             BeginProperty Font 
-               Name            =   "Arial"
+               Name            =   "MS Sans Serif"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -666,7 +734,7 @@ Begin VB.Form frmRegistrarTransaccion
          Begin VB.Label Label4 
             Caption         =   "Concepto:"
             BeginProperty Font 
-               Name            =   "Arial"
+               Name            =   "MS Sans Serif"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -684,9 +752,10 @@ Begin VB.Form frmRegistrarTransaccion
       End
    End
    Begin VB.TextBox txtIDDocumento 
+      Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -695,15 +764,16 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       ForeColor       =   &H8000000D&
       Height          =   315
-      Left            =   2400
+      Left            =   2490
       TabIndex        =   2
       Top             =   780
       Width           =   2445
    End
    Begin VB.TextBox txtPaquete 
+      Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   9.75
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -712,7 +782,7 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       ForeColor       =   &H8000000D&
       Height          =   315
-      Left            =   1350
+      Left            =   1440
       TabIndex        =   1
       Top             =   780
       Width           =   975
@@ -729,7 +799,7 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       Height          =   555
       Left            =   14820
-      Picture         =   "frmRegistrarTransaccion.frx":153F1
+      Picture         =   "frmRegistrarTransaccion.frx":15CCB
       Style           =   1  'Graphical
       TabIndex        =   52
       ToolTipText     =   "Deshacer / Cancelar"
@@ -740,7 +810,7 @@ Begin VB.Form frmRegistrarTransaccion
       Enabled         =   0   'False
       Height          =   555
       Left            =   14820
-      Picture         =   "frmRegistrarTransaccion.frx":160BB
+      Picture         =   "frmRegistrarTransaccion.frx":16995
       Style           =   1  'Graphical
       TabIndex        =   51
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
@@ -750,6 +820,15 @@ Begin VB.Form frmRegistrarTransaccion
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
       Caption         =   "Documento:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00000000&
       Height          =   300
       Left            =   390
@@ -779,6 +858,15 @@ Begin VB.Form frmRegistrarTransaccion
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   "Transacción:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00000000&
       Height          =   300
       Left            =   11505
@@ -811,7 +899,7 @@ Begin VB.Form frmRegistrarTransaccion
    Begin VB.Image Image1 
       Height          =   885
       Left            =   -405
-      Picture         =   "frmRegistrarTransaccion.frx":17D85
+      Picture         =   "frmRegistrarTransaccion.frx":1865F
       Stretch         =   -1  'True
       Top             =   -300
       Width           =   16185
@@ -933,7 +1021,7 @@ Public Sub HabilitarControles()
             Me.cmdDelBodegaDestino.Enabled = False
             Me.cmdArticulo.Enabled = True
             Me.cmdDelArticulo.Enabled = True
-            Me.cmdLote.Enabled = True
+            Me.cmdLote.Enabled = False
             Me.cmdDelLote.Enabled = True
             Me.TDBG.Enabled = True
             
@@ -1075,9 +1163,9 @@ Private Sub cmdAdd_Click()
    
   
     
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If Not ValCtrls Then
-        lbok = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
+        lbOk = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -1103,7 +1191,7 @@ Private Sub cmdAdd_Click()
             frmAutosugiere.gsDescrBodega = Me.txtDescrBodegaOrigen.Text
             dTotalSugeridoLotes = frmAutosugiere.GetTotalSugeridoLotes()
             If (dTotalSugeridoLotes < CDbl(Me.txtCantidad.Text)) Then
-                lbok = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
+                lbOk = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
                 Set rstLS = Nothing
                 Set frmAutosugiere = Nothing
             Else
@@ -1117,13 +1205,13 @@ Private Sub cmdAdd_Click()
                 rstLS.MoveFirst
                 While Not rstLS.EOF
                     If ExiteRstKey(rstTmpMovimiento, "BODEGAOrigen=" & Me.txtBodegaOrigen.Text & " AND BodegaDestino =" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & " AND IDPRODUCTO=" & Me.txtArticulo.Text & _
-                                                " AND IDLOTE=" & rstLS!IDLote & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-                        lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+                                                " AND IDLOTE=" & rstLS!IdLote & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
+                        lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
                         Exit Sub
                     End If
                     Set rstLote = New ADODB.Recordset
                       rstLote.ActiveConnection = gConet
-                    CargaDatosLotes rstLote, CInt(rstLS!IDLote)
+                    CargaDatosLotes rstLote, CInt(rstLS!IdLote)
                     ' Carga los datos del detalle de transacciones para ser grabados a la bd
                     rstTmpMovimiento.AddNew
                     rstTmpMovimiento!BodegaOrigen = Me.txtBodegaOrigen.Text
@@ -1133,7 +1221,7 @@ Private Sub cmdAdd_Click()
                     rstTmpMovimiento!DescrBodegaDestino = Me.txtDescrBodegaDestino.Text
                     rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
                     rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-                    rstTmpMovimiento!IDLote = rstLS!IDLote
+                    rstTmpMovimiento!IdLote = rstLS!IdLote
                     rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
                     rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
                     rstTmpMovimiento!LoteInterno = rstLote!LoteInterno
@@ -1156,7 +1244,7 @@ Private Sub cmdAdd_Click()
                 
             If ExiteRstKey(rstTmpMovimiento, "BODEGAORigen=" & Me.txtBodegaOrigen.Text & " and  BodegaDestino=" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & "  AND IDPRODUCTO=" & Me.txtArticulo.Text & _
                                           " AND IDLOTE=" & Me.txtLote.Text & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-              lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+              lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
         
               Exit Sub
             End If
@@ -1171,7 +1259,7 @@ Private Sub cmdAdd_Click()
             rstTmpMovimiento!DescrBodegaDestino = Me.txtBodegaDestino.Text
             rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
             rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-            rstTmpMovimiento!IDLote = Me.txtLote.Text
+            rstTmpMovimiento!IdLote = Me.txtLote.Text
             rstTmpMovimiento!FechaVencimiento = rstLote!FechaVencimiento
             rstTmpMovimiento!FechaFabricacion = rstLote!FechaFabricacion
             rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
@@ -1205,7 +1293,7 @@ Private Sub cmdAdd_Click()
             rstTmpMovimiento!DescrBodegaDestino = IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text)
             rstTmpMovimiento!IdProducto = Me.txtArticulo.Text
             rstTmpMovimiento!DescrProducto = Me.txtDescrArticulo.Text
-            rstTmpMovimiento!IDLote = Me.txtLote.Text
+            rstTmpMovimiento!IdLote = Me.txtLote.Text
             rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
             rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
             rstTmpMovimiento!DESCRTipo = sPaquete
@@ -1274,6 +1362,8 @@ Dim frm As New frmBrowseCat
     If frm.gsDescrbrw <> "" Then
       Me.txtDescrArticulo.Text = frm.gsDescrbrw
       fmtTextbox Me.txtDescrArticulo, "R"
+      Me.txtLote.Enabled = True
+      Me.cmdLote.Enabled = True
     End If
 End Sub
 
@@ -1366,10 +1456,10 @@ Private Sub GetDataFromGridToControl() 'EDITAR
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     
-    lbok = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
-    If (lbok) Then
+    lbOk = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
+    If (lbOk) Then
         rstTmpMovimiento.Delete
         Accion = Add
         HabilitarBotones
@@ -1402,7 +1492,7 @@ Dim frm As New frmBrowseCat
 End Sub
 
 Private Sub cmdSave_Click()
-  Dim lbok As Boolean
+  Dim lbOk As Boolean
     'On Error GoTo errores
     
     If rstTmpMovimiento.RecordCount > 0 Then
@@ -1449,7 +1539,7 @@ Private Sub cmdSave_Click()
 '            lblProgress.Refresh
 '          '----------- Progress bar
           If (gTrans = True) Then
-            lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
+            lbOk = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
        
           
          ' lblNoTra.Caption = ""
@@ -1483,16 +1573,16 @@ Private Sub cmdSave_Click()
       gConet.RollbackTrans
       gBeginTransNoEnd = False
     End If
-    lbok = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
+    lbOk = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
     'InicializaFormulario
 
 End Sub
 
 Private Function invSaveCabeceraTransaccion() As String
   
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     On Error GoTo errores
-    lbok = False
+    lbOk = False
     Dim sDocumento As String
     Dim rst As ADODB.Recordset
 
@@ -1555,7 +1645,7 @@ Private Sub ActivarAccionesByTransacciones()
         sPaquete = dicValue("Transaccion")
         iFactor = CInt(dicValue("Factor"))
     Else
-        lbok = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
+        lbOk = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
     End If
     
     '    1   COM Compra  E
@@ -1739,9 +1829,9 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     'On Error GoTo error
-    lbok = True
+    lbOk = True
       GSSQL = "SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion"
     
       GSSQL = GSSQL & " FROM " & " dbo.invLOTE " 'Constuye la sentencia SQL
@@ -1750,7 +1840,7 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
       rst.Open GSSQL, , adOpenKeyset, adLockOptimistic
     
     If (rst.BOF And rst.EOF) Then  'Si no es válido
-        lbok = False  'Indica que no es válido
+        lbOk = False  'Indica que no es válido
     End If
 End Sub
 
@@ -1788,13 +1878,13 @@ Private Sub txtBodegaOrigen_LostFocus()
 End Sub
 
 Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
- Dim lbok As Boolean
+ Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If txtCantidad.Text <> "" Then
         
             If Not Val_TextboxNum(txtCantidad) Then
-              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCantidad.SetFocus
               Exit Sub
             End If
@@ -1803,7 +1893,7 @@ Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbok = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
+            lbOk = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1820,13 +1910,13 @@ Private Sub txtConcepto_Change()
 End Sub
 
 Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
- Dim lbok As Boolean
+ Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If Me.txtCostoDolar.Text <> "" Then
         
             If Not Val_TextboxNum(txtCostoDolar) Then
-              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCostoDolar.SetFocus
               Exit Sub
             End If
@@ -1835,7 +1925,7 @@ Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbok = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
+            lbOk = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1848,10 +1938,10 @@ Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As Str
     sIDLote As String, sDocumento As String, sFecha As String, sIDTipo As String, STransaccion As String, _
     sNaturaleza As String, sCantidad As String, sCostoDolar As String, sCostoLocal As String, _
     sPrecioDolar As String, sPrecioLocal As String, sUserInsert As String, sUserUpdate As String) As Boolean
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
    
     
-    lbok = True
+    lbOk = True
     
       GSSQL = ""
       GSSQL = gsCompania & ".invInsertMovimientos " & sIDPaquete & "," & sIDBodega & "," & sIDProducto & "," & sIDLote & ",'" & sDocumento & "','" & sFecha & "'," & sIDTipo & ",'"
@@ -1863,10 +1953,10 @@ Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As Str
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbok = False
+          lbOk = False
         End If
     
-    invSaveDetalleTransaccion = lbok
+    invSaveDetalleTransaccion = lbOk
     Exit Function
     
 
@@ -1876,10 +1966,10 @@ End Function
 
 Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, sPaquete As Integer, sIDTipoTransaccion As String, _
     sUsuario As String) As Boolean
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
    
     
-    lbok = True
+    lbOk = True
       GSSQL = ""
       GSSQL = gsCompania & ".invUpdateMasterExistenciaBodega '" & sDocumento & "'," & sPaquete & "," & sIDTipoTransaccion & ",'" & sUsuario & "'"
         
@@ -1888,10 +1978,10 @@ Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, 
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbok = False
+          lbOk = False
         End If
     
-    invMasterAcutalizaSaldosInventarioPaquete = lbok
+    invMasterAcutalizaSaldosInventarioPaquete = lbOk
     Exit Function
     
 
@@ -1998,65 +2088,65 @@ End Function
 
 Private Sub LoadDescrTipoTransaccion(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDTipo", "vinvPaqueteTipoMovimiento", "DescrTipo")
         If sDescr <> "" Then
             txtDescrTipoTransaccion.Text = sDescr
         Else
-            lbok = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
+            lbOk = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodega(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             Me.txtDescrBodegaOrigen.Text = sDescr
         Else
-            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodegaDestino(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             txtDescrBodegaDestino.Text = sDescr
         Else
-            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrProducto(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProducto", "Descr")
         If sDescr <> "" Then
             txtDescrArticulo.Text = sDescr
         Else
-            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrLote(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbok As Boolean
+    Dim lbOk As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProdcuto", "Descr")
         If sDescr <> "" Then
             txtDescrLote.Text = sDescr
         Else
-            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
@@ -2066,7 +2156,7 @@ If KeyAscii = vbKeyReturn Then
     If txtPrecioDolar.Text <> "" Then
 
             If Not Val_TextboxNum(txtPrecioDolar) Then
-              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ADVERTENCIA, False)
+              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ADVERTENCIA, False)
               txtPrecioDolar.SetFocus
               Exit Sub
             End If
@@ -2075,14 +2165,13 @@ If KeyAscii = vbKeyReturn Then
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbok = Mensaje("Debe digitar el Precio Dolar", ICO_ERROR, False)
+            lbOk = Mensaje("Debe digitar el Precio Dolar", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
         Me.cmdAdd.SetFocus
         
     End If
-End If
 
 End Sub
 

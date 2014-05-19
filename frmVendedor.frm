@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmVendedor 
-   BackColor       =   &H00F4D5BB&
+   BackColor       =   &H00FFFFFF&
    BorderStyle     =   3  'Fixed Dialog
    ClientHeight    =   6030
    ClientLeft      =   105
@@ -20,14 +20,14 @@ Begin VB.Form frmVendedor
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
+   MDIChild        =   -1  'True
    MinButton       =   0   'False
    Picture         =   "frmVendedor.frx":0000
    ScaleHeight     =   6030
    ScaleWidth      =   9120
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame1 
-      BackColor       =   &H00F4D5BB&
+      BackColor       =   &H00FFFFFF&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -140,7 +140,7 @@ Begin VB.Form frmVendedor
       End
    End
    Begin VB.Frame Frame2 
-      BackColor       =   &H00F4D5BB&
+      BackColor       =   &H00FFFFFF&
       BorderStyle     =   0  'None
       Height          =   1575
       Left            =   150
@@ -148,6 +148,7 @@ Begin VB.Form frmVendedor
       Top             =   660
       Width           =   8775
       Begin VB.TextBox txtDescrTipo 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -165,6 +166,7 @@ Begin VB.Form frmVendedor
          Width           =   5280
       End
       Begin VB.TextBox txtTipo 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -182,6 +184,7 @@ Begin VB.Form frmVendedor
          Width           =   1080
       End
       Begin VB.TextBox txtVendedor 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -199,6 +202,7 @@ Begin VB.Form frmVendedor
          Width           =   1050
       End
       Begin VB.CommandButton cmdTipo 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   8.25
@@ -217,6 +221,7 @@ Begin VB.Form frmVendedor
          Width           =   300
       End
       Begin VB.CommandButton cmdDelModulo 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   8.25
@@ -235,7 +240,7 @@ Begin VB.Form frmVendedor
          Width           =   300
       End
       Begin VB.CheckBox chkActivo 
-         BackColor       =   &H00F4D5BB&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Activo ?"
          BeginProperty Font 
             Name            =   "Arial"
@@ -254,6 +259,7 @@ Begin VB.Form frmVendedor
          Width           =   1005
       End
       Begin VB.TextBox txtNombre 
+         Appearance      =   0  'Flat
          BeginProperty Font 
             Name            =   "Arial"
             Size            =   8.25
@@ -587,7 +593,13 @@ Private Sub cmdUndo_Click()
     HabilitarBotones
 End Sub
 
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+    MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -627,4 +639,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
+     SetupFormToolbar ("no name")
+    'Main.SubtractForm Me.Name
+    Set frmVendedor = Nothing
 End Sub

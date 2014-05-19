@@ -2,6 +2,7 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBrowseCat 
+   BackColor       =   &H00FEE3DA&
    BorderStyle     =   5  'Sizable ToolWindow
    Caption         =   "Catálogo"
    ClientHeight    =   7020
@@ -57,6 +58,7 @@ Begin VB.Form frmBrowseCat
       Width           =   645
    End
    Begin VB.Frame frmIntrod 
+      BackColor       =   &H00FEE3DA&
       Height          =   735
       Left            =   0
       TabIndex        =   6
@@ -64,6 +66,7 @@ Begin VB.Form frmBrowseCat
       Width           =   6255
       Begin VB.Label lblIntrod 
          Alignment       =   2  'Center
+         BackStyle       =   0  'Transparent
          Caption         =   $"frmBrowseCat.frx":3232
          BeginProperty Font 
             Name            =   "Microsoft Sans Serif"
@@ -591,10 +594,10 @@ Set rstClone = New ADODB.Recordset
 End Sub
 
 Public Function BrowseCatalogo(sTabla As String, sFldCod As String, sDescr As String, gsMuestraExtra As String, gsFieldExtrabrw As String, bFiltra As Boolean, sFiltro As String, Optional sOrderFld As String) As Boolean
-Dim lbok As Boolean
+Dim lbOk As Boolean
 Dim sOrden As String
 On Error GoTo error
-  lbok = True
+  lbOk = True
   If UCase(gsMuestraExtra) = "SI" Then
     GSSQL = "SELECT " & sFldCod & "," & sDescr & "," & gsFieldExtrabrw
   Else
@@ -617,14 +620,14 @@ On Error GoTo error
 
 If (gRegistrosBrw.BOF And gRegistrosBrw.EOF) Then  'Si no es válido
     gsOperacionError = "No existe ese item." 'Asigna msg de error
-    lbok = False  'Indica que no es válido
+    lbOk = False  'Indica que no es válido
 End If
 
-BrowseCatalogo = lbok
+BrowseCatalogo = lbOk
 Exit Function
 error:
-  lbok = False
-  BrowseCatalogo = lbok
+  lbOk = False
+  BrowseCatalogo = lbOk
 
 End Function
 

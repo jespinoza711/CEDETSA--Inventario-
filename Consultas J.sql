@@ -574,4 +574,6 @@ SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion
 FROM dbo.invLOTE
 WHERE (IDLote=@IDLote OR @IDLote=-1)
 
+
+
 GO 
