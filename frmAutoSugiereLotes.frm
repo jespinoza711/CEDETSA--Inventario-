@@ -1,7 +1,6 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmAutoSugiereLotes 
-   BackColor       =   &H00FEE3DA&
    Caption         =   "v"
    ClientHeight    =   7290
    ClientLeft      =   60
@@ -64,7 +63,6 @@ Begin VB.Form frmAutoSugiereLotes
       Width           =   1155
    End
    Begin VB.Frame Frame1 
-      BackColor       =   &H00FEE3DA&
       Height          =   1665
       Left            =   240
       TabIndex        =   11
@@ -366,7 +364,7 @@ Public gsFormCaption As String
 Public gsTitle As String
 
 Public gsIDBodega As Integer
-Public gsIdProducto As Integer
+Public gsIDProducto As Integer
 Public gsDescrProducto As String
 Public gsDescrBodega As String
 Public gdCantidad As Double
@@ -380,46 +378,47 @@ Private Sub HabilitarBotones()
             cmdEliminar.Enabled = False
             cmdAdd.Enabled = False
             cmdEditItem.Enabled = False
-            cmdAceptar.Enabled = False
             cmdCancelar.Enabled = False
+            cmdAceptar.Enabled = False
         Case TypAccion.View
             cmdSave.Enabled = False
             cmdUndo.Enabled = False
             cmdEliminar.Enabled = True
             cmdAdd.Enabled = True
             cmdEditItem.Enabled = True
-            cmdAceptar.Enabled = True
             cmdCancelar.Enabled = True
+            cmdAceptar.Enabled = True
+            
     End Select
 End Sub
 
 Public Sub HabilitarControles()
     Select Case Accion
         Case TypAccion.Add
-            txtIDLote.Enabled = True
+            txtIdLote.Enabled = True
             txtLoteInterno.Enabled = True
             txtCantidad.Enabled = True
             cmdLote.Enabled = True
             cmdClear.Enabled = True
             txtCantidad.Text = ""
-            txtIDLote.Text = ""
+            txtIdLote.Text = ""
             txtLoteInterno.Text = ""
-            fmtTextbox txtIDLote, "R"
+            fmtTextbox txtIdLote, "R"
             fmtTextbox txtLoteInterno, "O"
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
-            txtIDLote.Enabled = True
+            txtIdLote.Enabled = True
             txtLoteInterno.Enabled = True
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIDLote, "R"
+            fmtTextbox txtIdLote, "R"
             fmtTextbox txtLoteInterno, "R"
             txtCantidad.Enabled = True
             Me.TDBG.Enabled = False
         Case TypAccion.View
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIDLote, "R"
+            fmtTextbox txtIdLote, "R"
             fmtTextbox txtCantidad, "O"
             fmtTextbox txtLoteInterno, "R"
             Me.TDBG.Enabled = True
@@ -445,7 +444,7 @@ Private Sub cmdCancelar_Click()
 End Sub
 
 Private Sub cmdClear_Click()
-    Me.txtIDLote.Text = ""
+    Me.txtIdLote.Text = ""
     Me.txtLoteInterno.Text = ""
 End Sub
 
@@ -458,21 +457,21 @@ Private Sub cmdEditItem_Click()
 End Sub
 Private Sub GetDataFromGridToControl()
     If Not (grst.EOF And grst.BOF) Then
-        txtIDLote.Text = grst("IDLote").value
+        txtIdLote.Text = grst("IDLote").value
         txtLoteInterno.Text = grst("LoteInterno").value
         txtCantidad.Text = grst("Cantidad").value
     Else
-        txtIDLote.Text = ""
+        txtIdLote.Text = ""
         txtLoteInterno.Text = ""
         txtCantidad.Text = ""
     End If
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     
-    lbOk = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
-    If (lbOk) Then
+    lbok = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
+    If (lbok) Then
         grst.Delete
         Accion = View
         HabilitarBotones
@@ -486,31 +485,31 @@ Private Sub ValidarCantidadLotes()
     CantidadEdicion = IIf(Accion = View, 0, Val(txtCantidad.Text))
     CantLotes = GetTotalLotes(grst)
    If (CantLotes + CantidadEdicion) > Me.gdCantidad Then
-        lbOk = Mensaje("La Cantidad del detalle de Lote no puede mayor a la cantidad total del producto", ICO_ERROR, False)
+        lbok = Mensaje("La Cantidad del detalle de Lote no puede mayor a la cantidad total del producto", ICO_ERROR, False)
         Exit Sub
     ElseIf (CantLotes + CantidadEdicion) < Me.gdCantidad Then
-        lbOk = Mensaje("La Cantidad del detalle de Lote no puede menor a la cantidad total del producto", ICO_ERROR, False)
+        lbok = Mensaje("La Cantidad del detalle de Lote no puede menor a la cantidad total del producto", ICO_ERROR, False)
         Exit Sub
     End If
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
-        If txtIDLote.Text = "" Then
-            lbOk = Mensaje("El Lote no puede estar en Blanco", ICO_ERROR, False)
+        If txtIdLote.Text = "" Then
+            lbok = Mensaje("El Lote no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
 
         If txtCantidad.Text = "" Then
-            lbOk = Mensaje("La Cantidad no puede estar en Blanco", ICO_ERROR, False)
+            lbok = Mensaje("La Cantidad no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
         If txtLoteInterno.Text = "" Then
-            lbOk = Mensaje("La Descripción del Lote no puede estar en blanco", ICO_ERROR, False)
+            lbok = Mensaje("La Descripción del Lote no puede estar en blanco", ICO_ERROR, False)
             Exit Sub
         End If
 
@@ -522,9 +521,9 @@ Private Sub cmdSave_Click()
     
     
     If (Accion = Add) Then
-          If ExiteRstKey(grst, "IDLote=" & Me.txtIDLote.Text & " AND IDPRODUCTO=" & Me.gsIdProducto & _
+          If ExiteRstKey(grst, "IDLote=" & Me.txtIdLote.Text & " AND IDPRODUCTO=" & Me.gsIDProducto & _
                                         " AND IdBodega=" & gsIDBodega) Then
-            lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+            lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
 
             Exit Sub
           End If
@@ -532,11 +531,11 @@ Private Sub cmdSave_Click()
           ' Carga los datos del detalle de transacciones para ser grabados a la bd
         
         Dim datosLote As New Dictionary
-        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIDLote.Text, datosLote
+        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIdLote.Text, datosLote
         grst.AddNew
         grst!IdBodega = Me.gsIDBodega
-        grst!IdProducto = Me.gsIdProducto
-        grst!IdLote = Me.txtIDLote.Text
+        grst!IdProducto = Me.gsIDProducto
+        grst!IDLote = Me.txtIdLote.Text
         grst!Cantidad = Me.txtCantidad.Text
         grst!FechaVencimiento = datosLote("FechaVencimiento")
         grst!FechaFabricacion = datosLote("FechaFabricacion")
@@ -548,8 +547,8 @@ Private Sub cmdSave_Click()
         grst.MoveFirst
     ElseIf (Accion = Edit) Then
       grst!IdBodega = gsIDBodega
-      grst!IdProducto = gsIdProducto
-      grst!IdLote = Me.txtIDLote.Text
+      grst!IdProducto = gsIDProducto
+      grst!IDLote = Me.txtIdLote.Text
       grst!Cantidad = Me.txtCantidad.Text
       grst.Update
     End If
@@ -578,10 +577,10 @@ Private Sub cmdLote_Click()
     frm.gbTypeCodeStr = False
     frm.gsDescrbrw = "LoteInterno"
     frm.gbFiltra = True
-    frm.gsFiltro = " IdProducto=" & gsIdProducto & " and Existencia>0"
+    frm.gsFiltro = " IdProducto=" & gsIDProducto & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-      Me.txtIDLote.Text = frm.gsCodigobrw
+      Me.txtIdLote.Text = frm.gsCodigobrw
       
     End If
     
@@ -599,6 +598,7 @@ Private Sub cmdUndo_Click()
 End Sub
 
 Private Sub Form_Load()
+Dim dTotalExistenciaLote As Double
     Set grst = New ADODB.Recordset
     If grst.State = adStateOpen Then grst.Close
     grst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -610,7 +610,7 @@ Private Sub Form_Load()
     
     Caption = gsFormCaption
     lbFormCaption = gsTitle
-    txtProducto.Text = gsIdProducto
+    txtProducto.Text = gsIDProducto
     txtDescrProducto.Text = gsDescrProducto
     Me.txtIdBodega.Text = gsIDBodega
     Me.txtDescrBodega.Text = Me.gsDescrBodega
@@ -619,9 +619,11 @@ Private Sub Form_Load()
     HabilitarBotones
     HabilitarControles
     cargaGrid
-    If GetTotalLotes(grst) < gdCantidad Then
-        lbOk = Mensaje("No hay suficiente existencias para satisfacer el producto", ICO_ERROR, False)
+    dTotalExistenciaLote = GetTotalLotes(grst)
+    If dTotalExistenciaLote < gdCantidad Then
+        lbok = Mensaje("No hay suficiente existencias para satisfacer el producto, solamente dispone de " & Str(dTotalExistenciaLote), ICO_ERROR, False)
         Set grst = Nothing
+        Unload Me
     End If
 End Sub
     
@@ -633,7 +635,7 @@ Private Sub cargaGrid()
     grst.CursorLocation = adUseClient ' Cursor local al cliente
     grst.LockType = adLockOptimistic
     If grst.State = adStateOpen Then grst.Close
-    Set grst = invGetSugeridoLote(gsIDBodega, gsIdProducto, gdCantidad)
+    Set grst = invGetSugeridoLote(gsIDBodega, gsIDProducto, gdCantidad)
     If Not (grst.EOF And grst.BOF) Then
       Set TDBG.DataSource = grst
       TDBG.Refresh
@@ -649,15 +651,14 @@ Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-    If (Accion = Edit) Or (Accion = Add) Then
+    If Accion = Edit Or Accion = Add Then
         Cancel = True
         Exit Sub
     End If
-
     If Not (grst Is Nothing) Then Set grst = Nothing
 End Sub
 
-Private Function GetTotalLotes(grst As ADODB.Recordset) As Double
+Private Function GetTotalLotes(grst As Recordset) As Double
 
     Dim dResult As Double
     dResult = 0
@@ -674,19 +675,23 @@ Private Function GetTotalLotes(grst As ADODB.Recordset) As Double
     GetTotalLotes = dResult
 End Function
 
+Public Function getTotalSugeridoporLote() As Double
+Dim rst As New ADODB.Recordset
+Dim dResultado As Double
+rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
+rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+rst.CursorLocation = adUseClient ' Cursor local al cliente
+rst.LockType = adLockOptimistic
+If rst.State = adStateOpen Then rst.Close
+Set rst = invGetSugeridoLote(gsIDBodega, gsIDProducto, gdCantidad)
+dResultado = 0
+If Not (rst.EOF And rst.BOF) Then
+    dResultado = GetTotalLotes(rst)
+End If
 
+getTotalSugeridoporLote = dResultado
 
-Public Function GetTotalSugeridoLotes() As Double
-    Dim rst As New ADODB.Recordset
-    Dim dTotalSugeridoLotes
-    dTotalSugeridoLotes = 0
-    If rst.State = adStateOpen Then rst.Close
-    rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
-    rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
-    rst.CursorLocation = adUseClient ' Cursor local al cliente
-    rst.LockType = adLockOptimistic
-    If rst.State = adStateOpen Then rst.Close
-    Set rst = invGetSugeridoLote(gsIDBodega, gsIdProducto, gdCantidad)
-    dTotalSugeridoLotes = GetTotalLotes(rst)
-    GetTotalSugeridoLotes = dTotalSugeridoLotes
 End Function
+
+
+

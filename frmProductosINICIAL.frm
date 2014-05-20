@@ -163,7 +163,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61472769
+            Format          =   61997057
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -185,7 +185,7 @@ Begin VB.Form frmProductosINICIAL
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61472769
+            Format          =   61997057
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 

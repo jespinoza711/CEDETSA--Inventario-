@@ -167,10 +167,10 @@ Dim frm As New frmCatalogos
         Case "ID_SUPERVISORES"
 '            If UserMayAccess(gsUSUARIO, A_ID_SUPERVISOR, C_MODULO) Then
 '                frm.gsCatalogoName = "SUPERVISOR"
-            Dim oFrmBodega As New frmBodega
-            oFrmBodega.gsFormCaption = "Bodega"
-            oFrmBodega.gsTitle = "Catálogo de Bodegas"
-            oFrmBodega.Show
+            Dim ofrmBodega As New frmBodega
+            ofrmBodega.gsFormCaption = "Bodega"
+            ofrmBodega.gsTitle = "Catálogo de Bodegas"
+            ofrmBodega.Show
 '            Else
 '                lbok = Mensaje("Ud no tiene privilegios para entrar a esta opcion", ICO_ADVERTENCIA, False)
 '            End If

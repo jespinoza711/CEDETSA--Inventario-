@@ -7,7 +7,7 @@ Begin VB.MDIForm MDIMain
    ClientHeight    =   6870
    ClientLeft      =   60
    ClientTop       =   750
-   ClientWidth     =   13485
+   ClientWidth     =   16080
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
@@ -17,8 +17,8 @@ Begin VB.MDIForm MDIMain
       Left            =   0
       TabIndex        =   9
       Top             =   6585
-      Width           =   13485
-      _ExtentX        =   23786
+      Width           =   16080
+      _ExtentX        =   28363
       _ExtentY        =   503
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
@@ -45,7 +45,7 @@ Begin VB.MDIForm MDIMain
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   5794
+            Object.Width           =   10372
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   2
@@ -58,14 +58,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "18/05/2014"
+            TextSave        =   "20/05/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "22:06"
+            TextSave        =   "16:41"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -76,7 +76,6 @@ Begin VB.MDIForm MDIMain
          EndProperty
          BeginProperty Panel10 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
-            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "MAYÚS"
@@ -104,10 +103,10 @@ Begin VB.MDIForm MDIMain
       Height          =   375
       Left            =   0
       ScaleHeight     =   375
-      ScaleWidth      =   13485
+      ScaleWidth      =   16080
       TabIndex        =   8
       Top             =   6210
-      Width           =   13485
+      Width           =   16080
       Begin VB.ListBox WinList 
          Height          =   255
          ItemData        =   "MDIMain.frx":10CE
@@ -402,19 +401,19 @@ Begin VB.MDIForm MDIMain
       Height          =   765
       Left            =   0
       ScaleHeight     =   765
-      ScaleWidth      =   13485
+      ScaleWidth      =   16080
       TabIndex        =   0
       Top             =   0
-      Width           =   13485
+      Width           =   16080
       Begin MSComctlLib.Toolbar tbMenu 
          Height          =   780
          Left            =   0
          TabIndex        =   1
          Top             =   0
-         Width           =   12120
-         _ExtentX        =   21378
+         Width           =   14970
+         _ExtentX        =   26405
          _ExtentY        =   1376
-         ButtonWidth     =   1746
+         ButtonWidth     =   2143
          ButtonHeight    =   1376
          AllowCustomize  =   0   'False
          Wrappable       =   0   'False
@@ -422,109 +421,126 @@ Begin VB.MDIForm MDIMain
          ImageList       =   "itb32x"
          _Version        =   393216
          BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-            NumButtons      =   20
+            NumButtons      =   23
             BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Left"
-               Key             =   "Left"
+               Caption         =   "Izquierda"
+               Key             =   "Izquierda"
+               ImageIndex      =   23
             EndProperty
             BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Right"
-               Key             =   "Right"
+               Caption         =   "Derecha"
+               Key             =   "Derecha"
+               ImageIndex      =   24
             EndProperty
             BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               ImageIndex      =   14
                Style           =   3
             EndProperty
             BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Adjust"
-               Key             =   "Adjust"
-               ImageIndex      =   10
+               Caption         =   "Ajustar"
+               Key             =   "Ajustar"
+               ImageIndex      =   14
             EndProperty
             BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Check All"
-               Key             =   "Check All"
-               ImageIndex      =   16
+               Caption         =   "Chequear Todo"
+               Key             =   "Chequear Todo"
+               ImageIndex      =   20
             EndProperty
             BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Uncheck All"
-               Key             =   "Uncheck All"
-               ImageIndex      =   17
+               Caption         =   "Des Chequear"
+               Key             =   "Des Chequear"
+               ImageIndex      =   21
             EndProperty
             BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "New"
-               Key             =   "New"
+               Caption         =   "Filtro"
+               Key             =   "Filtro"
+               ImageIndex      =   9
+            EndProperty
+            BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Nuevo"
+               Key             =   "Nuevo"
                Object.ToolTipText     =   "Ctrl+F2"
                ImageIndex      =   1
             EndProperty
-            BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "View"
-               Key             =   "View"
-               ImageIndex      =   14
-            EndProperty
             BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Edit"
-               Key             =   "Edit"
+               Caption         =   "Ver"
+               Key             =   "Ver"
+               ImageIndex      =   18
+            EndProperty
+            BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Editar"
+               Key             =   "Editar"
                Object.ToolTipText     =   "Ctrl+F3"
                ImageIndex      =   2
             EndProperty
-            BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Search"
-               Key             =   "Search"
+            BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Eliminar"
+               Key             =   "Eliminar"
+               ImageIndex      =   4
+            EndProperty
+            BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Guardar"
+               Key             =   "Guardar"
+               ImageIndex      =   5
+            EndProperty
+            BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Cancelar"
+               Key             =   "Cancelar"
+               ImageIndex      =   8
+            EndProperty
+            BeginProperty Button14 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Aplicar"
+               Key             =   "Aplicar"
+               ImageIndex      =   11
+            EndProperty
+            BeginProperty Button15 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Buscar"
+               Key             =   "Buscar"
                Object.ToolTipText     =   "Ctrl+F4"
                ImageIndex      =   3
             EndProperty
-            BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Clear"
-               Key             =   "Clear"
-               ImageIndex      =   18
+            BeginProperty Button16 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Limpiar"
+               Key             =   "Limpiar"
+               ImageIndex      =   22
             EndProperty
-            BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Void"
-               Key             =   "Void"
-               ImageIndex      =   15
-            EndProperty
-            BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Delete"
-               Key             =   "Delete"
-               Object.ToolTipText     =   "Ctrl+F5"
-               ImageIndex      =   4
-            EndProperty
-            BeginProperty Button14 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Refresh"
-               Key             =   "Refresh"
+            BeginProperty Button17 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Refrescar"
+               Key             =   "Refrescar"
                Object.ToolTipText     =   "Ctrl+F6"
                ImageIndex      =   6
             EndProperty
-            BeginProperty Button15 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Save"
-               Key             =   "Save"
-               ImageIndex      =   5
-            EndProperty
-            BeginProperty Button16 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Print"
-               Key             =   "Print"
+            BeginProperty Button18 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Imprimir"
+               Key             =   "Imprimir"
                Object.ToolTipText     =   "Ctrl+F7"
                ImageIndex      =   7
             EndProperty
-            BeginProperty Button17 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Close"
-               Key             =   "Close"
-               Object.ToolTipText     =   "Ctrl+F8"
-               ImageIndex      =   8
-            EndProperty
-            BeginProperty Button18 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "User's Guide"
-               Key             =   "User's Guide"
-               ImageIndex      =   11
-            EndProperty
             BeginProperty Button19 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "About"
-               Key             =   "About"
-               ImageIndex      =   12
+               Caption         =   "Exportar"
+               Key             =   "Exportar"
+               ImageIndex      =   10
             EndProperty
             BeginProperty Button20 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Close All"
-               Key             =   "Close All"
-               ImageIndex      =   13
+               Caption         =   "Cerrar"
+               Key             =   "Cerrar"
+               Object.ToolTipText     =   "Ctrl+F8"
+               ImageIndex      =   12
+            EndProperty
+            BeginProperty Button21 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "User's Guide"
+               Key             =   "User's Guide"
+               ImageIndex      =   15
+            EndProperty
+            BeginProperty Button22 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Acerca de"
+               Key             =   "Acerca"
+               ImageIndex      =   16
+            EndProperty
+            BeginProperty Button23 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Cerrar Todo"
+               Key             =   "CerrarTodo"
+               ImageIndex      =   17
             EndProperty
          EndProperty
       End
@@ -642,7 +658,7 @@ Begin VB.MDIForm MDIMain
       MaskColor       =   12632256
       _Version        =   393216
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   20
+         NumListImages   =   24
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "MDIMain.frx":1A62A
             Key             =   "NEW"
@@ -673,54 +689,70 @@ Begin VB.MDIForm MDIMain
          EndProperty
          BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "MDIMain.frx":25C70
-            Key             =   "CLOSE"
+            Key             =   "UNDO"
          EndProperty
          BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":27602
-            Key             =   "SHORTCUTS"
+            Picture         =   "MDIMain.frx":2694A
+            Key             =   "FILTER"
          EndProperty
          BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":28F94
-            Key             =   "ADJUST"
+            Picture         =   "MDIMain.frx":26EE4
+            Key             =   "EXPORT EXCEL"
          EndProperty
          BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2A928
-            Key             =   "USERSGUIDE"
+            Picture         =   "MDIMain.frx":27B5F
+            Key             =   "APLICAR"
          EndProperty
          BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2B604
-            Key             =   "ABOUT"
+            Picture         =   "MDIMain.frx":28839
+            Key             =   "CLOSE"
          EndProperty
          BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2BEE4
-            Key             =   ""
+            Picture         =   "MDIMain.frx":2A1CB
+            Key             =   "SHORTCUTS"
          EndProperty
          BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2CBC0
-            Key             =   "VIEW"
+            Picture         =   "MDIMain.frx":2BB5D
+            Key             =   "ADJUST"
          EndProperty
          BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2D89C
-            Key             =   "VOID"
+            Picture         =   "MDIMain.frx":2D4F1
+            Key             =   "USERSGUIDE"
          EndProperty
          BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2E578
-            Key             =   "CHECKALL"
+            Picture         =   "MDIMain.frx":2E1CD
+            Key             =   "ABOUT"
          EndProperty
          BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2F254
-            Key             =   "UNCHECKALL"
+            Picture         =   "MDIMain.frx":2EAAD
+            Key             =   ""
          EndProperty
          BeginProperty ListImage18 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2FF30
-            Key             =   "CLEAR"
+            Picture         =   "MDIMain.frx":2F789
+            Key             =   "VIEW"
          EndProperty
          BeginProperty ListImage19 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":3080C
-            Key             =   "LEFT"
+            Picture         =   "MDIMain.frx":30465
+            Key             =   "VOID"
          EndProperty
          BeginProperty ListImage20 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":30C5E
+            Picture         =   "MDIMain.frx":31141
+            Key             =   "CHECKALL"
+         EndProperty
+         BeginProperty ListImage21 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":31E1D
+            Key             =   "UNCHECKALL"
+         EndProperty
+         BeginProperty ListImage22 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":32AF9
+            Key             =   "CLEAR"
+         EndProperty
+         BeginProperty ListImage23 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":333D5
+            Key             =   "LEFT"
+         EndProperty
+         BeginProperty ListImage24 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":33827
             Key             =   "RIGHT"
          EndProperty
       EndProperty
@@ -814,9 +846,8 @@ Private Sub lvWin_Click()
             ofrmVendedor.gsTitle = "VENDEDORES"
             LoadForm ofrmVendedor
         Case "frmSupplier":
-            Dim ofrmVendedor2 As New frmVendedor
-            ofrmVendedor2.gsFormCaption = "Catalogo de Vendedores"
-            ofrmVendedor2.gsTitle = "VENDEDORES"
+            Dim ofrmVendedor2 As New frmCatalogos
+            
             LoadForm ofrmVendedor2
        '----------------------------------------------
                      
@@ -978,27 +1009,22 @@ End Sub
 
 
 Private Sub tbMenu_ButtonClick(ByVal Button As MSComctlLib.Button)
-    
-    'If Button.Key = "Shortcuts" Then
-        'frmShortcuts.show
-        'frmShortcuts.WindowState = vbMaximized
-        'frmShortcuts.SetFocus
-    'Else
+
     
     Select Case Button.Key
-        Case "Left":
+        Case "Izquierda":
             Call GoLeft
             
-        Case "Right":
+        Case "Derecha":
             Call GoRight
             
-        Case "About":
+        Case "Acerca":
             Call ShowAbout
             
         Case "User's Guide":
             'Call mnuHUG_Click
             
-        Case "Close All":
+        Case "CerrarTodo":
             Call CloseAll
         
         

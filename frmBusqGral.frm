@@ -1,7 +1,6 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBusqGral 
-   BackColor       =   &H00FEE3DA&
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Búsqueda"
    ClientHeight    =   3150
@@ -17,7 +16,6 @@ Begin VB.Form frmBusqGral
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame frmIntrod 
-      BackColor       =   &H00FEE3DA&
       Height          =   615
       Left            =   120
       TabIndex        =   7
@@ -78,7 +76,6 @@ Begin VB.Form frmBusqGral
       Width           =   1455
    End
    Begin VB.Frame Frame1 
-      BackColor       =   &H00FEE3DA&
       Height          =   1335
       Left            =   240
       TabIndex        =   4

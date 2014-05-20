@@ -9,7 +9,7 @@ Begin VB.Form frmRegistrarTransaccion
    ClientHeight    =   8445
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   11400
+   ClientWidth     =   15750
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -23,7 +23,7 @@ Begin VB.Form frmRegistrarTransaccion
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    ScaleHeight     =   8445
-   ScaleWidth      =   11400
+   ScaleWidth      =   15750
    StartUpPosition =   2  'CenterScreen
    Begin ActiveTabs.SSActiveTabs sTabTransaccion 
       Height          =   7005
@@ -670,7 +670,6 @@ Begin VB.Form frmRegistrarTransaccion
             _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
-            Enabled         =   -1  'True
             ScrollBars      =   2
             TextRTF         =   $"frmRegistrarTransaccion.frx":15C54
          End
@@ -692,7 +691,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61472769
+            Format          =   62062593
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
@@ -1163,9 +1162,9 @@ Private Sub cmdAdd_Click()
    
   
     
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If Not ValCtrls Then
-        lbOk = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
+        lbok = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
         Exit Sub
     End If
     
@@ -1191,7 +1190,7 @@ Private Sub cmdAdd_Click()
             frmAutosugiere.gsDescrBodega = Me.txtDescrBodegaOrigen.Text
             dTotalSugeridoLotes = frmAutosugiere.GetTotalSugeridoLotes()
             If (dTotalSugeridoLotes < CDbl(Me.txtCantidad.Text)) Then
-                lbOk = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
+                lbok = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
                 Set rstLS = Nothing
                 Set frmAutosugiere = Nothing
             Else
@@ -1206,7 +1205,7 @@ Private Sub cmdAdd_Click()
                 While Not rstLS.EOF
                     If ExiteRstKey(rstTmpMovimiento, "BODEGAOrigen=" & Me.txtBodegaOrigen.Text & " AND BodegaDestino =" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & " AND IDPRODUCTO=" & Me.txtArticulo.Text & _
                                                 " AND IDLOTE=" & rstLS!IdLote & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-                        lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+                        lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
                         Exit Sub
                     End If
                     Set rstLote = New ADODB.Recordset
@@ -1244,7 +1243,7 @@ Private Sub cmdAdd_Click()
                 
             If ExiteRstKey(rstTmpMovimiento, "BODEGAORigen=" & Me.txtBodegaOrigen.Text & " and  BodegaDestino=" & IIf(Me.txtBodegaDestino.Text = "", -1, Me.txtBodegaDestino.Text) & "  AND IDPRODUCTO=" & Me.txtArticulo.Text & _
                                           " AND IDLOTE=" & Me.txtLote.Text & " AND IDTIPO=" & Me.txtTipoTransaccion.Text) Then
-              lbOk = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
+              lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
         
               Exit Sub
             End If
@@ -1456,10 +1455,10 @@ Private Sub GetDataFromGridToControl() 'EDITAR
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     
-    lbOk = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
-    If (lbOk) Then
+    lbok = Mensaje("Esta seguro que desea eliminar el registro seleccionado?", ICO_INFORMACION, True)
+    If (lbok) Then
         rstTmpMovimiento.Delete
         Accion = Add
         HabilitarBotones
@@ -1492,7 +1491,7 @@ Dim frm As New frmBrowseCat
 End Sub
 
 Private Sub cmdSave_Click()
-  Dim lbOk As Boolean
+  Dim lbok As Boolean
     'On Error GoTo errores
     
     If rstTmpMovimiento.RecordCount > 0 Then
@@ -1539,7 +1538,7 @@ Private Sub cmdSave_Click()
 '            lblProgress.Refresh
 '          '----------- Progress bar
           If (gTrans = True) Then
-            lbOk = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
+            lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
        
           
          ' lblNoTra.Caption = ""
@@ -1573,16 +1572,16 @@ Private Sub cmdSave_Click()
       gConet.RollbackTrans
       gBeginTransNoEnd = False
     End If
-    lbOk = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
+    lbok = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
     'InicializaFormulario
 
 End Sub
 
 Private Function invSaveCabeceraTransaccion() As String
   
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     On Error GoTo errores
-    lbOk = False
+    lbok = False
     Dim sDocumento As String
     Dim rst As ADODB.Recordset
 
@@ -1645,7 +1644,7 @@ Private Sub ActivarAccionesByTransacciones()
         sPaquete = dicValue("Transaccion")
         iFactor = CInt(dicValue("Factor"))
     Else
-        lbOk = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
+        lbok = Mensaje("Ha ocurrido un error trantando de obtener información de la transacción", ICO_ERROR, False)
     End If
     
     '    1   COM Compra  E
@@ -1829,9 +1828,9 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     'On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = "SELECT IDLote, LoteInterno, LoteProveedor, FechaVencimiento, FechaFabricacion"
     
       GSSQL = GSSQL & " FROM " & " dbo.invLOTE " 'Constuye la sentencia SQL
@@ -1840,7 +1839,7 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
       rst.Open GSSQL, , adOpenKeyset, adLockOptimistic
     
     If (rst.BOF And rst.EOF) Then  'Si no es válido
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
     End If
 End Sub
 
@@ -1878,13 +1877,13 @@ Private Sub txtBodegaOrigen_LostFocus()
 End Sub
 
 Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
- Dim lbOk As Boolean
+ Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If txtCantidad.Text <> "" Then
         
             If Not Val_TextboxNum(txtCantidad) Then
-              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCantidad.SetFocus
               Exit Sub
             End If
@@ -1893,7 +1892,7 @@ Private Sub txtCantidad_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbOk = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
+            lbok = Mensaje("Debe digitar la Cantidad", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1910,13 +1909,13 @@ Private Sub txtConcepto_Change()
 End Sub
 
 Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
- Dim lbOk As Boolean
+ Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
     
         If Me.txtCostoDolar.Text <> "" Then
         
             If Not Val_TextboxNum(txtCostoDolar) Then
-              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ERROR, False)
               txtCostoDolar.SetFocus
               Exit Sub
             End If
@@ -1925,7 +1924,7 @@ Private Sub txtCostoDolar_KeyPress(KeyAscii As Integer)
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbOk = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
+            lbok = Mensaje("Debe digitar el Costo Dolar", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If
@@ -1938,10 +1937,10 @@ Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As Str
     sIDLote As String, sDocumento As String, sFecha As String, sIDTipo As String, STransaccion As String, _
     sNaturaleza As String, sCantidad As String, sCostoDolar As String, sCostoLocal As String, _
     sPrecioDolar As String, sPrecioLocal As String, sUserInsert As String, sUserUpdate As String) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
    
     
-    lbOk = True
+    lbok = True
     
       GSSQL = ""
       GSSQL = gsCompania & ".invInsertMovimientos " & sIDPaquete & "," & sIDBodega & "," & sIDProducto & "," & sIDLote & ",'" & sDocumento & "','" & sFecha & "'," & sIDTipo & ",'"
@@ -1953,10 +1952,10 @@ Public Function invSaveDetalleTransaccion(sIDPaquete As String, sIDBodega As Str
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbOk = False
+          lbok = False
         End If
     
-    invSaveDetalleTransaccion = lbOk
+    invSaveDetalleTransaccion = lbok
     Exit Function
     
 
@@ -1966,10 +1965,10 @@ End Function
 
 Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, sPaquete As Integer, sIDTipoTransaccion As String, _
     sUsuario As String) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
    
     
-    lbOk = True
+    lbok = True
       GSSQL = ""
       GSSQL = gsCompania & ".invUpdateMasterExistenciaBodega '" & sDocumento & "'," & sPaquete & "," & sIDTipoTransaccion & ",'" & sUsuario & "'"
         
@@ -1978,10 +1977,10 @@ Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, 
         If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
           'gsOperacionError = "Eliminando el Beneficiado. " & vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf & err.Description
           SetMsgError "Ocurrió un error insertando la transacción . ", err
-          lbOk = False
+          lbok = False
         End If
     
-    invMasterAcutalizaSaldosInventarioPaquete = lbOk
+    invMasterAcutalizaSaldosInventarioPaquete = lbok
     Exit Function
     
 
@@ -2088,65 +2087,65 @@ End Function
 
 Private Sub LoadDescrTipoTransaccion(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDTipo", "vinvPaqueteTipoMovimiento", "DescrTipo")
         If sDescr <> "" Then
             txtDescrTipoTransaccion.Text = sDescr
         Else
-            lbOk = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La transacción no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodega(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             Me.txtDescrBodegaOrigen.Text = sDescr
         Else
-            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrBodegaDestino(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDBodega", "invBodega", "Descr")
         If sDescr <> "" Then
             txtDescrBodegaDestino.Text = sDescr
         Else
-            lbOk = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("La Bodega no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrProducto(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProducto", "Descr")
         If sDescr <> "" Then
             txtDescrArticulo.Text = sDescr
         Else
-            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
 
 Private Sub LoadDescrLote(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If KeyAscii = vbKeyReturn Then
         sDescr = getDescrCatalogo(txtCaja, "IDProducto", "invProdcuto", "Descr")
         If sDescr <> "" Then
             txtDescrLote.Text = sDescr
         Else
-            lbOk = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
+            lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
 End Sub
@@ -2156,7 +2155,7 @@ If KeyAscii = vbKeyReturn Then
     If txtPrecioDolar.Text <> "" Then
 
             If Not Val_TextboxNum(txtPrecioDolar) Then
-              lbOk = Mensaje("Digite un valor correcto por favor ", ICO_ADVERTENCIA, False)
+              lbok = Mensaje("Digite un valor correcto por favor ", ICO_ADVERTENCIA, False)
               txtPrecioDolar.SetFocus
               Exit Sub
             End If
@@ -2165,7 +2164,7 @@ If KeyAscii = vbKeyReturn Then
              ' txtTotal.Text = Format(txtCantidad.Text * txtCosto.Text, "###,###,##0.#0")
          
         Else
-            lbOk = Mensaje("Debe digitar el Precio Dolar", ICO_ERROR, False)
+            lbok = Mensaje("Debe digitar el Precio Dolar", ICO_ERROR, False)
            ' txtCosto.Text = ""
             Exit Sub
         End If

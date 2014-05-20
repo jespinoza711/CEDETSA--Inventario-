@@ -8,7 +8,7 @@ Begin VB.Form frmProductos
    ClientHeight    =   9150
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   17085
+   ClientWidth     =   16080
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -22,7 +22,7 @@ Begin VB.Form frmProductos
    MDIChild        =   -1  'True
    Picture         =   "frmProductos.frx":0000
    ScaleHeight     =   9150
-   ScaleWidth      =   17085
+   ScaleWidth      =   16080
    WindowState     =   2  'Maximized
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
@@ -30,8 +30,8 @@ Begin VB.Form frmProductos
       TabIndex        =   99
       Top             =   750
       Width           =   17925
-      _ExtentX        =   31618
-      _ExtentY        =   53
+      _extentx        =   31618
+      _extenty        =   53
    End
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -42,10 +42,10 @@ Begin VB.Form frmProductos
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   17085
+      ScaleWidth      =   16080
       TabIndex        =   96
       Top             =   0
-      Width           =   17085
+      Width           =   16080
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -198,13 +198,13 @@ Begin VB.Form frmProductos
       Width           =   555
    End
    Begin MSComctlLib.ListView ListView1 
-      Height          =   6885
+      Height          =   7275
       Left            =   120
       TabIndex        =   64
-      Top             =   1500
+      Top             =   1350
       Width           =   3765
       _ExtentX        =   6641
-      _ExtentY        =   12144
+      _ExtentY        =   12832
       LabelWrap       =   -1  'True
       HideSelection   =   -1  'True
       _Version        =   393217
@@ -275,13 +275,13 @@ Begin VB.Form frmProductos
       Width           =   1095
    End
    Begin ActiveTabs.SSActiveTabs SSActiveTabs1 
-      Height          =   6885
+      Height          =   7275
       Left            =   4035
       TabIndex        =   0
-      Top             =   1485
+      Top             =   1365
       Width           =   12780
       _ExtentX        =   22543
-      _ExtentY        =   12144
+      _ExtentY        =   12832
       _Version        =   131083
       TabCount        =   3
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -311,15 +311,16 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      TagVariant      =   ""
       Tabs            =   "frmProductos.frx":682E
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
-         Height          =   6495
+         Height          =   6885
          Left            =   -99969
          TabIndex        =   1
          Top             =   360
          Width           =   12720
          _ExtentX        =   22437
-         _ExtentY        =   11456
+         _ExtentY        =   12144
          _Version        =   131083
          TabGuid         =   "frmProductos.frx":68FF
          Begin VB.CommandButton Command1 
@@ -498,7 +499,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61472769
+            Format          =   61407233
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,7 +522,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61472769
+            Format          =   61407233
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -606,13 +607,13 @@ Begin VB.Form frmProductos
          End
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
-         Height          =   6495
+         Height          =   6885
          Left            =   -99969
          TabIndex        =   18
          Top             =   360
          Width           =   12720
          _ExtentX        =   22437
-         _ExtentY        =   11456
+         _ExtentY        =   12144
          _Version        =   131083
          TabGuid         =   "frmProductos.frx":E2CF
          Begin VB.CommandButton cmdDelBodega 
@@ -731,14 +732,14 @@ Begin VB.Form frmProductos
          End
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
-         Height          =   6495
+         Height          =   6885
          Index           =   0
          Left            =   30
          TabIndex        =   26
          Top             =   360
          Width           =   12720
          _ExtentX        =   22437
-         _ExtentY        =   11456
+         _ExtentY        =   12144
          _Version        =   131083
          TabGuid         =   "frmProductos.frx":12C9E
          Begin VB.Frame Frame1 
@@ -751,11 +752,153 @@ Begin VB.Form frmProductos
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   2895
+            ForeColor       =   &H00404040&
+            Height          =   3405
             Left            =   210
             TabIndex        =   65
             Top             =   3450
             Width           =   12345
+            Begin VB.Frame Frame4 
+               Caption         =   "Bonificación del Proveedor "
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H00404040&
+               Height          =   735
+               Left            =   6150
+               TabIndex        =   112
+               Top             =   2580
+               Width           =   5415
+               Begin VB.TextBox txtCOBonifica 
+                  BeginProperty Font 
+                     Name            =   "MS Sans Serif"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  ForeColor       =   &H002F2F2F&
+                  Height          =   285
+                  Left            =   3960
+                  TabIndex        =   114
+                  Top             =   330
+                  Width           =   1095
+               End
+               Begin VB.TextBox txtCOPorCada 
+                  BeginProperty Font 
+                     Name            =   "MS Sans Serif"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  ForeColor       =   &H002F2F2F&
+                  Height          =   285
+                  Left            =   1440
+                  TabIndex        =   113
+                  Top             =   300
+                  Width           =   1095
+               End
+               Begin VB.Label Label10 
+                  Caption         =   "Bonifica :"
+                  BeginProperty Font 
+                     Name            =   "MS Sans Serif"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  ForeColor       =   &H002F2F2F&
+                  Height          =   255
+                  Left            =   3000
+                  TabIndex        =   116
+                  Top             =   360
+                  Width           =   975
+               End
+               Begin VB.Label Label11 
+                  Caption         =   "Por Cada :"
+                  BeginProperty Font 
+                     Name            =   "MS Sans Serif"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  ForeColor       =   &H002F2F2F&
+                  Height          =   255
+                  Left            =   240
+                  TabIndex        =   115
+                  Top             =   360
+                  Width           =   1095
+               End
+            End
+            Begin VB.Frame Frame3 
+               Caption         =   "Facturación "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   8.25
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H00404040&
+               Height          =   735
+               Left            =   120
+               TabIndex        =   109
+               Top             =   2550
+               Width           =   5415
+               Begin VB.CommandButton cmdBonifica 
+                  Caption         =   "Escala de Bonificación"
+                  BeginProperty Font 
+                     Name            =   "Tahoma"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  Height          =   495
+                  Left            =   3120
+                  TabIndex        =   111
+                  Top             =   150
+                  Width           =   2175
+               End
+               Begin VB.CheckBox chkBonificaFA 
+                  Caption         =   "Bonifica en Facturación"
+                  BeginProperty Font 
+                     Name            =   "Tahoma"
+                     Size            =   8.25
+                     Charset         =   0
+                     Weight          =   700
+                     Underline       =   0   'False
+                     Italic          =   0   'False
+                     Strikethrough   =   0   'False
+                  EndProperty
+                  ForeColor       =   &H00404040&
+                  Height          =   250
+                  Left            =   360
+                  TabIndex        =   110
+                  Top             =   330
+                  Width           =   2655
+               End
+            End
             Begin VB.CheckBox chkBajaPrecioProveedor 
                Caption         =   "Se afecta el Precio con un Descuento/Alza del Proveedor?"
                BeginProperty Font 
@@ -1716,7 +1859,7 @@ Begin VB.Form frmProductos
       Height          =   195
       Left            =   4500
       TabIndex        =   101
-      Top             =   8490
+      Top             =   8730
       Width           =   3705
    End
    Begin VB.Image Image 
@@ -1724,7 +1867,7 @@ Begin VB.Form frmProductos
       Index           =   0
       Left            =   4020
       Picture         =   "frmProductos.frx":1B7BB
-      Top             =   8340
+      Top             =   8610
       Width           =   480
    End
    Begin VB.Label Label15 
@@ -1810,12 +1953,31 @@ Private Sub HabilitarBotones()
             cmdAdd.Enabled = False
             cmdEditItem.Enabled = False
         Case TypAccion.View
-            cmdSave.Enabled = False
-            cmdUndo.Enabled = False
-            cmdEliminar.Enabled = True
-            cmdAdd.Enabled = True
-            cmdEditItem.Enabled = True
+            If rst.State = adStateClosed Then
+                cmdEditItem.Enabled = False
+                cmdSave.Enabled = False
+                cmdUndo.Enabled = False
+                cmdEliminar.Enabled = False
+                cmdAdd.Enabled = True
+                HabilitarBotonesMain
+                Exit Sub
+            End If
+            If rst.RecordCount <> 0 Then
+                cmdSave.Enabled = False
+                cmdUndo.Enabled = False
+                cmdEliminar.Enabled = True
+                cmdAdd.Enabled = True
+                cmdEditItem.Enabled = True
+            Else
+                cmdAdd.Enabled = True
+                cmdEditItem.Enabled = False
+                cmdSave.Enabled = False
+                cmdUndo.Enabled = False
+                cmdEliminar.Enabled = False
+                cmdAdd.Enabled = True
+            End If
     End Select
+    HabilitarBotonesMain
 End Sub
 
 Public Sub HabilitarControles()
@@ -1874,6 +2036,15 @@ Public Sub HabilitarControles()
             txtPrecioFOBLocal.Text = "0"
             txtPrecioPublico.Enabled = True
             txtPrecioPublico.Text = "0"
+            
+            chkBonificaFA.Enabled = True
+            cmdBonifica.Enabled = False
+            
+            txtCOBonifica.Enabled = True
+            txtCOBonifica.Text = "0"
+            txtCOPorCada.Enabled = True
+            txtCOPorCada.Text = "0"
+            
             Me.cmdClasif1.Enabled = True
             Me.cmdClasif2.Enabled = True
             Me.cmdClasif3.Enabled = True
@@ -1927,6 +2098,14 @@ Public Sub HabilitarControles()
             Me.cmdProveedor.Enabled = True
             Me.SSActiveTabs1.Tabs(2).Enabled = False
             Me.SSActiveTabs1.Tabs(3).Enabled = False
+            
+            chkBonificaFA.Enabled = True
+            If chkBonificaFA.value = 1 Then
+                cmdBonifica.Enabled = True
+            Else
+                cmdBonifica.Enabled = False
+            End If
+            
             Me.TDBG.Enabled = False
         Case TypAccion.View
             txtCodigo.Enabled = False
@@ -1962,6 +2141,15 @@ Public Sub HabilitarControles()
             Me.cmdProveedor.Enabled = False
             Me.SSActiveTabs1.Tabs(2).Enabled = True
             Me.SSActiveTabs1.Tabs(3).Enabled = True
+            
+            chkBonificaFA.Enabled = False
+            If chkBonificaFA.value = 1 Then
+                cmdBonifica.Enabled = True
+            Else
+                cmdBonifica.Enabled = False
+            End If
+            cmdBonifica.Enabled = False
+            
             Me.TDBG.Enabled = True
     End Select
 End Sub
@@ -1969,19 +2157,19 @@ End Sub
 Public Sub CommandPass(ByVal srcPerformWhat As String)
     On Error GoTo err
     Select Case srcPerformWhat
-        Case "New"
+        Case "Nuevo"
             cmdAdd_Click
-        Case "Edit"
+        Case "Editar"
             cmdEditItem_Click
-        Case "Delete"
+        Case "Eliminar"
             cmdEliminar_Click
-        Case "Refresh"
-            MsgBox "Refrescar"
-        Case "Print"
+        Case "Cancelar"
+            cmdUndo_Click
+        Case "Imprimir"
             MsgBox "Imprimir"
-        Case "Close"
+        Case "Cerrar"
             Unload Me
-        Case "Save"
+        Case "Guardar"
             cmdSave_Click
     End Select
     Exit Sub
@@ -1995,6 +2183,32 @@ err:
     End If
 End Sub
 
+Private Sub HabilitarBotonesMain()
+    Select Case Accion
+        Case TypAccion.Add, TypAccion.Edit
+            MDIMain.tbMenu.Buttons(12).Enabled = True 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = True 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = False 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = False 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = False 'Editar
+        Case TypAccion.View
+            MDIMain.tbMenu.Buttons(12).Enabled = False 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = False 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = True 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = True 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = True 'Editar
+    End Select
+End Sub
+
+Private Sub cmdBonifica_Click()
+    Dim frm As New frmEscalaBonificacion
+    frm.gsFormCaption = "Escalas de Bonificación"
+    frm.gsTitle = "Escalas de Bonificación"
+    frm.gsIDProducto = txtCodigo.Text
+    frm.gsDescr = txtDescr.Text
+    frm.Show vbModal
+    Set frm = Nothing
+End Sub
 
 
 Private Sub cmdAdd_Click()
@@ -2144,6 +2358,12 @@ Private Sub GetDataFromGridToControl()
             chkEtico.value = 0
         End If
         
+        If rst("BonificaFA").value = True Then
+            chkBonificaFA.value = 1
+        Else
+            chkBonificaFA.value = 0
+        End If
+        
         If rst("BAJAPRECIODISTRIBUIDOR").value = "SI" Then
             chkBajaPrecioDistribuidor.value = 1
         Else
@@ -2165,7 +2385,9 @@ Private Sub GetDataFromGridToControl()
         txtPrecioFOBLocal.Text = rst("PrecioFOBLocal").value
         txtPrecioPublico.Text = rst("PrecioPublicoLocal").value
         
-        
+        txtCOBonifica.Text = rst("BonifCOCantidad").value
+        txtCOPorCada.Text = rst("BonifCOPorCada").value
+
     Else
         txtCodigo.Text = ""
         txtDescr.Text = ""
@@ -2174,7 +2396,7 @@ Private Sub GetDataFromGridToControl()
 End Sub
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sTipo As String
     Dim sFiltro As String
@@ -2184,9 +2406,10 @@ Private Sub cmdEliminar_Click()
     Dim sEsEtico As String
     Dim sBajaPrecioDistribuidor As String
     Dim sBajaPrecioProveedor As String
+    Dim sBonificaFA As String
     
         If txtCodigo.Text = "" Then
-            lbOk = Mensaje("El Código del Producto no puede estar en Blanco", ICO_ERROR, False)
+            lbok = Mensaje("El Código del Producto no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
         
@@ -2220,19 +2443,26 @@ Private Sub cmdEliminar_Click()
         Else
             sBajaPrecioProveedor = "0"
         End If
+        
+        If chkBonificaFA.value = 1 Then
+            sBonificaFA = "1"
+        Else
+            sBonificaFA = "0"
+        End If
        
         ' hay que validar la integridad referencial
         ' if exists dependencias then No se puede eliminar
-        lbOk = Mensaje("Está seguro de eliminar el Producto " & rst("Descr").value, ICO_PREGUNTA, True)
-        If lbOk Then
-                    lbOk = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+        lbok = Mensaje("Está seguro de eliminar el Producto " & rst("Descr").value, ICO_PREGUNTA, True)
+        If lbok Then
+                lbok = invUpdateProducto("D", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
-                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, "")
-            
-            If lbOk Then
+                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text, _
+                    sBonificaFA, txtCOPorCada.Text, txtCOBonifica.Text)
+    
+            If lbok Then
                 sMsg = "Borrado Exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
             End If
@@ -2311,7 +2541,7 @@ Private Sub cmdProveedor_Click()
 End Sub
 
 Private Sub cmdRefresExistencia_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sIDArticulo As String
     Dim sIDBodega As String
     If txtBodMov.Text = "" Then
@@ -2320,12 +2550,12 @@ Private Sub cmdRefresExistencia_Click()
     
     sIDArticulo = txtCodigo.Text
     
-    lbOk = CargaExistenciaBodega(sIDArticulo, sIDBodega)
+    lbok = CargaExistenciaBodega(sIDArticulo, sIDBodega)
 
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFiltro As String
@@ -2335,6 +2565,7 @@ Private Sub cmdSave_Click()
     Dim sEsEtico As String
     Dim sBajaPrecioDistribuidor As String
     Dim sBajaPrecioProveedor As String
+    Dim sBonificaFA As String
     
         If Not ControlsOk() Then
             Exit Sub
@@ -2377,26 +2608,33 @@ Private Sub cmdSave_Click()
         Else
             sEsControlado = "0"
         End If
+        
+         If chkBonificaFA.value = 1 Then
+            sBonificaFA = "1"
+        Else
+            sBonificaFA = "0"
+        End If
             
     If Accion = Add Then
     
         If Not (rst.EOF And rst.BOF) Then
             sFiltro = "IDProducto = " & txtCodigo.Text
             If ExiteRstKey(rst, sFiltro) Then
-               lbOk = Mensaje("Ya existe ese Departamento ", ICO_ERROR, False)
+               lbok = Mensaje("Ya existe el producto ", ICO_ERROR, False)
                 txtCodigo.SetFocus
             Exit Sub
             End If
         End If
     
-                lbOk = invUpdateProducto("I", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+                lbok = invUpdateProducto("I", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
-                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text)
+                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text, _
+                    sBonificaFA, txtCOPorCada.Text, txtCOBonifica.Text)
             
-            If lbOk Then
+            If lbok Then
                 sMsg = "El Producto ha sido registrado exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -2404,19 +2642,20 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                  sMsg = "Ha ocurrido un error tratando de Agregar el Produto ... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
     End If ' si estoy adicionando
     If Accion = Edit Then
         If Not (rst.EOF And rst.BOF) Then
-                lbOk = invUpdateProducto("U", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
+                lbok = invUpdateProducto("U", txtCodigo.Text, txtDescr.Text, txtImpuesto.Text, sEsMuestra, sEsControlado, txtClasif1.Text, _
                     txtClasif2.Text, txtClasif3.Text, sEsEtico, sBajaPrecioDistribuidor, txtCodProveedor.Text, txtCostoUltLocal.Text, txtCostoUltDolar.Text, _
                     txtCostoUltPromLocal.Text, txtCostoUltPromDolar.Text, txtPrecioPublico.Text, Me.txtPrecioFarmaciaLocal.Text, Me.txtPrecioCIFLocal.Text, _
-                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text)
+                    txtPrecioFOBLocal.Text, txtIDPresentacion.Text, sBajaPrecioProveedor, Me.txtPorcDescAlzaProveedor.Text, gsUSUARIO, gsUSUARIO, sActivo, txtCodigoBarra.Text, _
+                    sBonificaFA, txtCOPorCada.Text, txtCOBonifica.Text)
     
-            If lbOk Then
+            If lbok Then
                 sMsg = "Los datos fueron grabados Exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -2424,7 +2663,7 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                 sMsg = "Ha ocurrido un error tratando de actualizar los datos del producto... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
         End If
        End If ' si estoy adicionando
@@ -2444,7 +2683,7 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub Form_Load()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
@@ -2473,7 +2712,7 @@ Private Sub Form_Load()
     Accion = View
     HabilitarControles
     HabilitarBotones
-    lbOk = CargaTablas()
+    lbok = CargaTablas()
     cargaGrid
 
 End Sub
@@ -2559,6 +2798,13 @@ Private Sub cargaGrid()
                 InicializaListView
                 ListView1.ListItems(1).Selected = True
                 ShowSelectedItem
+           ' IniciaIconos
+            If chkBonificaFA.value = 1 Then
+                cmdBonifica.Enabled = True
+            Else
+                cmdBonifica.Enabled = False
+            End If
+
     End If
 End Sub
 
@@ -2624,10 +2870,10 @@ Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 End Sub
 
 Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As String)
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim iResultado As Integer
     On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = gsCompania & ".invGetExistenciaBodega " & sIDArticulo & " , " & sIDBodega
     
       'Set rst2 = gConet.Execute(GSSQL, adCmdText)  'Ejecuta la sentencia
@@ -2635,26 +2881,26 @@ Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As Strin
     
       If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
         
       ElseIf Not (rst3.BOF And rst3.EOF) Then  'Si no es válido
         Set TDBGExistencia.DataSource = rst3
         TDBGExistencia.Refresh
       End If
-      CargaExistenciaBodega = lbOk
+      CargaExistenciaBodega = lbok
       'rst3.Close
       Exit Function
 error:
-      lbOk = False
+      lbok = False
       gsOperacionError = "Ocurrió un error en la operación de los datos " & err.Description
       Resume Next
 End Function
 
 Private Function CargaTablas() As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim iResultado As Integer
     On Error GoTo error
-    lbOk = True
+    lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "
               
       'Set rst2 = gConet.Execute(GSSQL, adCmdText)  'Ejecuta la sentencia
@@ -2662,31 +2908,31 @@ Private Function CargaTablas() As Boolean
     
       If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-        lbOk = False  'Indica que no es válido
+        lbok = False  'Indica que no es válido
         
       ElseIf Not (rst2.BOF And rst2.EOF) Then  'Si no es válido
         rst2.MoveNext
-        lbOk = SetLable(rst2, "NOMBRE='LINEA'", lblClasif1)
-        lbOk = SetLable(rst2, "NOMBRE='FAMILIA'", lblClasif2)
-        lbOk = SetLable(rst2, "NOMBRE='SUBFAMILIA'", lblClasif3)
-        lbOk = SetLable(rst2, "NOMBRE='PRESENTACION'", lblPresentación)
-        lbOk = SetLable(rst2, "NOMBRE='IMPUESTO'", lblImpuesto)
-        lbOk = True
+        lbok = SetLable(rst2, "NOMBRE='LINEA'", lblClasif1)
+        lbok = SetLable(rst2, "NOMBRE='FAMILIA'", lblClasif2)
+        lbok = SetLable(rst2, "NOMBRE='SUBFAMILIA'", lblClasif3)
+        lbok = SetLable(rst2, "NOMBRE='PRESENTACION'", lblPresentación)
+        lbok = SetLable(rst2, "NOMBRE='IMPUESTO'", lblImpuesto)
+        lbok = True
       End If
-      CargaTablas = lbOk
+      CargaTablas = lbok
       rst2.Close
       Exit Function
 error:
-      lbOk = False
+      lbok = False
       gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
       Resume Next
 End Function
 
 Private Function SetLable(rstFuente As ADODB.Recordset, sFiltro As String, lbl As Label) As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim rstClone As ADODB.Recordset
     Dim bmPos As Variant
-    lbOk = False
+    lbok = False
     If Not (rstFuente.EOF And rstFuente.BOF) Then
         Set rstClone = New ADODB.Recordset
             bmPos = rstFuente.Bookmark
@@ -2696,25 +2942,25 @@ Private Function SetLable(rstFuente As ADODB.Recordset, sFiltro As String, lbl A
             If Not rstClone.EOF Then ' Si existe
               lbl.Caption = rstClone("DescrUsuario").value & " :"
               lbl.Tag = rstClone("Nombre").value
-              lbOk = True
+              lbok = True
             End If
             rstFuente.Filter = adFilterNone
             rstFuente.Bookmark = bmPos
         rstClone.Filter = adFilterNone
     End If
-    SetLable = lbOk
+    SetLable = lbok
 End Function
 
 Private Function ControlsOk() As Boolean
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     If txtCodigo.Text = "" Then
-        lbOk = Mensaje("El Código del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("El Código del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCodigo) Then
-        lbOk = Mensaje("El Código del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Código del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
@@ -2722,42 +2968,42 @@ Private Function ControlsOk() As Boolean
     
     
     If txtDescr.Text = "" Then
-        lbOk = Mensaje("La Descripción del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Descripción del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif1.Text = "" Then
-        lbOk = Mensaje("La Clasificación1 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación1 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif2.Text = "" Then
-        lbOk = Mensaje("La Clasificación2 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación2 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtClasif3.Text = "" Then
-        lbOk = Mensaje("La Clasificación3 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Clasificación3 del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtImpuesto.Text = "" Then
-        lbOk = Mensaje("EL Impuesto del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("EL Impuesto del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If txtIDPresentacion.Text = "" Then
-        lbOk = Mensaje("La Presentación del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("La Presentación del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     If txtCodProveedor.Text = "" Then
-        lbOk = Mensaje("EL Proveedor del Producto no puede quedar en Blanco...", ICO_ERROR, False)
+        lbok = Mensaje("EL Proveedor del Producto no puede quedar en Blanco...", ICO_ERROR, False)
         SSActiveTabs1.SelectedTab = 2
         ControlsOk = False
         Exit Function
@@ -2768,58 +3014,73 @@ Private Function ControlsOk() As Boolean
     End If
     
     If Not Val_TextboxNum(txtCostoUltDolar) Then
-        lbOk = Mensaje("El Costo Ultimo Dolar del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Dolar del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltLocal) Then
-        lbOk = Mensaje("El Costo Ultimo Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltPromDolar) Then
-        lbOk = Mensaje("El Costo Ultimo Promedio Dolar del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Promedio Dolar del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtCostoUltPromLocal) Then
-        lbOk = Mensaje("El Costo Ultimo Promedio Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Costo Ultimo Promedio Córdoba del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPorcDescAlzaProveedor) Then
-        lbOk = Mensaje("El % de Alza o Descuento del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El % de Alza o Descuento del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioCIFLocal) Then
-        lbOk = Mensaje("El Precio CIF del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio CIF del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioFOBLocal) Then
-        lbOk = Mensaje("El Precio FOB del Proveedor debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio FOB del Proveedor debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioFarmaciaLocal) Then
-        lbOk = Mensaje("El Precio Farmacia del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio Farmacia del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
     
     If Not Val_TextboxNum(txtPrecioPublico) Then
-        lbOk = Mensaje("El Precio Público del Producto debe ser Numérico", ICO_ERROR, False)
+        lbok = Mensaje("El Precio Público del Producto debe ser Numérico", ICO_ERROR, False)
         ControlsOk = False
         Exit Function
     End If
+    
+    If Not Val_TextboxNum(txtCOPorCada) Then
+        lbok = Mensaje("El Valor de Bonificación <Por Cada> debe ser Numérico", ICO_ERROR, False)
+        ControlsOk = False
+        Exit Function
+    End If
+    
+    If Not Val_TextboxNum(txtCOBonifica) Then
+        lbok = Mensaje("El Valor de Bonificación debe ser Numérico", ICO_ERROR, False)
+        ControlsOk = False
+        Exit Function
+    End If
+   
+
+    
     ControlsOk = True
 End Function
 

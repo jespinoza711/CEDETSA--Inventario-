@@ -2,7 +2,6 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBrowseCat 
-   BackColor       =   &H00FEE3DA&
    BorderStyle     =   5  'Sizable ToolWindow
    Caption         =   "Catálogo"
    ClientHeight    =   7020
@@ -58,7 +57,6 @@ Begin VB.Form frmBrowseCat
       Width           =   645
    End
    Begin VB.Frame frmIntrod 
-      BackColor       =   &H00FEE3DA&
       Height          =   735
       Left            =   0
       TabIndex        =   6
@@ -187,13 +185,20 @@ Public gsTablabrw As String
 Public gsFieldsbrw As String
 Public gsMuestraExtra As String
 Public gsFieldExtrabrw As String
+
+Public gsMuestraExtra2 As String
+Public gsFieldExtrabrw2 As String
+
 Public gsOrderfld As String
 Public gsCaptionfrm As String
 Public gbTypeCodeStr As Boolean ' indica si el codigo a buscar es tipo numerico o char
 Public gbFiltra As Boolean ' indica si se le puede pasar un filtro al catalogo
 Public gsFiltro As String ' para digitar el filtro del catálogo
 Public gsExtraValor1 As String
+Public gsExtraValor2 As String
 Public gdWidthExtra1 As Double
+
+Public gdWidthExtra2 As Double
 ' Estas variables son utilizadas para el llamado de formularios extras por ejemplo en Add del Catalogo
 Public gsNombrePantallaExtra As String
 Public gsCodigo1FormularioExtra As String
@@ -218,42 +223,16 @@ Private Sub cmdAceptar_Click()
 End Sub
 
 Private Sub cmdAdicionar_Click()
-Select Case UCase(gsNombrePantallaExtra)
-    Case "FRMMASTERLOTES":
-            Dim frm2 As New frmMasterLotes
-            frm2.gsFormCaption = "Maestro de Lotes"
-            frm2.gsTitle = "Maestro de Lotes"
-            frm2.Show vbModal
-            Set frm2 = Nothing
-End Select
+'Select Case UCase(gsNombrePantallaExtra)
+'    Case "FRMUSUARIO":
+'            Dim frm2 As frmUsuario
+'            Set frm2 = New frmUsuario
+'            frm2.Show vbModal
+'            Set frm2 = Nothing
+'End Select
 
- If BrowseCatalogo(gsTablabrw, gsCampoCodigoTabla, gsCampoDescrTabla, gsMuestraExtra, gsFieldExtrabrw, gbFiltra, gsFiltro, gsOrderfld) Then
-      TDBG.Caption = "Selección"
-      TDBG.Columns(0).DataField = gsCampoCodigoTabla
-      TDBG.Columns(0).Caption = gsCampoCodigoTabla
-      TDBG.Columns(1).Caption = gsCampoDescrTabla
-      TDBG.Columns(1).DataField = gsCampoDescrTabla
-      
-      If UCase(gsMuestraExtra) = "SI" Then
-        If gdWidthExtra1 = 0 Then
-          gdWidthExtra1 = 1500
-        End If
-      
-        TDBG.Columns(2).Width = gdWidthExtra1
-        TDBG.Columns(2).Caption = gsFieldExtrabrw
-        TDBG.Columns(2).DataField = gsFieldExtrabrw
-      Else
-        TDBG.Columns(1).Width = TDBG.Columns(1).Width + 1000
-        TDBG.Columns(2).Visible = False
-      End If
-      gsCampoCodigoTabla = gsCodigobrw
-      gsCampoDescrTabla = gsDescrbrw
-  
-      Set TDBG.DataSource = gRegistrosBrw
-      TDBG.ReBind
-      gsCodigobrw = ""
-      gsDescrbrw = ""
-    End If
+
+
 End Sub
 
 Private Sub cmdBuscar_Click()
@@ -302,7 +281,7 @@ Set gRegistrosBrw = New ADODB.Recordset  'Inicializa la variable de los registro
     gRegistrosBrw.CursorLocation = adUseClient ' Cursor local al cliente
     gRegistrosBrw.LockType = adLockOptimistic
     sfldFind = gsFieldsbrw
-    If BrowseCatalogo(gsTablabrw, gsCodigobrw, gsDescrbrw, gsMuestraExtra, gsFieldExtrabrw, gbFiltra, gsFiltro, gsOrderfld) Then
+    If BrowseCatalogo(gsTablabrw, gsCodigobrw, gsDescrbrw, gsMuestraExtra, gsFieldExtrabrw, gsMuestraExtra2, gsFieldExtrabrw2, gbFiltra, gsFiltro, gsOrderfld) Then
       TDBG.Caption = "Selección"
       TDBG.Columns(0).DataField = gsCodigobrw
       TDBG.Columns(0).Caption = gsCodigobrw
@@ -310,24 +289,41 @@ Set gRegistrosBrw = New ADODB.Recordset  'Inicializa la variable de los registro
       TDBG.Columns(1).DataField = gsDescrbrw
       
       If UCase(gsMuestraExtra) = "SI" Then
-      If gdWidthExtra1 = 0 Then
-        gdWidthExtra1 = 1500
-      End If
-      
+        If gdWidthExtra1 = 0 Then
+          gdWidthExtra1 = 1500
+        End If
+         TDBG.Columns(1).Width = 2500
         TDBG.Columns(2).Width = gdWidthExtra1
         TDBG.Columns(2).Caption = gsFieldExtrabrw
         TDBG.Columns(2).DataField = gsFieldExtrabrw
       Else
-        TDBG.Columns(1).Width = TDBG.Columns(1).Width + 1000
         TDBG.Columns(2).Visible = False
       End If
       
+      If UCase(gsMuestraExtra2) = "SI" Then
+        If gdWidthExtra1 = 0 Then
+          gdWidthExtra1 = 1500
+        End If
+        TDBG.Columns(3).Width = gdWidthExtra1
+        TDBG.Columns(3).Caption = gsFieldExtrabrw2
+        TDBG.Columns(3).DataField = gsFieldExtrabrw2
+      Else
+        TDBG.Columns(3).Visible = False
+      End If
+      If UCase(gsMuestraExtra) <> "SI" And UCase(gsMuestraExtra2) <> "SI" Then
+         TDBG.Columns(1).Width = 5000
+        'TDBG.Columns(1).Width = TDBG.Columns(1).Width + 1000
+        TDBG.Columns(2).Visible = False
+        TDBG.Columns(3).Visible = False
+      End If
+      
+      If UCase(gsMuestraExtra) = "SI" And UCase(gsMuestraExtra2) <> "SI" Then
+      TDBG.Columns(1).Width = 3500
+      End If
       gsCampoCodigoTabla = gsCodigobrw
       gsCampoDescrTabla = gsDescrbrw
       
-      
-      If (gsNombrePantallaExtra <> "") Then Me.cmdAdicionar.Enabled = True
-         
+    
       
       Set TDBG.DataSource = gRegistrosBrw
       TDBG.ReBind
@@ -484,7 +480,17 @@ If Not gRegistrosBrw.EOF Then
   gsDescrbrw = gRegistrosBrw.Fields(1).value
   If gsMuestraExtra = "SI" Then
     gsExtraValor1 = gRegistrosBrw.Fields(2).value
+  Else
+    gsExtraValor1 = ""
   End If
+  If gsMuestraExtra2 = "SI" Then
+    gsExtraValor2 = gRegistrosBrw.Fields(3).value
+'  Else
+'   gsExtraValor2 = ""
+  End If
+Else
+  gsCodigobrw = ""
+  gsDescrbrw = ""
 End If
 End Sub
 
@@ -593,14 +599,21 @@ Set rstClone = New ADODB.Recordset
 
 End Sub
 
-Public Function BrowseCatalogo(sTabla As String, sFldCod As String, sDescr As String, gsMuestraExtra As String, gsFieldExtrabrw As String, bFiltra As Boolean, sFiltro As String, Optional sOrderFld As String) As Boolean
-Dim lbOk As Boolean
+Public Function BrowseCatalogo(sTabla As String, sFldCod As String, sDescr As String, gsMuestraExtra As String, gsFieldExtrabrw As String, gsMuestraExtra2 As String, gsFieldExtrabrw2 As String, bFiltra As Boolean, sFiltro As String, Optional sOrderFld As String) As Boolean
+Dim lbok As Boolean
 Dim sOrden As String
 On Error GoTo error
-  lbOk = True
+  lbok = True
   If UCase(gsMuestraExtra) = "SI" Then
     GSSQL = "SELECT " & sFldCod & "," & sDescr & "," & gsFieldExtrabrw
-  Else
+  End If
+  
+  If UCase(gsMuestraExtra2) = "SI" And UCase(gsMuestraExtra) = "SI" Then
+    GSSQL = GSSQL & "," & gsFieldExtrabrw2
+  End If
+  
+  
+  If UCase(gsMuestraExtra) <> "SI" And UCase(gsMuestraExtra2) <> "SI" Then
     GSSQL = "SELECT " & sFldCod & "," & sDescr
   End If
   
@@ -620,16 +633,17 @@ On Error GoTo error
 
 If (gRegistrosBrw.BOF And gRegistrosBrw.EOF) Then  'Si no es válido
     gsOperacionError = "No existe ese item." 'Asigna msg de error
-    lbOk = False  'Indica que no es válido
+    lbok = False  'Indica que no es válido
 End If
 
-BrowseCatalogo = lbOk
+BrowseCatalogo = lbok
 Exit Function
 error:
-  lbOk = False
-  BrowseCatalogo = lbOk
+  lbok = False
+  BrowseCatalogo = lbok
 
 End Function
+
 
 
 

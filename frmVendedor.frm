@@ -26,6 +26,7 @@ Begin VB.Form frmVendedor
    ScaleHeight     =   6030
    ScaleWidth      =   9120
    ShowInTaskbar   =   0   'False
+   WindowState     =   2  'Maximized
    Begin VB.Frame Frame1 
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 

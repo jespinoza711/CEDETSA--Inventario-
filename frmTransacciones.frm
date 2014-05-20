@@ -2,9 +2,8 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmTransacciones 
-   BackColor       =   &H00FEE3DA&
    Caption         =   "Form1"
-   ClientHeight    =   7035
+   ClientHeight    =   8070
    ClientLeft      =   165
    ClientTop       =   555
    ClientWidth     =   11370
@@ -20,14 +19,77 @@ Begin VB.Form frmTransacciones
    ForeColor       =   &H002F2F2F&
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   7035
+   ScaleHeight     =   8070
    ScaleWidth      =   11370
+   WindowState     =   2  'Maximized
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   11370
+      TabIndex        =   15
+      Top             =   0
+      Width           =   11370
+      Begin VB.Image Image 
+         Height          =   540
+         Index           =   2
+         Left            =   150
+         Picture         =   "frmTransacciones.frx":0000
+         Top             =   45
+         Width           =   585
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Actualización del Maestro de Productos"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   17
+         Top             =   420
+         Width           =   2400
+      End
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   16
+         Top             =   90
+         Width           =   855
+      End
+   End
    Begin VB.Frame Frame1 
-      BackColor       =   &H00FEE3DA&
       Height          =   1485
-      Left            =   10530
-      TabIndex        =   13
-      Top             =   2040
+      Left            =   10590
+      TabIndex        =   12
+      Top             =   3180
       Width           =   735
       Begin VB.CommandButton cmdAdd 
          BeginProperty Font 
@@ -41,9 +103,9 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   555
          Left            =   90
-         Picture         =   "frmTransacciones.frx":0000
+         Picture         =   "frmTransacciones.frx":0B72
          Style           =   1  'Graphical
-         TabIndex        =   15
+         TabIndex        =   14
          ToolTipText     =   "Agrega el item con los datos digitados..."
          Top             =   180
          Width           =   555
@@ -60,16 +122,15 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   555
          Left            =   90
-         Picture         =   "frmTransacciones.frx":0CCA
+         Picture         =   "frmTransacciones.frx":183C
          Style           =   1  'Graphical
-         TabIndex        =   14
+         TabIndex        =   13
          ToolTipText     =   "Deshacer / Cancelar"
          Top             =   810
          Width           =   555
       End
    End
    Begin VB.Frame Frame2 
-      BackColor       =   &H00FEE3DA&
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
@@ -81,8 +142,8 @@ Begin VB.Form frmTransacciones
       EndProperty
       Height          =   1380
       Left            =   120
-      TabIndex        =   1
-      Top             =   585
+      TabIndex        =   0
+      Top             =   930
       Width           =   11130
       Begin VB.TextBox txtPaquete 
          Appearance      =   0  'Flat
@@ -98,7 +159,7 @@ Begin VB.Form frmTransacciones
          ForeColor       =   &H002F2F2F&
          Height          =   315
          Left            =   2100
-         TabIndex        =   10
+         TabIndex        =   9
          Top             =   780
          Width           =   1275
       End
@@ -116,7 +177,7 @@ Begin VB.Form frmTransacciones
          ForeColor       =   &H002F2F2F&
          Height          =   315
          Left            =   4320
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   780
          Width           =   5460
       End
@@ -132,9 +193,9 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   315
          Left            =   3870
-         Picture         =   "frmTransacciones.frx":1994
+         Picture         =   "frmTransacciones.frx":2506
          Style           =   1  'Graphical
-         TabIndex        =   8
+         TabIndex        =   7
          Top             =   780
          Width           =   330
       End
@@ -150,9 +211,9 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   315
          Left            =   3450
-         Picture         =   "frmTransacciones.frx":365E
+         Picture         =   "frmTransacciones.frx":41D0
          Style           =   1  'Graphical
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   780
          Width           =   330
       End
@@ -168,16 +229,16 @@ Begin VB.Form frmTransacciones
          EndProperty
          Height          =   570
          Left            =   10110
-         Picture         =   "frmTransacciones.frx":39A0
+         Picture         =   "frmTransacciones.frx":4512
          Style           =   1  'Graphical
-         TabIndex        =   2
+         TabIndex        =   1
          Top             =   450
          Width           =   600
       End
       Begin MSComCtl2.DTPicker dtpFechaInicial 
          Height          =   315
          Left            =   2055
-         TabIndex        =   3
+         TabIndex        =   2
          Top             =   315
          Width           =   2070
          _ExtentX        =   3651
@@ -192,13 +253,13 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   61472769
+         Format          =   61603841
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
          Height          =   315
          Left            =   7710
-         TabIndex        =   4
+         TabIndex        =   3
          Top             =   330
          Width           =   2070
          _ExtentX        =   3651
@@ -213,7 +274,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   61472769
+         Format          =   61603841
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 
@@ -231,7 +292,7 @@ Begin VB.Form frmTransacciones
          ForeColor       =   &H00000000&
          Height          =   315
          Left            =   870
-         TabIndex        =   11
+         TabIndex        =   10
          Top             =   810
          Width           =   825
       End
@@ -250,7 +311,7 @@ Begin VB.Form frmTransacciones
          ForeColor       =   &H00000000&
          Height          =   300
          Left            =   6450
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   390
          Width           =   1335
       End
@@ -269,48 +330,27 @@ Begin VB.Form frmTransacciones
          ForeColor       =   &H00000000&
          Height          =   300
          Left            =   840
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   390
          Width           =   1335
       End
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   4710
-      Left            =   120
-      OleObjectBlob   =   "frmTransacciones.frx":566A
-      TabIndex        =   12
-      Top             =   2130
+      Left            =   150
+      OleObjectBlob   =   "frmTransacciones.frx":61DC
+      TabIndex        =   11
+      Top             =   3270
       Width           =   10305
    End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Titulo Form"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   375
-      Left            =   -600
-      TabIndex        =   0
-      Top             =   0
-      Width           =   12225
-   End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   -210
-      Picture         =   "frmTransacciones.frx":B727
-      Stretch         =   -1  'True
-      Top             =   -330
-      Width           =   11850
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   18
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmTransacciones"
@@ -451,3 +491,4 @@ Private Sub Form_Unload(Cancel As Integer)
     'Main.SubtractForm Me.Name
     Set frmTransacciones = Nothing
 End Sub
+
