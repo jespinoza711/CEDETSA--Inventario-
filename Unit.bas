@@ -1,8 +1,8 @@
 Attribute VB_Name = "Unit"
-Public Const ICO_INFORMACION = 1
-Public Const ICO_PREGUNTA = 2
-Public Const ICO_ADVERTENCIA = 3
-Public Const ICO_ERROR = 4
+Public Const ICO_INFORMACION = 4
+Public Const ICO_PREGUNTA = 3
+Public Const ICO_ADVERTENCIA = 1
+Public Const ICO_ERROR = 2
 Public Const ICO_OK = 5
 Public Const CONTROL_MARGIN = 300
 'Constantes para Modulo
@@ -24,7 +24,7 @@ Public Declare Function GetCursorPos Lib "user32" _
             (lpPoint As POINTAPI) As Long
             
 Public Type POINTAPI
-        x As Long
+        X As Long
         Y As Long
 End Type
 
@@ -493,7 +493,7 @@ Dim sTitle As String
     If Not cancelar Then
 
       frmMensajeError.btnNo.Visible = False
-      frmMensajeError.btnSi.left = 1718
+      frmMensajeError.btnSi.left = 2850
     Else
       frmMensajeError.btnNo.TabIndex = 0
     End If
@@ -3640,14 +3640,14 @@ End Function
 
 'Devuelve el entero más pequeño no menor que X.
 'Ejemplo: Ceiling(1.23) = 2, Ceiling(-1.23) = -1
-Public Function Ceiling(ByVal x As Double) As Long
-   Ceiling = -Int(x * (-1))
+Public Function Ceiling(ByVal X As Double) As Long
+   Ceiling = -Int(X * (-1))
 End Function
 
 'Devuelve el entero más grande no mayor que X.
 'Ejemplo: Floor(1.23) = 1, Floor(-1.23) = -2
-Public Function Floor(ByVal x As Double) As Long
-   Floor = (-Int(x) * (-1))
+Public Function Floor(ByVal X As Double) As Long
+   Floor = (-Int(X) * (-1))
 End Function
 
 Public Function EsEntero(sNumero As String) As Boolean
@@ -3690,24 +3690,24 @@ Public Sub SetupMenuButtons()
     ButtonsAvailable(3).form_buttons = "ABCWHJKLMQRST"
     ButtonsAvailable(3).form_name = "frmMasterLotes"
     
-    ButtonsAvailable(4).form_buttons = "ABCSTGIMOXPWQ"
-    ButtonsAvailable(4).form_name = "frmCustomerWB"
+    ButtonsAvailable(4).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(4).form_name = "frmCatalogos"
     
-    ButtonsAvailable(5).form_buttons = "ABCSTGIMOXPWQ"
-    ButtonsAvailable(5).form_name = "frmSalesman"
+    ButtonsAvailable(5).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(5).form_name = "frmCliente"
     
-    ButtonsAvailable(6).form_buttons = "CDEIKLOPRU"
-    ButtonsAvailable(6).form_name = "frmVan"
+    ButtonsAvailable(6).form_buttons = "ABCVWHT"
+    ButtonsAvailable(6).form_name = "frmPedidos"
     
-    ButtonsAvailable(7).form_buttons = "CDEIKLOPQRU"
-    ButtonsAvailable(7).form_name = "frmPDCManager"
+    ButtonsAvailable(7).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(7).form_name = "frmTablas"
     
-    ButtonsAvailable(8).form_buttons = "CDEGHLMPQRU"
-    ButtonsAvailable(8).form_name = "frmDueChecks"
+    ButtonsAvailable(8).form_buttons = "ABCVWHT"
+    ButtonsAvailable(8).form_name = "frmTransacciones"
     
-    ButtonsAvailable(9).form_buttons = "CDEIKLOPQRU"
-    ButtonsAvailable(9).form_name = "frmSupplier"
-    
+    ButtonsAvailable(9).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(9).form_name = "frmVendedor"
+    '#################  hasta aca #######################3
     ButtonsAvailable(10).form_buttons = "CDEIKLOPRU"
     ButtonsAvailable(10).form_name = "frmCategories"
     

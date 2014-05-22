@@ -5,7 +5,7 @@ Object = "{C9680CB9-8919-4ED0-A47D-8DC07382CB7B}#1.0#0"; "StyleButtonx.ocx"
 Begin VB.Form frmMensajeError 
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Atención"
-   ClientHeight    =   3090
+   ClientHeight    =   2865
    ClientLeft      =   6105
    ClientTop       =   2445
    ClientWidth     =   6690
@@ -14,7 +14,7 @@ Begin VB.Form frmMensajeError
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3090
+   ScaleHeight     =   2865
    ScaleWidth      =   6690
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
@@ -22,7 +22,7 @@ Begin VB.Form frmMensajeError
       Height          =   525
       Left            =   1770
       TabIndex        =   4
-      Top             =   2280
+      Top             =   2130
       Width           =   1395
       _ExtentX        =   2461
       _ExtentY        =   926
@@ -172,46 +172,46 @@ Begin VB.Form frmMensajeError
       BackColor       =   &H80000005&
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
-      Height          =   780
+      Height          =   570
       Left            =   0
-      ScaleHeight     =   780
+      ScaleHeight     =   570
       ScaleWidth      =   6690
       TabIndex        =   2
       Top             =   0
       Width           =   6690
-      Begin VB.Image picImagen 
-         Height          =   705
-         Left            =   30
-         Top             =   60
-         Width           =   795
+      Begin VB.Image Image1 
+         Height          =   480
+         Left            =   150
+         Picture         =   "frmMensajeError.frx":10A4
+         Top             =   30
+         Width           =   480
       End
       Begin VB.Label Label3 
          Appearance      =   0  'Flat
          BackColor       =   &H80000005&
          BackStyle       =   0  'Transparent
-         Caption         =   "Please fill up all fields provided below. Add/Update product/item record."
          ForeColor       =   &H80000008&
-         Height          =   465
-         Left            =   840
+         Height          =   315
+         Left            =   960
          TabIndex        =   3
-         Top             =   120
+         Top             =   180
          Width           =   3675
       End
    End
    Begin RichTextLib.RichTextBox lsMensaje 
-      Height          =   1215
-      Left            =   0
+      Height          =   1125
+      Left            =   900
       TabIndex        =   1
-      Top             =   810
-      Width           =   6645
-      _ExtentX        =   11721
-      _ExtentY        =   2143
+      Top             =   780
+      Width           =   5805
+      _ExtentX        =   10239
+      _ExtentY        =   1984
       _Version        =   393217
       BackColor       =   12648447
       ReadOnly        =   -1  'True
       ScrollBars      =   3
       AutoVerbMenu    =   -1  'True
-      TextRTF         =   $"frmMensajeError.frx":10A4
+      TextRTF         =   $"frmMensajeError.frx":1CE8
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -235,23 +235,23 @@ Begin VB.Form frmMensajeError
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   5
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":1126
+            Picture         =   "frmMensajeError.frx":1D6A
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":16C3
+            Picture         =   "frmMensajeError.frx":2307
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":1D37
+            Picture         =   "frmMensajeError.frx":297B
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":2439
+            Picture         =   "frmMensajeError.frx":307D
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":2947
+            Picture         =   "frmMensajeError.frx":358B
             Key             =   ""
          EndProperty
       EndProperty
@@ -260,7 +260,7 @@ Begin VB.Form frmMensajeError
       Height          =   525
       Left            =   3450
       TabIndex        =   5
-      Top             =   2280
+      Top             =   2130
       Width           =   1395
       _ExtentX        =   2461
       _ExtentY        =   926
@@ -352,11 +352,11 @@ Begin VB.Form frmMensajeError
       BackColorDisabled=   -2147483633
       DotsInCornerColor=   16777215
       ForeColorDisabled=   12632256
-      PictureUp       =   "frmMensajeError.frx":2DA9
-      PictureDown     =   "frmMensajeError.frx":30FD
-      PictureHover    =   "frmMensajeError.frx":3451
-      PictureFocus    =   "frmMensajeError.frx":37A5
-      PictureDisabled =   "frmMensajeError.frx":3AF9
+      PictureUp       =   "frmMensajeError.frx":39ED
+      PictureDown     =   "frmMensajeError.frx":3D41
+      PictureHover    =   "frmMensajeError.frx":4095
+      PictureFocus    =   "frmMensajeError.frx":43E9
+      PictureDisabled =   "frmMensajeError.frx":473D
       BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -403,6 +403,12 @@ Begin VB.Form frmMensajeError
          Strikethrough   =   0   'False
       EndProperty
       ShowBorderLevel2=   0   'False
+   End
+   Begin VB.Image picImagen 
+      Height          =   675
+      Left            =   60
+      Top             =   960
+      Width           =   735
    End
    Begin VB.Label lsMensaje_1 
       AutoSize        =   -1  'True

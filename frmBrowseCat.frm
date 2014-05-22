@@ -1,175 +1,217 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmBrowseCat 
    BorderStyle     =   5  'Sizable ToolWindow
    Caption         =   "Catálogo"
-   ClientHeight    =   7020
+   ClientHeight    =   7335
    ClientLeft      =   60
    ClientTop       =   330
-   ClientWidth     =   7920
+   ClientWidth     =   8145
    DrawMode        =   4  'Mask Not Pen
    Icon            =   "frmBrowseCat.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7020
-   ScaleWidth      =   7920
+   ScaleHeight     =   7335
+   ScaleWidth      =   8145
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton cmdSalir 
-      Height          =   585
-      Left            =   7020
-      Picture         =   "frmBrowseCat.frx":08CA
-      Style           =   1  'Graphical
-      TabIndex        =   11
-      Top             =   60
-      Width           =   645
-   End
-   Begin VB.CommandButton cmdAdicionar 
-      Enabled         =   0   'False
-      Height          =   585
-      Left            =   7050
-      Picture         =   "frmBrowseCat.frx":0BD4
-      Style           =   1  'Graphical
-      TabIndex        =   10
-      Top             =   840
-      Width           =   645
-   End
-   Begin VB.CommandButton cmdQuitafiltro 
-      Height          =   585
-      Left            =   4695
-      Picture         =   "frmBrowseCat.frx":189E
-      Style           =   1  'Graphical
-      TabIndex        =   9
-      ToolTipText     =   "Quita el filtro existente y muestra todo el catálogo."
-      Top             =   840
-      Width           =   645
-   End
-   Begin VB.CommandButton cmdFiltra 
-      Height          =   585
-      Left            =   3990
-      Picture         =   "frmBrowseCat.frx":2568
-      Style           =   1  'Graphical
-      TabIndex        =   8
-      ToolTipText     =   "Filtra el catálogo con el criterio digitado por Ud."
-      Top             =   840
-      Width           =   645
-   End
-   Begin VB.Frame frmIntrod 
-      Height          =   735
-      Left            =   0
-      TabIndex        =   6
-      Top             =   0
-      Width           =   6255
-      Begin VB.Label lblIntrod 
-         Alignment       =   2  'Center
-         BackStyle       =   0  'Transparent
-         Caption         =   $"frmBrowseCat.frx":3232
-         BeginProperty Font 
-            Name            =   "Microsoft Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   495
-         Left            =   120
-         TabIndex        =   7
-         Top             =   120
-         Width           =   6015
-      End
-   End
-   Begin VB.Frame Frame1 
-      Height          =   4695
-      Left            =   120
-      TabIndex        =   5
-      Top             =   1440
-      Width           =   7575
-      Begin TrueOleDBGrid60.TDBGrid TDBG 
-         Height          =   4215
-         Left            =   120
-         OleObjectBlob   =   "frmBrowseCat.frx":32D6
-         TabIndex        =   0
-         Top             =   240
-         Width           =   7455
-      End
-   End
+   StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton cmdAceptar 
+      BackColor       =   &H80000009&
       Caption         =   "Aceptar"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   375
-      Left            =   2400
-      TabIndex        =   4
-      Top             =   6240
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdCancelar 
-      Caption         =   "Cancelar"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   375
-      Left            =   4320
-      TabIndex        =   3
-      Top             =   6240
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdBuscar 
-      Height          =   585
-      Left            =   6330
-      Picture         =   "frmBrowseCat.frx":619B
-      Style           =   1  'Graphical
-      TabIndex        =   2
-      ToolTipText     =   "Realiza una búsqueda, con F3 sigue buscando el criterio"
-      Top             =   840
-      Width           =   645
-   End
-   Begin MSComctlLib.StatusBar StatusBar1 
-      Align           =   2  'Align Bottom
-      Height          =   255
-      Left            =   0
-      TabIndex        =   1
-      Top             =   6765
-      Width           =   7920
-      _ExtentX        =   13970
-      _ExtentY        =   450
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   1
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Object.Width           =   9701
-            MinWidth        =   9701
-            Text            =   "Doble Click o Enter sobre el elemento deseado en el detalle..."
-            TextSave        =   "Doble Click o Enter sobre el elemento deseado en el detalle..."
-         EndProperty
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   9.75
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      Height          =   555
+      Left            =   2580
+      Picture         =   "frmBrowseCat.frx":08CA
+      Style           =   1  'Graphical
+      TabIndex        =   11
+      Top             =   6600
+      Width           =   1155
+   End
+   Begin VB.CommandButton cmdCancelar 
+      BackColor       =   &H80000009&
+      Caption         =   "Cancelar"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   555
+      Left            =   4110
+      Picture         =   "frmBrowseCat.frx":0C0E
+      Style           =   1  'Graphical
+      TabIndex        =   10
+      Top             =   6600
+      Width           =   1155
+   End
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   8145
+      TabIndex        =   6
+      Top             =   0
+      Width           =   8145
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmBrowseCat.frx":0F52
+         Top             =   90
+         Width           =   480
+      End
+      Begin VB.Label Label 
+         BackStyle       =   0  'Transparent
+         Caption         =   $"frmBrowseCat.frx":181C
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   315
+         Index           =   1
+         Left            =   930
+         TabIndex        =   8
+         Top             =   390
+         Width           =   7050
+      End
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   7
+         Top             =   90
+         Width           =   855
+      End
+   End
+   Begin VB.CommandButton cmdSalir 
+      Height          =   585
+      Left            =   7230
+      Picture         =   "frmBrowseCat.frx":18B6
+      Style           =   1  'Graphical
+      TabIndex        =   5
+      Top             =   960
+      Width           =   645
+   End
+   Begin VB.CommandButton cmdAdicionar 
+      BackColor       =   &H00FFFFFF&
+      Enabled         =   0   'False
+      Height          =   585
+      Left            =   6240
+      Picture         =   "frmBrowseCat.frx":1BC0
+      Style           =   1  'Graphical
+      TabIndex        =   4
+      ToolTipText     =   "Agrega un nuevo elemento de Catalogo"
+      Top             =   960
+      Width           =   645
+   End
+   Begin VB.CommandButton cmdQuitafiltro 
+      BackColor       =   &H00FFFFFF&
+      Height          =   585
+      Left            =   4350
+      Picture         =   "frmBrowseCat.frx":288A
+      Style           =   1  'Graphical
+      TabIndex        =   3
+      ToolTipText     =   "Quita el filtro existente y muestra todo el catálogo."
+      Top             =   990
+      Width           =   645
+   End
+   Begin VB.CommandButton cmdFiltra 
+      BackColor       =   &H00FFFFFF&
+      Height          =   585
+      Left            =   3660
+      Picture         =   "frmBrowseCat.frx":2BA9
+      Style           =   1  'Graphical
+      TabIndex        =   2
+      ToolTipText     =   "Filtra el catálogo con el criterio digitado por Ud."
+      Top             =   960
+      Width           =   645
+   End
+   Begin VB.Frame Frame1 
+      Height          =   4575
+      Left            =   120
+      TabIndex        =   1
+      Top             =   1560
+      Width           =   7575
+      Begin TrueOleDBGrid60.TDBGrid TDBG 
+         Height          =   4215
+         Left            =   90
+         OleObjectBlob   =   "frmBrowseCat.frx":2EBC
+         TabIndex        =   13
+         Top             =   210
+         Width           =   7395
+      End
+   End
+   Begin VB.CommandButton cmdBuscar 
+      BackColor       =   &H00FFFFFF&
+      Height          =   585
+      Left            =   5550
+      Picture         =   "frmBrowseCat.frx":63E1
+      Style           =   1  'Graphical
+      TabIndex        =   0
+      ToolTipText     =   "Realiza una búsqueda, con F3 sigue buscando el criterio"
+      Top             =   960
+      Width           =   645
+   End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   9
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
+   End
+   Begin VB.Label Label11 
+      AutoSize        =   -1  'True
+      Caption         =   "Doble Click o Enter sobre el elemento deseado en el detalle..."
+      ForeColor       =   &H00404040&
+      Height          =   195
+      Left            =   630
+      TabIndex        =   12
+      Top             =   6180
+      Width           =   4350
+   End
+   Begin VB.Image Image3 
+      Height          =   480
+      Left            =   150
+      Picture         =   "frmBrowseCat.frx":70AB
+      Top             =   6060
+      Width           =   480
    End
 End
 Attribute VB_Name = "frmBrowseCat"
@@ -398,6 +440,7 @@ End Sub
 
 
 Private Sub Form_Unload(Cancel As Integer)
+If (gRegistrosBrw.State = adStateClosed) Then Exit Sub
 If (gRegistrosBrw.BOF And gRegistrosBrw.EOF) Then
   gsCodigobrw = ""
   gsDescrbrw = ""

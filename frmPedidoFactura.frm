@@ -4,24 +4,87 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmPedidoFactura 
    Caption         =   "Form1"
-   ClientHeight    =   8250
-   ClientLeft      =   60
-   ClientTop       =   450
-   ClientWidth     =   16275
+   ClientHeight    =   9210
+   ClientLeft      =   165
+   ClientTop       =   555
+   ClientWidth     =   16200
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8250
-   ScaleWidth      =   16275
-   StartUpPosition =   3  'Windows Default
+   ScaleHeight     =   9210
+   ScaleWidth      =   16200
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   16200
+      TabIndex        =   74
+      Top             =   0
+      Width           =   16200
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmPedidoFactura.frx":0000
+         Top             =   90
+         Width           =   480
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Maestro de Clientes"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   76
+         Top             =   420
+         Width           =   1230
+      End
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   75
+         Top             =   90
+         Width           =   855
+      End
+   End
    Begin VB.Frame Frame3 
       Height          =   735
-      Left            =   120
+      Left            =   210
       TabIndex        =   60
-      Top             =   1260
-      Width           =   15015
+      Top             =   2010
+      Width           =   15135
       Begin VB.TextBox txtCodCliente 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -29,6 +92,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   1320
          TabIndex        =   66
@@ -38,7 +102,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtNombre 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -46,6 +110,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   2400
          Locked          =   -1  'True
@@ -56,7 +121,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdCliente 
          Height          =   320
          Left            =   960
-         Picture         =   "frmPedidoFactura.frx":0000
+         Picture         =   "frmPedidoFactura.frx":0C44
          Style           =   1  'Graphical
          TabIndex        =   64
          Top             =   240
@@ -65,7 +130,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdTipo 
          Height          =   320
          Left            =   10800
-         Picture         =   "frmPedidoFactura.frx":0342
+         Picture         =   "frmPedidoFactura.frx":0F86
          Style           =   1  'Graphical
          TabIndex        =   63
          Top             =   240
@@ -74,7 +139,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtTipo 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -82,6 +147,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   11160
          TabIndex        =   62
@@ -91,7 +157,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtDescrTipo 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -99,6 +165,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   12000
          Locked          =   -1  'True
@@ -109,7 +176,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label2 
          Caption         =   "Tipo Factura :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -121,13 +188,13 @@ Begin VB.Form frmPedidoFactura
          Height          =   255
          Left            =   9480
          TabIndex        =   68
-         Top             =   240
+         Top             =   300
          Width           =   1215
       End
       Begin VB.Label Label1 
          Caption         =   "Cliente :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -139,17 +206,17 @@ Begin VB.Form frmPedidoFactura
          Height          =   255
          Left            =   120
          TabIndex        =   67
-         Top             =   240
+         Top             =   300
          Width           =   855
       End
    End
    Begin VB.CommandButton cmdCobro 
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":0684
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":12C8
       Style           =   1  'Graphical
       TabIndex        =   59
-      Top             =   3060
+      Top             =   4290
       Visible         =   0   'False
       Width           =   495
    End
@@ -165,23 +232,23 @@ Begin VB.Form frmPedidoFactura
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":0AC6
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":170A
       Style           =   1  'Graphical
       TabIndex        =   58
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3900
+      Top             =   5130
       Width           =   495
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":0F08
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":1B4C
       Style           =   1  'Graphical
       TabIndex        =   57
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   2340
+      Top             =   3570
       Width           =   495
    End
    Begin VB.CommandButton cmdAddItem 
@@ -196,12 +263,12 @@ Begin VB.Form frmPedidoFactura
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":1212
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":1E56
       Style           =   1  'Graphical
       TabIndex        =   56
       ToolTipText     =   "Inicializa los controles para Agregar otro item ..."
-      Top             =   5880
+      Top             =   7110
       Width           =   495
    End
    Begin VB.CommandButton cmdEditItem 
@@ -216,12 +283,12 @@ Begin VB.Form frmPedidoFactura
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":151C
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":2160
       Style           =   1  'Graphical
       TabIndex        =   55
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   5040
+      Top             =   6270
       Width           =   495
    End
    Begin VB.CommandButton cmdOkCO 
@@ -235,27 +302,27 @@ Begin VB.Form frmPedidoFactura
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   15360
-      Picture         =   "frmPedidoFactura.frx":1DE6
+      Left            =   15480
+      Picture         =   "frmPedidoFactura.frx":2A2A
       Style           =   1  'Graphical
       TabIndex        =   54
       ToolTipText     =   "Aprueba, Aplica los datos digitados para el item en proceso y son ingresados en el grid de datos ..."
-      Top             =   6660
+      Top             =   7890
       Width           =   495
    End
    Begin VB.Frame Frame1 
       Height          =   1215
-      Left            =   720
+      Left            =   210
       TabIndex        =   41
-      Top             =   60
+      Top             =   780
       Width           =   15135
       Begin VB.TextBox txtcodBodega 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -269,10 +336,10 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtDescrBodega 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -287,7 +354,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdBodega 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":20F0
+         Picture         =   "frmPedidoFactura.frx":2D34
          Style           =   1  'Graphical
          TabIndex        =   45
          Top             =   360
@@ -296,7 +363,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdVendedor 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":2432
+         Picture         =   "frmPedidoFactura.frx":3076
          Style           =   1  'Graphical
          TabIndex        =   44
          Top             =   840
@@ -305,10 +372,10 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtDescrVendedor 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -323,10 +390,10 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtCodVendedor 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -339,15 +406,15 @@ Begin VB.Form frmPedidoFactura
       End
       Begin MSComCtl2.DTPicker DTPFecFac 
          Height          =   375
-         Left            =   9600
+         Left            =   9360
          TabIndex        =   48
-         Top             =   360
+         Top             =   240
          Width           =   1575
          _ExtentX        =   2778
          _ExtentY        =   661
          _Version        =   393216
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -356,13 +423,13 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   61603841
+         Format          =   62259201
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 
          Caption         =   "Fecha Pedido :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -372,15 +439,15 @@ Begin VB.Form frmPedidoFactura
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   255
-         Left            =   7320
+         Left            =   8010
          TabIndex        =   53
-         Top             =   360
+         Top             =   330
          Width           =   1455
       End
       Begin VB.Label Label13 
          Caption         =   "Bodega :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -398,7 +465,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label lblVendedor 
          Caption         =   "Vendedor :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -416,7 +483,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label lblPedido 
          Caption         =   "Pedido No :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   12
             Charset         =   0
             Weight          =   700
@@ -427,13 +494,13 @@ Begin VB.Form frmPedidoFactura
          Height          =   255
          Left            =   11640
          TabIndex        =   50
-         Top             =   360
+         Top             =   240
          Width           =   1455
       End
       Begin VB.Label lblNoPedido 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   12
             Charset         =   0
             Weight          =   700
@@ -444,20 +511,20 @@ Begin VB.Form frmPedidoFactura
          Height          =   255
          Left            =   13200
          TabIndex        =   49
-         Top             =   360
+         Top             =   270
          Width           =   975
       End
    End
    Begin VB.Frame Frame2 
       Height          =   3015
-      Left            =   120
+      Left            =   210
       TabIndex        =   0
-      Top             =   5100
+      Top             =   6030
       Width           =   9975
       Begin VB.CommandButton cmdProducto 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":2774
+         Picture         =   "frmPedidoFactura.frx":33B8
          Style           =   1  'Graphical
          TabIndex        =   28
          Top             =   200
@@ -466,7 +533,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtDescProd 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -474,6 +541,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   2520
          Locked          =   -1  'True
@@ -484,7 +552,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtCodProd 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -492,6 +560,7 @@ Begin VB.Form frmPedidoFactura
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   1440
          TabIndex        =   26
@@ -502,14 +571,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   5880
          TabIndex        =   25
@@ -521,14 +591,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   1080
          TabIndex        =   24
@@ -540,14 +611,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   3840
          TabIndex        =   23
@@ -558,32 +630,34 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
-         Left            =   1080
+         Left            =   960
          TabIndex        =   22
-         Top             =   2520
+         Top             =   2490
          Width           =   1335
       End
       Begin VB.TextBox txtTotalImpuesto 
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   5880
          TabIndex        =   21
@@ -595,14 +669,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   7920
          TabIndex        =   20
@@ -614,14 +689,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   4320
          TabIndex        =   19
@@ -744,7 +820,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdLote 
          Height          =   320
          Left            =   3960
-         Picture         =   "frmPedidoFactura.frx":2AB6
+         Picture         =   "frmPedidoFactura.frx":36FA
          Style           =   1  'Graphical
          TabIndex        =   9
          Top             =   2040
@@ -754,24 +830,25 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   330
          Left            =   3360
          TabIndex        =   8
-         Top             =   2520
+         Top             =   2490
          Width           =   1215
       End
       Begin VB.CheckBox chkLoteAutomaticos 
          Caption         =   "Asignar Lotes Automáticamente"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -790,14 +867,15 @@ Begin VB.Form frmPedidoFactura
       Begin VB.TextBox txtLoteInterno 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   5280
          TabIndex        =   6
@@ -809,14 +887,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   8760
          TabIndex        =   5
@@ -828,14 +907,15 @@ Begin VB.Form frmPedidoFactura
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   8400
          TabIndex        =   4
@@ -845,33 +925,52 @@ Begin VB.Form frmPedidoFactura
       End
       Begin VB.OptionButton optDescBonif 
          Caption         =   "Descuento por Und Bonificada"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   600
+         Left            =   210
          TabIndex        =   3
          Top             =   1680
          Value           =   -1  'True
-         Width           =   2655
+         Width           =   3045
       End
       Begin VB.OptionButton optDescPorc 
          Caption         =   "Descuento Porcentual sin Bonificación"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   3360
+         Left            =   3270
          TabIndex        =   2
-         Top             =   1680
-         Width           =   3135
+         Top             =   1650
+         Width           =   3525
       End
       Begin VB.TextBox txtCantTotal 
          Alignment       =   1  'Right Justify
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
-            Weight          =   400
+            Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   285
          Left            =   8400
          TabIndex        =   1
@@ -882,7 +981,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label lblProducto 
          Caption         =   "Producto:"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -900,7 +999,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label7 
          Caption         =   "Total :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -918,8 +1017,8 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label6 
          Caption         =   "Impuesto"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -936,7 +1035,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label10 
          Caption         =   "Precio"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -954,8 +1053,8 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label3 
          Caption         =   "% Impuesto :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -978,7 +1077,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label Label9 
          Caption         =   "SubTotal"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -996,25 +1095,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.Label lblTotalImpuesto 
          Caption         =   "Impuesto :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00800000&
-         Height          =   255
-         Left            =   4680
-         TabIndex        =   34
-         Top             =   2520
-         Width           =   1095
-      End
-      Begin VB.Label Label8 
-         Caption         =   "Lote"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -1024,15 +1105,33 @@ Begin VB.Form frmPedidoFactura
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   255
-         Left            =   3600
+         Left            =   4830
+         TabIndex        =   34
+         Top             =   2550
+         Width           =   1095
+      End
+      Begin VB.Label Label8 
+         Caption         =   "Lote"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00800000&
+         Height          =   255
+         Left            =   3540
          TabIndex        =   33
-         Top             =   2040
+         Top             =   2070
          Width           =   495
       End
       Begin VB.Label Label14 
          Caption         =   "Descuento"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -1049,6 +1148,16 @@ Begin VB.Form frmPedidoFactura
       End
       Begin VB.Label Label15 
          Caption         =   "Existencia Lote :"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   7560
          TabIndex        =   31
@@ -1057,6 +1166,16 @@ Begin VB.Form frmPedidoFactura
       End
       Begin VB.Label Label16 
          Caption         =   "CantBonif :"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   7320
          TabIndex        =   30
@@ -1083,18 +1202,18 @@ Begin VB.Form frmPedidoFactura
       End
    End
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
-      Height          =   2895
-      Left            =   240
-      OleObjectBlob   =   "frmPedidoFactura.frx":2DF8
+      Height          =   3165
+      Left            =   210
+      OleObjectBlob   =   "frmPedidoFactura.frx":3A3C
       TabIndex        =   69
-      Top             =   2100
-      Width           =   14535
+      Top             =   2880
+      Width           =   15135
    End
    Begin MSComctlLib.StatusBar StatusSubTotal 
       Height          =   495
-      Left            =   10440
+      Left            =   10560
       TabIndex        =   70
-      Top             =   5220
+      Top             =   6450
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -1114,7 +1233,7 @@ Begin VB.Form frmPedidoFactura
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -1125,9 +1244,9 @@ Begin VB.Form frmPedidoFactura
    End
    Begin MSComctlLib.StatusBar StatusTotal 
       Height          =   495
-      Left            =   10440
+      Left            =   10560
       TabIndex        =   71
-      Top             =   7380
+      Top             =   8610
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -1158,9 +1277,9 @@ Begin VB.Form frmPedidoFactura
    End
    Begin MSComctlLib.StatusBar StatusImpuesto 
       Height          =   495
-      Left            =   10440
+      Left            =   10560
       TabIndex        =   72
-      Top             =   6660
+      Top             =   7890
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -1191,9 +1310,9 @@ Begin VB.Form frmPedidoFactura
    End
    Begin MSComctlLib.StatusBar StatusDescuento 
       Height          =   495
-      Left            =   10440
+      Left            =   10560
       TabIndex        =   73
-      Top             =   5940
+      Top             =   7170
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -1222,27 +1341,36 @@ Begin VB.Form frmPedidoFactura
          Strikethrough   =   0   'False
       EndProperty
    End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   77
+      Top             =   750
+      Width           =   19275
+      _ExtentX        =   33999
+      _ExtentY        =   53
+   End
    Begin VB.Image imgEdit 
       Height          =   480
-      Left            =   14880
-      Picture         =   "frmPedidoFactura.frx":809C
-      Top             =   5100
+      Left            =   15000
+      Picture         =   "frmPedidoFactura.frx":8CD8
+      Top             =   6330
       Visible         =   0   'False
       Width           =   480
    End
    Begin VB.Image imgAdd 
       Height          =   480
-      Left            =   14880
-      Picture         =   "frmPedidoFactura.frx":84DE
-      Top             =   5940
+      Left            =   15000
+      Picture         =   "frmPedidoFactura.frx":911A
+      Top             =   7170
       Visible         =   0   'False
       Width           =   480
    End
    Begin VB.Image imgOk 
       Height          =   480
-      Left            =   14880
-      Picture         =   "frmPedidoFactura.frx":8920
-      Top             =   6660
+      Left            =   15000
+      Picture         =   "frmPedidoFactura.frx":955C
+      Top             =   7890
       Visible         =   0   'False
       Width           =   480
    End
@@ -1270,7 +1398,7 @@ End Sub
 
 Private Sub chkLoteAutomaticos_Click()
 If chkLoteAutomaticos.value = 0 Then
-    txtIdLote.Text = ""
+    txtIDLote.Text = ""
     txtLoteInterno.Text = ""
     txtExistenciaLote.Text = "0"
 End If
@@ -1294,7 +1422,7 @@ txtCantidad.Text = ""
 txtSubTotal.Text = "0"
 txtTotalImpuesto.Text = "0"
 txtTotal.Text = "0"
-txtIdLote.Text = ""
+txtIDLote.Text = ""
 txtLoteInterno.Text = ""
 txtExistenciaLote.Text = 0
 End Sub
@@ -1487,7 +1615,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = "IDBodega=" & txtcodBodega.Text & " and IDProducto=" & txtCodProd.Text & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-        txtIdLote.Text = frm.gsCodigobrw
+        txtIDLote.Text = frm.gsCodigobrw
       
     End If
     
@@ -1569,7 +1697,7 @@ gbLoteInProcess = False
         '-*********************************************************
         
     Else ' El usuario está asignando el lote manualmente
-        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIdLote.Text) Then
+        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIDLote.Text) Then
           lbok = Mensaje("Ya Existe ese Producto. ", ICO_ERROR, False)
           Exit Sub
         
@@ -1589,7 +1717,7 @@ gbLoteInProcess = False
         rsttmpProdFac("IDCliente").value = txtCodCliente.Text
         rsttmpProdFac("Fecha").value = Format(DTPFecFac.value, "yyyy-mm-dd") 'DTPFecFac.value
         rsttmpProdFac("IDProducto").value = txtCodProd.Text
-        rsttmpProdFac("IDLote").value = txtIdLote.Text
+        rsttmpProdFac("IDLote").value = txtIDLote.Text
         
         rsttmpProdFac("Descr").value = txtDescProd.Text
         rsttmpProdFac("CantidadPedida").value = txtCantidad.Text
@@ -1815,7 +1943,7 @@ fmtTextbox txtTotalImpuesto, "R"
 fmtTextbox txtSubTotal, "R"
 fmtTextbox txtPrecio, "R"
 fmtTextbox txtPorcImpuesto, "R"
-fmtTextbox txtIdLote, "R"
+fmtTextbox txtIDLote, "R"
 fmtTextbox txtExistenciaLote, "R"
 fmtTextbox txtLoteInterno, "R"
 SetColumnSizeGrid
@@ -2039,7 +2167,7 @@ If Not Val_TextboxNum(txtCantidad) Then
  GoTo salir
 End If
 If chkLoteAutomaticos.value = 0 Then
-      If txtIdLote.Text = "" Then
+      If txtIDLote.Text = "" Then
         gsOperacionError = "Ud no ha seleccionado el lote"
         lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
@@ -2048,12 +2176,12 @@ If chkLoteAutomaticos.value = 0 Then
       End If
     
     
-    If Not Val_TextboxNum(txtIdLote) Then
+    If Not Val_TextboxNum(txtIDLote) Then
      lbok = False
      gsOperacionError = "El código del Lote debe ser numérico."
      lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
-        txtIdLote.Text = ""
+        txtIDLote.Text = ""
         txtLoteInterno.Text = ""
         txtExistenciaLote.Text = "0"
         cmdLote.SetFocus
@@ -2116,7 +2244,7 @@ If Not rsttmpProdFac.EOF Then
   txtSubTotal.Text = rsttmpProdFac("SubTotal").value
   txtTotalImpuesto.Text = rsttmpProdFac("TotalImpuesto").value
   txtTotal.Text = rsttmpProdFac("Total").value
-  txtIdLote.Text = rsttmpProdFac("IDLote").value
+  txtIDLote.Text = rsttmpProdFac("IDLote").value
 End If
 End Sub
 

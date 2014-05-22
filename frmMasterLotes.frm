@@ -6,13 +6,13 @@ Begin VB.Form frmMasterLotes
    ClientHeight    =   8130
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   13020
+   ClientWidth     =   10425
    FillColor       =   &H00F4D5BB&
    Icon            =   "frmMasterLotes.frx":0000
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   8130
-   ScaleWidth      =   13020
+   ScaleWidth      =   10425
    WindowState     =   2  'Maximized
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -23,10 +23,10 @@ Begin VB.Form frmMasterLotes
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   13020
+      ScaleWidth      =   10425
       TabIndex        =   18
       Top             =   0
-      Width           =   13020
+      Width           =   10425
       Begin VB.Image Image 
          Height          =   480
          Index           =   2
@@ -84,15 +84,15 @@ Begin VB.Form frmMasterLotes
       Top             =   1050
       Width           =   9990
       Begin MSComCtl2.DTPicker dtpFechaVencimiento 
-         Height          =   375
+         Height          =   315
          Left            =   2220
          TabIndex        =   10
-         Top             =   1140
+         Top             =   1200
          Width           =   1455
          _ExtentX        =   2566
-         _ExtentY        =   661
+         _ExtentY        =   556
          _Version        =   393216
-         Format          =   20971521
+         Format          =   20905985
          CurrentDate     =   41772
       End
       Begin VB.TextBox txtLoteProveedor 
@@ -110,7 +110,7 @@ Begin VB.Form frmMasterLotes
          Height          =   285
          Left            =   7050
          TabIndex        =   6
-         Top             =   690
+         Top             =   750
          Width           =   2655
       End
       Begin VB.TextBox txtLoteInterno 
@@ -128,7 +128,7 @@ Begin VB.Form frmMasterLotes
          Height          =   285
          Left            =   1380
          TabIndex        =   2
-         Top             =   690
+         Top             =   750
          Width           =   2595
       End
       Begin VB.TextBox txtIDLote 
@@ -150,13 +150,13 @@ Begin VB.Form frmMasterLotes
          Width           =   855
       End
       Begin MSComCtl2.DTPicker dtpFechaProduccion 
-         Height          =   375
+         Height          =   315
          Left            =   8310
          TabIndex        =   11
-         Top             =   1170
+         Top             =   1230
          Width           =   1455
          _ExtentX        =   2566
-         _ExtentY        =   661
+         _ExtentY        =   556
          _Version        =   393216
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
@@ -167,7 +167,7 @@ Begin VB.Form frmMasterLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   20971521
+         Format          =   20905985
          CurrentDate     =   41772
       End
       Begin VB.Label Label5 
@@ -184,9 +184,9 @@ Begin VB.Form frmMasterLotes
          EndProperty
          ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   6120
+         Left            =   6270
          TabIndex        =   9
-         Top             =   1230
+         Top             =   1290
          Width           =   1965
       End
       Begin VB.Label Label3 
@@ -205,7 +205,7 @@ Begin VB.Form frmMasterLotes
          Height          =   255
          Left            =   180
          TabIndex        =   8
-         Top             =   1230
+         Top             =   1290
          Width           =   1965
       End
       Begin VB.Label Label2 
@@ -224,7 +224,7 @@ Begin VB.Form frmMasterLotes
          Height          =   255
          Left            =   5460
          TabIndex        =   7
-         Top             =   720
+         Top             =   780
          Width           =   1395
       End
       Begin VB.Label Label4 
@@ -243,7 +243,7 @@ Begin VB.Form frmMasterLotes
          Height          =   255
          Left            =   240
          TabIndex        =   4
-         Top             =   720
+         Top             =   780
          Width           =   1125
       End
       Begin VB.Label Label1 
@@ -293,7 +293,7 @@ Begin VB.Form frmMasterLotes
          EndProperty
          Height          =   555
          Left            =   2460
-         Picture         =   "frmMasterLotes.frx":6C1D
+         Picture         =   "frmMasterLotes.frx":6C29
          Style           =   1  'Graphical
          TabIndex        =   17
          ToolTipText     =   "Deshacer / Cancelar"
@@ -312,7 +312,7 @@ Begin VB.Form frmMasterLotes
          EndProperty
          Height          =   555
          Left            =   1260
-         Picture         =   "frmMasterLotes.frx":78E7
+         Picture         =   "frmMasterLotes.frx":78F3
          Style           =   1  'Graphical
          TabIndex        =   16
          ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
@@ -323,7 +323,7 @@ Begin VB.Form frmMasterLotes
          Enabled         =   0   'False
          Height          =   555
          Left            =   1860
-         Picture         =   "frmMasterLotes.frx":85B1
+         Picture         =   "frmMasterLotes.frx":85BD
          Style           =   1  'Graphical
          TabIndex        =   15
          ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
@@ -342,7 +342,7 @@ Begin VB.Form frmMasterLotes
          EndProperty
          Height          =   555
          Left            =   660
-         Picture         =   "frmMasterLotes.frx":A27B
+         Picture         =   "frmMasterLotes.frx":A287
          Style           =   1  'Graphical
          TabIndex        =   14
          ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
@@ -361,7 +361,7 @@ Begin VB.Form frmMasterLotes
          EndProperty
          Height          =   555
          Left            =   60
-         Picture         =   "frmMasterLotes.frx":AF45
+         Picture         =   "frmMasterLotes.frx":AF51
          Style           =   1  'Graphical
          TabIndex        =   13
          ToolTipText     =   "Agrega el item con los datos digitados..."
@@ -478,32 +478,32 @@ End Sub
 
 
 Public Function DependenciaLote(sFldname As String, sFldVal As String) As Boolean
-Dim lbOk As Boolean
-lbOk = False
+Dim lbok As Boolean
+lbok = False
 On Error GoTo error
 
     If ExisteDependencia("invEXISTENCIALOTE", sFldname, sFldVal, "N") Then
-        lbOk = True
-        GoTo Salir
+        lbok = True
+        GoTo salir
     Else
         If ExisteDependencia("invMovimientos", sFldname, sFldVal, "N") Then
-            lbOk = True
-            GoTo Salir
+            lbok = True
+            GoTo salir
         End If
     End If
 
-Salir:
-DependenciaLote = lbOk
+salir:
+DependenciaLote = lbok
 Exit Function
 
 error:
-    lbOk = False
-    GoTo Salir
+    lbok = False
+    GoTo salir
 End Function
 
 
 Private Sub cmdEliminar_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sTipo As String
     Dim sFiltro As String
@@ -511,24 +511,24 @@ Private Sub cmdEliminar_Click()
     Dim sFactura As String
 
     If txtIDLote.Text = "" Then
-        lbOk = Mensaje("El IDLote no puede estar en Blanco", ICO_ERROR, False)
+        lbok = Mensaje("El IDLote no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
     ' hay que validar la integridad referencial
      'Validar la dependecia de la bodega
     If DependenciaLote("IDLote", rst!IdLote) Then
-        lbOk = Mensaje("No se puede eliminar, el Lote tiene Asociada transacciones", ICO_ERROR, False)
+        lbok = Mensaje("No se puede eliminar, el Lote tiene Asociada transacciones", ICO_ERROR, False)
         Exit Sub
     End If
     
-    lbOk = Mensaje("Está seguro de eliminar el Lote " & rst("IDLote").value, ICO_PREGUNTA, True)
-    If lbOk Then
-                lbOk = invUpdateLote("D", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+    lbok = Mensaje("Está seguro de eliminar el Lote " & rst("IDLote").value, ICO_PREGUNTA, True)
+    If lbok Then
+                lbok = invUpdateLote("D", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
         
-        If lbOk Then
+        If lbok Then
             sMsg = "Borrado Exitosamente ... "
-            lbOk = Mensaje(sMsg, ICO_OK, False)
+            lbok = Mensaje(sMsg, ICO_OK, False)
             ' actualiza datos
             cargaGrid
         End If
@@ -536,29 +536,29 @@ Private Sub cmdEliminar_Click()
 End Sub
 
 Private Sub cmdSave_Click()
-    Dim lbOk As Boolean
+    Dim lbok As Boolean
     Dim sMsg As String
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
     If txtIDLote.Text = "" Then
-        lbOk = Mensaje("IDLote no puede estar en Blanco", ICO_ERROR, False)
+        lbok = Mensaje("IDLote no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
     If txtLoteInterno.Text = "" Then
-        lbOk = Mensaje("El Lote interno no puede estar en blanco", ICO_ERROR, False)
+        lbok = Mensaje("El Lote interno no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
     If txtLoteProveedor.Text = "" Then
-        lbOk = Mensaje("El Lote proveedor no puede estar en blanco", ICO_ERROR, False)
+        lbok = Mensaje("El Lote proveedor no puede estar en blanco", ICO_ERROR, False)
         Exit Sub
     End If
     
     
     If (dtpFechaVencimiento.value = dtpFechaProduccion.value) Then
-        lbOk = Mensaje("La fecha de vencimiento y fecha de producción no pueden ser iguales", ICO_ERROR, False)
+        lbok = Mensaje("La fecha de vencimiento y fecha de producción no pueden ser iguales", ICO_ERROR, False)
         Exit Sub
     End If
         
@@ -567,17 +567,17 @@ Private Sub cmdSave_Click()
         If Not (rst.EOF And rst.BOF) Then
             sFiltro = "IDLote = '" & txtIDLote.Text & "'"
             If ExiteRstKey(rst, sFiltro) Then
-               lbOk = Mensaje("Ya exista el Lote ", ICO_ERROR, False)
+               lbok = Mensaje("Ya exista el Lote ", ICO_ERROR, False)
                 txtIDLote.SetFocus
             Exit Sub
             End If
         End If
     
-            lbOk = invUpdateLote("I", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+            lbok = invUpdateLote("I", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
             
-            If lbOk Then
+            If lbok Then
                 sMsg = "El Lote ha sido registrada exitosamente ... "
-                lbOk = Mensaje(sMsg, ICO_OK, False)
+                lbok = Mensaje(sMsg, ICO_OK, False)
                 ' actualiza datos
                 cargaGrid
                 Accion = View
@@ -585,15 +585,15 @@ Private Sub cmdSave_Click()
                 HabilitarBotones
             Else
                  sMsg = "Ha ocurrido un error tratando de Agregar el Lote... "
-                lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                lbok = Mensaje(sMsg, ICO_ERROR, False)
             End If
     End If ' si estoy adicionando
         If Accion = Edit Then
             If Not (rst.EOF And rst.BOF) Then
-                lbOk = invUpdateLote("U", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
-                If lbOk Then
+                lbok = invUpdateLote("U", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+                If lbok Then
                     sMsg = "El Lote ha sido registrada exitosamente ..."
-                    lbOk = Mensaje(sMsg, ICO_OK, False)
+                    lbok = Mensaje(sMsg, ICO_OK, False)
                     ' actualiza datos
                     cargaGrid
                     Accion = View
@@ -601,7 +601,7 @@ Private Sub cmdSave_Click()
                     HabilitarBotones
                 Else
                     sMsg = "Ha ocurrido un error tratando de Agregar el Lote... "
-                    lbOk = Mensaje(sMsg, ICO_ERROR, False)
+                    lbok = Mensaje(sMsg, ICO_ERROR, False)
                 End If
             End If
         

@@ -1,34 +1,147 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmAutoSugiereLotes 
-   Caption         =   "v"
-   ClientHeight    =   7290
-   ClientLeft      =   60
-   ClientTop       =   450
+   BorderStyle     =   4  'Fixed ToolWindow
+   ClientHeight    =   8490
+   ClientLeft      =   45
+   ClientTop       =   315
    ClientWidth     =   8550
+   BeginProperty Font 
+      Name            =   "Tahoma"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
+   Icon            =   "frmAutoSugiereLotes.frx":0000
    LinkTopic       =   "Form1"
-   ScaleHeight     =   7290
+   LockControls    =   -1  'True
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   8490
    ScaleWidth      =   8550
-   StartUpPosition =   3  'Windows Default
+   ShowInTaskbar   =   0   'False
+   StartUpPosition =   2  'CenterScreen
+   Begin Inventario.CtlLiner CtlLiner1 
+      Height          =   30
+      Left            =   -450
+      TabIndex        =   25
+      Top             =   780
+      Width           =   9585
+      _ExtentX        =   16907
+      _ExtentY        =   53
+   End
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000008&
+      Height          =   780
+      Left            =   0
+      ScaleHeight     =   780
+      ScaleWidth      =   8550
+      TabIndex        =   24
+      Top             =   0
+      Width           =   8550
+      Begin VB.Label lbFormCaption 
+         BackStyle       =   0  'Transparent
+         Caption         =   "TITLE"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   255
+         Left            =   780
+         TabIndex        =   31
+         Top             =   150
+         Width           =   1185
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Auto sugiere lotes, para la bodega y productos seleccionados"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   780
+         TabIndex        =   26
+         Top             =   420
+         Width           =   3750
+      End
+      Begin VB.Image Image 
+         Height          =   540
+         Index           =   2
+         Left            =   150
+         Picture         =   "frmAutoSugiereLotes.frx":058A
+         Top             =   90
+         Width           =   585
+      End
+   End
    Begin VB.CommandButton cmdClear 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   320
-      Left            =   2670
-      Picture         =   "frmAutoSugiereLotes.frx":0000
+      Left            =   2760
+      Picture         =   "frmAutoSugiereLotes.frx":0F9D
       Style           =   1  'Graphical
       TabIndex        =   23
-      Top             =   2520
+      Top             =   3270
       Width           =   300
    End
    Begin VB.CommandButton cmdLote 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   320
-      Left            =   2280
-      Picture         =   "frmAutoSugiereLotes.frx":1CCA
+      Left            =   2370
+      Picture         =   "frmAutoSugiereLotes.frx":2C67
       Style           =   1  'Graphical
       TabIndex        =   22
-      Top             =   2535
+      Top             =   3285
       Width           =   300
    End
    Begin VB.CommandButton cmdCancelar 
+      BackColor       =   &H80000009&
       Caption         =   "Cancelar"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -39,13 +152,16 @@ Begin VB.Form frmAutoSugiereLotes
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   525
-      Left            =   4560
+      Height          =   555
+      Left            =   4470
+      Picture         =   "frmAutoSugiereLotes.frx":2FA9
+      Style           =   1  'Graphical
       TabIndex        =   21
-      Top             =   6450
+      Top             =   7830
       Width           =   1155
    End
    Begin VB.CommandButton cmdAceptar 
+      BackColor       =   &H80000009&
       Caption         =   "Aceptar"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -56,20 +172,34 @@ Begin VB.Form frmAutoSugiereLotes
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   525
-      Left            =   2640
+      Height          =   555
+      Left            =   2760
+      Picture         =   "frmAutoSugiereLotes.frx":32ED
+      Style           =   1  'Graphical
       TabIndex        =   20
-      Top             =   6450
+      Top             =   7800
       Width           =   1155
    End
    Begin VB.Frame Frame1 
+      Caption         =   " Detalle de Productos a Distribuir "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00000000&
       Height          =   1665
-      Left            =   240
+      Left            =   210
       TabIndex        =   11
-      Top             =   540
+      Top             =   960
       Width           =   8175
       Begin VB.TextBox txtCantidadTotal 
          Appearance      =   0  'Flat
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1650
          TabIndex        =   19
@@ -78,6 +208,7 @@ Begin VB.Form frmAutoSugiereLotes
       End
       Begin VB.TextBox txtIdBodega 
          Appearance      =   0  'Flat
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1650
          TabIndex        =   16
@@ -86,6 +217,7 @@ Begin VB.Form frmAutoSugiereLotes
       End
       Begin VB.TextBox txtDescrBodega 
          Appearance      =   0  'Flat
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2730
          TabIndex        =   15
@@ -94,6 +226,7 @@ Begin VB.Form frmAutoSugiereLotes
       End
       Begin VB.TextBox txtProducto 
          Appearance      =   0  'Flat
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1650
          TabIndex        =   13
@@ -102,6 +235,7 @@ Begin VB.Form frmAutoSugiereLotes
       End
       Begin VB.TextBox txtDescrProducto 
          Appearance      =   0  'Flat
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2730
          TabIndex        =   12
@@ -112,7 +246,7 @@ Begin VB.Form frmAutoSugiereLotes
          BackStyle       =   0  'Transparent
          Caption         =   "Cantidad Total:"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -120,6 +254,7 @@ Begin VB.Form frmAutoSugiereLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   345
          Left            =   270
          TabIndex        =   18
@@ -130,7 +265,7 @@ Begin VB.Form frmAutoSugiereLotes
          BackStyle       =   0  'Transparent
          Caption         =   "Bodega:"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -138,6 +273,7 @@ Begin VB.Form frmAutoSugiereLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   345
          Left            =   300
          TabIndex        =   17
@@ -148,7 +284,7 @@ Begin VB.Form frmAutoSugiereLotes
          BackStyle       =   0  'Transparent
          Caption         =   "Producto:"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -156,7 +292,9 @@ Begin VB.Form frmAutoSugiereLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   345
+         Index           =   0
          Left            =   300
          TabIndex        =   14
          Top             =   780
@@ -164,6 +302,7 @@ Begin VB.Form frmAutoSugiereLotes
       End
    End
    Begin VB.CommandButton cmdEditItem 
+      BackColor       =   &H80000009&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -174,26 +313,37 @@ Begin VB.Form frmAutoSugiereLotes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   7650
-      Picture         =   "frmAutoSugiereLotes.frx":200C
+      Left            =   7620
+      Picture         =   "frmAutoSugiereLotes.frx":3631
       Style           =   1  'Graphical
       TabIndex        =   9
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   3930
+      Top             =   4980
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
+      BackColor       =   &H80000009&
       Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   555
-      Left            =   7650
-      Picture         =   "frmAutoSugiereLotes.frx":2CD6
+      Left            =   7620
+      Picture         =   "frmAutoSugiereLotes.frx":42FB
       Style           =   1  'Graphical
       TabIndex        =   8
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   5130
+      Top             =   6180
       Width           =   555
    End
    Begin VB.CommandButton cmdAdd 
+      BackColor       =   &H80000009&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -204,15 +354,16 @@ Begin VB.Form frmAutoSugiereLotes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   7650
-      Picture         =   "frmAutoSugiereLotes.frx":49A0
+      Left            =   7620
+      Picture         =   "frmAutoSugiereLotes.frx":5FC5
       Style           =   1  'Graphical
       TabIndex        =   7
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   3330
+      Top             =   4380
       Width           =   555
    End
    Begin VB.CommandButton cmdEliminar 
+      BackColor       =   &H80000009&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -223,15 +374,16 @@ Begin VB.Form frmAutoSugiereLotes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   7650
-      Picture         =   "frmAutoSugiereLotes.frx":566A
+      Left            =   7620
+      Picture         =   "frmAutoSugiereLotes.frx":6C8F
       Style           =   1  'Graphical
       TabIndex        =   6
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   4530
+      Top             =   5580
       Width           =   555
    End
    Begin VB.CommandButton cmdUndo 
+      BackColor       =   &H80000009&
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -242,81 +394,105 @@ Begin VB.Form frmAutoSugiereLotes
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   7650
-      Picture         =   "frmAutoSugiereLotes.frx":6334
+      Left            =   7620
+      Picture         =   "frmAutoSugiereLotes.frx":7959
       Style           =   1  'Graphical
       TabIndex        =   5
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   5730
+      Top             =   6780
       Width           =   555
    End
    Begin VB.TextBox txtCantidad 
       Appearance      =   0  'Flat
+      ForeColor       =   &H00404040&
       Height          =   315
-      Left            =   1170
+      Left            =   1260
       TabIndex        =   3
-      Top             =   2910
+      Top             =   3660
       Width           =   975
    End
    Begin VB.TextBox txtLoteInterno 
       Appearance      =   0  'Flat
+      ForeColor       =   &H00404040&
       Height          =   315
-      Left            =   3060
+      Left            =   3150
       TabIndex        =   2
-      Top             =   2520
+      Top             =   3270
       Width           =   4785
    End
    Begin VB.TextBox txtIdLote 
       Appearance      =   0  'Flat
+      ForeColor       =   &H00404040&
       Height          =   315
-      Left            =   1170
+      Left            =   1260
       TabIndex        =   0
-      Top             =   2520
+      Top             =   3270
       Width           =   975
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   2835
-      Left            =   240
-      OleObjectBlob   =   "frmAutoSugiereLotes.frx":6FFE
+      Height          =   3285
+      Left            =   360
+      OleObjectBlob   =   "frmAutoSugiereLotes.frx":8623
       TabIndex        =   10
-      Top             =   3330
+      Top             =   4170
       Width           =   7185
    End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Titulo Catalogo"
+   Begin VB.Image Image3 
+      Height          =   480
+      Left            =   240
+      Picture         =   "frmAutoSugiereLotes.frx":E014
+      Top             =   7350
+      Width           =   480
+   End
+   Begin VB.Label Label11 
+      AutoSize        =   -1  'True
+      Caption         =   "Puede modificar los lotes sugeridos por el sistema."
+      ForeColor       =   &H00404040&
+      Height          =   195
+      Left            =   720
+      TabIndex        =   30
+      Top             =   7470
+      Width           =   3600
+   End
+   Begin VB.Label Label7 
+      Caption         =   "____________________________ _ _ _"
+      Height          =   405
+      Left            =   5280
+      TabIndex        =   29
+      Top             =   2760
+      Width           =   3135
+   End
+   Begin VB.Label Label6 
+      Caption         =   " _ _ _ ____________________________"
+      Height          =   405
+      Left            =   240
+      TabIndex        =   28
+      Top             =   2760
+      Width           =   3045
+   End
+   Begin VB.Label Label5 
+      Caption         =   "Desglose de Lotes"
       BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
+         Name            =   "Tahoma"
+         Size            =   8.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H002F2F2F&
+      ForeColor       =   &H00404040&
       Height          =   375
-      Left            =   -750
-      TabIndex        =   24
-      Top             =   0
-      Width           =   10140
-   End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   0
-      Picture         =   "frmAutoSugiereLotes.frx":C9EF
-      Stretch         =   -1  'True
-      Top             =   -330
-      Width           =   11490
+      Left            =   3450
+      TabIndex        =   27
+      Top             =   2850
+      Width           =   1605
    End
    Begin VB.Label Label2 
       BackStyle       =   0  'Transparent
       Caption         =   "Cantidad:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -324,17 +500,18 @@ Begin VB.Form frmAutoSugiereLotes
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H00404040&
       Height          =   255
-      Left            =   300
+      Left            =   390
       TabIndex        =   4
-      Top             =   2910
+      Top             =   3690
       Width           =   765
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   "Lote:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -342,10 +519,11 @@ Begin VB.Form frmAutoSugiereLotes
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H00404040&
       Height          =   255
-      Left            =   300
+      Left            =   390
       TabIndex        =   1
-      Top             =   2520
+      Top             =   3270
       Width           =   765
    End
 End
@@ -395,30 +573,30 @@ End Sub
 Public Sub HabilitarControles()
     Select Case Accion
         Case TypAccion.Add
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             txtCantidad.Enabled = True
             cmdLote.Enabled = True
             cmdClear.Enabled = True
             txtCantidad.Text = ""
-            txtIdLote.Text = ""
+            txtIDLote.Text = ""
             txtLoteInterno.Text = ""
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "O"
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "R"
             txtCantidad.Enabled = True
             Me.TDBG.Enabled = False
         Case TypAccion.View
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtCantidad, "O"
             fmtTextbox txtLoteInterno, "R"
             Me.TDBG.Enabled = True
@@ -444,7 +622,7 @@ Private Sub cmdCancelar_Click()
 End Sub
 
 Private Sub cmdClear_Click()
-    Me.txtIdLote.Text = ""
+    Me.txtIDLote.Text = ""
     Me.txtLoteInterno.Text = ""
 End Sub
 
@@ -457,11 +635,11 @@ Private Sub cmdEditItem_Click()
 End Sub
 Private Sub GetDataFromGridToControl()
     If Not (grst.EOF And grst.BOF) Then
-        txtIdLote.Text = grst("IDLote").value
+        txtIDLote.Text = grst("IDLote").value
         txtLoteInterno.Text = grst("LoteInterno").value
         txtCantidad.Text = grst("Cantidad").value
     Else
-        txtIdLote.Text = ""
+        txtIDLote.Text = ""
         txtLoteInterno.Text = ""
         txtCantidad.Text = ""
     End If
@@ -499,7 +677,7 @@ Private Sub cmdSave_Click()
     Dim sActivo As String
     Dim sFactura As String
     Dim sFiltro As String
-        If txtIdLote.Text = "" Then
+        If txtIDLote.Text = "" Then
             lbok = Mensaje("El Lote no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
@@ -521,7 +699,7 @@ Private Sub cmdSave_Click()
     
     
     If (Accion = Add) Then
-          If ExiteRstKey(grst, "IDLote=" & Me.txtIdLote.Text & " AND IDPRODUCTO=" & Me.gsIDProducto & _
+          If ExiteRstKey(grst, "IDLote=" & Me.txtIDLote.Text & " AND IDPRODUCTO=" & Me.gsIDProducto & _
                                         " AND IdBodega=" & gsIDBodega) Then
             lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
 
@@ -531,11 +709,11 @@ Private Sub cmdSave_Click()
           ' Carga los datos del detalle de transacciones para ser grabados a la bd
         
         Dim datosLote As New Dictionary
-        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIdLote.Text, datosLote
+        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIDLote.Text, datosLote
         grst.AddNew
         grst!IdBodega = Me.gsIDBodega
         grst!IdProducto = Me.gsIDProducto
-        grst!IDLote = Me.txtIdLote.Text
+        grst!IdLote = Me.txtIDLote.Text
         grst!Cantidad = Me.txtCantidad.Text
         grst!FechaVencimiento = datosLote("FechaVencimiento")
         grst!FechaFabricacion = datosLote("FechaFabricacion")
@@ -548,7 +726,7 @@ Private Sub cmdSave_Click()
     ElseIf (Accion = Edit) Then
       grst!IdBodega = gsIDBodega
       grst!IdProducto = gsIDProducto
-      grst!IDLote = Me.txtIdLote.Text
+      grst!IdLote = Me.txtIDLote.Text
       grst!Cantidad = Me.txtCantidad.Text
       grst.Update
     End If
@@ -580,7 +758,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = " IdProducto=" & gsIDProducto & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-      Me.txtIdLote.Text = frm.gsCodigobrw
+      Me.txtIDLote.Text = frm.gsCodigobrw
       
     End If
     

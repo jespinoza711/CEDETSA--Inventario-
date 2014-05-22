@@ -58,14 +58,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "20/05/2014"
+            TextSave        =   "21/05/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "16:41"
+            TextSave        =   "11:55"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -76,6 +76,7 @@ Begin VB.MDIForm MDIMain
          EndProperty
          BeginProperty Panel10 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   1
+            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "MAYÚS"
@@ -845,10 +846,26 @@ Private Sub lvWin_Click()
             ofrmVendedor.gsFormCaption = "Catalogo de Vendedores"
             ofrmVendedor.gsTitle = "VENDEDORES"
             LoadForm ofrmVendedor
-        Case "frmSupplier":
-            Dim ofrmVendedor2 As New frmCatalogos
-            
-            LoadForm ofrmVendedor2
+        Case "frmCliente":
+            Dim ofrmCliente As New frmCliente
+            ofrmCliente.gsTitle = "Clientes"
+            ofrmCliente.gsTitle = "MAESTRO DE CLIENTES"
+            LoadForm ofrmCliente
+        Case "frmPedidos":
+            Dim ofrmPedidos As New frmPedidos
+            ofrmPedidos.gsFormCaption = "Pedidos"
+            ofrmPedidos.gsTitle = "TELE VENTAS"
+            LoadForm ofrmPedidos
+        Case "frmTablas":
+            Dim ofrmTablas As New frmTablas
+            ofrmTablas.gsFormCaption = "Catalogo de Tablas Generales"
+            ofrmTablas.gsTitle = "TABLAS GENERALES DEL SISTEMA"
+            LoadForm ofrmTablas
+        Case "frmCatalogos":
+            Dim ofrmCatalogos As New frmCatalogos
+            ofrmCatalogos.gsFormCaption = "Catalogo Generales"
+            ofrmCatalogos.gsTitle = "CATALOGOS GENERALES DEL SISTEMA"
+            LoadForm ofrmCatalogos
        '----------------------------------------------
                      
         
@@ -921,14 +938,14 @@ Private Sub lvWin_Load()
         .ListItems.Add(, "frmTransacciones", "Transacciones Producto", 16, 16).Bold = False
         
         .ListItems.Add(, "frmVendedor", "Vendedores", 3, 3).Bold = False
-        .ListItems.Add(, "frmSupplier", "Proveedores", 4, 4).Bold = False
+        .ListItems.Add(, "frmCliente", "Clientes", 4, 4).Bold = False
         
-'
-'        .ListItems.Add(, "frmPDCManager", "PDC Manager", 12, 12).Bold = False
-'        .ListItems.Add(, "frmDueChecks", "Display Due Checks", 13, 13).Bold = False
+
+        .ListItems.Add(, "frmPedidos", "Pedidos", 12, 12).Bold = False
+        .ListItems.Add(, "frmTablas", "Tablas Globales", 13, 13).Bold = False
 '
 '        'For Inventory
-'        .ListItems.Add(, "frmSupplier", "Manage Suppliers", 4, 4).Bold = False
+        .ListItems.Add(, "frmCatalogos", "Catalogos Generales", 4, 4).Bold = False
 '
 '        .ListItems.Add(, "frmCategories", "Category List", 5, 5).Bold = False
 '        .ListItems.Add(, "frmProduct", "Product List", 6, 6).Bold = False

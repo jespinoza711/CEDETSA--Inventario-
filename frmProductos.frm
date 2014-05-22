@@ -8,7 +8,7 @@ Begin VB.Form frmProductos
    ClientHeight    =   9150
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   16080
+   ClientWidth     =   17040
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -22,7 +22,7 @@ Begin VB.Form frmProductos
    MDIChild        =   -1  'True
    Picture         =   "frmProductos.frx":0000
    ScaleHeight     =   9150
-   ScaleWidth      =   16080
+   ScaleWidth      =   17040
    WindowState     =   2  'Maximized
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
@@ -30,8 +30,8 @@ Begin VB.Form frmProductos
       TabIndex        =   99
       Top             =   750
       Width           =   17925
-      _extentx        =   31618
-      _extenty        =   53
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -42,10 +42,10 @@ Begin VB.Form frmProductos
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   16080
+      ScaleWidth      =   17040
       TabIndex        =   96
       Top             =   0
-      Width           =   16080
+      Width           =   17040
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -201,7 +201,7 @@ Begin VB.Form frmProductos
       Height          =   7275
       Left            =   120
       TabIndex        =   64
-      Top             =   1350
+      Top             =   1230
       Width           =   3765
       _ExtentX        =   6641
       _ExtentY        =   12832
@@ -237,7 +237,7 @@ Begin VB.Form frmProductos
       Height          =   285
       Left            =   4860
       TabIndex        =   60
-      Top             =   930
+      Top             =   840
       Width           =   1095
    End
    Begin VB.TextBox txtDescr 
@@ -254,7 +254,7 @@ Begin VB.Form frmProductos
       Height          =   285
       Left            =   7680
       TabIndex        =   59
-      Top             =   930
+      Top             =   870
       Width           =   6945
    End
    Begin VB.CheckBox chkActivo 
@@ -271,14 +271,14 @@ Begin VB.Form frmProductos
       Height          =   255
       Left            =   15120
       TabIndex        =   58
-      Top             =   930
+      Top             =   870
       Width           =   1095
    End
    Begin ActiveTabs.SSActiveTabs SSActiveTabs1 
       Height          =   7275
       Left            =   4035
       TabIndex        =   0
-      Top             =   1365
+      Top             =   1215
       Width           =   12780
       _ExtentX        =   22543
       _ExtentY        =   12832
@@ -499,7 +499,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61407233
+            Format          =   61865985
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -522,7 +522,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61407233
+            Format          =   61865985
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -1859,7 +1859,7 @@ Begin VB.Form frmProductos
       Height          =   195
       Left            =   4500
       TabIndex        =   101
-      Top             =   8730
+      Top             =   8520
       Width           =   3705
    End
    Begin VB.Image Image 
@@ -1867,7 +1867,7 @@ Begin VB.Form frmProductos
       Index           =   0
       Left            =   4020
       Picture         =   "frmProductos.frx":1B7BB
-      Top             =   8610
+      Top             =   8400
       Width           =   480
    End
    Begin VB.Label Label15 
@@ -1905,7 +1905,7 @@ Begin VB.Form frmProductos
       Height          =   255
       Left            =   4140
       TabIndex        =   63
-      Top             =   960
+      Top             =   870
       Width           =   735
    End
    Begin VB.Label Label4 
@@ -1924,7 +1924,7 @@ Begin VB.Form frmProductos
       Height          =   255
       Left            =   6570
       TabIndex        =   62
-      Top             =   960
+      Top             =   900
       Width           =   1095
    End
 End
@@ -2037,7 +2037,7 @@ Public Sub HabilitarControles()
             txtPrecioPublico.Enabled = True
             txtPrecioPublico.Text = "0"
             
-            chkBonificaFA.Enabled = True
+            chkBonificaFA.Enabled = False
             cmdBonifica.Enabled = False
             
             txtCOBonifica.Enabled = True
@@ -2198,6 +2198,10 @@ Private Sub HabilitarBotonesMain()
             MDIMain.tbMenu.Buttons(8).Enabled = True 'Nuevo
             MDIMain.tbMenu.Buttons(10).Enabled = True 'Editar
     End Select
+End Sub
+
+Private Sub chkBonificaFA_Click()
+    If (Me.chkBonificaFA.value = 1) Then Me.cmdBonifica.Enabled = True
 End Sub
 
 Private Sub cmdBonifica_Click()

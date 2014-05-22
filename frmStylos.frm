@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{C9680CB9-8919-4ED0-A47D-8DC07382CB7B}#1.0#0"; "StyleButtonx.ocx"
 Begin VB.Form frmStylos 
    Caption         =   "Form1"
    ClientHeight    =   5220
@@ -62,20 +63,169 @@ Begin VB.Form frmStylos
          Width           =   3675
       End
    End
+   Begin StyleButtonX.StyleButton StyleButton1 
+      Height          =   615
+      Left            =   7950
+      TabIndex        =   10
+      Top             =   2730
+      Width           =   1905
+      _ExtentX        =   3360
+      _ExtentY        =   1085
+      UpColorTop1     =   -2147483628
+      UpColorTop2     =   -2147483633
+      UpColorTop3     =   -2147483633
+      UpColorTop4     =   -2147483633
+      UpColorButtom1  =   -2147483627
+      UpColorButtom2  =   -2147483633
+      UpColorButtom3  =   -2147483633
+      UpColorButtom4  =   -2147483633
+      UpColorLeft1    =   -2147483628
+      UpColorLeft2    =   -2147483633
+      UpColorLeft3    =   -2147483633
+      UpColorLeft4    =   -2147483633
+      UpColorRight1   =   -2147483627
+      UpColorRight2   =   -2147483633
+      UpColorRight3   =   -2147483633
+      UpColorRight4   =   -2147483633
+      DownColorTop1   =   -2147483627
+      DownColorTop2   =   -2147483633
+      DownColorTop3   =   -2147483633
+      DownColorTop4   =   -2147483633
+      DownColorButtom1=   -2147483628
+      DownColorButtom2=   -2147483633
+      DownColorButtom3=   -2147483633
+      DownColorButtom4=   -2147483633
+      DownColorLeft1  =   -2147483627
+      DownColorLeft2  =   -2147483633
+      DownColorLeft3  =   -2147483633
+      DownColorLeft4  =   -2147483633
+      DownColorRight1 =   -2147483628
+      DownColorRight2 =   -2147483633
+      DownColorRight3 =   -2147483633
+      DownColorRight4 =   -2147483633
+      HoverColorTop1  =   -2147483628
+      HoverColorTop2  =   -2147483633
+      HoverColorTop3  =   -2147483633
+      HoverColorTop4  =   -2147483633
+      HoverColorButtom1=   -2147483627
+      HoverColorButtom2=   -2147483633
+      HoverColorButtom3=   -2147483633
+      HoverColorButtom4=   -2147483633
+      HoverColorLeft1 =   -2147483628
+      HoverColorLeft2 =   -2147483633
+      HoverColorLeft3 =   -2147483633
+      HoverColorLeft4 =   -2147483633
+      HoverColorRight1=   -2147483627
+      HoverColorRight2=   -2147483633
+      HoverColorRight3=   -2147483633
+      HoverColorRight4=   -2147483633
+      FocusColorTop1  =   -2147483628
+      FocusColorTop2  =   -2147483633
+      FocusColorTop3  =   -2147483633
+      FocusColorTop4  =   -2147483633
+      FocusColorButtom1=   -2147483627
+      FocusColorButtom2=   -2147483632
+      FocusColorButtom3=   -2147483633
+      FocusColorButtom4=   -2147483633
+      FocusColorLeft1 =   -2147483628
+      FocusColorLeft2 =   -2147483633
+      FocusColorLeft3 =   -2147483633
+      FocusColorLeft4 =   -2147483633
+      FocusColorRight1=   -2147483627
+      FocusColorRight2=   -2147483632
+      FocusColorRight3=   -2147483633
+      FocusColorRight4=   -2147483633
+      DisabledColorTop1=   -2147483628
+      DisabledColorTop2=   -2147483633
+      DisabledColorTop3=   -2147483633
+      DisabledColorTop4=   -2147483633
+      DisabledColorButtom1=   -2147483627
+      DisabledColorButtom2=   -2147483633
+      DisabledColorButtom3=   -2147483633
+      DisabledColorButtom4=   -2147483633
+      DisabledColorLeft1=   -2147483628
+      DisabledColorLeft2=   -2147483633
+      DisabledColorLeft3=   -2147483633
+      DisabledColorLeft4=   -2147483633
+      DisabledColorRight1=   -2147483627
+      DisabledColorRight2=   -2147483633
+      DisabledColorRight3=   -2147483633
+      DisabledColorRight4=   -2147483633
+      Caption         =   "Asocia Usuarios"
+      BackColorUp     =   16777215
+      BackColorDown   =   -2147483637
+      BackColorHover  =   -2147483629
+      BackColorFocus  =   -2147483629
+      BackColorDisabled=   -2147483636
+      DotsInCornerColor=   16777215
+      ForeColorDisabled=   12632256
+      PictureUp       =   "frmStylos.frx":36F0
+      PictureDown     =   "frmStylos.frx":4344
+      PictureHover    =   "frmStylos.frx":4F98
+      PictureFocus    =   "frmStylos.frx":5BEC
+      PictureDisabled =   "frmStylos.frx":6840
+      BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontDown {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontHover {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontFocus {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty FontDisabled {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CaptionAlignment=   2
+      DistanceBetweenPictureAndCaption=   50
+   End
    Begin VB.Image Image 
       Height          =   645
       Index           =   3
       Left            =   0
-      Picture         =   "frmStylos.frx":36F0
+      Picture         =   "frmStylos.frx":7494
       Top             =   3570
       Width           =   12960
    End
    Begin VB.Image Image 
       Height          =   480
       Index           =   1
-      Left            =   5700
-      Picture         =   "frmStylos.frx":40E4
-      Top             =   2670
+      Left            =   5580
+      Picture         =   "frmStylos.frx":7E88
+      Top             =   2700
       Width           =   480
    End
    Begin VB.Label Label15 
@@ -84,15 +234,15 @@ Begin VB.Form frmStylos
       Caption         =   "Press ENTER to proceed"
       ForeColor       =   &H00404040&
       Height          =   195
-      Left            =   6180
+      Left            =   6060
       TabIndex        =   6
-      Top             =   2820
+      Top             =   2850
       Width           =   1740
    End
    Begin VB.Image imgIcon 
       Height          =   480
       Left            =   210
-      Picture         =   "frmStylos.frx":49AE
+      Picture         =   "frmStylos.frx":8752
       Top             =   2610
       Width           =   480
    End
@@ -141,7 +291,7 @@ Begin VB.Form frmStylos
    Begin VB.Image imgSearch 
       Height          =   480
       Left            =   4260
-      Picture         =   "frmStylos.frx":55F2
+      Picture         =   "frmStylos.frx":9396
       Top             =   810
       Width           =   480
    End
@@ -177,7 +327,7 @@ Begin VB.Form frmStylos
       Height          =   660
       Index           =   0
       Left            =   8280
-      Picture         =   "frmStylos.frx":5EBC
+      Picture         =   "frmStylos.frx":9C60
       Top             =   1560
       Width           =   1530
    End
@@ -240,14 +390,14 @@ Begin VB.Form frmStylos
    Begin VB.Image ImageInv 
       Height          =   480
       Left            =   60
-      Picture         =   "frmStylos.frx":7152
+      Picture         =   "frmStylos.frx":AEF6
       Top             =   60
       Width           =   480
    End
    Begin VB.Image ImageInv2 
       Height          =   405
       Left            =   -150
-      Picture         =   "frmStylos.frx":7E1C
+      Picture         =   "frmStylos.frx":BBC0
       Stretch         =   -1  'True
       Top             =   0
       Width           =   18810
@@ -259,7 +409,7 @@ Begin VB.Form frmStylos
       FillColor       =   &H00FFFFFF&
       Height          =   855
       Index           =   2
-      Left            =   -30
+      Left            =   0
       Top             =   2460
       Width           =   5415
    End

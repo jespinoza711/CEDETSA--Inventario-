@@ -14,75 +14,64 @@ Begin VB.Form frmBusqGral
    ScaleHeight     =   3150
    ScaleWidth      =   7125
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   1  'CenterOwner
-   Begin VB.Frame frmIntrod 
-      Height          =   615
-      Left            =   120
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton cmdAceptar 
+      BackColor       =   &H80000009&
+      Caption         =   "Aceptar"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   555
+      Left            =   2130
+      Picture         =   "frmBusqGral.frx":08CA
+      Style           =   1  'Graphical
       TabIndex        =   7
-      Top             =   0
-      Width           =   6975
-      Begin VB.Label lblIntrod 
-         BackStyle       =   0  'Transparent
-         Caption         =   "Digite una aproximación de lo que Ud busca en el campo correspondiente"
+      Top             =   2220
+      Width           =   1155
+   End
+   Begin VB.CommandButton cmdCancel 
+      BackColor       =   &H80000009&
+      Caption         =   "Cancelar"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   555
+      Left            =   3660
+      Picture         =   "frmBusqGral.frx":0C0E
+      Style           =   1  'Graphical
+      TabIndex        =   6
+      Top             =   2220
+      Width           =   1155
+   End
+   Begin VB.Frame Frame1 
+      Height          =   1335
+      Left            =   240
+      TabIndex        =   2
+      Top             =   750
+      Width           =   6615
+      Begin VB.TextBox txtDescr 
+         Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
+            Name            =   "Tahoma"
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
-         Height          =   255
-         Left            =   120
-         TabIndex        =   8
-         Top             =   240
-         Width           =   6735
-      End
-   End
-   Begin VB.CommandButton cmdAceptar 
-      Caption         =   "Aceptar"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   375
-      Left            =   1800
-      TabIndex        =   2
-      Top             =   2160
-      Width           =   1455
-   End
-   Begin VB.CommandButton cmdCancel 
-      Caption         =   "Cancelar"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   375
-      Left            =   4200
-      TabIndex        =   3
-      Top             =   2160
-      Width           =   1455
-   End
-   Begin VB.Frame Frame1 
-      Height          =   1335
-      Left            =   240
-      TabIndex        =   4
-      Top             =   750
-      Width           =   6615
-      Begin VB.TextBox txtDescr 
-         Appearance      =   0  'Flat
          ForeColor       =   &H002F2F2F&
          Height          =   285
          Left            =   1320
@@ -92,6 +81,15 @@ Begin VB.Form frmBusqGral
       End
       Begin VB.TextBox txtCodigo 
          Appearance      =   0  'Flat
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          ForeColor       =   &H002F2F2F&
          Height          =   285
          Left            =   1320
@@ -103,7 +101,7 @@ Begin VB.Form frmBusqGral
          BackStyle       =   0  'Transparent
          Caption         =   "Descr :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -114,7 +112,7 @@ Begin VB.Form frmBusqGral
          ForeColor       =   &H002F2F2F&
          Height          =   255
          Left            =   480
-         TabIndex        =   6
+         TabIndex        =   4
          Top             =   840
          Width           =   735
       End
@@ -122,7 +120,7 @@ Begin VB.Form frmBusqGral
          BackStyle       =   0  'Transparent
          Caption         =   "Código :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -133,7 +131,7 @@ Begin VB.Form frmBusqGral
          ForeColor       =   &H002F2F2F&
          Height          =   255
          Left            =   480
-         TabIndex        =   5
+         TabIndex        =   3
          Top             =   360
          Width           =   735
       End
@@ -142,7 +140,7 @@ Begin VB.Form frmBusqGral
       Align           =   2  'Align Bottom
       Height          =   255
       Left            =   0
-      TabIndex        =   9
+      TabIndex        =   5
       Top             =   2895
       Width           =   7125
       _ExtentX        =   12568
@@ -163,7 +161,7 @@ Begin VB.Form frmBusqGral
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -171,6 +169,40 @@ Begin VB.Form frmBusqGral
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+   End
+   Begin VB.Image ImageInv 
+      Height          =   480
+      Left            =   30
+      Picture         =   "frmBusqGral.frx":0F52
+      Top             =   0
+      Width           =   480
+   End
+   Begin VB.Label lblIntrod 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Digite una aproximación de lo que Ud busca en el campo correspondiente"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H002F2F2F&
+      Height          =   255
+      Left            =   690
+      TabIndex        =   8
+      Top             =   60
+      Width           =   6735
+   End
+   Begin VB.Image ImageInv2 
+      Height          =   405
+      Left            =   0
+      Picture         =   "frmBusqGral.frx":181C
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   18810
    End
 End
 Attribute VB_Name = "frmBusqGral"
@@ -182,18 +214,18 @@ Option Explicit
 Public bCodChar As Boolean
 
 Private Sub cmdAceptar_Click()
-Dim lbOk As Boolean
+Dim lbok As Boolean
 
 
 If txtCodigo.Text = "" And txtDescr.Text = "" Then
-  lbOk = Mensaje("Por favor, digite un criterio de búsqueda ...", ICO_INFORMACION, False)
+  lbok = Mensaje("Por favor, digite un criterio de búsqueda ...", ICO_INFORMACION, False)
   txtCodigo.SetFocus
   Exit Sub
 End If
 
 
 If txtCodigo.Text <> "" And txtDescr.Text <> "" Then
-   lbOk = Mensaje("Debe seleccionar un solo criterio por favor ", ICO_INFORMACION, False)
+   lbok = Mensaje("Debe seleccionar un solo criterio por favor ", ICO_INFORMACION, False)
    txtCodigo.Text = ""
    txtDescr.Text = ""
   txtCodigo.SetFocus
@@ -201,7 +233,7 @@ If txtCodigo.Text <> "" And txtDescr.Text <> "" Then
 End If
 If txtCodigo.Text <> "" Then
     If OnlythisChar(txtCodigo.Text, "*") Then
-       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -209,7 +241,7 @@ If txtCodigo.Text <> "" Then
     End If
     
     If OnlythisChar(txtCodigo.Text, "%") Then
-       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -219,7 +251,7 @@ End If
 
 If txtDescr.Text <> "" Then
     If OnlythisChar(txtDescr.Text, "*") Then
-       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus
@@ -227,7 +259,7 @@ If txtDescr.Text <> "" Then
     End If
     
     If OnlythisChar(txtDescr.Text, "%") Then
-       lbOk = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
+       lbok = Mensaje("Ese criterio es incorrecto, por favor digite otro... ", ICO_INFORMACION, False)
        txtCodigo.Text = ""
        txtDescr.Text = ""
       txtCodigo.SetFocus

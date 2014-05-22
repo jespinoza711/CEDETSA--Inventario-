@@ -1,17 +1,80 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmCatalogos 
-   BackColor       =   &H00FEE3DA&
    Caption         =   "Catalogos"
-   ClientHeight    =   8205
+   ClientHeight    =   10155
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   13800
+   ClientWidth     =   12555
    Icon            =   "frmCatalogos.frx":0000
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8205
-   ScaleWidth      =   13800
+   ScaleHeight     =   10155
+   ScaleWidth      =   12555
    StartUpPosition =   1  'CenterOwner
+   WindowState     =   2  'Maximized
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   12555
+      TabIndex        =   28
+      Top             =   0
+      Width           =   12555
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   180
+         Picture         =   "frmCatalogos.frx":0442
+         Top             =   60
+         Width           =   480
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Catálogo Genérico"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   30
+         Top             =   420
+         Width           =   1140
+      End
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   29
+         Top             =   90
+         Width           =   855
+      End
+   End
    Begin VB.CommandButton cmdEditItem 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -23,23 +86,23 @@ Begin VB.Form frmCatalogos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   12720
-      Picture         =   "frmCatalogos.frx":0442
+      Left            =   11880
+      Picture         =   "frmCatalogos.frx":0D0C
       Style           =   1  'Graphical
       TabIndex        =   26
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   2400
+      Top             =   4020
       Width           =   495
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   495
-      Left            =   12720
-      Picture         =   "frmCatalogos.frx":0D0C
+      Left            =   11880
+      Picture         =   "frmCatalogos.frx":15D6
       Style           =   1  'Graphical
       TabIndex        =   25
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   4200
+      Top             =   5820
       Width           =   495
    End
    Begin VB.CommandButton cmdAdd 
@@ -53,12 +116,12 @@ Begin VB.Form frmCatalogos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   12720
-      Picture         =   "frmCatalogos.frx":1016
+      Left            =   11880
+      Picture         =   "frmCatalogos.frx":18E0
       Style           =   1  'Graphical
       TabIndex        =   24
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   3600
+      Top             =   5220
       Width           =   495
    End
    Begin VB.CommandButton cmdEliminar 
@@ -72,24 +135,24 @@ Begin VB.Form frmCatalogos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   12720
-      Picture         =   "frmCatalogos.frx":1320
+      Left            =   11880
+      Picture         =   "frmCatalogos.frx":1BEA
       Style           =   1  'Graphical
       TabIndex        =   23
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3000
+      Top             =   4620
       Width           =   495
    End
    Begin VB.Frame Frame2 
-      Height          =   2055
-      Left            =   480
+      Height          =   2835
+      Left            =   180
       TabIndex        =   2
-      Top             =   0
-      Width           =   10695
+      Top             =   1020
+      Width           =   11415
       Begin VB.CheckBox chkActivo 
          Caption         =   "Activo ?"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -97,50 +160,51 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   8160
+         Left            =   9930
          TabIndex        =   15
-         Top             =   240
+         Top             =   390
          Width           =   1095
       End
       Begin VB.TextBox txtDescr 
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   3240
+         Left            =   3780
          TabIndex        =   14
-         Top             =   1080
-         Width           =   7095
+         Top             =   1710
+         Width           =   7335
       End
       Begin VB.TextBox txtCodigo 
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   1080
+         Left            =   1230
          TabIndex        =   13
-         Top             =   1080
-         Width           =   855
+         Top             =   1710
+         Width           =   1305
       End
       Begin VB.CheckBox chkDejarTabla 
          Caption         =   "Dejar seteada la Tabla ?"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -148,78 +212,88 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   120
+         Left            =   210
          TabIndex        =   12
-         Top             =   240
+         Top             =   330
          Value           =   1  'Checked
          Width           =   2655
       End
       Begin VB.CommandButton cmdTabla 
          Height          =   320
-         Left            =   720
-         Picture         =   "frmCatalogos.frx":1762
+         Left            =   870
+         Picture         =   "frmCatalogos.frx":202C
          Style           =   1  'Graphical
          TabIndex        =   11
-         Top             =   600
+         Top             =   1170
          Width           =   300
       End
       Begin VB.TextBox txtTablaNombre 
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   3240
+         Left            =   3780
          TabIndex        =   10
-         Top             =   600
-         Width           =   7095
+         Top             =   1200
+         Width           =   7335
       End
       Begin VB.TextBox txtIDTabla 
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   1080
+         Left            =   1230
          TabIndex        =   9
-         Top             =   600
-         Width           =   855
+         Top             =   1200
+         Width           =   1275
       End
       Begin VB.CommandButton cmdDelStatus 
          Height          =   320
-         Left            =   2040
-         Picture         =   "frmCatalogos.frx":1AA4
+         Left            =   2610
+         Picture         =   "frmCatalogos.frx":236E
          Style           =   1  'Graphical
          TabIndex        =   8
-         Top             =   600
+         Top             =   1200
          Width           =   300
       End
       Begin VB.TextBox txtIDCatalogo 
          BackColor       =   &H00E0E0E0&
          Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   285
-         Left            =   6120
+         Left            =   1380
          TabIndex        =   7
-         Top             =   240
+         Top             =   750
          Width           =   975
       End
       Begin VB.CheckBox chkUsaValor 
          Caption         =   "Usa Valor ?"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -227,52 +301,53 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   240
+         Left            =   210
          TabIndex        =   6
-         Top             =   1560
+         Top             =   2220
          Value           =   1  'Checked
          Width           =   1575
       End
       Begin VB.TextBox txtNombreValor 
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   3720
+         Left            =   3780
          TabIndex        =   5
-         Top             =   1560
+         Top             =   2190
          Width           =   2535
       End
       Begin VB.TextBox txtValor 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   285
-         Left            =   7320
+         Left            =   7470
          TabIndex        =   4
-         Top             =   1560
+         Top             =   2190
          Width           =   975
       End
       Begin VB.CheckBox chkProtected 
          Caption         =   "Protegido ?"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -280,16 +355,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   8760
+         Left            =   9840
          TabIndex        =   3
-         Top             =   1560
-         Width           =   1575
+         Top             =   2220
+         Width           =   1305
       End
       Begin VB.Label lblDescr 
          Caption         =   "Descripción :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -297,16 +373,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   2040
+         Left            =   2580
          TabIndex        =   22
-         Top             =   1080
+         Top             =   1710
          Width           =   1095
       End
       Begin VB.Label Label1 
          Caption         =   "Código :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -314,16 +391,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   120
+         Left            =   210
          TabIndex        =   21
-         Top             =   1080
+         Top             =   1770
          Width           =   735
       End
       Begin VB.Label Label6 
          Caption         =   "Descr :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -331,16 +409,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   2400
+         Left            =   3060
          TabIndex        =   20
-         Top             =   600
+         Top             =   1230
          Width           =   735
       End
       Begin VB.Label Label5 
          Caption         =   "Tabla :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -348,16 +427,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   120
+         Left            =   210
          TabIndex        =   19
-         Top             =   600
+         Top             =   1230
          Width           =   615
       End
       Begin VB.Label Label2 
          Caption         =   "IDCatalogo :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -365,16 +445,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   4920
+         Left            =   210
          TabIndex        =   18
-         Top             =   240
+         Top             =   780
          Width           =   1095
       End
       Begin VB.Label Label3 
          Caption         =   "Nombre Valor :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -382,16 +463,17 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   1920
+         Left            =   2070
          TabIndex        =   17
-         Top             =   1560
+         Top             =   2220
          Width           =   1455
       End
       Begin VB.Label Label4 
          Caption         =   "Valor :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -399,10 +481,11 @@ Begin VB.Form frmCatalogos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
-         Left            =   6480
+         Left            =   6780
          TabIndex        =   16
-         Top             =   1560
+         Top             =   2220
          Width           =   615
       End
    End
@@ -417,18 +500,18 @@ Begin VB.Form frmCatalogos
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   12720
-      Picture         =   "frmCatalogos.frx":1EE6
+      Left            =   11880
+      Picture         =   "frmCatalogos.frx":27B0
       Style           =   1  'Graphical
       TabIndex        =   1
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   4800
+      Top             =   6420
       Width           =   495
    End
    Begin VB.CheckBox chkVerTabla 
       Caption         =   "Filtrar Tabla Seleccionada?"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -436,19 +519,29 @@ Begin VB.Form frmCatalogos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   735
-      Left            =   11400
+      ForeColor       =   &H00404040&
+      Height          =   405
+      Left            =   9000
       TabIndex        =   0
-      Top             =   1200
-      Width           =   1815
+      Top             =   4020
+      Width           =   2625
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   5655
-      Left            =   0
-      OleObjectBlob   =   "frmCatalogos.frx":2328
+      Height          =   6105
+      Left            =   300
+      OleObjectBlob   =   "frmCatalogos.frx":2BF2
       TabIndex        =   27
-      Top             =   2160
-      Width           =   12465
+      Top             =   4470
+      Width           =   11295
+   End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   31
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmCatalogos"
@@ -464,6 +557,8 @@ Dim bEdit As Boolean
 Dim bAdd As Boolean
 Dim sSoloActivo As String
 Public gsCatalogoName As String
+Public gsFormCaption As String
+Public gsTitle As String
 
 
 Private Sub chkUsaValor_Click()
@@ -507,6 +602,7 @@ cmdSave.Enabled = True
 cmdEliminar.Enabled = False
 cmdAdd.Enabled = False
 txtDescr.SetFocus
+HabilitarBotonesMain
 End Sub
 
 Private Sub cmdDelStatus_Click()
@@ -546,6 +642,7 @@ txtValor.Enabled = True
 cmdSave.Enabled = True
 cmdEliminar.Enabled = False
 cmdAdd.Enabled = False
+HabilitarBotonesMain
 End Sub
 Private Sub GetDataFromGridToControl()
 If Not (rst.EOF And rst.BOF) Then
@@ -741,7 +838,7 @@ If bEdit Then
     End If
 bEdit = False
 End If ' si estoy adicionando
-
+HabilitarBotonesMain
 End Sub
 
 Private Sub cmdStatus_Click()
@@ -781,7 +878,13 @@ GetDataFromGridToControl
 IniciaIconos
 End Sub
 
+Private Sub Form_Activate()
+HighlightInWin Me.Name
+SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+MDIMain.AddForm Me.Name
 Set rst = New ADODB.Recordset
 If rst.State = adStateOpen Then rst.Close
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -792,6 +895,9 @@ bEdit = False
 bAdd = False
 initControles
 cargaGrid
+HabilitarBotonesMain
+  Me.Caption = gsFormCaption
+    Me.lbFormCaption = gsTitle
 End Sub
 
 Private Sub IniciaIconos()
@@ -844,6 +950,8 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
 If Not (rst Is Nothing) Then Set rst = Nothing
+    SetupFormToolbar ("no name")
+    Set frmCatalogos = Nothing
 End Sub
 
 Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
@@ -852,5 +960,87 @@ GetDataFromGridToControl
 IniciaIconos
 End Sub
 
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+    On Error GoTo err
+    Select Case srcPerformWhat
+        Case "Nuevo"
+            cmdAdd_Click
+        Case "Editar"
+            cmdEditItem_Click
+        Case "Eliminar"
+            cmdEliminar_Click
+        Case "Cancelar"
+            cmdUndo_Click
+        Case "Imprimir"
+            MsgBox "Imprimir"
+        Case "Cerrar"
+            Unload Me
+        Case "Guardar"
+            cmdSave_Click
+    End Select
+    Exit Sub
+    'Trap the error
+err:
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
+               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
+               err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+End Sub
+
+
+Private Sub HabilitarBotonesMain()
+    Select Case Accion
+        Case TypAccion.Add, TypAccion.Edit
+            MDIMain.tbMenu.Buttons(12).Enabled = True 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = True 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = False 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = False 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = False 'Editar
+        Case TypAccion.View
+            MDIMain.tbMenu.Buttons(12).Enabled = False 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = False 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = True 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = True 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = True 'Editar
+    End Select
+End Sub
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        'center_obj_horizontal Me, Frame2
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        
+        TDBG.Width = Me.ScaleWidth - CONTROL_MARGIN
+        TDBG.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBG.top
+        
+    End If
+    TrueDBGridResize 1
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBG.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBG.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + TDBG.Columns(i).Width
+        End If
+    Next i
+
+    Me.TDBG.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
+End Sub
 
 

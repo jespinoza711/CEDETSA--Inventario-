@@ -90,6 +90,7 @@ Begin VB.Form frmTransacciones
       Left            =   10590
       TabIndex        =   12
       Top             =   3180
+      Visible         =   0   'False
       Width           =   735
       Begin VB.CommandButton cmdAdd 
          BeginProperty Font 
@@ -148,15 +149,15 @@ Begin VB.Form frmTransacciones
       Begin VB.TextBox txtPaquete 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2100
          TabIndex        =   9
@@ -166,15 +167,15 @@ Begin VB.Form frmTransacciones
       Begin VB.TextBox txtDescrPaquete 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   4320
          TabIndex        =   8
@@ -253,7 +254,9 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   61603841
+         CalendarForeColor=   4210752
+         CalendarTitleForeColor=   4210752
+         Format          =   61800449
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
@@ -274,14 +277,16 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   61603841
+         CalendarForeColor=   4210752
+         CalendarTitleForeColor=   4210752
+         Format          =   61800449
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 
          BackStyle       =   0  'Transparent
          Caption         =   "Paquete:"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -289,7 +294,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00000000&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   870
          TabIndex        =   10
@@ -300,7 +305,7 @@ Begin VB.Form frmTransacciones
          BackStyle       =   0  'Transparent
          Caption         =   "Fecha Final:"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -308,7 +313,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00000000&
+         ForeColor       =   &H00404040&
          Height          =   300
          Left            =   6450
          TabIndex        =   5
@@ -319,7 +324,7 @@ Begin VB.Form frmTransacciones
          BackStyle       =   0  'Transparent
          Caption         =   "Fecha Inicial:"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -327,7 +332,7 @@ Begin VB.Form frmTransacciones
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00000000&
+         ForeColor       =   &H00404040&
          Height          =   300
          Left            =   840
          TabIndex        =   4
@@ -336,12 +341,12 @@ Begin VB.Form frmTransacciones
       End
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   4710
-      Left            =   150
+      Height          =   5400
+      Left            =   120
       OleObjectBlob   =   "frmTransacciones.frx":61DC
       TabIndex        =   11
-      Top             =   3270
-      Width           =   10305
+      Top             =   2490
+      Width           =   10365
    End
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
@@ -491,4 +496,63 @@ Private Sub Form_Unload(Cancel As Integer)
     'Main.SubtractForm Me.Name
     Set frmTransacciones = Nothing
 End Sub
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+    On Error GoTo err
+    Select Case srcPerformWhat
+        Case "Nuevo"
+            cmdAdd_Click
+
+        Case "Cerrar"
+            Unload Me
+      
+    End Select
+    Exit Sub
+    'Trap the error
+err:
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
+               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
+               err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+End Sub
+
+
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        'center_obj_horizontal Me, Frame2
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        
+        TDBG.Width = Me.ScaleWidth - CONTROL_MARGIN
+        TDBG.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBG.top
+        
+    End If
+    TrueDBGridResize 1
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBG.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBG.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + TDBG.Columns(i).Width
+        End If
+    Next i
+
+    Me.TDBG.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
+End Sub
+
 

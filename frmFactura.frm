@@ -4,24 +4,87 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmFactura 
    Caption         =   "Form1"
-   ClientHeight    =   8175
+   ClientHeight    =   9120
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   15480
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8175
+   ScaleHeight     =   9120
    ScaleWidth      =   15480
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   15480
+      TabIndex        =   48
+      Top             =   0
+      Width           =   15480
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   50
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Registrar Facturación"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   49
+         Top             =   420
+         Width           =   1290
+      End
+      Begin VB.Image Image 
+         Height          =   720
+         Index           =   2
+         Left            =   90
+         Picture         =   "frmFactura.frx":0000
+         Top             =   30
+         Width           =   720
+      End
+   End
    Begin VB.Frame Frame3 
       Height          =   735
-      Left            =   180
+      Left            =   150
       TabIndex        =   35
-      Top             =   1410
+      Top             =   2370
       Width           =   13935
       Begin VB.CommandButton cmdCliente 
          Height          =   320
          Left            =   960
-         Picture         =   "frmFactura.frx":0000
+         Picture         =   "frmFactura.frx":1CCA
          Style           =   1  'Graphical
          TabIndex        =   40
          Top             =   240
@@ -138,10 +201,10 @@ Begin VB.Form frmFactura
    Begin VB.CommandButton cmdCobro 
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":0342
+      Picture         =   "frmFactura.frx":200C
       Style           =   1  'Graphical
       TabIndex        =   34
-      Top             =   3210
+      Top             =   4170
       Visible         =   0   'False
       Width           =   495
    End
@@ -158,22 +221,22 @@ Begin VB.Form frmFactura
       EndProperty
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":0784
+      Picture         =   "frmFactura.frx":244E
       Style           =   1  'Graphical
       TabIndex        =   33
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   4050
+      Top             =   5010
       Width           =   495
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":0BC6
+      Picture         =   "frmFactura.frx":2890
       Style           =   1  'Graphical
       TabIndex        =   32
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   2490
+      Top             =   3450
       Visible         =   0   'False
       Width           =   495
    End
@@ -190,11 +253,11 @@ Begin VB.Form frmFactura
       EndProperty
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":0ED0
+      Picture         =   "frmFactura.frx":2B9A
       Style           =   1  'Graphical
       TabIndex        =   31
       ToolTipText     =   "Inicializa los controles para Agregar otro item ..."
-      Top             =   6030
+      Top             =   6990
       Width           =   495
    End
    Begin VB.CommandButton cmdEditItem 
@@ -210,11 +273,11 @@ Begin VB.Form frmFactura
       EndProperty
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":11DA
+      Picture         =   "frmFactura.frx":2EA4
       Style           =   1  'Graphical
       TabIndex        =   30
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   5190
+      Top             =   6150
       Width           =   495
    End
    Begin VB.CommandButton cmdOkCO 
@@ -230,26 +293,26 @@ Begin VB.Form frmFactura
       EndProperty
       Height          =   495
       Left            =   14700
-      Picture         =   "frmFactura.frx":1AA4
+      Picture         =   "frmFactura.frx":376E
       Style           =   1  'Graphical
       TabIndex        =   29
       ToolTipText     =   "Aprueba, Aplica los datos digitados para el item en proceso y son ingresados en el grid de datos ..."
-      Top             =   6810
+      Top             =   7770
       Width           =   495
    End
    Begin VB.Frame Frame1 
       Height          =   1215
-      Left            =   60
+      Left            =   150
       TabIndex        =   15
-      Top             =   90
+      Top             =   930
       Width           =   13935
       Begin VB.TextBox txtCodCajero 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -263,10 +326,10 @@ Begin VB.Form frmFactura
       Begin VB.TextBox txtDescrCajero 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -281,7 +344,7 @@ Begin VB.Form frmFactura
       Begin VB.CommandButton cmdCajero 
          Height          =   320
          Left            =   1320
-         Picture         =   "frmFactura.frx":1DAE
+         Picture         =   "frmFactura.frx":3A78
          Style           =   1  'Graphical
          TabIndex        =   20
          Top             =   840
@@ -290,7 +353,7 @@ Begin VB.Form frmFactura
       Begin VB.CommandButton cmdBodega 
          Height          =   320
          Left            =   1320
-         Picture         =   "frmFactura.frx":20F0
+         Picture         =   "frmFactura.frx":3DBA
          Style           =   1  'Graphical
          TabIndex        =   19
          Top             =   360
@@ -299,10 +362,10 @@ Begin VB.Form frmFactura
       Begin VB.TextBox txtDescrBodega 
          BackColor       =   &H8000000F&
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -317,10 +380,10 @@ Begin VB.Form frmFactura
       Begin VB.TextBox txtcodBodega 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -348,14 +411,23 @@ Begin VB.Form frmFactura
          _ExtentX        =   3836
          _ExtentY        =   450
          _Version        =   393216
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          CustomFormat    =   """DD/MM/YYYY HH:MM"""
-         Format          =   61472769
+         Format          =   62259201
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label lblVendedor 
          Caption         =   "Vendedor :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -373,7 +445,7 @@ Begin VB.Form frmFactura
       Begin VB.Label Label13 
          Caption         =   "Bodega :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -391,7 +463,7 @@ Begin VB.Form frmFactura
       Begin VB.Label Label5 
          Caption         =   "Fecha Factura :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -410,7 +482,7 @@ Begin VB.Form frmFactura
          Alignment       =   1  'Right Justify
          Caption         =   "25.3525"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   12
             Charset         =   0
             Weight          =   700
@@ -427,7 +499,7 @@ Begin VB.Form frmFactura
       Begin VB.Label Label12 
          Caption         =   "Tipo de Cambio Factura :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -445,9 +517,9 @@ Begin VB.Form frmFactura
    End
    Begin VB.Frame Frame2 
       Height          =   1815
-      Left            =   300
+      Left            =   150
       TabIndex        =   0
-      Top             =   5490
+      Top             =   6450
       Width           =   8895
       Begin VB.TextBox txtPrecioDcto 
          Alignment       =   1  'Right Justify
@@ -557,7 +629,7 @@ Begin VB.Form frmFactura
       Begin VB.CommandButton cmdProducto 
          Height          =   320
          Left            =   960
-         Picture         =   "frmFactura.frx":2432
+         Picture         =   "frmFactura.frx":40FC
          Style           =   1  'Graphical
          TabIndex        =   1
          Top             =   360
@@ -693,17 +765,17 @@ Begin VB.Form frmFactura
    End
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
       Height          =   2895
-      Left            =   420
-      OleObjectBlob   =   "frmFactura.frx":2774
+      Left            =   150
+      OleObjectBlob   =   "frmFactura.frx":443E
       TabIndex        =   43
-      Top             =   2250
+      Top             =   3210
       Width           =   13695
    End
    Begin MSComctlLib.StatusBar StatusSubTotal 
       Height          =   495
       Left            =   9540
       TabIndex        =   44
-      Top             =   5490
+      Top             =   6450
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -736,7 +808,7 @@ Begin VB.Form frmFactura
       Height          =   495
       Left            =   9540
       TabIndex        =   45
-      Top             =   7530
+      Top             =   8490
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -769,7 +841,7 @@ Begin VB.Form frmFactura
       Height          =   495
       Left            =   9540
       TabIndex        =   46
-      Top             =   6090
+      Top             =   7050
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -802,7 +874,7 @@ Begin VB.Form frmFactura
       Height          =   495
       Left            =   9540
       TabIndex        =   47
-      Top             =   6810
+      Top             =   7770
       Width           =   4395
       _ExtentX        =   7752
       _ExtentY        =   873
@@ -831,27 +903,36 @@ Begin VB.Form frmFactura
          Strikethrough   =   0   'False
       EndProperty
    End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   51
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
+   End
    Begin VB.Image imgEdit 
       Height          =   480
       Left            =   14220
-      Picture         =   "frmFactura.frx":7270
-      Top             =   5250
+      Picture         =   "frmFactura.frx":8F3A
+      Top             =   6210
       Visible         =   0   'False
       Width           =   480
    End
    Begin VB.Image imgAdd 
       Height          =   480
       Left            =   14220
-      Picture         =   "frmFactura.frx":76B2
-      Top             =   6090
+      Picture         =   "frmFactura.frx":937C
+      Top             =   7050
       Visible         =   0   'False
       Width           =   480
    End
    Begin VB.Image imgOk 
       Height          =   480
       Left            =   14220
-      Picture         =   "frmFactura.frx":7AF4
-      Top             =   6810
+      Picture         =   "frmFactura.frx":97BE
+      Top             =   7770
       Visible         =   0   'False
       Width           =   480
    End

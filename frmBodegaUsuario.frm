@@ -5,11 +5,76 @@ Begin VB.Form frmBodegaUsuario
    ClientHeight    =   7230
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   10065
+   ClientWidth     =   9375
+   Icon            =   "frmBodegaUsuario.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   7230
-   ScaleWidth      =   10065
-   StartUpPosition =   3  'Windows Default
+   ScaleWidth      =   9375
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   9375
+      TabIndex        =   17
+      Top             =   0
+      Width           =   9375
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   19
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Asigna Usuarios a la Bodega seleccionada"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   18
+         Top             =   420
+         Width           =   2580
+      End
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmBodegaUsuario.frx":038A
+         Top             =   90
+         Width           =   480
+      End
+   End
    Begin VB.CommandButton cmdEditItem 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -21,23 +86,23 @@ Begin VB.Form frmBodegaUsuario
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   9330
-      Picture         =   "frmBodegaUsuario.frx":0000
+      Left            =   8610
+      Picture         =   "frmBodegaUsuario.frx":0FCE
       Style           =   1  'Graphical
       TabIndex        =   15
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   3360
+      Top             =   3660
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   555
-      Left            =   9330
-      Picture         =   "frmBodegaUsuario.frx":0CCA
+      Left            =   8610
+      Picture         =   "frmBodegaUsuario.frx":1C98
       Style           =   1  'Graphical
       TabIndex        =   14
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   4560
+      Top             =   4860
       Width           =   555
    End
    Begin VB.CommandButton cmdAdd 
@@ -51,12 +116,12 @@ Begin VB.Form frmBodegaUsuario
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   9330
-      Picture         =   "frmBodegaUsuario.frx":2994
+      Left            =   8610
+      Picture         =   "frmBodegaUsuario.frx":3962
       Style           =   1  'Graphical
       TabIndex        =   13
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   2760
+      Top             =   3060
       Width           =   555
    End
    Begin VB.CommandButton cmdEliminar 
@@ -70,12 +135,12 @@ Begin VB.Form frmBodegaUsuario
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   9330
-      Picture         =   "frmBodegaUsuario.frx":365E
+      Left            =   8610
+      Picture         =   "frmBodegaUsuario.frx":462C
       Style           =   1  'Graphical
       TabIndex        =   12
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3960
+      Top             =   4260
       Width           =   555
    End
    Begin VB.Frame Frame2 
@@ -89,100 +154,100 @@ Begin VB.Form frmBodegaUsuario
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1920
-      Left            =   450
+      Left            =   210
       TabIndex        =   1
-      Top             =   570
-      Width           =   8775
+      Top             =   930
+      Width           =   8955
       Begin VB.TextBox txtNombre 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FF0000&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   3315
          TabIndex        =   9
-         Top             =   1020
+         Top             =   900
          Width           =   5280
       End
       Begin VB.TextBox txtUsuario 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1440
          TabIndex        =   8
-         Top             =   1020
+         Top             =   900
          Width           =   1080
       End
       Begin VB.TextBox txtBodega 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1440
          TabIndex        =   7
-         Top             =   585
+         Top             =   435
          Width           =   1050
       End
       Begin VB.CommandButton cmdUsuario 
          Height          =   320
          Left            =   2580
-         Picture         =   "frmBodegaUsuario.frx":4328
+         Picture         =   "frmBodegaUsuario.frx":52F6
          Style           =   1  'Graphical
          TabIndex        =   6
-         Top             =   1020
+         Top             =   900
          Width           =   300
       End
       Begin VB.CommandButton cmdDelModulo 
          Height          =   320
          Left            =   2940
-         Picture         =   "frmBodegaUsuario.frx":466A
+         Picture         =   "frmBodegaUsuario.frx":5638
          Style           =   1  'Graphical
          TabIndex        =   5
-         Top             =   1020
+         Top             =   900
          Width           =   300
       End
       Begin VB.TextBox txtDescrBodega 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FF0000&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2565
          TabIndex        =   4
-         Top             =   585
-         Width           =   6030
+         Top             =   435
+         Width           =   6000
       End
       Begin VB.CheckBox chkFactura 
          Caption         =   "El Usuario puede Facturar ?"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -190,7 +255,7 @@ Begin VB.Form frmBodegaUsuario
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   1440
          TabIndex        =   3
@@ -200,7 +265,7 @@ Begin VB.Form frmBodegaUsuario
       Begin VB.CheckBox chkConsultaInv 
          Caption         =   "El Usuario puede Consultar Inventario ?"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -208,7 +273,7 @@ Begin VB.Form frmBodegaUsuario
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   4320
          TabIndex        =   2
@@ -219,7 +284,7 @@ Begin VB.Form frmBodegaUsuario
          BackStyle       =   0  'Transparent
          Caption         =   "Usuario :"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -227,18 +292,18 @@ Begin VB.Form frmBodegaUsuario
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   360
          TabIndex        =   11
-         Top             =   1080
+         Top             =   960
          Width           =   735
       End
       Begin VB.Label Label1 
          BackStyle       =   0  'Transparent
          Caption         =   "Bodega :"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -246,11 +311,11 @@ Begin VB.Form frmBodegaUsuario
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   360
          TabIndex        =   10
-         Top             =   600
+         Top             =   450
          Width           =   975
       End
    End
@@ -265,51 +330,30 @@ Begin VB.Form frmBodegaUsuario
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   9330
-      Picture         =   "frmBodegaUsuario.frx":6334
+      Left            =   8610
+      Picture         =   "frmBodegaUsuario.frx":7302
       Style           =   1  'Graphical
       TabIndex        =   0
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   5160
+      Top             =   5460
       Width           =   555
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
-      Height          =   2955
-      Left            =   330
-      OleObjectBlob   =   "frmBodegaUsuario.frx":6FFE
+      Height          =   4065
+      Left            =   210
+      OleObjectBlob   =   "frmBodegaUsuario.frx":7FCC
       TabIndex        =   16
-      Top             =   2730
-      Width           =   7905
+      Top             =   3060
+      Width           =   8295
    End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Titulo Catalogo"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   495
-      Left            =   30
-      TabIndex        =   17
-      Top             =   -30
-      Width           =   10140
-   End
-   Begin VB.Image Image1 
-      Height          =   525
-      Left            =   -30
-      Picture         =   "frmBodegaUsuario.frx":E0BB
-      Stretch         =   -1  'True
-      Top             =   -30
-      Width           =   11490
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   20
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmBodegaUsuario"

@@ -4,12 +4,11 @@ Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmRegistrarTransaccion 
-   BackColor       =   &H00FEE3DA&
    Caption         =   "Form1"
-   ClientHeight    =   8445
+   ClientHeight    =   8850
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   15750
+   ClientWidth     =   15180
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -21,20 +20,100 @@ Begin VB.Form frmRegistrarTransaccion
    EndProperty
    Icon            =   "frmRegistrarTransaccion.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
-   ScaleHeight     =   8445
-   ScaleWidth      =   15750
+   ScaleHeight     =   8850
+   ScaleWidth      =   15180
    StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   15180
+      TabIndex        =   56
+      Top             =   0
+      Width           =   15180
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   58
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Registrar Transacciones el Producto"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   57
+         Top             =   420
+         Width           =   2175
+      End
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmRegistrarTransaccion.frx":08CA
+         Top             =   120
+         Width           =   480
+      End
+   End
    Begin ActiveTabs.SSActiveTabs sTabTransaccion 
       Height          =   7005
-      Left            =   270
-      TabIndex        =   6
-      Top             =   1350
+      Left            =   120
+      TabIndex        =   5
+      Top             =   1620
       Width           =   14295
       _ExtentX        =   25215
       _ExtentY        =   12356
       _Version        =   131083
       TabCount        =   3
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       BeginProperty FontSelectedTab {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -44,17 +123,17 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Tabs            =   "frmRegistrarTransaccion.frx":08CA
+      Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
          Left            =   -99969
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   360
          Width           =   14235
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":097D
+         TabGuid         =   "frmRegistrarTransaccion.frx":15C1
          Begin VB.CommandButton cmdEditItem 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -67,9 +146,9 @@ Begin VB.Form frmRegistrarTransaccion
             EndProperty
             Height          =   555
             Left            =   12810
-            Picture         =   "frmRegistrarTransaccion.frx":09A5
+            Picture         =   "frmRegistrarTransaccion.frx":15E9
             Style           =   1  'Graphical
-            TabIndex        =   56
+            TabIndex        =   55
             ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
             Top             =   210
             Width           =   555
@@ -86,9 +165,9 @@ Begin VB.Form frmRegistrarTransaccion
             EndProperty
             Height          =   555
             Left            =   13410
-            Picture         =   "frmRegistrarTransaccion.frx":166F
+            Picture         =   "frmRegistrarTransaccion.frx":22B3
             Style           =   1  'Graphical
-            TabIndex        =   55
+            TabIndex        =   54
             ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
             Top             =   210
             Width           =   555
@@ -96,8 +175,8 @@ Begin VB.Form frmRegistrarTransaccion
          Begin TrueOleDBGrid60.TDBGrid TDBG 
             Height          =   5670
             Left            =   300
-            OleObjectBlob   =   "frmRegistrarTransaccion.frx":2339
-            TabIndex        =   8
+            OleObjectBlob   =   "frmRegistrarTransaccion.frx":2F7D
+            TabIndex        =   7
             Top             =   840
             Width           =   13725
          End
@@ -105,33 +184,34 @@ Begin VB.Form frmRegistrarTransaccion
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
          Left            =   -99969
-         TabIndex        =   16
+         TabIndex        =   15
          Top             =   360
          Width           =   14235
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":AEFE
+         TabGuid         =   "frmRegistrarTransaccion.frx":BB42
          Begin VB.Frame Frame3 
             Height          =   2475
             Left            =   1230
-            TabIndex        =   39
+            TabIndex        =   38
             Top             =   3330
             Width           =   11445
             Begin VB.TextBox txtPrecioDolar 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   315
                Left            =   2310
-               TabIndex        =   53
+               TabIndex        =   52
                Top             =   1200
                Width           =   1905
             End
@@ -147,9 +227,9 @@ Begin VB.Form frmRegistrarTransaccion
                EndProperty
                Height          =   555
                Left            =   10590
-               Picture         =   "frmRegistrarTransaccion.frx":AF26
+               Picture         =   "frmRegistrarTransaccion.frx":BB6A
                Style           =   1  'Graphical
-               TabIndex        =   50
+               TabIndex        =   49
                ToolTipText     =   "Agrega el item con los datos digitados..."
                Top             =   1410
                Width           =   555
@@ -157,7 +237,7 @@ Begin VB.Form frmRegistrarTransaccion
             Begin VB.CheckBox chkAutoSugiereLotes 
                Caption         =   "Auto Sugiere Lotes"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -165,104 +245,107 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   255
                Left            =   8220
-               TabIndex        =   44
+               TabIndex        =   43
                Top             =   1410
                Width           =   2145
             End
             Begin VB.TextBox txtCostoDolar 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   315
                Left            =   2310
-               TabIndex        =   42
+               TabIndex        =   41
                Top             =   780
                Width           =   1905
             End
             Begin VB.CommandButton cmdDelLote 
                Height          =   320
                Left            =   3840
-               Picture         =   "frmRegistrarTransaccion.frx":BBF0
+               Picture         =   "frmRegistrarTransaccion.frx":C834
                Style           =   1  'Graphical
-               TabIndex        =   48
+               TabIndex        =   47
                Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtDescrLote 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   4230
-               TabIndex        =   49
+               TabIndex        =   48
                Top             =   1710
                Width           =   6135
             End
             Begin VB.CommandButton cmdLote 
                Height          =   320
                Left            =   3480
-               Picture         =   "frmRegistrarTransaccion.frx":D8BA
+               Picture         =   "frmRegistrarTransaccion.frx":E4FE
                Style           =   1  'Graphical
-               TabIndex        =   47
+               TabIndex        =   46
                Top             =   1680
                Width           =   300
             End
             Begin VB.TextBox txtLote 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   46
+               TabIndex        =   45
                Top             =   1710
                Width           =   1095
             End
             Begin VB.TextBox txtCantidad 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   40
+               TabIndex        =   39
                Top             =   270
                Width           =   1905
             End
             Begin VB.Label Label12 
                Caption         =   "Precio Dolar:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -270,17 +353,17 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   540
-               TabIndex        =   54
+               TabIndex        =   53
                Top             =   1260
                Width           =   1215
             End
             Begin VB.Label Label9 
                Caption         =   "Lote:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -288,17 +371,17 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   540
-               TabIndex        =   45
+               TabIndex        =   44
                Top             =   1680
                Width           =   735
             End
             Begin VB.Label Label10 
                Caption         =   "Cantidad:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -306,17 +389,17 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   540
-               TabIndex        =   41
+               TabIndex        =   40
                Top             =   330
                Width           =   1095
             End
             Begin VB.Label Label11 
                Caption         =   "Costo Dolar:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -324,10 +407,10 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   540
-               TabIndex        =   43
+               TabIndex        =   42
                Top             =   840
                Width           =   1095
             End
@@ -335,67 +418,67 @@ Begin VB.Form frmRegistrarTransaccion
          Begin VB.Frame Frame2 
             Height          =   915
             Left            =   1230
-            TabIndex        =   33
+            TabIndex        =   32
             Top             =   2370
             Width           =   11445
             Begin VB.CommandButton cmdDelArticulo 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":DBFC
+               Picture         =   "frmRegistrarTransaccion.frx":E840
                Style           =   1  'Graphical
-               TabIndex        =   36
+               TabIndex        =   35
                Top             =   360
                Width           =   300
             End
             Begin VB.TextBox txtArticulo 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   34
+               TabIndex        =   33
                Top             =   390
                Width           =   1095
             End
             Begin VB.TextBox txtDescrArticulo 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   4335
-               TabIndex        =   37
+               TabIndex        =   36
                Top             =   360
                Width           =   6675
             End
             Begin VB.CommandButton cmdArticulo 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":F8C6
+               Picture         =   "frmRegistrarTransaccion.frx":1050A
                Style           =   1  'Graphical
-               TabIndex        =   35
+               TabIndex        =   34
                Top             =   360
                Width           =   300
             End
             Begin VB.Label Label8 
                Caption         =   "Articulo:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -403,10 +486,10 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   570
-               TabIndex        =   38
+               TabIndex        =   37
                Top             =   390
                Width           =   1005
             End
@@ -414,175 +497,175 @@ Begin VB.Form frmRegistrarTransaccion
          Begin VB.Frame Frame1 
             Height          =   1980
             Left            =   1230
-            TabIndex        =   17
+            TabIndex        =   16
             Top             =   300
             Width           =   11460
             Begin VB.CommandButton cmdDelBodegaOrigen 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":FC08
+               Picture         =   "frmRegistrarTransaccion.frx":1084C
                Style           =   1  'Graphical
-               TabIndex        =   25
+               TabIndex        =   24
                Top             =   855
                Width           =   300
             End
             Begin VB.CommandButton cmdBodegaDestino 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":118D2
+               Picture         =   "frmRegistrarTransaccion.frx":12516
                Style           =   1  'Graphical
-               TabIndex        =   29
+               TabIndex        =   28
                Top             =   1305
                Width           =   300
             End
             Begin VB.TextBox txtDescrBodegaDestino 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   4335
-               TabIndex        =   32
+               TabIndex        =   31
                Top             =   1320
                Width           =   6675
             End
             Begin VB.TextBox txtBodegaDestino 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   28
+               TabIndex        =   27
                Top             =   1305
                Width           =   1095
             End
             Begin VB.CommandButton cmdDelBodegaDestino 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":11C14
+               Picture         =   "frmRegistrarTransaccion.frx":12858
                Style           =   1  'Graphical
-               TabIndex        =   31
+               TabIndex        =   30
                Top             =   1305
                Width           =   300
             End
             Begin VB.CommandButton cmdBodegaOrigen 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":138DE
+               Picture         =   "frmRegistrarTransaccion.frx":14522
                Style           =   1  'Graphical
-               TabIndex        =   24
+               TabIndex        =   23
                Top             =   855
                Width           =   300
             End
             Begin VB.TextBox txtDescrBodegaOrigen 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   4335
-               TabIndex        =   27
+               TabIndex        =   26
                Top             =   870
                Width           =   6675
             End
             Begin VB.TextBox txtBodegaOrigen 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   23
+               TabIndex        =   22
                Top             =   855
                Width           =   1095
             End
             Begin VB.CommandButton cmdTipoTransaccion 
                Height          =   320
                Left            =   3510
-               Picture         =   "frmRegistrarTransaccion.frx":13C20
+               Picture         =   "frmRegistrarTransaccion.frx":14864
                Style           =   1  'Graphical
-               TabIndex        =   20
+               TabIndex        =   19
                Top             =   420
                Width           =   300
             End
             Begin VB.TextBox txtDescrTipoTransaccion 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   4335
-               TabIndex        =   22
+               TabIndex        =   21
                Top             =   420
                Width           =   6675
             End
             Begin VB.TextBox txtTipoTransaccion 
                Appearance      =   0  'Flat
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
-                  Weight          =   700
+                  Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   285
                Left            =   2310
-               TabIndex        =   19
+               TabIndex        =   18
                Top             =   420
                Width           =   1095
             End
             Begin VB.CommandButton cmdDelTipoTransaccion 
                Height          =   320
                Left            =   3900
-               Picture         =   "frmRegistrarTransaccion.frx":13F62
+               Picture         =   "frmRegistrarTransaccion.frx":14BA6
                Style           =   1  'Graphical
-               TabIndex        =   21
+               TabIndex        =   20
                Top             =   405
                Width           =   300
             End
             Begin VB.Label lblBodegaDestino 
                Caption         =   "Bodega Destino:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -590,17 +673,17 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   555
-               TabIndex        =   30
+               TabIndex        =   29
                Top             =   1320
                Width           =   1635
             End
             Begin VB.Label Label6 
                Caption         =   "Bodega Origen:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -608,17 +691,17 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   555
-               TabIndex        =   26
+               TabIndex        =   25
                Top             =   870
                Width           =   1635
             End
             Begin VB.Label Label5 
                Caption         =   "Tipo Transacción:"
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Tahoma"
                   Size            =   8.25
                   Charset         =   0
                   Weight          =   700
@@ -626,10 +709,10 @@ Begin VB.Form frmRegistrarTransaccion
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               ForeColor       =   &H002F2F2F&
+               ForeColor       =   &H00404040&
                Height          =   300
                Left            =   540
-               TabIndex        =   18
+               TabIndex        =   17
                Top             =   420
                Width           =   1635
             End
@@ -638,16 +721,16 @@ Begin VB.Form frmRegistrarTransaccion
       Begin ActiveTabs.SSActiveTabPanel sTabPanelDocumento 
          Height          =   6615
          Left            =   30
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   360
          Width           =   14235
          _ExtentX        =   25109
          _ExtentY        =   11668
          _Version        =   131083
-         TabGuid         =   "frmRegistrarTransaccion.frx":15C2C
+         TabGuid         =   "frmRegistrarTransaccion.frx":16870
          Begin VB.TextBox txtUsuario 
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -655,28 +738,39 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
+            ForeColor       =   &H00404040&
             Height          =   315
             Left            =   1350
-            TabIndex        =   14
+            TabIndex        =   13
             Top             =   3330
             Width           =   1815
          End
          Begin RichTextLib.RichTextBox txtConcepto 
             Height          =   1785
             Left            =   540
-            TabIndex        =   13
+            TabIndex        =   12
             Top             =   1110
             Width           =   13035
             _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
+            Enabled         =   -1  'True
             ScrollBars      =   2
-            TextRTF         =   $"frmRegistrarTransaccion.frx":15C54
+            TextRTF         =   $"frmRegistrarTransaccion.frx":16898
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
          End
          Begin MSComCtl2.DTPicker dtpFecha 
             Height          =   315
             Left            =   1140
-            TabIndex        =   10
+            TabIndex        =   9
             Top             =   240
             Width           =   2070
             _ExtentX        =   3651
@@ -691,13 +785,13 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   62062593
+            Format          =   61865985
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
             Caption         =   "Usuario:"
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -705,17 +799,17 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   300
             Left            =   600
-            TabIndex        =   15
+            TabIndex        =   14
             Top             =   3360
             Width           =   795
          End
          Begin VB.Label Label2 
             Caption         =   "Fecha:"
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -723,17 +817,17 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   300
             Left            =   510
-            TabIndex        =   11
+            TabIndex        =   10
             Top             =   270
             Width           =   915
          End
          Begin VB.Label Label4 
             Caption         =   "Concepto:"
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -741,10 +835,10 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   300
             Left            =   540
-            TabIndex        =   12
+            TabIndex        =   11
             Top             =   870
             Width           =   915
          End
@@ -753,37 +847,37 @@ Begin VB.Form frmRegistrarTransaccion
    Begin VB.TextBox txtIDDocumento 
       Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H8000000D&
+      ForeColor       =   &H00404040&
       Height          =   315
-      Left            =   2490
-      TabIndex        =   2
-      Top             =   780
+      Left            =   2340
+      TabIndex        =   1
+      Top             =   1050
       Width           =   2445
    End
    Begin VB.TextBox txtPaquete 
       Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H8000000D&
+      ForeColor       =   &H00404040&
       Height          =   315
-      Left            =   1440
-      TabIndex        =   1
-      Top             =   780
+      Left            =   1290
+      TabIndex        =   0
+      Top             =   1050
       Width           =   975
    End
    Begin VB.CommandButton cmdUndo 
@@ -797,30 +891,39 @@ Begin VB.Form frmRegistrarTransaccion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   14820
-      Picture         =   "frmRegistrarTransaccion.frx":15CCB
+      Left            =   14490
+      Picture         =   "frmRegistrarTransaccion.frx":16913
       Style           =   1  'Graphical
-      TabIndex        =   52
+      TabIndex        =   51
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   2220
+      Top             =   2580
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   555
-      Left            =   14820
-      Picture         =   "frmRegistrarTransaccion.frx":16995
+      Left            =   14490
+      Picture         =   "frmRegistrarTransaccion.frx":175DD
       Style           =   1  'Graphical
-      TabIndex        =   51
+      TabIndex        =   50
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   1590
+      Top             =   1950
       Width           =   555
+   End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   59
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
       Caption         =   "Documento:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -828,18 +931,18 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00000000&
+      ForeColor       =   &H00404040&
       Height          =   300
-      Left            =   390
-      TabIndex        =   3
-      Top             =   810
+      Left            =   240
+      TabIndex        =   2
+      Top             =   1080
       Width           =   1020
    End
    Begin VB.Label lblTransaccion 
       BackStyle       =   0  'Transparent
       Caption         =   "Transacción:"
       BeginProperty Font 
-         Name            =   "Arial"
+         Name            =   "Tahoma"
          Size            =   9.75
          Charset         =   0
          Weight          =   700
@@ -849,16 +952,16 @@ Begin VB.Form frmRegistrarTransaccion
       EndProperty
       ForeColor       =   &H00FF0000&
       Height          =   300
-      Left            =   12690
-      TabIndex        =   5
-      Top             =   660
+      Left            =   12540
+      TabIndex        =   4
+      Top             =   930
       Width           =   2640
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   "Transacción:"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -866,42 +969,12 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00000000&
+      ForeColor       =   &H00404040&
       Height          =   300
-      Left            =   11505
-      TabIndex        =   4
-      Top             =   660
+      Left            =   11355
+      TabIndex        =   3
+      Top             =   930
       Width           =   1170
-   End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Titulo Catalogo"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   375
-      Left            =   -210
-      TabIndex        =   0
-      Top             =   0
-      Width           =   15990
-   End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   -405
-      Picture         =   "frmRegistrarTransaccion.frx":1865F
-      Stretch         =   -1  'True
-      Top             =   -300
-      Width           =   16185
    End
 End
 Attribute VB_Name = "frmRegistrarTransaccion"
@@ -1184,11 +1257,11 @@ Private Sub cmdAdd_Click()
             frmAutosugiere.gsTitle = "Lotes Autosugeridos"
             frmAutosugiere.gsFormCaption = "Lotes"
             frmAutosugiere.gdCantidad = CDbl(txtCantidad.Text)
-            frmAutosugiere.gsIdProducto = txtArticulo.Text
+            frmAutosugiere.gsIDProducto = txtArticulo.Text
             frmAutosugiere.gsDescrProducto = Me.txtDescrArticulo.Text
             frmAutosugiere.gsIDBodega = Me.txtBodegaOrigen.Text
             frmAutosugiere.gsDescrBodega = Me.txtDescrBodegaOrigen.Text
-            dTotalSugeridoLotes = frmAutosugiere.GetTotalSugeridoLotes()
+            dTotalSugeridoLotes = frmAutosugiere.getTotalSugeridoporLote()
             If (dTotalSugeridoLotes < CDbl(Me.txtCantidad.Text)) Then
                 lbok = Mensaje("No hay suficiente existencia del producto, la existencia actual es " & dTotalSugeridoLotes, ICO_ERROR, True)
                 Set rstLS = Nothing

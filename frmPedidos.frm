@@ -3,39 +3,98 @@ Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmPedidos 
    Caption         =   "Form1"
-   ClientHeight    =   8415
+   ClientHeight    =   8055
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   14970
+   ClientWidth     =   15030
    LinkTopic       =   "Form1"
-   ScaleHeight     =   8415
-   ScaleWidth      =   14970
-   StartUpPosition =   3  'Windows Default
+   MDIChild        =   -1  'True
+   ScaleHeight     =   8055
+   ScaleWidth      =   15030
+   WindowState     =   2  'Maximized
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   15030
+      TabIndex        =   25
+      Top             =   0
+      Width           =   15030
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   27
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Listado de Pedidos Factura."
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   26
+         Top             =   420
+         Width           =   1695
+      End
+      Begin VB.Image Image 
+         Height          =   720
+         Index           =   2
+         Left            =   120
+         Picture         =   "frmPedidos.frx":0000
+         Top             =   30
+         Width           =   720
+      End
+   End
    Begin VB.Frame Frame1 
       Caption         =   "Filtro por Número de Pedidos"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00404040&
       Height          =   735
       Left            =   180
-      TabIndex        =   21
-      Top             =   120
+      TabIndex        =   19
+      Top             =   990
       Width           =   5175
       Begin VB.TextBox txtPedidoInicial 
-         Height          =   285
-         Left            =   1320
-         TabIndex        =   23
-         Top             =   240
-         Width           =   1215
-      End
-      Begin VB.TextBox txtPedidoFinal 
-         Height          =   285
-         Left            =   3810
-         TabIndex        =   22
-         Top             =   180
-         Width           =   1095
-      End
-      Begin VB.Label Label1 
-         Caption         =   "Desde :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -43,16 +102,52 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   285
+         Left            =   1140
+         TabIndex        =   21
+         Top             =   300
+         Width           =   1215
+      End
+      Begin VB.TextBox txtPedidoFinal 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   285
+         Left            =   3630
+         TabIndex        =   20
+         Top             =   300
+         Width           =   1215
+      End
+      Begin VB.Label Label1 
+         Caption         =   "Desde :"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   360
-         TabIndex        =   25
-         Top             =   240
+         TabIndex        =   23
+         Top             =   330
          Width           =   735
       End
       Begin VB.Label Label2 
          Caption         =   "Hasta :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -60,48 +155,59 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   2880
-         TabIndex        =   24
-         Top             =   240
+         TabIndex        =   22
+         Top             =   330
          Width           =   735
       End
    End
    Begin VB.Frame Frame2 
       Caption         =   "Filtro por Rango de Fechas"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00404040&
       Height          =   735
       Left            =   5700
-      TabIndex        =   16
-      Top             =   120
-      Width           =   6255
+      TabIndex        =   14
+      Top             =   990
+      Width           =   5775
       Begin MSComCtl2.DTPicker DTPDesde 
          Height          =   255
-         Left            =   1200
-         TabIndex        =   17
-         Top             =   240
+         Left            =   870
+         TabIndex        =   15
+         Top             =   300
          Width           =   1575
          _ExtentX        =   2778
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   62128129
+         Format          =   61472769
          CurrentDate     =   41640
       End
       Begin MSComCtl2.DTPicker DTPHasta 
          Height          =   255
-         Left            =   4320
-         TabIndex        =   18
-         Top             =   240
+         Left            =   3990
+         TabIndex        =   16
+         Top             =   300
          Width           =   1455
          _ExtentX        =   2566
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   62128129
+         Format          =   61472769
          CurrentDate     =   47484
       End
       Begin VB.Label Label9 
          Caption         =   "Hasta :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -109,16 +215,17 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   3360
-         TabIndex        =   20
-         Top             =   240
+         TabIndex        =   18
+         Top             =   330
          Width           =   735
       End
       Begin VB.Label Label8 
          Caption         =   "Desde :"
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -126,123 +233,133 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   240
-         TabIndex        =   19
-         Top             =   240
+         TabIndex        =   17
+         Top             =   330
          Width           =   735
       End
    End
    Begin VB.Frame Frame3 
       Caption         =   "Filtro por Cliente y Vendedor"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1215
       Left            =   180
-      TabIndex        =   5
-      Top             =   960
+      TabIndex        =   3
+      Top             =   1830
       Width           =   11775
       Begin VB.CommandButton cmdDelCliente 
          Height          =   320
          Left            =   2580
-         Picture         =   "frmPedidos.frx":0000
+         Picture         =   "frmPedidos.frx":0639
          Style           =   1  'Graphical
-         TabIndex        =   13
+         TabIndex        =   11
          Top             =   240
          Width           =   300
       End
       Begin VB.CommandButton cmdCliente 
          Height          =   320
          Left            =   2160
-         Picture         =   "frmPedidos.frx":1CCA
+         Picture         =   "frmPedidos.frx":2303
          Style           =   1  'Graphical
-         TabIndex        =   12
+         TabIndex        =   10
          Top             =   240
          Width           =   300
       End
       Begin VB.TextBox txtCliente 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1080
-         TabIndex        =   11
+         TabIndex        =   9
          Top             =   240
          Width           =   945
       End
       Begin VB.TextBox txtNombre 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FF0000&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2955
-         TabIndex        =   10
+         TabIndex        =   8
          Top             =   240
          Width           =   8400
       End
       Begin VB.CommandButton cmdDelVendedor 
          Height          =   320
          Left            =   2580
-         Picture         =   "frmPedidos.frx":200C
+         Picture         =   "frmPedidos.frx":2645
          Style           =   1  'Graphical
-         TabIndex        =   9
+         TabIndex        =   7
          Top             =   720
          Width           =   300
       End
       Begin VB.CommandButton cmdVendedor 
          Height          =   320
          Left            =   2160
-         Picture         =   "frmPedidos.frx":3CD6
+         Picture         =   "frmPedidos.frx":430F
          Style           =   1  'Graphical
-         TabIndex        =   8
+         TabIndex        =   6
          Top             =   720
          Width           =   300
       End
       Begin VB.TextBox txtVendedor 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1080
-         TabIndex        =   7
+         TabIndex        =   5
          Top             =   720
          Width           =   945
       End
       Begin VB.TextBox txtDescrVendedor 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FF0000&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   2955
-         TabIndex        =   6
+         TabIndex        =   4
          Top             =   720
          Width           =   8400
       End
@@ -250,7 +367,7 @@ Begin VB.Form frmPedidos
          BackStyle       =   0  'Transparent
          Caption         =   "Cliente :"
          BeginProperty Font 
-            Name            =   "Arial Black"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -258,10 +375,10 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   120
-         TabIndex        =   15
+         TabIndex        =   13
          Top             =   300
          Width           =   735
       End
@@ -269,7 +386,7 @@ Begin VB.Form frmPedidos
          BackStyle       =   0  'Transparent
          Caption         =   "Vendedor :"
          BeginProperty Font 
-            Name            =   "Arial Black"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -277,10 +394,10 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   120
-         TabIndex        =   14
+         TabIndex        =   12
          Top             =   780
          Width           =   855
       End
@@ -288,7 +405,7 @@ Begin VB.Form frmPedidos
    Begin VB.CheckBox chkDesaprobados 
       Caption         =   "Solo Desaprobados ?"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -298,14 +415,14 @@ Begin VB.Form frmPedidos
       EndProperty
       Height          =   255
       Left            =   12180
-      TabIndex        =   4
-      Top             =   240
+      TabIndex        =   2
+      Top             =   1110
       Width           =   2295
    End
    Begin VB.CheckBox ChkAnuladas 
       Caption         =   "Solo Anulados ?"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -315,14 +432,14 @@ Begin VB.Form frmPedidos
       EndProperty
       Height          =   255
       Left            =   12180
-      TabIndex        =   3
-      Top             =   720
+      TabIndex        =   1
+      Top             =   1590
       Width           =   2295
    End
    Begin VB.CommandButton cmdRefresh 
       Caption         =   "Refresh"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Tahoma"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -332,34 +449,43 @@ Begin VB.Form frmPedidos
       EndProperty
       Height          =   375
       Left            =   12300
-      TabIndex        =   2
-      Top             =   1440
-      Width           =   1575
-   End
-   Begin VB.Frame Frame4 
-      Height          =   735
-      Left            =   300
       TabIndex        =   0
-      Top             =   6960
-      Width           =   14535
-      Begin VB.Label Label5 
-         Alignment       =   2  'Center
-         Caption         =   $"frmPedidos.frx":4018
-         ForeColor       =   &H00800000&
-         Height          =   375
-         Left            =   240
-         TabIndex        =   1
-         Top             =   240
-         Width           =   14055
-      End
+      Top             =   2310
+      Width           =   1575
    End
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
       Height          =   4095
-      Left            =   300
-      OleObjectBlob   =   "frmPedidos.frx":40A9
-      TabIndex        =   26
-      Top             =   2520
+      Left            =   210
+      OleObjectBlob   =   "frmPedidos.frx":4651
+      TabIndex        =   24
+      Top             =   3240
       Width           =   14415
+   End
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   28
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
+   End
+   Begin VB.Label Label11 
+      AutoSize        =   -1  'True
+      Caption         =   $"frmPedidos.frx":B48D
+      ForeColor       =   &H00404040&
+      Height          =   195
+      Left            =   540
+      TabIndex        =   29
+      Top             =   7470
+      Width           =   10275
+   End
+   Begin VB.Image Image3 
+      Height          =   480
+      Left            =   60
+      Picture         =   "frmPedidos.frx":B51E
+      Top             =   7350
+      Width           =   480
    End
 End
 Attribute VB_Name = "frmPedidos"
@@ -376,6 +502,8 @@ Dim sVendedor As String
 Dim sDesaprobados As String
 Dim sAnulados As String
 Dim rsttmpProdFac As ADODB.Recordset ' para la fuente del grid
+Public gsFormCaption As String
+Public gsTitle As String
 
 Private Sub cmdCliente_Click()
    Dim frm As frmBrowseCat
@@ -611,9 +739,17 @@ ValCtrls = lbok
 End Function
 
 
+Private Sub Form_Activate()
+ HighlightInWin Me.Name
+SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+MDIMain.AddForm Me.Name
 PreparaRst
 SetColumnSizeGrid
+Caption = gsFormCaption
+lbFormCaption = gsTitle
 End Sub
 
 Private Sub SetColumnSizeGrid()
@@ -630,7 +766,22 @@ TDBGFAC.Columns("Anulado").Width = 1230.236
 End Sub
 
 
+Private Sub Add()
+    If fafgetCantBodegaFacturableForUser(gsUSUARIO) = 0 Then
+        lbok = Mensaje("Ud no tiene asignada ninguna bodega facturable, por favor vea al administrador del Sistema", ICO_ERROR, False)
+        Exit Sub
+    End If
+    frmPedidoFactura.Show vbModal
+End Sub
 
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no name")
+    Set frmPedidos = Nothing
+End Sub
+
+Private Sub Label5_Click()
+
+End Sub
 
 Private Sub TDBGFAC_DblClick()
 Dim lbok As Boolean
@@ -710,5 +861,79 @@ Dim lbok As Boolean
         lbok = Mensaje("Ese Vendedor No Existe", ICO_ERROR, False)
     End If
 
+End Sub
+
+
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+    On Error GoTo err
+    Select Case srcPerformWhat
+        Case "Nuevo"
+            Add
+        Case "Cerrar"
+            Unload Me
+    End Select
+    Exit Sub
+    'Trap the error
+err:
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
+               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
+               err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+End Sub
+
+
+Private Sub HabilitarBotonesMain()
+    Select Case Accion
+        Case TypAccion.Add, TypAccion.Edit
+            MDIMain.tbMenu.Buttons(12).Enabled = True 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = True 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = False 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = False 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = False 'Editar
+        Case TypAccion.View
+            MDIMain.tbMenu.Buttons(12).Enabled = False 'Guardar
+            MDIMain.tbMenu.Buttons(13).Enabled = False 'Undo
+            MDIMain.tbMenu.Buttons(11).Enabled = True 'Eliminar
+            MDIMain.tbMenu.Buttons(8).Enabled = True 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = True 'Editar
+    End Select
+End Sub
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        'center_obj_horizontal Me, Frame2
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        
+        TDBGFAC.Width = Me.ScaleWidth - CONTROL_MARGIN
+        TDBGFAC.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBGFAC.top
+        
+    End If
+    TrueDBGridResize 1
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBGFAC.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBGFAC.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + TDBGFAC.Columns(i).Width
+        End If
+    Next i
+
+    Me.TDBGFAC.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
 End Sub
 

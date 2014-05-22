@@ -2,14 +2,77 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmEscalaBonificacion 
    Caption         =   "Form1"
-   ClientHeight    =   6300
+   ClientHeight    =   6195
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   10005
+   ClientWidth     =   9720
    LinkTopic       =   "Form1"
-   ScaleHeight     =   6300
-   ScaleWidth      =   10005
-   StartUpPosition =   3  'Windows Default
+   ScaleHeight     =   6195
+   ScaleWidth      =   9720
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   9720
+      TabIndex        =   17
+      Top             =   0
+      Width           =   9720
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   19
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Permite Agregar escalas de bonificación al producto seleccionado."
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   18
+         Top             =   420
+         Width           =   4020
+      End
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmEscalaBonificacion.frx":0000
+         Top             =   90
+         Width           =   480
+      End
+   End
    Begin VB.CommandButton cmdEditItem 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -21,23 +84,23 @@ Begin VB.Form frmEscalaBonificacion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   8730
-      Picture         =   "frmEscalaBonificacion.frx":0000
+      Left            =   8580
+      Picture         =   "frmEscalaBonificacion.frx":08CA
       Style           =   1  'Graphical
       TabIndex        =   15
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   3240
+      Top             =   3510
       Width           =   555
    End
    Begin VB.CommandButton cmdSave 
       Enabled         =   0   'False
       Height          =   555
-      Left            =   8730
-      Picture         =   "frmEscalaBonificacion.frx":0CCA
+      Left            =   8580
+      Picture         =   "frmEscalaBonificacion.frx":1594
       Style           =   1  'Graphical
       TabIndex        =   14
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   4440
+      Top             =   4710
       Width           =   555
    End
    Begin VB.CommandButton cmdAdd 
@@ -51,12 +114,12 @@ Begin VB.Form frmEscalaBonificacion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   8730
-      Picture         =   "frmEscalaBonificacion.frx":2994
+      Left            =   8580
+      Picture         =   "frmEscalaBonificacion.frx":325E
       Style           =   1  'Graphical
       TabIndex        =   13
       ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   2640
+      Top             =   2910
       Width           =   555
    End
    Begin VB.CommandButton cmdEliminar 
@@ -70,12 +133,12 @@ Begin VB.Form frmEscalaBonificacion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   8730
-      Picture         =   "frmEscalaBonificacion.frx":365E
+      Left            =   8580
+      Picture         =   "frmEscalaBonificacion.frx":3F28
       Style           =   1  'Graphical
       TabIndex        =   12
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   3840
+      Top             =   4110
       Width           =   555
    End
    Begin VB.Frame Frame2 
@@ -88,22 +151,22 @@ Begin VB.Form frmEscalaBonificacion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1575
-      Left            =   690
+      Height          =   1875
+      Left            =   450
       TabIndex        =   1
-      Top             =   975
+      Top             =   870
       Width           =   8775
       Begin VB.TextBox txtProducto 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   315
          Left            =   1440
          TabIndex        =   10
@@ -112,7 +175,25 @@ Begin VB.Form frmEscalaBonificacion
       End
       Begin VB.TextBox txtDescr 
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   315
+         Left            =   2580
+         TabIndex        =   9
+         Top             =   345
+         Width           =   6030
+      End
+      Begin VB.Frame Frame4 
+         Caption         =   "Bonificación"
+         BeginProperty Font 
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -120,24 +201,15 @@ Begin VB.Form frmEscalaBonificacion
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00FF0000&
-         Height          =   315
-         Left            =   2565
-         TabIndex        =   9
-         Top             =   345
-         Width           =   6030
-      End
-      Begin VB.Frame Frame4 
-         Caption         =   "Bonificación"
-         Height          =   615
-         Left            =   120
+         Height          =   735
+         Left            =   180
          TabIndex        =   2
-         Top             =   720
+         Top             =   870
          Width           =   8415
          Begin VB.TextBox txtPorCada 
             BackColor       =   &H8000000F&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -145,17 +217,17 @@ Begin VB.Form frmEscalaBonificacion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   285
             Left            =   3960
             TabIndex        =   5
-            Top             =   240
+            Top             =   300
             Width           =   1095
          End
          Begin VB.TextBox txtBonifica 
             BackColor       =   &H8000000F&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -163,17 +235,17 @@ Begin VB.Form frmEscalaBonificacion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   285
             Left            =   6720
             TabIndex        =   4
-            Top             =   240
+            Top             =   300
             Width           =   1095
          End
          Begin VB.TextBox txtIDEscala 
             BackColor       =   &H8000000F&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Tahoma"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -181,38 +253,65 @@ Begin VB.Form frmEscalaBonificacion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            ForeColor       =   &H002F2F2F&
+            ForeColor       =   &H00404040&
             Height          =   285
             Left            =   1320
             TabIndex        =   3
-            Top             =   240
-            Width           =   855
+            Top             =   300
+            Width           =   1095
          End
          Begin VB.Label Label12 
             Caption         =   "Por Cada :"
-            ForeColor       =   &H002F2F2F&
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00404040&
             Height          =   255
-            Left            =   2640
+            Left            =   3030
             TabIndex        =   8
-            Top             =   240
+            Top             =   330
             Width           =   855
          End
          Begin VB.Label Label11 
-            Caption         =   "Bonifica :"
-            ForeColor       =   &H002F2F2F&
+            Caption         =   "Bonifica:"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00404040&
             Height          =   255
-            Left            =   5520
+            Left            =   5910
             TabIndex        =   7
-            Top             =   240
-            Width           =   735
+            Top             =   330
+            Width           =   885
          End
          Begin VB.Label Label2 
             Caption         =   "Escala :"
-            ForeColor       =   &H002F2F2F&
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00404040&
             Height          =   255
-            Left            =   480
+            Left            =   570
             TabIndex        =   6
-            Top             =   240
+            Top             =   330
             Width           =   615
          End
       End
@@ -220,7 +319,7 @@ Begin VB.Form frmEscalaBonificacion
          BackStyle       =   0  'Transparent
          Caption         =   "Producto :"
          BeginProperty Font 
-            Name            =   "Arial"
+            Name            =   "Tahoma"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -228,7 +327,7 @@ Begin VB.Form frmEscalaBonificacion
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H002F2F2F&
+         ForeColor       =   &H00404040&
          Height          =   255
          Left            =   360
          TabIndex        =   11
@@ -247,50 +346,30 @@ Begin VB.Form frmEscalaBonificacion
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   8730
-      Picture         =   "frmEscalaBonificacion.frx":4328
+      Left            =   8580
+      Picture         =   "frmEscalaBonificacion.frx":4BF2
       Style           =   1  'Graphical
       TabIndex        =   0
       ToolTipText     =   "Deshacer / Cancelar"
-      Top             =   5040
+      Top             =   5310
       Width           =   555
    End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   2955
-      Left            =   660
-      OleObjectBlob   =   "frmEscalaBonificacion.frx":4FF2
+      Left            =   450
+      OleObjectBlob   =   "frmEscalaBonificacion.frx":58BC
       TabIndex        =   16
-      Top             =   2640
-      Width           =   7905
+      Top             =   2910
+      Width           =   7995
    End
-   Begin VB.Label lbFormCaption 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   375
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
       Left            =   0
-      TabIndex        =   17
-      Top             =   240
-      Width           =   10140
-   End
-   Begin VB.Image Image1 
-      Height          =   765
-      Left            =   -270
-      Picture         =   "frmEscalaBonificacion.frx":AB6B
-      Stretch         =   -1  'True
-      Top             =   0
-      Width           =   11490
+      TabIndex        =   20
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmEscalaBonificacion"

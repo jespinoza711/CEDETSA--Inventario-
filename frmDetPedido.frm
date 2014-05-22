@@ -2,14 +2,77 @@ VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Begin VB.Form frmDetPedido 
    Caption         =   "Form1"
-   ClientHeight    =   6105
+   ClientHeight    =   7605
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   14850
+   ClientWidth     =   12165
    LinkTopic       =   "Form1"
-   ScaleHeight     =   6105
-   ScaleWidth      =   14850
-   StartUpPosition =   3  'Windows Default
+   ScaleHeight     =   7605
+   ScaleWidth      =   12165
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.PictureBox picHeader 
+      Align           =   1  'Align Top
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   750
+      Left            =   0
+      ScaleHeight     =   750
+      ScaleWidth      =   12165
+      TabIndex        =   4
+      Top             =   0
+      Width           =   12165
+      Begin VB.Label lbFormCaption 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Caption"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   11.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   270
+         Left            =   930
+         TabIndex        =   6
+         Top             =   90
+         Width           =   855
+      End
+      Begin VB.Label Label 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Detalle del Pedido.."
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   165
+         Index           =   1
+         Left            =   930
+         TabIndex        =   5
+         Top             =   420
+         Width           =   1215
+      End
+      Begin VB.Image Image 
+         Height          =   480
+         Index           =   2
+         Left            =   210
+         Picture         =   "frmDetPedido.frx":0000
+         Top             =   120
+         Width           =   480
+      End
+   End
    Begin VB.CommandButton cmdAprobar 
       Caption         =   "Aprobar"
       BeginProperty Font 
@@ -22,9 +85,9 @@ Begin VB.Form frmDetPedido
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   4080
+      Left            =   8220
       TabIndex        =   2
-      Top             =   5490
+      Top             =   930
       Width           =   1695
    End
    Begin VB.CommandButton cmdAnular 
@@ -39,9 +102,9 @@ Begin VB.Form frmDetPedido
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   6600
+      Left            =   9960
       TabIndex        =   1
-      Top             =   5490
+      Top             =   930
       Width           =   1695
    End
    Begin VB.CommandButton cmdSalir 
@@ -56,48 +119,28 @@ Begin VB.Form frmDetPedido
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   9360
+      Left            =   9990
       TabIndex        =   0
-      Top             =   5490
+      Top             =   7020
+      Visible         =   0   'False
       Width           =   1695
    End
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
-      Height          =   3975
-      Left            =   360
-      OleObjectBlob   =   "frmDetPedido.frx":0000
+      Height          =   5565
+      Left            =   300
+      OleObjectBlob   =   "frmDetPedido.frx":0C44
       TabIndex        =   3
-      Top             =   1290
-      Width           =   14295
+      Top             =   1320
+      Width           =   11355
    End
-   Begin VB.Label lblTitulo 
-      Alignment       =   2  'Center
-      BackColor       =   &H00FFFFFF&
-      BackStyle       =   0  'Transparent
-      BorderStyle     =   1  'Fixed Single
-      Caption         =   "Tablas Globales del Sistema"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H002F2F2F&
-      Height          =   375
-      Left            =   -60
-      TabIndex        =   4
-      Top             =   30
-      Width           =   14700
-   End
-   Begin VB.Image Image1 
-      Height          =   885
-      Left            =   -240
-      Picture         =   "frmDetPedido.frx":4C40
-      Stretch         =   -1  'True
-      Top             =   -270
-      Width           =   14850
+   Begin Inventario.CtlLiner CtlLiner 
+      Height          =   30
+      Left            =   0
+      TabIndex        =   7
+      Top             =   750
+      Width           =   17925
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmDetPedido"
@@ -183,8 +226,16 @@ Private Sub cmdSalir_Click()
 Unload Me
 End Sub
 
+Private Sub Form_Activate()
+HighlightInWin Me.Name
+SetupFormToolbar (Me.Name)
+End Sub
+
+
+
 Private Sub Form_Load()
 PreparaRst
+MDIMain.AddForm Me.Name
 SetColumnSizeGrid
 gbHuboAnulacion = False
 gbHuboAprobacion = False
@@ -220,4 +271,81 @@ TDBGFAC.Columns("Total").Width = 1635.024
 
 End Sub
 
+
+
+
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no name")
+    Set frmDetPedido = Nothing
+End Sub
+
+
+
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+    On Error GoTo err
+    Select Case srcPerformWhat
+        Case "Nuevo"
+            cmdAdd_Click
+        Case "Editar"
+            cmdEditItem_Click
+        Case "Eliminar"
+            cmdEliminar_Click
+        Case "Cancelar"
+            cmdUndo_Click
+        Case "Imprimir"
+            MsgBox "Imprimir"
+        Case "Cerrar"
+            Unload Me
+        Case "Guardar"
+            cmdSave_Click
+    End Select
+    Exit Sub
+    'Trap the error
+err:
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
+               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
+               err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+End Sub
+
+
+
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        center_obj_horizontal Me, Frame2
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        
+        TDBG.Width = Me.ScaleWidth - CONTROL_MARGIN
+        TDBG.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBG.top
+        
+    End If
+    TrueDBGridResize 1
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBG.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBG.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + TDBG.Columns(i).Width
+        End If
+    Next i
+
+    Me.TDBG.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
+End Sub
 
