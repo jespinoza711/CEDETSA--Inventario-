@@ -19,6 +19,7 @@ Begin VB.Form frmBrowseCat
    Begin VB.CommandButton cmdAceptar 
       BackColor       =   &H80000009&
       Caption         =   "Aceptar"
+      Default         =   -1  'True
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   9.75
@@ -142,18 +143,18 @@ Begin VB.Form frmBrowseCat
    Begin VB.CommandButton cmdQuitafiltro 
       BackColor       =   &H00FFFFFF&
       Height          =   585
-      Left            =   4350
+      Left            =   3660
       Picture         =   "frmBrowseCat.frx":288A
       Style           =   1  'Graphical
       TabIndex        =   3
       ToolTipText     =   "Quita el filtro existente y muestra todo el catálogo."
-      Top             =   990
+      Top             =   960
       Width           =   645
    End
    Begin VB.CommandButton cmdFiltra 
       BackColor       =   &H00FFFFFF&
       Height          =   585
-      Left            =   3660
+      Left            =   4350
       Picture         =   "frmBrowseCat.frx":2BA9
       Style           =   1  'Graphical
       TabIndex        =   2

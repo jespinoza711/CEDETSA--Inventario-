@@ -1,10 +1,9 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
-Object = "{C9680CB9-8919-4ED0-A47D-8DC07382CB7B}#1.0#0"; "StyleButtonx.ocx"
 Begin VB.MDIForm MDIMain 
    BackColor       =   &H8000000C&
    Caption         =   "MDIForm1"
-   ClientHeight    =   6870
+   ClientHeight    =   10905
    ClientLeft      =   60
    ClientTop       =   750
    ClientWidth     =   16080
@@ -15,8 +14,8 @@ Begin VB.MDIForm MDIMain
       Align           =   2  'Align Bottom
       Height          =   285
       Left            =   0
-      TabIndex        =   9
-      Top             =   6585
+      TabIndex        =   8
+      Top             =   10620
       Width           =   16080
       _ExtentX        =   28363
       _ExtentY        =   503
@@ -58,14 +57,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "21/05/2014"
+            TextSave        =   "22/05/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "11:55"
+            TextSave        =   "16:19"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -105,15 +104,15 @@ Begin VB.MDIForm MDIMain
       Left            =   0
       ScaleHeight     =   375
       ScaleWidth      =   16080
-      TabIndex        =   8
-      Top             =   6210
+      TabIndex        =   7
+      Top             =   10245
       Width           =   16080
       Begin VB.ListBox WinList 
          Height          =   255
          ItemData        =   "MDIMain.frx":10CE
          Left            =   270
          List            =   "MDIMain.frx":10D0
-         TabIndex        =   10
+         TabIndex        =   9
          Top             =   30
          Visible         =   0   'False
          Width           =   1455
@@ -128,17 +127,17 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picLeft 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   5445
+      Height          =   9480
       Left            =   0
-      ScaleHeight     =   5445
+      ScaleHeight     =   9480
       ScaleWidth      =   2310
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   765
       Width           =   2310
       Begin VB.Frame Frame1 
          Height          =   465
          Left            =   0
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   -75
          Width           =   2250
          Begin VB.Image Image 
@@ -162,7 +161,7 @@ Begin VB.MDIForm MDIMain
             EndProperty
             Height          =   240
             Left            =   375
-            TabIndex        =   6
+            TabIndex        =   5
             Top             =   195
             Width           =   1290
          End
@@ -170,7 +169,7 @@ Begin VB.MDIForm MDIMain
       Begin MSComctlLib.ListView lvWin 
          Height          =   4050
          Left            =   0
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   390
          Width           =   2250
          _ExtentX        =   3969
@@ -228,163 +227,25 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picSeparator 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   5445
+      Height          =   9480
       Left            =   2310
       MousePointer    =   9  'Size W E
-      ScaleHeight     =   5445
+      ScaleHeight     =   9480
       ScaleWidth      =   120
       TabIndex        =   2
       Top             =   765
       Width           =   120
-      Begin StyleButtonX.StyleButton StyleButton2 
-         Height          =   1095
-         Left            =   0
-         TabIndex        =   3
-         Top             =   1950
-         Width           =   120
-         _ExtentX        =   212
-         _ExtentY        =   1931
-         UpColorTop1     =   -2147483633
-         UpColorTop2     =   -2147483633
-         UpColorTop3     =   -2147483633
-         UpColorTop4     =   -2147483633
-         UpColorButtom1  =   -2147483633
-         UpColorButtom2  =   -2147483633
-         UpColorButtom3  =   -2147483633
-         UpColorButtom4  =   -2147483633
-         UpColorLeft1    =   -2147483633
-         UpColorLeft2    =   -2147483633
-         UpColorLeft3    =   -2147483633
-         UpColorLeft4    =   -2147483633
-         UpColorRight1   =   -2147483633
-         UpColorRight2   =   -2147483633
-         UpColorRight3   =   -2147483633
-         UpColorRight4   =   -2147483633
-         DownColorTop1   =   7021576
-         DownColorTop2   =   -2147483633
-         DownColorTop3   =   -2147483633
-         DownColorTop4   =   -2147483633
-         DownColorButtom1=   7021576
-         DownColorButtom2=   -2147483633
-         DownColorButtom3=   -2147483633
-         DownColorButtom4=   -2147483633
-         DownColorLeft1  =   7021576
-         DownColorLeft2  =   -2147483633
-         DownColorLeft3  =   -2147483633
-         DownColorLeft4  =   -2147483633
-         DownColorRight1 =   7021576
-         DownColorRight2 =   -2147483633
-         DownColorRight3 =   -2147483633
-         DownColorRight4 =   -2147483633
-         HoverColorTop1  =   7021576
-         HoverColorTop2  =   -2147483633
-         HoverColorTop3  =   -2147483633
-         HoverColorTop4  =   -2147483633
-         HoverColorButtom1=   7021576
-         HoverColorButtom2=   -2147483633
-         HoverColorButtom3=   -2147483633
-         HoverColorButtom4=   -2147483633
-         HoverColorLeft1 =   7021576
-         HoverColorLeft2 =   -2147483633
-         HoverColorLeft3 =   -2147483633
-         HoverColorLeft4 =   -2147483633
-         HoverColorRight1=   7021576
-         HoverColorRight2=   -2147483633
-         HoverColorRight3=   -2147483633
-         HoverColorRight4=   -2147483633
-         FocusColorTop1  =   7021576
-         FocusColorTop2  =   -2147483633
-         FocusColorTop3  =   -2147483633
-         FocusColorTop4  =   -2147483633
-         FocusColorButtom1=   7021576
-         FocusColorButtom2=   -2147483633
-         FocusColorButtom3=   -2147483633
-         FocusColorButtom4=   -2147483633
-         FocusColorLeft1 =   7021576
-         FocusColorLeft2 =   -2147483633
-         FocusColorLeft3 =   -2147483633
-         FocusColorLeft4 =   -2147483633
-         FocusColorRight1=   7021576
-         FocusColorRight2=   -2147483633
-         FocusColorRight3=   -2147483633
-         FocusColorRight4=   -2147483633
-         DisabledColorTop1=   -2147483633
-         DisabledColorTop2=   -2147483633
-         DisabledColorTop3=   -2147483633
-         DisabledColorTop4=   -2147483633
-         DisabledColorButtom1=   -2147483633
-         DisabledColorButtom2=   -2147483633
-         DisabledColorButtom3=   -2147483633
-         DisabledColorButtom4=   -2147483633
-         DisabledColorLeft1=   -2147483633
-         DisabledColorLeft2=   -2147483633
-         DisabledColorLeft3=   -2147483633
-         DisabledColorLeft4=   -2147483633
-         DisabledColorRight1=   -2147483633
-         DisabledColorRight2=   -2147483633
-         DisabledColorRight3=   -2147483633
-         DisabledColorRight4=   -2147483633
-         Caption         =   ""
-         MousePointer    =   1
-         BackColorUp     =   -2147483633
-         BackColorDown   =   11899524
-         BackColorHover  =   14073525
-         BackColorFocus  =   14604246
-         BackColorDisabled=   -2147483633
-         DotsInCornerColor=   16777215
-         MoveWhenClick   =   0   'False
-         ForeColorUp     =   -2147483630
-         ForeColorDown   =   -2147483634
-         ForeColorHover  =   -2147483630
-         ForeColorFocus  =   -2147483630
-         ForeColorDisabled=   12632256
-         BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         BeginProperty FontDown {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         BeginProperty FontHover {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         BeginProperty FontFocus {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         BeginProperty FontDisabled {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ShowBorderLevel2=   0   'False
-         DistanceBetweenPictureAndCaption=   -50
+      Begin VB.PictureBox StyleButton2 
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000009&
+         BorderStyle     =   0  'None
+         Height          =   1575
+         Left            =   -30
+         ScaleHeight     =   1575
+         ScaleWidth      =   60
+         TabIndex        =   10
+         Top             =   2790
+         Width           =   60
       End
    End
    Begin VB.PictureBox picContainer 
@@ -905,10 +766,10 @@ Private Sub show_menu(ByVal Show As Boolean)
     End If
     'Set the style button graphics
     With StyleButton2
-        Set .PictureDown = img.Picture
-        Set .PictureFocus = img.Picture
-        Set .PictureHover = img.Picture
-        Set .PictureUp = img.Picture
+        Set .Picture = img.Picture
+'        Set .PictureFocus = img.Picture
+'        Set .PictureHover = img.Picture
+'        Set .PictureUp = img.Picture
     End With
     'Set picture visibility
     picLeft.Visible = Show
@@ -967,10 +828,12 @@ Private Sub lvWin_Load()
     End With
 End Sub
 
-Sub MagicCusror(X As Integer)
- picLeft.Width = picLeft + (X * Screen.TwipsPerPixelX) - (Me.left + 110)
+Sub MagicCusror(x As Integer)
+ picLeft.Width = picLeft + (x * Screen.TwipsPerPixelX) - (Me.left + 110)
 
 End Sub
+
+
 
 Private Sub picSeparator_Resize()
     Call center_obj_vertical(picSeparator, StyleButton2)
@@ -983,7 +846,7 @@ Private Sub picLeft_Resize()
     lvWin.Height = picLeft.ScaleHeight - lvWin.top - 20
 End Sub
 
-Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = True
@@ -991,7 +854,7 @@ Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, X As Sin
     End If
 End Sub
 
-Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = False
@@ -1001,12 +864,19 @@ End Sub
 
 
 
+Private Sub StyleButton2_Click()
+   
+        show_mnu = Not show_mnu
+        show_menu show_mnu
+
+End Sub
+
 Private Sub tmrResize_Timer()
     On Error Resume Next
     GetCursorPos cursor_pos
     'picLeft.Width = (Me.Width - ((cursor_pos.x * Screen.TwipsPerPixelX) - Me.Left)) - 90
    
-    picLeft.Width = picLeft + (cursor_pos.X * Screen.TwipsPerPixelX) - (Me.left + 110)
+    picLeft.Width = picLeft + (cursor_pos.x * Screen.TwipsPerPixelX) - (Me.left + 110)
     
 End Sub
 

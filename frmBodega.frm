@@ -1,6 +1,5 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
-Object = "{C9680CB9-8919-4ED0-A47D-8DC07382CB7B}#1.0#0"; "StyleButtonx.ocx"
 Begin VB.Form frmBodega 
    Caption         =   "Bodegas"
    ClientHeight    =   7365
@@ -18,161 +17,21 @@ Begin VB.Form frmBodega
    EndProperty
    Icon            =   "frmBodega.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    Picture         =   "frmBodega.frx":08CA
    ScaleHeight     =   7365
    ScaleWidth      =   10110
    WindowState     =   2  'Maximized
-   Begin StyleButtonX.StyleButton cmdUsuario 
-      Height          =   555
-      Left            =   7950
-      TabIndex        =   26
-      ToolTipText     =   "Asocia Usuarios a la Bodega seleccionada"
-      Top             =   3630
-      Width           =   1905
-      _ExtentX        =   3360
-      _ExtentY        =   979
-      UpColorTop1     =   -2147483628
-      UpColorTop2     =   -2147483633
-      UpColorTop3     =   -2147483633
-      UpColorTop4     =   -2147483633
-      UpColorButtom1  =   -2147483627
-      UpColorButtom2  =   -2147483633
-      UpColorButtom3  =   -2147483633
-      UpColorButtom4  =   -2147483633
-      UpColorLeft1    =   -2147483628
-      UpColorLeft2    =   -2147483633
-      UpColorLeft3    =   -2147483633
-      UpColorLeft4    =   -2147483633
-      UpColorRight1   =   -2147483627
-      UpColorRight2   =   -2147483633
-      UpColorRight3   =   -2147483633
-      UpColorRight4   =   -2147483633
-      DownColorTop1   =   -2147483627
-      DownColorTop2   =   -2147483633
-      DownColorTop3   =   -2147483633
-      DownColorTop4   =   -2147483633
-      DownColorButtom1=   -2147483628
-      DownColorButtom2=   -2147483633
-      DownColorButtom3=   -2147483633
-      DownColorButtom4=   -2147483633
-      DownColorLeft1  =   -2147483627
-      DownColorLeft2  =   -2147483633
-      DownColorLeft3  =   -2147483633
-      DownColorLeft4  =   -2147483633
-      DownColorRight1 =   -2147483628
-      DownColorRight2 =   -2147483633
-      DownColorRight3 =   -2147483633
-      DownColorRight4 =   -2147483633
-      HoverColorTop1  =   -2147483628
-      HoverColorTop2  =   -2147483633
-      HoverColorTop3  =   -2147483633
-      HoverColorTop4  =   -2147483633
-      HoverColorButtom1=   -2147483627
-      HoverColorButtom2=   -2147483633
-      HoverColorButtom3=   -2147483633
-      HoverColorButtom4=   -2147483633
-      HoverColorLeft1 =   -2147483628
-      HoverColorLeft2 =   -2147483633
-      HoverColorLeft3 =   -2147483633
-      HoverColorLeft4 =   -2147483633
-      HoverColorRight1=   -2147483627
-      HoverColorRight2=   -2147483633
-      HoverColorRight3=   -2147483633
-      HoverColorRight4=   -2147483633
-      FocusColorTop1  =   -2147483628
-      FocusColorTop2  =   -2147483633
-      FocusColorTop3  =   -2147483633
-      FocusColorTop4  =   -2147483633
-      FocusColorButtom1=   -2147483627
-      FocusColorButtom2=   -2147483632
-      FocusColorButtom3=   -2147483633
-      FocusColorButtom4=   -2147483633
-      FocusColorLeft1 =   -2147483628
-      FocusColorLeft2 =   -2147483633
-      FocusColorLeft3 =   -2147483633
-      FocusColorLeft4 =   -2147483633
-      FocusColorRight1=   -2147483627
-      FocusColorRight2=   -2147483632
-      FocusColorRight3=   -2147483633
-      FocusColorRight4=   -2147483633
-      DisabledColorTop1=   -2147483628
-      DisabledColorTop2=   -2147483633
-      DisabledColorTop3=   -2147483633
-      DisabledColorTop4=   -2147483633
-      DisabledColorButtom1=   -2147483627
-      DisabledColorButtom2=   -2147483633
-      DisabledColorButtom3=   -2147483633
-      DisabledColorButtom4=   -2147483633
-      DisabledColorLeft1=   -2147483628
-      DisabledColorLeft2=   -2147483633
-      DisabledColorLeft3=   -2147483633
-      DisabledColorLeft4=   -2147483633
-      DisabledColorRight1=   -2147483627
-      DisabledColorRight2=   -2147483633
-      DisabledColorRight3=   -2147483633
-      DisabledColorRight4=   -2147483633
+   Begin VB.CommandButton cmdUsuario 
+      BackColor       =   &H00FFFFFF&
       Caption         =   "Asocia Usuarios"
-      BackColorUp     =   16777215
-      BackColorDown   =   -2147483637
-      BackColorHover  =   -2147483629
-      BackColorFocus  =   -2147483628
-      BackColorDisabled=   -2147483636
-      DotsInCornerColor=   16777215
-      ForeColorDisabled=   12632256
-      PictureUp       =   "frmBodega.frx":0C0E
-      PictureDown     =   "frmBodega.frx":1862
-      PictureHover    =   "frmBodega.frx":24B6
-      PictureFocus    =   "frmBodega.frx":310A
-      PictureDisabled =   "frmBodega.frx":3D5E
-      BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDown {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontHover {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontFocus {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDisabled {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      CaptionAlignment=   2
-      DistanceBetweenPictureAndCaption=   50
+      Height          =   765
+      Left            =   8130
+      Picture         =   "frmBodega.frx":0C0E
+      Style           =   1  'Graphical
+      TabIndex        =   26
+      Top             =   3450
+      Width           =   1695
    End
    Begin VB.Frame Frame2 
       Height          =   2445
@@ -390,7 +249,7 @@ Begin VB.Form frmBodega
          Height          =   645
          Index           =   2
          Left            =   60
-         Picture         =   "frmBodega.frx":49B2
+         Picture         =   "frmBodega.frx":1852
          Stretch         =   -1  'True
          Top             =   60
          Width           =   720
@@ -465,7 +324,7 @@ Begin VB.Form frmBodega
          EndProperty
          Height          =   555
          Left            =   660
-         Picture         =   "frmBodega.frx":5A69
+         Picture         =   "frmBodega.frx":2909
          Style           =   1  'Graphical
          TabIndex        =   5
          ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
@@ -485,7 +344,7 @@ Begin VB.Form frmBodega
          EndProperty
          Height          =   555
          Left            =   1860
-         Picture         =   "frmBodega.frx":6733
+         Picture         =   "frmBodega.frx":35D3
          Style           =   1  'Graphical
          TabIndex        =   4
          ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
@@ -504,7 +363,7 @@ Begin VB.Form frmBodega
          EndProperty
          Height          =   555
          Left            =   60
-         Picture         =   "frmBodega.frx":83FD
+         Picture         =   "frmBodega.frx":529D
          Style           =   1  'Graphical
          TabIndex        =   3
          ToolTipText     =   "Agrega el item con los datos digitados..."
@@ -523,7 +382,7 @@ Begin VB.Form frmBodega
          EndProperty
          Height          =   555
          Left            =   1260
-         Picture         =   "frmBodega.frx":90C7
+         Picture         =   "frmBodega.frx":5F67
          Style           =   1  'Graphical
          TabIndex        =   2
          ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
@@ -542,7 +401,7 @@ Begin VB.Form frmBodega
          EndProperty
          Height          =   555
          Left            =   2460
-         Picture         =   "frmBodega.frx":9D91
+         Picture         =   "frmBodega.frx":6C31
          Style           =   1  'Graphical
          TabIndex        =   1
          ToolTipText     =   "Deshacer / Cancelar"
@@ -562,7 +421,7 @@ Begin VB.Form frmBodega
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   3045
       Left            =   180
-      OleObjectBlob   =   "frmBodega.frx":AA5B
+      OleObjectBlob   =   "frmBodega.frx":78FB
       TabIndex        =   22
       Top             =   4230
       Width           =   9705

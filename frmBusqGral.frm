@@ -18,6 +18,7 @@ Begin VB.Form frmBusqGral
    Begin VB.CommandButton cmdAceptar 
       BackColor       =   &H80000009&
       Caption         =   "Aceptar"
+      Default         =   -1  'True
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   9.75

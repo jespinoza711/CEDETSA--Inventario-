@@ -139,8 +139,8 @@ Begin VB.Form frmDetPedido
       TabIndex        =   7
       Top             =   750
       Width           =   17925
-      _ExtentX        =   31618
-      _ExtentY        =   53
+      _extentx        =   31618
+      _extenty        =   53
    End
 End
 Attribute VB_Name = "frmDetPedido"
@@ -273,7 +273,6 @@ End Sub
 
 
 
-
 Private Sub Form_Unload(Cancel As Integer)
     SetupFormToolbar ("no name")
     Set frmDetPedido = Nothing
@@ -282,70 +281,11 @@ End Sub
 
 
 
-Public Sub CommandPass(ByVal srcPerformWhat As String)
-    On Error GoTo err
-    Select Case srcPerformWhat
-        Case "Nuevo"
-            cmdAdd_Click
-        Case "Editar"
-            cmdEditItem_Click
-        Case "Eliminar"
-            cmdEliminar_Click
-        Case "Cancelar"
-            cmdUndo_Click
-        Case "Imprimir"
-            MsgBox "Imprimir"
-        Case "Cerrar"
-            Unload Me
-        Case "Guardar"
-            cmdSave_Click
-    End Select
-    Exit Sub
-    'Trap the error
-err:
-    If err.Number = -2147467259 Then
-        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & _
-               "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & _
-               err.Description, , "Delete Operation Failed!"
-        Me.MousePointer = vbDefault
-    End If
-End Sub
 
 
 
 
 
-Private Sub Form_Resize()
- On Error Resume Next
-    If WindowState <> vbMinimized Then
-        If Me.Width < 9195 Then Me.Width = 9195
-        If Me.Height < 4500 Then Me.Height = 4500
-        
-        center_obj_horizontal Me, Frame2
-        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
-        
-        TDBG.Width = Me.ScaleWidth - CONTROL_MARGIN
-        TDBG.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBG.top
-        
-    End If
-    TrueDBGridResize 1
-End Sub
 
-Public Sub TrueDBGridResize(iIndex As Integer)
-    'If WindowState <> vbMaximized Then Exit Sub
-    Dim i As Integer
-    Dim dAnchoTotal As Double
-    Dim dAnchocol As Double
-    dAnchoTotal = 0
-    dAnchocol = 0
-    For i = 0 To Me.TDBG.Columns.Count - 1
-        If (i = iIndex) Then
-            dAnchocol = TDBG.Columns(i).Width
-        Else
-            dAnchoTotal = dAnchoTotal + TDBG.Columns(i).Width
-        End If
-    Next i
 
-    Me.TDBG.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
-End Sub
 

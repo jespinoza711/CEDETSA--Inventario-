@@ -1,11 +1,10 @@
 VERSION 5.00
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
-Object = "{C9680CB9-8919-4ED0-A47D-8DC07382CB7B}#1.0#0"; "StyleButtonx.ocx"
 Begin VB.Form frmMensajeError 
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Atención"
-   ClientHeight    =   2865
+   ClientHeight    =   3285
    ClientLeft      =   6105
    ClientTop       =   2445
    ClientWidth     =   6690
@@ -14,157 +13,25 @@ Begin VB.Form frmMensajeError
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2865
+   ScaleHeight     =   3285
    ScaleWidth      =   6690
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin StyleButtonX.StyleButton btnSi 
-      Height          =   525
-      Left            =   1770
-      TabIndex        =   4
-      Top             =   2130
-      Width           =   1395
-      _ExtentX        =   2461
-      _ExtentY        =   926
-      UpColorTop1     =   -2147483628
-      UpColorTop2     =   -2147483633
-      UpColorTop3     =   -2147483633
-      UpColorTop4     =   -2147483633
-      UpColorButtom1  =   -2147483627
-      UpColorButtom2  =   -2147483633
-      UpColorButtom3  =   -2147483633
-      UpColorButtom4  =   -2147483633
-      UpColorLeft1    =   -2147483628
-      UpColorLeft2    =   -2147483633
-      UpColorLeft3    =   -2147483633
-      UpColorLeft4    =   -2147483633
-      UpColorRight1   =   -2147483627
-      UpColorRight2   =   -2147483633
-      UpColorRight3   =   -2147483633
-      UpColorRight4   =   -2147483633
-      DownColorTop1   =   -2147483627
-      DownColorTop2   =   -2147483633
-      DownColorTop3   =   -2147483633
-      DownColorTop4   =   -2147483633
-      DownColorButtom1=   -2147483628
-      DownColorButtom2=   -2147483633
-      DownColorButtom3=   -2147483633
-      DownColorButtom4=   -2147483633
-      DownColorLeft1  =   -2147483627
-      DownColorLeft2  =   -2147483633
-      DownColorLeft3  =   -2147483633
-      DownColorLeft4  =   -2147483633
-      DownColorRight1 =   -2147483628
-      DownColorRight2 =   -2147483633
-      DownColorRight3 =   -2147483633
-      DownColorRight4 =   -2147483633
-      HoverColorTop1  =   -2147483628
-      HoverColorTop2  =   -2147483633
-      HoverColorTop3  =   -2147483633
-      HoverColorTop4  =   -2147483633
-      HoverColorButtom1=   -2147483627
-      HoverColorButtom2=   -2147483633
-      HoverColorButtom3=   -2147483633
-      HoverColorButtom4=   -2147483633
-      HoverColorLeft1 =   -2147483628
-      HoverColorLeft2 =   -2147483633
-      HoverColorLeft3 =   -2147483633
-      HoverColorLeft4 =   -2147483633
-      HoverColorRight1=   -2147483627
-      HoverColorRight2=   -2147483633
-      HoverColorRight3=   -2147483633
-      HoverColorRight4=   -2147483633
-      FocusColorTop1  =   -2147483628
-      FocusColorTop2  =   -2147483633
-      FocusColorTop3  =   -2147483633
-      FocusColorTop4  =   -2147483633
-      FocusColorButtom1=   -2147483627
-      FocusColorButtom2=   -2147483632
-      FocusColorButtom3=   -2147483633
-      FocusColorButtom4=   -2147483633
-      FocusColorLeft1 =   -2147483628
-      FocusColorLeft2 =   -2147483633
-      FocusColorLeft3 =   -2147483633
-      FocusColorLeft4 =   -2147483633
-      FocusColorRight1=   -2147483627
-      FocusColorRight2=   -2147483632
-      FocusColorRight3=   -2147483633
-      FocusColorRight4=   -2147483633
-      DisabledColorTop1=   -2147483628
-      DisabledColorTop2=   -2147483633
-      DisabledColorTop3=   -2147483633
-      DisabledColorTop4=   -2147483633
-      DisabledColorButtom1=   -2147483627
-      DisabledColorButtom2=   -2147483633
-      DisabledColorButtom3=   -2147483633
-      DisabledColorButtom4=   -2147483633
-      DisabledColorLeft1=   -2147483628
-      DisabledColorLeft2=   -2147483633
-      DisabledColorLeft3=   -2147483633
-      DisabledColorLeft4=   -2147483633
-      DisabledColorRight1=   -2147483627
-      DisabledColorRight2=   -2147483633
-      DisabledColorRight3=   -2147483633
-      DisabledColorRight4=   -2147483633
+   Begin VB.CommandButton btnSi 
       Caption         =   "&Aceptar"
-      BackColorUp     =   -2147483639
-      BackColorDown   =   -2147483633
-      BackColorHover  =   -2147483633
-      BackColorFocus  =   -2147483633
-      BackColorDisabled=   -2147483633
-      DotsInCornerColor=   16777215
-      ForeColorDisabled=   12632256
-      PictureUp       =   "frmMensajeError.frx":0000
-      PictureDown     =   "frmMensajeError.frx":0354
-      PictureHover    =   "frmMensajeError.frx":06A8
-      PictureFocus    =   "frmMensajeError.frx":09FC
-      PictureDisabled =   "frmMensajeError.frx":0D50
-      BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDown {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontHover {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontFocus {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDisabled {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ShowBorderLevel2=   0   'False
+      Height          =   585
+      Left            =   1950
+      TabIndex        =   5
+      Top             =   2220
+      Width           =   1305
+   End
+   Begin VB.CommandButton btnNo 
+      Caption         =   "&Cancelar"
+      Height          =   585
+      Left            =   3660
+      TabIndex        =   4
+      Top             =   2220
+      Width           =   1305
    End
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -182,7 +49,7 @@ Begin VB.Form frmMensajeError
       Begin VB.Image Image1 
          Height          =   480
          Left            =   150
-         Picture         =   "frmMensajeError.frx":10A4
+         Picture         =   "frmMensajeError.frx":0000
          Top             =   30
          Width           =   480
       End
@@ -200,18 +67,19 @@ Begin VB.Form frmMensajeError
    End
    Begin RichTextLib.RichTextBox lsMensaje 
       Height          =   1125
-      Left            =   900
+      Left            =   870
       TabIndex        =   1
-      Top             =   780
+      Top             =   750
       Width           =   5805
       _ExtentX        =   10239
       _ExtentY        =   1984
       _Version        =   393217
       BackColor       =   12648447
+      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   3
       AutoVerbMenu    =   -1  'True
-      TextRTF         =   $"frmMensajeError.frx":1CE8
+      TextRTF         =   $"frmMensajeError.frx":0C44
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -235,174 +103,26 @@ Begin VB.Form frmMensajeError
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   5
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":1D6A
+            Picture         =   "frmMensajeError.frx":0CC6
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":2307
+            Picture         =   "frmMensajeError.frx":1263
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":297B
+            Picture         =   "frmMensajeError.frx":18D7
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":307D
+            Picture         =   "frmMensajeError.frx":1FD9
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":358B
+            Picture         =   "frmMensajeError.frx":24E7
             Key             =   ""
          EndProperty
       EndProperty
-   End
-   Begin StyleButtonX.StyleButton btnNo 
-      Height          =   525
-      Left            =   3450
-      TabIndex        =   5
-      Top             =   2130
-      Width           =   1395
-      _ExtentX        =   2461
-      _ExtentY        =   926
-      UpColorTop1     =   -2147483628
-      UpColorTop2     =   -2147483633
-      UpColorTop3     =   -2147483633
-      UpColorTop4     =   -2147483633
-      UpColorButtom1  =   -2147483627
-      UpColorButtom2  =   -2147483633
-      UpColorButtom3  =   -2147483633
-      UpColorButtom4  =   -2147483633
-      UpColorLeft1    =   -2147483628
-      UpColorLeft2    =   -2147483633
-      UpColorLeft3    =   -2147483633
-      UpColorLeft4    =   -2147483633
-      UpColorRight1   =   -2147483627
-      UpColorRight2   =   -2147483633
-      UpColorRight3   =   -2147483633
-      UpColorRight4   =   -2147483633
-      DownColorTop1   =   -2147483627
-      DownColorTop2   =   -2147483633
-      DownColorTop3   =   -2147483633
-      DownColorTop4   =   -2147483633
-      DownColorButtom1=   -2147483628
-      DownColorButtom2=   -2147483633
-      DownColorButtom3=   -2147483633
-      DownColorButtom4=   -2147483633
-      DownColorLeft1  =   -2147483627
-      DownColorLeft2  =   -2147483633
-      DownColorLeft3  =   -2147483633
-      DownColorLeft4  =   -2147483633
-      DownColorRight1 =   -2147483628
-      DownColorRight2 =   -2147483633
-      DownColorRight3 =   -2147483633
-      DownColorRight4 =   -2147483633
-      HoverColorTop1  =   -2147483628
-      HoverColorTop2  =   -2147483633
-      HoverColorTop3  =   -2147483633
-      HoverColorTop4  =   -2147483633
-      HoverColorButtom1=   -2147483627
-      HoverColorButtom2=   -2147483633
-      HoverColorButtom3=   -2147483633
-      HoverColorButtom4=   -2147483633
-      HoverColorLeft1 =   -2147483628
-      HoverColorLeft2 =   -2147483633
-      HoverColorLeft3 =   -2147483633
-      HoverColorLeft4 =   -2147483633
-      HoverColorRight1=   -2147483627
-      HoverColorRight2=   -2147483633
-      HoverColorRight3=   -2147483633
-      HoverColorRight4=   -2147483633
-      FocusColorTop1  =   -2147483628
-      FocusColorTop2  =   -2147483633
-      FocusColorTop3  =   -2147483633
-      FocusColorTop4  =   -2147483633
-      FocusColorButtom1=   -2147483627
-      FocusColorButtom2=   -2147483632
-      FocusColorButtom3=   -2147483633
-      FocusColorButtom4=   -2147483633
-      FocusColorLeft1 =   -2147483628
-      FocusColorLeft2 =   -2147483633
-      FocusColorLeft3 =   -2147483633
-      FocusColorLeft4 =   -2147483633
-      FocusColorRight1=   -2147483627
-      FocusColorRight2=   -2147483632
-      FocusColorRight3=   -2147483633
-      FocusColorRight4=   -2147483633
-      DisabledColorTop1=   -2147483628
-      DisabledColorTop2=   -2147483633
-      DisabledColorTop3=   -2147483633
-      DisabledColorTop4=   -2147483633
-      DisabledColorButtom1=   -2147483627
-      DisabledColorButtom2=   -2147483633
-      DisabledColorButtom3=   -2147483633
-      DisabledColorButtom4=   -2147483633
-      DisabledColorLeft1=   -2147483628
-      DisabledColorLeft2=   -2147483633
-      DisabledColorLeft3=   -2147483633
-      DisabledColorLeft4=   -2147483633
-      DisabledColorRight1=   -2147483627
-      DisabledColorRight2=   -2147483633
-      DisabledColorRight3=   -2147483633
-      DisabledColorRight4=   -2147483633
-      Caption         =   "&Cancelar"
-      BackColorUp     =   -2147483639
-      BackColorDown   =   -2147483633
-      BackColorHover  =   -2147483633
-      BackColorFocus  =   -2147483633
-      BackColorDisabled=   -2147483633
-      DotsInCornerColor=   16777215
-      ForeColorDisabled=   12632256
-      PictureUp       =   "frmMensajeError.frx":39ED
-      PictureDown     =   "frmMensajeError.frx":3D41
-      PictureHover    =   "frmMensajeError.frx":4095
-      PictureFocus    =   "frmMensajeError.frx":43E9
-      PictureDisabled =   "frmMensajeError.frx":473D
-      BeginProperty FontUp {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDown {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontHover {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontFocus {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty FontDisabled {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ShowBorderLevel2=   0   'False
    End
    Begin VB.Image picImagen 
       Height          =   675

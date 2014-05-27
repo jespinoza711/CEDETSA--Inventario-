@@ -785,7 +785,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61865985
+            Format          =   61407233
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
@@ -1339,13 +1339,15 @@ Private Sub cmdAdd_Click()
             rstTmpMovimiento!DESCRTipo = sPaquete
             rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
             rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
-            If (Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
+            'Obtener el costo para las transacciones de ingreso de productos
+            If (Me.txtTipoTransaccion.Text = 1 Or Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
                 rstTmpMovimiento!CostoDolar = Me.txtCostoDolar.Text 'GetLastCostoProm(me.txtcodProducto.Text, "C")
                 rstTmpMovimiento!CostoLocal = CDbl(Me.txtCostoDolar.Text) * gTasaCambio 'GetLastCostoProm(txtCodProdAI.Text, "D")
             Else
                 rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal 'GetLastCostoProm(me.txtcodProducto.Text, "C")
                 rstTmpMovimiento!CostoDolar = tDatosDelProducto.CostoPromDolar
             End If
+            'Obtener el precio para la transaccion tipo factura
             If (Me.txtTipoTransaccion.Text = 2) Then
                 rstTmpMovimiento!PrecioLocal = CDbl(Me.txtPrecioDolar * gTasaCambio)  '(rstTransDETAI!cant * rstTransDETAI!Costo)
                 rstTmpMovimiento!PrecioDolar = CDbl(Me.txtPrecioDolar) '(rstTransDETAI!cant * rstTransDETAI!Costod)
@@ -1369,16 +1371,17 @@ Private Sub cmdAdd_Click()
             rstTmpMovimiento!LoteInterno = Me.txtDescrLote.Text
             rstTmpMovimiento!IdTipo = Me.txtTipoTransaccion.Text
             rstTmpMovimiento!DESCRTipo = sPaquete
-            rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
+'            rstTmpMovimiento!Cantidad = Me.txtCantidad.Text
             rstTmpMovimiento!Fecha = Format(Me.dtpFecha.value, "YYYY/MM/DD")
-            
-            If (Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
+            'Obtener el costo para la todas las transacciones de ingreso de productos
+            If (Me.txtTipoTransaccion.Text = 1 Or Me.txtTipoTransaccion.Text = 3 Or Me.txtTipoTransaccion.Text = 5 Or Me.txtTipoTransaccion.Text = 7) Then
                 rstTmpMovimiento!CostoDolar = Me.txtCostoDolar.Text 'GetLastCostoProm(me.txtcodProducto.Text, "C")
                 rstTmpMovimiento!CostoLocal = CDbl(Me.txtCostoDolar.Text) * gTasaCambio 'GetLastCostoProm(txtCodProdAI.Text, "D")
             Else
                 rstTmpMovimiento!CostoLocal = tDatosDelProducto.CostoPromLocal 'GetLastCostoProm(me.txtcodProducto.Text, "C")
                 rstTmpMovimiento!CostoDolar = tDatosDelProducto.CostoPromDolar
             End If
+            'Obtener el precio para la transaccion tipo factura
             If (Me.txtTipoTransaccion.Text = 2) Then
                 rstTmpMovimiento!PrecioLocal = CDbl(Me.txtPrecioDolar * gTasaCambio)  '(rstTransDETAI!cant * rstTransDETAI!Costo)
                 rstTmpMovimiento!PrecioDolar = CDbl(Me.txtPrecioDolar) '(rstTransDETAI!cant * rstTransDETAI!Costod)

@@ -266,7 +266,6 @@ Begin VB.Form frmCliente
       _Version        =   131083
       ForeColor       =   4210752
       TabCount        =   1
-      TagVariant      =   ""
       Tabs            =   "frmCliente.frx":B5EF
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
          Height          =   7995
