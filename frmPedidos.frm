@@ -67,12 +67,12 @@ Begin VB.Form frmPedidos
          Width           =   1695
       End
       Begin VB.Image Image 
-         Height          =   720
+         Height          =   480
          Index           =   2
-         Left            =   120
+         Left            =   180
          Picture         =   "frmPedidos.frx":0000
-         Top             =   30
-         Width           =   720
+         Top             =   120
+         Width           =   480
       End
    End
    Begin VB.Frame Frame1 
@@ -189,7 +189,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2778
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   61472769
+         Format          =   20971521
          CurrentDate     =   41640
       End
       Begin MSComCtl2.DTPicker DTPHasta 
@@ -201,7 +201,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2566
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   61472769
+         Format          =   20971521
          CurrentDate     =   47484
       End
       Begin VB.Label Label9 
@@ -260,7 +260,7 @@ Begin VB.Form frmPedidos
       Begin VB.CommandButton cmdDelCliente 
          Height          =   320
          Left            =   2580
-         Picture         =   "frmPedidos.frx":0639
+         Picture         =   "frmPedidos.frx":0C44
          Style           =   1  'Graphical
          TabIndex        =   11
          Top             =   240
@@ -269,7 +269,7 @@ Begin VB.Form frmPedidos
       Begin VB.CommandButton cmdCliente 
          Height          =   320
          Left            =   2160
-         Picture         =   "frmPedidos.frx":2303
+         Picture         =   "frmPedidos.frx":290E
          Style           =   1  'Graphical
          TabIndex        =   10
          Top             =   240
@@ -313,7 +313,7 @@ Begin VB.Form frmPedidos
       Begin VB.CommandButton cmdDelVendedor 
          Height          =   320
          Left            =   2580
-         Picture         =   "frmPedidos.frx":2645
+         Picture         =   "frmPedidos.frx":2C50
          Style           =   1  'Graphical
          TabIndex        =   7
          Top             =   720
@@ -322,7 +322,7 @@ Begin VB.Form frmPedidos
       Begin VB.CommandButton cmdVendedor 
          Height          =   320
          Left            =   2160
-         Picture         =   "frmPedidos.frx":430F
+         Picture         =   "frmPedidos.frx":491A
          Style           =   1  'Graphical
          TabIndex        =   6
          Top             =   720
@@ -456,7 +456,7 @@ Begin VB.Form frmPedidos
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
       Height          =   4095
       Left            =   210
-      OleObjectBlob   =   "frmPedidos.frx":4651
+      OleObjectBlob   =   "frmPedidos.frx":4C5C
       TabIndex        =   24
       Top             =   3240
       Width           =   14415
@@ -472,7 +472,7 @@ Begin VB.Form frmPedidos
    End
    Begin VB.Label Label11 
       AutoSize        =   -1  'True
-      Caption         =   $"frmPedidos.frx":B48D
+      Caption         =   $"frmPedidos.frx":BA98
       ForeColor       =   &H00404040&
       Height          =   195
       Left            =   540
@@ -483,7 +483,7 @@ Begin VB.Form frmPedidos
    Begin VB.Image Image3 
       Height          =   480
       Left            =   60
-      Picture         =   "frmPedidos.frx":B51E
+      Picture         =   "frmPedidos.frx":BB29
       Top             =   7350
       Width           =   480
    End
@@ -776,6 +776,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
     Set frmPedidos = Nothing
 End Sub
 

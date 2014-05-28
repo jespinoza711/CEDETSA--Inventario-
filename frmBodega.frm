@@ -902,7 +902,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
-     SetupFormToolbar ("no name")
-    'Main.SubtractForm Me.Name
+    SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
     Set frmBodega = Nothing
 End Sub

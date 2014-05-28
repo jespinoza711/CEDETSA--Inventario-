@@ -3,9 +3,9 @@ Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.MDIForm MDIMain 
    BackColor       =   &H8000000C&
    Caption         =   "MDIForm1"
-   ClientHeight    =   10905
+   ClientHeight    =   10710
    ClientLeft      =   60
-   ClientTop       =   750
+   ClientTop       =   555
    ClientWidth     =   16080
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   2  'CenterScreen
@@ -15,7 +15,7 @@ Begin VB.MDIForm MDIMain
       Height          =   285
       Left            =   0
       TabIndex        =   8
-      Top             =   10620
+      Top             =   10425
       Width           =   16080
       _ExtentX        =   28363
       _ExtentY        =   503
@@ -57,14 +57,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "22/05/2014"
+            TextSave        =   "28/05/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "16:19"
+            TextSave        =   "0:09"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -105,7 +105,7 @@ Begin VB.MDIForm MDIMain
       ScaleHeight     =   375
       ScaleWidth      =   16080
       TabIndex        =   7
-      Top             =   10245
+      Top             =   10050
       Width           =   16080
       Begin VB.ListBox WinList 
          Height          =   255
@@ -127,9 +127,9 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picLeft 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   9480
+      Height          =   9285
       Left            =   0
-      ScaleHeight     =   9480
+      ScaleHeight     =   9285
       ScaleWidth      =   2310
       TabIndex        =   3
       Top             =   765
@@ -180,6 +180,7 @@ Begin VB.MDIForm MDIMain
          HideSelection   =   0   'False
          HideColumnHeaders=   -1  'True
          FullRowSelect   =   -1  'True
+         HotTracking     =   -1  'True
          _Version        =   393217
          Icons           =   "ImageList1"
          ForeColor       =   -2147483640
@@ -227,10 +228,10 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picSeparator 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   9480
+      Height          =   9285
       Left            =   2310
       MousePointer    =   9  'Size W E
-      ScaleHeight     =   9480
+      ScaleHeight     =   9285
       ScaleWidth      =   120
       TabIndex        =   2
       Top             =   765
@@ -287,12 +288,12 @@ Begin VB.MDIForm MDIMain
             BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Izquierda"
                Key             =   "Izquierda"
-               ImageIndex      =   23
+               ImageIndex      =   27
             EndProperty
             BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Derecha"
                Key             =   "Derecha"
-               ImageIndex      =   24
+               ImageIndex      =   26
             EndProperty
             BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                ImageIndex      =   14
@@ -418,7 +419,7 @@ Begin VB.MDIForm MDIMain
       MaskColor       =   12632256
       _Version        =   393216
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   22
+         NumListImages   =   28
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "MDIMain.frx":4242
             Key             =   ""
@@ -428,83 +429,107 @@ Begin VB.MDIForm MDIMain
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":68B0
+            Picture         =   "MDIMain.frx":6C9B
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":8242
+            Picture         =   "MDIMain.frx":7977
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":9BD4
+            Picture         =   "MDIMain.frx":9309
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":B566
+            Picture         =   "MDIMain.frx":AC9B
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":CEF8
+            Picture         =   "MDIMain.frx":C62D
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":DBD2
+            Picture         =   "MDIMain.frx":DFBF
             Key             =   ""
          EndProperty
          BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":E8AC
+            Picture         =   "MDIMain.frx":EC99
             Key             =   ""
          EndProperty
          BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":F586
+            Picture         =   "MDIMain.frx":F973
             Key             =   ""
          EndProperty
          BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":10262
+            Picture         =   "MDIMain.frx":1064D
             Key             =   ""
          EndProperty
          BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":10F3E
+            Picture         =   "MDIMain.frx":11329
             Key             =   ""
          EndProperty
          BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1181A
+            Picture         =   "MDIMain.frx":12005
             Key             =   ""
          EndProperty
          BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":124F6
+            Picture         =   "MDIMain.frx":128E1
             Key             =   ""
          EndProperty
          BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":131D2
+            Picture         =   "MDIMain.frx":135BD
             Key             =   ""
          EndProperty
          BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":13EAE
+            Picture         =   "MDIMain.frx":14299
             Key             =   ""
          EndProperty
          BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":14792
+            Picture         =   "MDIMain.frx":14F75
             Key             =   ""
          EndProperty
          BeginProperty ListImage18 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1546E
+            Picture         =   "MDIMain.frx":15859
             Key             =   ""
          EndProperty
          BeginProperty ListImage19 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":15D4A
+            Picture         =   "MDIMain.frx":16535
             Key             =   ""
          EndProperty
          BeginProperty ListImage20 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":16A26
+            Picture         =   "MDIMain.frx":16E11
             Key             =   ""
          EndProperty
          BeginProperty ListImage21 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":183BA
+            Picture         =   "MDIMain.frx":17AED
             Key             =   ""
          EndProperty
          BeginProperty ListImage22 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":19D4E
+            Picture         =   "MDIMain.frx":19481
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage23 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1AE15
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage24 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1B6F1
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage25 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1C273
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1CEC7
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1DB1B
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage28 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":1E7F5
             Key             =   ""
          EndProperty
       EndProperty
@@ -520,102 +545,114 @@ Begin VB.MDIForm MDIMain
       MaskColor       =   12632256
       _Version        =   393216
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   24
+         NumListImages   =   27
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1A62A
+            Picture         =   "MDIMain.frx":1F449
             Key             =   "NEW"
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1BFBC
+            Picture         =   "MDIMain.frx":20DDB
             Key             =   "EDIT"
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1D94E
+            Picture         =   "MDIMain.frx":2276D
             Key             =   "SEARCH"
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":1F2E0
+            Picture         =   "MDIMain.frx":240FF
             Key             =   "DELETE"
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":20C72
+            Picture         =   "MDIMain.frx":25A91
             Key             =   "save"
          EndProperty
          BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2294C
+            Picture         =   "MDIMain.frx":2776B
             Key             =   "REFRESH"
          EndProperty
          BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":242DE
+            Picture         =   "MDIMain.frx":290FD
             Key             =   "PRINT"
          EndProperty
          BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":25C70
+            Picture         =   "MDIMain.frx":2AA8F
             Key             =   "UNDO"
          EndProperty
          BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2694A
+            Picture         =   "MDIMain.frx":2B769
             Key             =   "FILTER"
          EndProperty
          BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":26EE4
+            Picture         =   "MDIMain.frx":2BD03
             Key             =   "EXPORT EXCEL"
          EndProperty
          BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":27B5F
+            Picture         =   "MDIMain.frx":2C97E
             Key             =   "APLICAR"
          EndProperty
          BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":28839
+            Picture         =   "MDIMain.frx":2D658
             Key             =   "CLOSE"
          EndProperty
          BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2A1CB
+            Picture         =   "MDIMain.frx":2EFEA
             Key             =   "SHORTCUTS"
          EndProperty
          BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2BB5D
+            Picture         =   "MDIMain.frx":3097C
             Key             =   "ADJUST"
          EndProperty
          BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2D4F1
+            Picture         =   "MDIMain.frx":32310
             Key             =   "USERSGUIDE"
          EndProperty
          BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2E1CD
+            Picture         =   "MDIMain.frx":32FEC
             Key             =   "ABOUT"
          EndProperty
          BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2EAAD
+            Picture         =   "MDIMain.frx":338CC
             Key             =   ""
          EndProperty
          BeginProperty ListImage18 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":2F789
+            Picture         =   "MDIMain.frx":345A8
             Key             =   "VIEW"
          EndProperty
          BeginProperty ListImage19 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":30465
+            Picture         =   "MDIMain.frx":35284
             Key             =   "VOID"
          EndProperty
          BeginProperty ListImage20 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":31141
+            Picture         =   "MDIMain.frx":35F60
             Key             =   "CHECKALL"
          EndProperty
          BeginProperty ListImage21 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":31E1D
+            Picture         =   "MDIMain.frx":36C3C
             Key             =   "UNCHECKALL"
          EndProperty
          BeginProperty ListImage22 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":32AF9
+            Picture         =   "MDIMain.frx":37918
             Key             =   "CLEAR"
          EndProperty
          BeginProperty ListImage23 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":333D5
+            Picture         =   "MDIMain.frx":381F4
             Key             =   "LEFT"
          EndProperty
          BeginProperty ListImage24 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":33827
+            Picture         =   "MDIMain.frx":38646
             Key             =   "RIGHT"
+         EndProperty
+         BeginProperty ListImage25 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":38A98
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":3A772
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":3B44C
+            Key             =   ""
          EndProperty
       EndProperty
    End
@@ -641,7 +678,15 @@ Dim show_mnu        As Boolean
 Dim pos_num         As Integer
 Dim WindowsOpen     As Integer
 
-
+Public Function ExistForm(frmName As String) As Boolean
+    Dim i As Integer
+    i = IsWindowInListbox(frmName, WinList)
+    If i = -1 Then
+        ExistForm = False
+    Else
+        ExistForm = True
+    End If
+End Function
 Public Sub AddForm(frmName As String)
 'Add form name to list
 'This sub is called from every form outside
@@ -673,10 +718,11 @@ Private Sub lvWin_Click()
   Dim s As String
     Dim i As Integer
     
-    'If lvWin.ListItems.Count < 1 Then Exit Sub
-    
-
-    
+    If lvWin.ListItems.Count < 1 Then Exit Sub
+    If (ExistForm(lvWin.SelectedItem.Key) = True) Then
+        FocusForm lvWin.SelectedItem.Key
+        Exit Sub
+    End If
     
     Select Case lvWin.SelectedItem.Key
         'Case "frmShortcuts": frmShortcuts.show: frmShortcuts.WindowState = vbMaximized: frmShortcuts.SetFocus
@@ -715,7 +761,7 @@ Private Sub lvWin_Click()
         Case "frmPedidos":
             Dim ofrmPedidos As New frmPedidos
             ofrmPedidos.gsFormCaption = "Pedidos"
-            ofrmPedidos.gsTitle = "TELE VENTAS"
+            ofrmPedidos.gsTitle = "PEDIDOS"
             LoadForm ofrmPedidos
         Case "frmTablas":
             Dim ofrmTablas As New frmTablas
@@ -727,6 +773,11 @@ Private Sub lvWin_Click()
             ofrmCatalogos.gsFormCaption = "Catalogo Generales"
             ofrmCatalogos.gsTitle = "CATALOGOS GENERALES DEL SISTEMA"
             LoadForm ofrmCatalogos
+        Case "frmPedidoFactura":
+            Dim ofrmPedidoFactura As New frmPedidoFactura
+            ofrmPedidoFactura.gsFormCaption = "Televentas"
+            ofrmPedidoFactura.gsTitle = "TELEVENTAS"
+            LoadForm ofrmPedidoFactura
        '----------------------------------------------
                      
         
@@ -734,7 +785,7 @@ Private Sub lvWin_Click()
 End Sub
 
 Private Sub MostrarDatosUsuario()
-    Me.statusMain.Panels(2).Text = gsUser
+    Me.statusMain.Panels(2).Text = gsUSUARIO
     Me.statusMain.Panels(3).Text = "DataBase: " & gsNombreBaseDatos
     Me.statusMain.Panels(4).Text = "Server: " & gsNombreServidor
 End Sub
@@ -752,7 +803,7 @@ Private Sub MDIForm_Load()
      Call lvWin_Load
      Call MagicCusror(200)
      
-     show_mnu = True
+    show_mnu = True
     show_menu (show_mnu)
 End Sub
 
@@ -792,21 +843,21 @@ Private Sub lvWin_Load()
         Set .Icons = ImageList1
         'For Sales
        
-        .ListItems.Add(, "frmProductos", "Maestro Productos", 6, 6).Bold = False
-        .ListItems.Add(, "frmMasterLotes", "Maestro de Lotes", 5, 5).Bold = False
-        .ListItems.Add(, "frmBodega", "Bodegas", 21, 21).Bold = False
+        .ListItems.Add(, "frmProductos", "Maestro Productos", 7, 7).Bold = False
+        .ListItems.Add(, "frmMasterLotes", "Maestro de Lotes", 6, 6).Bold = False
+        .ListItems.Add(, "frmBodega", "Bodegas", 2, 2).Bold = False
         
-        .ListItems.Add(, "frmTransacciones", "Transacciones Producto", 16, 16).Bold = False
+        .ListItems.Add(, "frmTransacciones", "Transacciones Producto", 24, 24).Bold = False
         
-        .ListItems.Add(, "frmVendedor", "Vendedores", 3, 3).Bold = False
-        .ListItems.Add(, "frmCliente", "Clientes", 4, 4).Bold = False
+        .ListItems.Add(, "frmVendedor", "Vendedores", 25, 25).Bold = False
+        .ListItems.Add(, "frmCliente", "Clientes", 26, 26).Bold = False
         
 
-        .ListItems.Add(, "frmPedidos", "Pedidos", 12, 12).Bold = False
-        .ListItems.Add(, "frmTablas", "Tablas Globales", 13, 13).Bold = False
-'
+        .ListItems.Add(, "frmPedidos", "Pedidos", 28, 28).Bold = False
+        .ListItems.Add(, "frmPedidoFactura", "Televentas", 27, 27).Bold = False
+        
 '        'For Inventory
-        .ListItems.Add(, "frmCatalogos", "Catalogos Generales", 4, 4).Bold = False
+        .ListItems.Add(, "frmCatalogos", "Catalogos Generales", 5, 5).Bold = False
 '
 '        .ListItems.Add(, "frmCategories", "Category List", 5, 5).Bold = False
 '        .ListItems.Add(, "frmProduct", "Product List", 6, 6).Bold = False
@@ -828,8 +879,8 @@ Private Sub lvWin_Load()
     End With
 End Sub
 
-Sub MagicCusror(x As Integer)
- picLeft.Width = picLeft + (x * Screen.TwipsPerPixelX) - (Me.left + 110)
+Sub MagicCusror(X As Integer)
+ picLeft.Width = picLeft + (X * Screen.TwipsPerPixelX) - (Me.left + 110)
 
 End Sub
 
@@ -846,7 +897,7 @@ Private Sub picLeft_Resize()
     lvWin.Height = picLeft.ScaleHeight - lvWin.top - 20
 End Sub
 
-Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = True
@@ -854,7 +905,7 @@ Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, x As Sin
     End If
 End Sub
 
-Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = False
@@ -876,7 +927,7 @@ Private Sub tmrResize_Timer()
     GetCursorPos cursor_pos
     'picLeft.Width = (Me.Width - ((cursor_pos.x * Screen.TwipsPerPixelX) - Me.Left)) - 90
    
-    picLeft.Width = picLeft + (cursor_pos.x * Screen.TwipsPerPixelX) - (Me.left + 110)
+    picLeft.Width = picLeft + (cursor_pos.X * Screen.TwipsPerPixelX) - (Me.left + 110)
     
 End Sub
 
@@ -976,6 +1027,13 @@ Public Sub ShowAbout()
     'frmAbout.Show vbModal
 End Sub
 
+Public Sub FocusForm(NombreForm As String)
+    Dim Form As Form
+   For Each Form In Forms
+      ''Unload all active childs
+      If Form.Name = NombreForm Then Form.SetFocus
+   Next Form
+End Sub
 
 
 Public Sub CloseAll()

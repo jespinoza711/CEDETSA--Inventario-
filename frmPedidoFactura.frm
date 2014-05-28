@@ -4,14 +4,284 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmPedidoFactura 
    Caption         =   "Form1"
-   ClientHeight    =   9210
+   ClientHeight    =   9390
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   16200
+   ClientWidth     =   16560
    LinkTopic       =   "Form1"
-   ScaleHeight     =   9210
-   ScaleWidth      =   16200
-   StartUpPosition =   2  'CenterScreen
+   MDIChild        =   -1  'True
+   ScaleHeight     =   9390
+   ScaleWidth      =   16560
+   Begin VB.Frame FrameTotales 
+      Height          =   3015
+      Left            =   10350
+      TabIndex        =   72
+      Top             =   6060
+      Width           =   5745
+      Begin VB.CommandButton cmdOkCO 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   4920
+         Picture         =   "frmPedidoFactura.frx":0000
+         Style           =   1  'Graphical
+         TabIndex        =   75
+         ToolTipText     =   "Aprueba, Aplica los datos digitados para el item en proceso y son ingresados en el grid de datos ..."
+         Top             =   1740
+         Width           =   495
+      End
+      Begin VB.CommandButton cmdEditItem 
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   4920
+         Picture         =   "frmPedidoFactura.frx":030A
+         Style           =   1  'Graphical
+         TabIndex        =   74
+         ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
+         Top             =   120
+         Width           =   495
+      End
+      Begin VB.CommandButton cmdAddItem 
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   4920
+         Picture         =   "frmPedidoFactura.frx":0BD4
+         Style           =   1  'Graphical
+         TabIndex        =   73
+         ToolTipText     =   "Inicializa los controles para Agregar otro item ..."
+         Top             =   960
+         Width           =   495
+      End
+      Begin MSComctlLib.StatusBar StatusSubTotal 
+         Height          =   495
+         Left            =   0
+         TabIndex        =   76
+         Top             =   300
+         Width           =   4395
+         _ExtentX        =   7752
+         _ExtentY        =   873
+         _Version        =   393216
+         BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+            NumPanels       =   2
+            BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Object.Width           =   3528
+               MinWidth        =   3528
+               Text            =   "Sub Total"
+               TextSave        =   "Sub Total"
+            EndProperty
+            BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Alignment       =   2
+               Object.Width           =   5292
+               MinWidth        =   5292
+            EndProperty
+         EndProperty
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Tahoma"
+            Size            =   18
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin MSComctlLib.StatusBar StatusTotal 
+         Height          =   495
+         Left            =   0
+         TabIndex        =   77
+         Top             =   2460
+         Width           =   4395
+         _ExtentX        =   7752
+         _ExtentY        =   873
+         _Version        =   393216
+         BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+            NumPanels       =   2
+            BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Object.Width           =   3528
+               MinWidth        =   3528
+               Text            =   "Total"
+               TextSave        =   "Total"
+            EndProperty
+            BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Alignment       =   2
+               Object.Width           =   7056
+               MinWidth        =   7056
+            EndProperty
+         EndProperty
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   18
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin MSComctlLib.StatusBar StatusImpuesto 
+         Height          =   495
+         Left            =   0
+         TabIndex        =   78
+         Top             =   1740
+         Width           =   4395
+         _ExtentX        =   7752
+         _ExtentY        =   873
+         _Version        =   393216
+         BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+            NumPanels       =   2
+            BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Object.Width           =   3528
+               MinWidth        =   3528
+               Text            =   "Impuesto"
+               TextSave        =   "Impuesto"
+            EndProperty
+            BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Alignment       =   2
+               Object.Width           =   7056
+               MinWidth        =   7056
+            EndProperty
+         EndProperty
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   18
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin MSComctlLib.StatusBar StatusDescuento 
+         Height          =   495
+         Left            =   0
+         TabIndex        =   79
+         Top             =   1020
+         Width           =   4395
+         _ExtentX        =   7752
+         _ExtentY        =   873
+         _Version        =   393216
+         BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+            NumPanels       =   2
+            BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Object.Width           =   3528
+               MinWidth        =   3528
+               Text            =   "Descuento"
+               TextSave        =   "Descuento"
+            EndProperty
+            BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+               Alignment       =   2
+               Object.Width           =   7056
+               MinWidth        =   7056
+            EndProperty
+         EndProperty
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   18
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin VB.Image imgOk 
+         Height          =   480
+         Left            =   4440
+         Picture         =   "frmPedidoFactura.frx":0EDE
+         Top             =   1740
+         Visible         =   0   'False
+         Width           =   480
+      End
+      Begin VB.Image imgAdd 
+         Height          =   480
+         Left            =   4440
+         Picture         =   "frmPedidoFactura.frx":1320
+         Top             =   1020
+         Visible         =   0   'False
+         Width           =   480
+      End
+      Begin VB.Image imgEdit 
+         Height          =   480
+         Left            =   4440
+         Picture         =   "frmPedidoFactura.frx":1762
+         Top             =   180
+         Visible         =   0   'False
+         Width           =   480
+      End
+   End
+   Begin VB.Frame frmBoton1 
+      Height          =   2565
+      Left            =   15450
+      TabIndex        =   68
+      Top             =   3060
+      Width           =   675
+      Begin VB.CommandButton cmdSave 
+         Enabled         =   0   'False
+         Height          =   495
+         Left            =   90
+         Picture         =   "frmPedidoFactura.frx":1BA4
+         Style           =   1  'Graphical
+         TabIndex        =   71
+         ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
+         Top             =   270
+         Width           =   495
+      End
+      Begin VB.CommandButton cmdDelItem 
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   90
+         Picture         =   "frmPedidoFactura.frx":1EAE
+         Style           =   1  'Graphical
+         TabIndex        =   70
+         ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
+         Top             =   1830
+         Width           =   495
+      End
+      Begin VB.CommandButton cmdCobro 
+         Height          =   495
+         Left            =   90
+         Picture         =   "frmPedidoFactura.frx":22F0
+         Style           =   1  'Graphical
+         TabIndex        =   69
+         Top             =   990
+         Visible         =   0   'False
+         Width           =   495
+      End
+   End
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
       Appearance      =   0  'Flat
@@ -21,22 +291,22 @@ Begin VB.Form frmPedidoFactura
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   16200
-      TabIndex        =   74
+      ScaleWidth      =   16560
+      TabIndex        =   64
       Top             =   0
-      Width           =   16200
+      Width           =   16560
       Begin VB.Image Image 
-         Height          =   480
+         Height          =   720
          Index           =   2
-         Left            =   210
-         Picture         =   "frmPedidoFactura.frx":0000
-         Top             =   90
-         Width           =   480
+         Left            =   120
+         Picture         =   "frmPedidoFactura.frx":2732
+         Top             =   0
+         Width           =   720
       End
       Begin VB.Label Label 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
-         Caption         =   "Maestro de Clientes"
+         Caption         =   "Pedido de Televentas"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -50,9 +320,9 @@ Begin VB.Form frmPedidoFactura
          Height          =   165
          Index           =   1
          Left            =   930
-         TabIndex        =   76
+         TabIndex        =   66
          Top             =   420
-         Width           =   1230
+         Width           =   1350
       End
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
@@ -70,7 +340,7 @@ Begin VB.Form frmPedidoFactura
          ForeColor       =   &H00404040&
          Height          =   270
          Left            =   930
-         TabIndex        =   75
+         TabIndex        =   65
          Top             =   90
          Width           =   855
       End
@@ -78,7 +348,7 @@ Begin VB.Form frmPedidoFactura
    Begin VB.Frame Frame3 
       Height          =   735
       Left            =   210
-      TabIndex        =   60
+      TabIndex        =   54
       Top             =   2010
       Width           =   15135
       Begin VB.TextBox txtCodCliente 
@@ -95,7 +365,7 @@ Begin VB.Form frmPedidoFactura
          ForeColor       =   &H00404040&
          Height          =   285
          Left            =   1320
-         TabIndex        =   66
+         TabIndex        =   60
          Top             =   240
          Width           =   975
       End
@@ -114,25 +384,25 @@ Begin VB.Form frmPedidoFactura
          Height          =   285
          Left            =   2400
          Locked          =   -1  'True
-         TabIndex        =   65
+         TabIndex        =   59
          Top             =   240
          Width           =   6855
       End
       Begin VB.CommandButton cmdCliente 
          Height          =   320
          Left            =   960
-         Picture         =   "frmPedidoFactura.frx":0C44
+         Picture         =   "frmPedidoFactura.frx":2D6B
          Style           =   1  'Graphical
-         TabIndex        =   64
+         TabIndex        =   58
          Top             =   240
          Width           =   300
       End
       Begin VB.CommandButton cmdTipo 
          Height          =   320
          Left            =   10800
-         Picture         =   "frmPedidoFactura.frx":0F86
+         Picture         =   "frmPedidoFactura.frx":30AD
          Style           =   1  'Graphical
-         TabIndex        =   63
+         TabIndex        =   57
          Top             =   240
          Width           =   300
       End
@@ -150,7 +420,7 @@ Begin VB.Form frmPedidoFactura
          ForeColor       =   &H00404040&
          Height          =   285
          Left            =   11160
-         TabIndex        =   62
+         TabIndex        =   56
          Top             =   240
          Width           =   735
       End
@@ -169,7 +439,7 @@ Begin VB.Form frmPedidoFactura
          Height          =   285
          Left            =   12000
          Locked          =   -1  'True
-         TabIndex        =   61
+         TabIndex        =   55
          Top             =   240
          Width           =   2655
       End
@@ -187,7 +457,7 @@ Begin VB.Form frmPedidoFactura
          ForeColor       =   &H00800000&
          Height          =   255
          Left            =   9480
-         TabIndex        =   68
+         TabIndex        =   62
          Top             =   300
          Width           =   1215
       End
@@ -205,110 +475,10 @@ Begin VB.Form frmPedidoFactura
          ForeColor       =   &H00800000&
          Height          =   255
          Left            =   120
-         TabIndex        =   67
+         TabIndex        =   61
          Top             =   300
          Width           =   855
       End
-   End
-   Begin VB.CommandButton cmdCobro 
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":12C8
-      Style           =   1  'Graphical
-      TabIndex        =   59
-      Top             =   4290
-      Visible         =   0   'False
-      Width           =   495
-   End
-   Begin VB.CommandButton cmdDelItem 
-      Enabled         =   0   'False
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":170A
-      Style           =   1  'Graphical
-      TabIndex        =   58
-      ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
-      Top             =   5130
-      Width           =   495
-   End
-   Begin VB.CommandButton cmdSave 
-      Enabled         =   0   'False
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":1B4C
-      Style           =   1  'Graphical
-      TabIndex        =   57
-      ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-      Top             =   3570
-      Width           =   495
-   End
-   Begin VB.CommandButton cmdAddItem 
-      Enabled         =   0   'False
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":1E56
-      Style           =   1  'Graphical
-      TabIndex        =   56
-      ToolTipText     =   "Inicializa los controles para Agregar otro item ..."
-      Top             =   7110
-      Width           =   495
-   End
-   Begin VB.CommandButton cmdEditItem 
-      Enabled         =   0   'False
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":2160
-      Style           =   1  'Graphical
-      TabIndex        =   55
-      ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
-      Top             =   6270
-      Width           =   495
-   End
-   Begin VB.CommandButton cmdOkCO 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   15480
-      Picture         =   "frmPedidoFactura.frx":2A2A
-      Style           =   1  'Graphical
-      TabIndex        =   54
-      ToolTipText     =   "Aprueba, Aplica los datos digitados para el item en proceso y son ingresados en el grid de datos ..."
-      Top             =   7890
-      Width           =   495
    End
    Begin VB.Frame Frame1 
       Height          =   1215
@@ -354,7 +524,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdBodega 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":2D34
+         Picture         =   "frmPedidoFactura.frx":33EF
          Style           =   1  'Graphical
          TabIndex        =   45
          Top             =   360
@@ -363,7 +533,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdVendedor 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":3076
+         Picture         =   "frmPedidoFactura.frx":3731
          Style           =   1  'Graphical
          TabIndex        =   44
          Top             =   840
@@ -423,7 +593,7 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   62259201
+         Format          =   61472769
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 
@@ -519,12 +689,12 @@ Begin VB.Form frmPedidoFactura
       Height          =   3015
       Left            =   210
       TabIndex        =   0
-      Top             =   6030
+      Top             =   6060
       Width           =   9975
       Begin VB.CommandButton cmdProducto 
          Height          =   320
          Left            =   1080
-         Picture         =   "frmPedidoFactura.frx":33B8
+         Picture         =   "frmPedidoFactura.frx":3A73
          Style           =   1  'Graphical
          TabIndex        =   28
          Top             =   200
@@ -820,7 +990,7 @@ Begin VB.Form frmPedidoFactura
       Begin VB.CommandButton cmdLote 
          Height          =   320
          Left            =   3960
-         Picture         =   "frmPedidoFactura.frx":36FA
+         Picture         =   "frmPedidoFactura.frx":3DB5
          Style           =   1  'Graphical
          TabIndex        =   9
          Top             =   2040
@@ -1204,175 +1374,19 @@ Begin VB.Form frmPedidoFactura
    Begin TrueOleDBGrid60.TDBGrid TDBGFAC 
       Height          =   3165
       Left            =   210
-      OleObjectBlob   =   "frmPedidoFactura.frx":3A3C
-      TabIndex        =   69
+      OleObjectBlob   =   "frmPedidoFactura.frx":40F7
+      TabIndex        =   63
       Top             =   2880
       Width           =   15135
-   End
-   Begin MSComctlLib.StatusBar StatusSubTotal 
-      Height          =   495
-      Left            =   10560
-      TabIndex        =   70
-      Top             =   6450
-      Width           =   4395
-      _ExtentX        =   7752
-      _ExtentY        =   873
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   2
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Object.Width           =   3528
-            MinWidth        =   3528
-            Text            =   "Sub Total"
-            TextSave        =   "Sub Total"
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   2
-            Object.Width           =   5292
-            MinWidth        =   5292
-         EndProperty
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-   End
-   Begin MSComctlLib.StatusBar StatusTotal 
-      Height          =   495
-      Left            =   10560
-      TabIndex        =   71
-      Top             =   8610
-      Width           =   4395
-      _ExtentX        =   7752
-      _ExtentY        =   873
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   2
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Object.Width           =   3528
-            MinWidth        =   3528
-            Text            =   "Total"
-            TextSave        =   "Total"
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   2
-            Object.Width           =   7056
-            MinWidth        =   7056
-         EndProperty
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-   End
-   Begin MSComctlLib.StatusBar StatusImpuesto 
-      Height          =   495
-      Left            =   10560
-      TabIndex        =   72
-      Top             =   7890
-      Width           =   4395
-      _ExtentX        =   7752
-      _ExtentY        =   873
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   2
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Object.Width           =   3528
-            MinWidth        =   3528
-            Text            =   "Impuesto"
-            TextSave        =   "Impuesto"
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   2
-            Object.Width           =   7056
-            MinWidth        =   7056
-         EndProperty
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-   End
-   Begin MSComctlLib.StatusBar StatusDescuento 
-      Height          =   495
-      Left            =   10560
-      TabIndex        =   73
-      Top             =   7170
-      Width           =   4395
-      _ExtentX        =   7752
-      _ExtentY        =   873
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   2
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Object.Width           =   3528
-            MinWidth        =   3528
-            Text            =   "Descuento"
-            TextSave        =   "Descuento"
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Alignment       =   2
-            Object.Width           =   7056
-            MinWidth        =   7056
-         EndProperty
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
    End
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
       Left            =   0
-      TabIndex        =   77
+      TabIndex        =   67
       Top             =   750
       Width           =   19275
       _ExtentX        =   33999
       _ExtentY        =   53
-   End
-   Begin VB.Image imgEdit 
-      Height          =   480
-      Left            =   15000
-      Picture         =   "frmPedidoFactura.frx":8CD8
-      Top             =   6330
-      Visible         =   0   'False
-      Width           =   480
-   End
-   Begin VB.Image imgAdd 
-      Height          =   480
-      Left            =   15000
-      Picture         =   "frmPedidoFactura.frx":911A
-      Top             =   7170
-      Visible         =   0   'False
-      Width           =   480
-   End
-   Begin VB.Image imgOk 
-      Height          =   480
-      Left            =   15000
-      Picture         =   "frmPedidoFactura.frx":955C
-      Top             =   7890
-      Visible         =   0   'False
-      Width           =   480
    End
 End
 Attribute VB_Name = "frmPedidoFactura"
@@ -1387,6 +1401,8 @@ Dim gConfirmado As Boolean ' se setea a true cuando el usuario acepta un item de
 Dim gSaveChange As Boolean
 Dim iCantBodegasFacturables As Integer ' Bodegas facturables del usuario
 Dim gbLoteInProcess As Boolean
+Public gsFormCaption As String
+Public gsTitle As String
 
 Private Sub chkAplicaBonificacion_Click()
 If chkAplicaBonificacion.value = 1 Then
@@ -1910,11 +1926,18 @@ Private Sub cmdVendedor_Click()
     End If
 End Sub
 
+Private Sub Form_Activate()
+HighlightInWin Me.Name
+SetupFormToolbar (Me.Name)
+End Sub
+
 Private Sub Form_Load()
+MDIMain.AddForm Me.Name
 Dim lbok As Boolean
 Dim sResultado1 As String
 Dim sResultado2 As String
-
+Caption = gsFormCaption
+lbFormCaption = gsTitle
 iCantBodegasFacturables = fafgetCantBodegaFacturableForUser(gsUSUARIO)
 If iCantBodegasFacturables = 0 Then
     lbok = Mensaje("Ud no tiene asignada ninguna bodega facturable, por favor vea al administrador del Sistema", ICO_ERROR, False)
@@ -2211,6 +2234,55 @@ End Function
 Private Sub qw21_Click()
 
 End Sub
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        frmBoton1.left = Me.ScaleWidth - CONTROL_MARGIN * 6.5
+        TDBGFAC.Width = Me.ScaleWidth - (CONTROL_MARGIN)
+        
+        TDBGFAC.Height = (Me.ScaleHeight - (Me.picHeader.Height + Frame1.Height + Frame3.Height + Frame2.Height + CONTROL_MARGIN))
+        Frame2.top = (Me.picHeader.Height + TDBGFAC.Height + Frame1.Height + Frame3.Height) + CONTROL_MARGIN
+        FrameTotales.top = (Me.picHeader.Height + TDBGFAC.Height + Frame1.Height + Frame3.Height) + CONTROL_MARGIN
+    End If
+    TrueDBGridResize 1
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBGFAC.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBGFAC.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + (TDBGFAC.Columns(i).Width + CONTROL_MARGIN)
+        End If
+    Next i
+
+    Me.TDBGFAC.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
+End Sub
+
+
+
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
+    Set frmProductos = Nothing
+End Sub
+
+
+
+
 
 Private Sub TDBGFAC_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 'If gSaveChange = False And gModeAdd = True Then

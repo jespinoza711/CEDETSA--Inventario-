@@ -678,6 +678,8 @@ Private Sub cargaGrid()
 End Sub
 
 
+
+
 Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
     GetDataFromGridToControl
     HabilitarBotones
@@ -686,7 +688,7 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
      SetupFormToolbar ("no name")
-    'Main.SubtractForm Me.Name
+    MDIMain.SubtractForm Me.Name
     Set frmVendedor = Nothing
 End Sub
 

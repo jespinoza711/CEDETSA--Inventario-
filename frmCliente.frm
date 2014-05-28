@@ -2045,6 +2045,7 @@ Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     If Not (rst2 Is Nothing) Then Set rst2 = Nothing
     SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
     Set frmCliente = Nothing
 
 End Sub

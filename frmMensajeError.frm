@@ -2,9 +2,10 @@ VERSION 5.00
 Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMensajeError 
+   BackColor       =   &H00FFFFFF&
    BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Atención"
-   ClientHeight    =   3285
+   ClientHeight    =   2580
    ClientLeft      =   6105
    ClientTop       =   2445
    ClientWidth     =   6690
@@ -13,25 +14,38 @@ Begin VB.Form frmMensajeError
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3285
+   ScaleHeight     =   2580
    ScaleWidth      =   6690
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton btnSi 
-      Caption         =   "&Aceptar"
-      Height          =   585
-      Left            =   1950
-      TabIndex        =   5
-      Top             =   2220
-      Width           =   1305
-   End
-   Begin VB.CommandButton btnNo 
-      Caption         =   "&Cancelar"
-      Height          =   585
-      Left            =   3660
+   Begin VB.Frame Frame 
+      Height          =   1095
+      Left            =   -30
       TabIndex        =   4
-      Top             =   2220
-      Width           =   1305
+      Top             =   1530
+      Width           =   6765
+      Begin VB.CommandButton btnNo 
+         BackColor       =   &H80000009&
+         Caption         =   "&Cancelar"
+         Height          =   585
+         Left            =   3630
+         Picture         =   "frmMensajeError.frx":0000
+         Style           =   1  'Graphical
+         TabIndex        =   6
+         Top             =   330
+         Width           =   1305
+      End
+      Begin VB.CommandButton btnSi 
+         BackColor       =   &H80000009&
+         Caption         =   "&Aceptar"
+         Height          =   585
+         Left            =   1920
+         Picture         =   "frmMensajeError.frx":0344
+         Style           =   1  'Graphical
+         TabIndex        =   5
+         Top             =   330
+         Width           =   1305
+      End
    End
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -39,29 +53,30 @@ Begin VB.Form frmMensajeError
       BackColor       =   &H80000005&
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
-      Height          =   570
+      Height          =   330
       Left            =   0
-      ScaleHeight     =   570
+      ScaleHeight     =   330
       ScaleWidth      =   6690
       TabIndex        =   2
       Top             =   0
       Width           =   6690
       Begin VB.Image Image1 
-         Height          =   480
+         Height          =   255
          Left            =   150
-         Picture         =   "frmMensajeError.frx":0000
+         Picture         =   "frmMensajeError.frx":0688
+         Stretch         =   -1  'True
          Top             =   30
-         Width           =   480
+         Width           =   300
       End
       Begin VB.Label Label3 
          Appearance      =   0  'Flat
          BackColor       =   &H80000005&
          BackStyle       =   0  'Transparent
          ForeColor       =   &H80000008&
-         Height          =   315
-         Left            =   960
+         Height          =   255
+         Left            =   660
          TabIndex        =   3
-         Top             =   180
+         Top             =   30
          Width           =   3675
       End
    End
@@ -69,17 +84,16 @@ Begin VB.Form frmMensajeError
       Height          =   1125
       Left            =   870
       TabIndex        =   1
-      Top             =   750
+      Top             =   330
       Width           =   5805
       _ExtentX        =   10239
       _ExtentY        =   1984
       _Version        =   393217
       BackColor       =   12648447
-      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   3
       AutoVerbMenu    =   -1  'True
-      TextRTF         =   $"frmMensajeError.frx":0C44
+      TextRTF         =   $"frmMensajeError.frx":12CC
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -103,23 +117,23 @@ Begin VB.Form frmMensajeError
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
          NumListImages   =   5
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":0CC6
+            Picture         =   "frmMensajeError.frx":134E
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":1263
+            Picture         =   "frmMensajeError.frx":18EB
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":18D7
+            Picture         =   "frmMensajeError.frx":1F5F
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":1FD9
+            Picture         =   "frmMensajeError.frx":2661
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMensajeError.frx":24E7
+            Picture         =   "frmMensajeError.frx":2B6F
             Key             =   ""
          EndProperty
       EndProperty
@@ -127,7 +141,7 @@ Begin VB.Form frmMensajeError
    Begin VB.Image picImagen 
       Height          =   675
       Left            =   60
-      Top             =   960
+      Top             =   540
       Width           =   735
    End
    Begin VB.Label lsMensaje_1 
@@ -145,7 +159,7 @@ Begin VB.Form frmMensajeError
       Height          =   240
       Left            =   1680
       TabIndex        =   0
-      Top             =   1350
+      Top             =   870
       Visible         =   0   'False
       Width           =   2895
       WordWrap        =   -1  'True

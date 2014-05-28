@@ -38,7 +38,7 @@ Begin VB.Form frmMasterLotes
       Begin VB.Label Label 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
-         Caption         =   "Actualización del Maestro de Productos"
+         Caption         =   "Actualización del Maestro de Lotes de Productos"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -54,7 +54,7 @@ Begin VB.Form frmMasterLotes
          Left            =   930
          TabIndex        =   20
          Top             =   420
-         Width           =   2400
+         Width           =   2955
       End
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
@@ -92,7 +92,7 @@ Begin VB.Form frmMasterLotes
          _ExtentX        =   2566
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   20905985
+         Format          =   62259201
          CurrentDate     =   41772
       End
       Begin VB.TextBox txtLoteProveedor 
@@ -167,7 +167,7 @@ Begin VB.Form frmMasterLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   20905985
+         Format          =   62259201
          CurrentDate     =   41772
       End
       Begin VB.Label Label5 
@@ -621,7 +621,9 @@ Private Sub Form_Activate()
     SetupFormToolbar (Me.Name)
 End Sub
 
+
 Private Sub Form_Load()
+
     MDIMain.AddForm Me.Name
     Set rst = New ADODB.Recordset
     If rst.State = adStateOpen Then rst.Close
@@ -667,7 +669,7 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     SetupFormToolbar ("no name")
-    'Main.SubtractForm Me.Name
+    MDIMain.SubtractForm Me.Name
     Set frmBodega = Nothing
 End Sub
 

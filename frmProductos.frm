@@ -88,12 +88,12 @@ Begin VB.Form frmProductos
          Width           =   2400
       End
       Begin VB.Image Image 
-         Height          =   540
+         Height          =   720
          Index           =   2
          Left            =   150
          Picture         =   "frmProductos.frx":0CCA
          Top             =   45
-         Width           =   585
+         Width           =   720
       End
    End
    Begin VB.CommandButton cmdUndo 
@@ -108,7 +108,7 @@ Begin VB.Form frmProductos
       EndProperty
       Height          =   555
       Left            =   3420
-      Picture         =   "frmProductos.frx":183C
+      Picture         =   "frmProductos.frx":1614
       Style           =   1  'Graphical
       TabIndex        =   95
       ToolTipText     =   "Deshacer / Cancelar"
@@ -128,7 +128,7 @@ Begin VB.Form frmProductos
       EndProperty
       Height          =   555
       Left            =   3420
-      Picture         =   "frmProductos.frx":2506
+      Picture         =   "frmProductos.frx":22DE
       Style           =   1  'Graphical
       TabIndex        =   94
       ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
@@ -148,7 +148,7 @@ Begin VB.Form frmProductos
       EndProperty
       Height          =   555
       Left            =   3420
-      Picture         =   "frmProductos.frx":31D0
+      Picture         =   "frmProductos.frx":2FA8
       Style           =   1  'Graphical
       TabIndex        =   93
       ToolTipText     =   "Agrega el item con los datos digitados..."
@@ -169,7 +169,7 @@ Begin VB.Form frmProductos
       EndProperty
       Height          =   555
       Left            =   3420
-      Picture         =   "frmProductos.frx":3E9A
+      Picture         =   "frmProductos.frx":3C72
       Style           =   1  'Graphical
       TabIndex        =   92
       ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
@@ -189,7 +189,7 @@ Begin VB.Form frmProductos
       EndProperty
       Height          =   555
       Left            =   3420
-      Picture         =   "frmProductos.frx":5B64
+      Picture         =   "frmProductos.frx":593C
       Style           =   1  'Graphical
       TabIndex        =   91
       ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
@@ -311,17 +311,17 @@ Begin VB.Form frmProductos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Tabs            =   "frmProductos.frx":682E
+      Tabs            =   "frmProductos.frx":6606
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel3 
          Height          =   6885
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   1
          Top             =   360
          Width           =   12720
          _ExtentX        =   22437
          _ExtentY        =   12144
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":68FF
+         TabGuid         =   "frmProductos.frx":66D7
          Begin VB.CommandButton Command1 
             Caption         =   "Refrescar"
             BeginProperty Font 
@@ -351,7 +351,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   1440
-            Picture         =   "frmProductos.frx":6927
+            Picture         =   "frmProductos.frx":66FF
             Style           =   1  'Graphical
             TabIndex        =   9
             Top             =   360
@@ -403,7 +403,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   3240
-            Picture         =   "frmProductos.frx":6C69
+            Picture         =   "frmProductos.frx":6A41
             Style           =   1  'Graphical
             TabIndex        =   6
             Top             =   360
@@ -421,7 +421,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   9960
-            Picture         =   "frmProductos.frx":70AB
+            Picture         =   "frmProductos.frx":6E83
             Style           =   1  'Graphical
             TabIndex        =   5
             Top             =   360
@@ -439,7 +439,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   8160
-            Picture         =   "frmProductos.frx":74ED
+            Picture         =   "frmProductos.frx":72C5
             Style           =   1  'Graphical
             TabIndex        =   4
             Top             =   360
@@ -498,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   20774913
+            Format          =   61865985
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,13 +521,13 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   20774913
+            Format          =   61865985
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
             Height          =   5145
             Left            =   150
-            OleObjectBlob   =   "frmProductos.frx":782F
+            OleObjectBlob   =   "frmProductos.frx":7607
             TabIndex        =   13
             Top             =   1290
             Width           =   12375
@@ -607,14 +607,14 @@ Begin VB.Form frmProductos
       End
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel2 
          Height          =   6885
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   18
          Top             =   360
          Width           =   12720
          _ExtentX        =   22437
          _ExtentY        =   12144
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":E2CF
+         TabGuid         =   "frmProductos.frx":E0A7
          Begin VB.CommandButton cmdDelBodega 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -627,7 +627,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   3720
-            Picture         =   "frmProductos.frx":E2F7
+            Picture         =   "frmProductos.frx":E0CF
             Style           =   1  'Graphical
             TabIndex        =   24
             Top             =   240
@@ -679,7 +679,7 @@ Begin VB.Form frmProductos
             EndProperty
             Height          =   320
             Left            =   1920
-            Picture         =   "frmProductos.frx":E739
+            Picture         =   "frmProductos.frx":E511
             Style           =   1  'Graphical
             TabIndex        =   21
             Top             =   240
@@ -705,7 +705,7 @@ Begin VB.Form frmProductos
          Begin TrueOleDBGrid60.TDBGrid TDBGExistencia 
             Height          =   5745
             Left            =   120
-            OleObjectBlob   =   "frmProductos.frx":EA7B
+            OleObjectBlob   =   "frmProductos.frx":E853
             TabIndex        =   19
             Top             =   660
             Width           =   12465
@@ -740,7 +740,7 @@ Begin VB.Form frmProductos
          _ExtentX        =   22437
          _ExtentY        =   12144
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":12C9E
+         TabGuid         =   "frmProductos.frx":12A76
          Begin VB.Frame Frame1 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -946,7 +946,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3120
-               Picture         =   "frmProductos.frx":12CC6
+               Picture         =   "frmProductos.frx":12A9E
                Style           =   1  'Graphical
                TabIndex        =   78
                Top             =   360
@@ -998,7 +998,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1320
-               Picture         =   "frmProductos.frx":13108
+               Picture         =   "frmProductos.frx":12EE0
                Style           =   1  'Graphical
                TabIndex        =   75
                Top             =   360
@@ -1420,7 +1420,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":1344A
+               Picture         =   "frmProductos.frx":13222
                Style           =   1  'Graphical
                TabIndex        =   48
                Top             =   1290
@@ -1454,7 +1454,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":1388C
+               Picture         =   "frmProductos.frx":13664
                Style           =   1  'Graphical
                TabIndex        =   45
                Top             =   1290
@@ -1472,7 +1472,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":13BCE
+               Picture         =   "frmProductos.frx":139A6
                Style           =   1  'Graphical
                TabIndex        =   44
                Top             =   825
@@ -1506,7 +1506,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":14010
+               Picture         =   "frmProductos.frx":13DE8
                Style           =   1  'Graphical
                TabIndex        =   41
                Top             =   810
@@ -1532,7 +1532,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":14352
+               Picture         =   "frmProductos.frx":1412A
                Style           =   1  'Graphical
                TabIndex        =   39
                Top             =   360
@@ -1566,7 +1566,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":14794
+               Picture         =   "frmProductos.frx":1456C
                Style           =   1  'Graphical
                TabIndex        =   36
                Top             =   360
@@ -1584,7 +1584,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":14AD6
+               Picture         =   "frmProductos.frx":148AE
                Style           =   1  'Graphical
                TabIndex        =   35
                Top             =   2190
@@ -1618,7 +1618,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":14F18
+               Picture         =   "frmProductos.frx":14CF0
                Style           =   1  'Graphical
                TabIndex        =   32
                Top             =   2190
@@ -1636,7 +1636,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":1525A
+               Picture         =   "frmProductos.frx":15032
                Style           =   1  'Graphical
                TabIndex        =   31
                Top             =   1740
@@ -1670,7 +1670,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":1559C
+               Picture         =   "frmProductos.frx":15374
                Style           =   1  'Graphical
                TabIndex        =   28
                Top             =   1740
@@ -1835,7 +1835,7 @@ Begin VB.Form frmProductos
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   1695
       Left            =   5400
-      OleObjectBlob   =   "frmProductos.frx":159DE
+      OleObjectBlob   =   "frmProductos.frx":157B6
       TabIndex        =   61
       Top             =   9270
       Visible         =   0   'False
@@ -1865,7 +1865,7 @@ Begin VB.Form frmProductos
       Height          =   480
       Index           =   0
       Left            =   4020
-      Picture         =   "frmProductos.frx":1B7BB
+      Picture         =   "frmProductos.frx":1B593
       Top             =   8400
       Width           =   480
    End
@@ -1884,7 +1884,7 @@ Begin VB.Form frmProductos
       Height          =   480
       Index           =   1
       Left            =   0
-      Picture         =   "frmProductos.frx":1C085
+      Picture         =   "frmProductos.frx":1BE5D
       Top             =   0
       Width           =   480
    End
@@ -2814,8 +2814,8 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     If Not (rst2 Is Nothing) Then Set rst2 = Nothing
-     SetupFormToolbar ("no name")
-    'Main.SubtractForm Me.Name
+    SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
     Set frmProductos = Nothing
 End Sub
 

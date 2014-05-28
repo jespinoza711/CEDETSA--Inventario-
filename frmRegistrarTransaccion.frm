@@ -126,7 +126,7 @@ Begin VB.Form frmRegistrarTransaccion
       Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   6
          Top             =   360
          Width           =   14235
@@ -183,7 +183,7 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   15
          Top             =   360
          Width           =   14235
@@ -785,7 +785,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61407233
+            Format          =   20840449
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 

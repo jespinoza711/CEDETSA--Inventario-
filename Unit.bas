@@ -24,7 +24,7 @@ Public Declare Function GetCursorPos Lib "user32" _
             (lpPoint As POINTAPI) As Long
             
 Public Type POINTAPI
-        X As Long
+        x As Long
         Y As Long
 End Type
 
@@ -3640,14 +3640,14 @@ End Function
 
 'Devuelve el entero más pequeño no menor que X.
 'Ejemplo: Ceiling(1.23) = 2, Ceiling(-1.23) = -1
-Public Function Ceiling(ByVal X As Double) As Long
-   Ceiling = -Int(X * (-1))
+Public Function Ceiling(ByVal x As Double) As Long
+   Ceiling = -Int(x * (-1))
 End Function
 
 'Devuelve el entero más grande no mayor que X.
 'Ejemplo: Floor(1.23) = 1, Floor(-1.23) = -2
-Public Function Floor(ByVal X As Double) As Long
-   Floor = (-Int(X) * (-1))
+Public Function Floor(ByVal x As Double) As Long
+   Floor = (-Int(x) * (-1))
 End Function
 
 Public Function EsEntero(sNumero As String) As Boolean
