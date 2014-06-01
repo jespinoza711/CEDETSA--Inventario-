@@ -251,7 +251,7 @@ Public gsDescr1FormularioExtra As String
 Public gsDescr2FormularioExtra As String
 Public gsDescr3FormularioExtra As String
 
-Dim rst As ADODB.Recordset
+
 Dim sFindF3 As String ' string con el string seach del F3
 Dim BookFirstF3 As Variant ' bookmark de la primera busqueda F3
 Dim sfldFind As String

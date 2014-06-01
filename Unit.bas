@@ -258,8 +258,7 @@ Private Sub LoginForCommandLine()
     Dim sArgs() As String
     Dim sUsuario As String
     Dim sPass As String
-    Dim i As Integer
-        
+            
     sArgs = Split(Command$, " ")
     
     sUsuario = sArgs(0)
@@ -552,7 +551,6 @@ End Function
 'End Function
 
 Public Function ConexionBD() As Boolean    'Función que inicia la conexión a la base de datos
-  Dim sPassword As String
   Dim lbok As Boolean 'Indica que el proceso está bien
   Dim lsConexion As String  'Va a almacenar la hilera de conexión a la base de datos
   On Error GoTo error:  'Para capturar el evento de error
@@ -749,7 +747,6 @@ End Sub
 
 Public Function GetRecordset(strSource As String) As ADODB.Recordset
     Dim rs As ADODB.Recordset
-    Dim Cerrar As Boolean
     Set rs = New ADODB.Recordset
 
     Set rs.ActiveConnection = gConet
@@ -1247,7 +1244,6 @@ End Function
 ' Carga Parámetros del sistema
 Public Function CargaParametros() As Boolean
 Dim lbok As Boolean
-Dim iResultado As Integer
 On Error GoTo error
 lbok = True
   GSSQL = "SELECT * " & _
@@ -1279,7 +1275,6 @@ End Function
 
 ' devuelve Proximo Consecutivo de la esquela
 Public Function getNextConsecEsquela() As String
-Dim lbok As Boolean
 Dim sConsecutivo As String
 On Error GoTo error
 sConsecutivo = ""
@@ -1333,7 +1328,7 @@ End Function
 
 
 Public Function sgvEMPLEADOBAJA(sEmpleado As String) As String
-Dim lbok As Boolean
+
 Dim iBAJA As Integer
 On Error GoTo error
 sConsecutivo = ""
@@ -1362,7 +1357,6 @@ End Function
 
 
 Public Function esSaldoInicialPeriodo(sTipoAccion As String) As Boolean
-Dim lbok As Boolean
 Dim iesPeriodo As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -1389,7 +1383,7 @@ error:
 End Function
 
 Public Function ExisteSaldoInicialPeriodo() As Boolean
-Dim lbok As Boolean
+
 Dim iesPeriodo As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -1490,7 +1484,7 @@ On Error GoTo errores
 Dim lbok As Boolean
 Dim rst As ADODB.Recordset
 Dim sFiltro As String
-Dim iRole As Integer
+
 Dim i As Integer
 Dim lsRole As String
 Dim lbHayRegistros As Boolean
@@ -1628,7 +1622,6 @@ On Error GoTo errores
 Dim lbok As Boolean
 Dim rst As ADODB.Recordset
 Dim sFiltro As String
-Dim iRole As Integer
 Dim i As Integer
 lbok = True
 Set rst = New ADODB.Recordset
@@ -2223,7 +2216,7 @@ error:
 End Function
 
 Public Function GetrstAccionPropiedades(sAccion As String) As ADODB.Recordset
-Dim sDato As String
+
 Dim rst As ADODB.Recordset
 Set rst = New ADODB.Recordset
 rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -2321,7 +2314,7 @@ End Function
 
 
 Public Function ExistCodeInTable(sfldnameCodigo As String, bCodigoStr As Boolean, sValueCodigo As String, sTabla As String, Optional bFiltroAdicional As Boolean = False, Optional sFiltroAdicional As String = "") As Boolean
-Dim sDescr As String
+
 Dim sValor As String
 Dim lbok As Boolean
 On Error GoTo error
@@ -2359,7 +2352,7 @@ End Function
 
 Public Sub CargarDatos(xSet As ADODB.Recordset, tdbgData As TDBGrid, sNameFieldCode As String, sNameFieldDescr As String)
 On Error GoTo EH
-Dim i As Integer, j As Integer, bExiste As Boolean
+Dim i As Integer
 
     Set tdbgData.DataSource = Nothing
     With xSet
@@ -2403,7 +2396,7 @@ End Function
 
 
 Public Function ExistePreparacion(sUsuario As String) As Boolean
-Dim lbok As Boolean
+
 Dim bTienePreparacion As Boolean
 On Error GoTo error
 iesPeriodo = False
@@ -2789,9 +2782,9 @@ End Function
 Public Function parmaUpdateparmaDocumentsToApply(sOperation As String, sCliente As String, sDocumento As String, sFecha As String, _
 sTipo As String, sValor As String, sIDFile As String, sflgAplicado As String) As Boolean
 Dim lbok As Boolean
-Dim iResultado As Integer
+
 Dim gRegistrosCmd As ADODB.Recordset
-Dim sResultado As String
+
 
 On Error GoTo error
 
@@ -2878,9 +2871,9 @@ End Function
 Public Function parmaActualizaLiquidacionDesdeAS400(sIDLiquidacion As String, sFecha As String, sVendedor As String, sAux1 As String, sAux2 As String, sAux3 As String, _
 sTotalLiquidacion As String, sTotalFaltante) As Boolean
 Dim lbok As Boolean
-Dim iResultado As Integer
+
 Dim gRegistrosCmd As ADODB.Recordset
-Dim sResultado As String
+
 
 On Error GoTo error
 
@@ -3252,7 +3245,7 @@ ByRef sResult1 As String, ByRef sResult2 As String, _
 Optional bISNumericFirstField As Boolean, Optional bISNumericSecondField As Boolean) As String
 Dim lbok As Boolean
 Dim sResultado As String
-Dim sOrden As String
+
 Dim rst As ADODB.Recordset
 On Error GoTo error
 lbok = False
@@ -3304,7 +3297,6 @@ End Function
 Public Function getValueFieldsFromTable(sTabla As String, sListFieldName As String, sFiltro As String, ByRef dicResult As Dictionary) As Boolean
     Dim lbok As Boolean
     Dim sResultado As String
-    Dim sOrden As String
     Dim rst As ADODB.Recordset
     Dim i As Integer
     
@@ -3359,7 +3351,6 @@ End Function
 Public Function invGetSugeridoLote(IdBodega As Integer, IdProducto As Integer, Cantidad As Double) As ADODB.Recordset
   
     Dim rs As ADODB.Recordset
-    Dim Cerrar As Boolean
     Set rs = New ADODB.Recordset
 
     Set rs.ActiveConnection = gConet
@@ -3498,7 +3489,7 @@ End Function
 Public Function fafUpdatePedidoLinea(sOperacion As String, ByRef sIDPedido As String, sIDBodega As String, sIDCliente As String, sIDVendedor As String, sFecha As String, _
 sIDProducto As String, sCantidadPedida As String, sPrecio As String, sSubTotal As String, sTotalImpuesto As String, sTotal As String) As Boolean
 Dim lbok As Boolean
-Dim sResultado As String
+
 Dim gRegistrosCmd As ADODB.Recordset
 On Error GoTo error
 

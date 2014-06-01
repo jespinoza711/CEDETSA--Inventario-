@@ -498,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61865985
+            Format          =   62128129
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,7 +521,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   61865985
+            Format          =   62128129
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -1935,10 +1935,6 @@ Attribute VB_Exposed = False
 Dim rst As ADODB.Recordset
 Dim rst2 As ADODB.Recordset
 Dim rst3 As ADODB.Recordset
-Dim bOrdenCodigo As Boolean
-Dim bOrdenDescr As Boolean
-Dim sCodSucursal As String
-Dim sSoloActivo As String
 Dim Accion As TypAccion
 Public gsFormCaption As String
 Public gsTitle As String
@@ -2401,8 +2397,6 @@ End Sub
 Private Sub cmdEliminar_Click()
     Dim lbok As Boolean
     Dim sMsg As String
-    Dim sTipo As String
-    Dim sFiltro As String
     Dim sActivo As String
     Dim sEsMuestra As String
     Dim sEsControlado As String
@@ -2721,7 +2715,6 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub InicializaListView()
-    Dim i As Long
     Dim sItem As String
         With ListView1
             ' Las pruebas serán en modo "detalle"
@@ -2783,7 +2776,6 @@ End Sub
 
 
 Private Sub cargaGrid()
-    Dim sIndependiente As String
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
     rst.CursorType = adOpenKeyset 'adOpenKeyset  'Asigna un cursor dinamico
@@ -2874,7 +2866,6 @@ End Sub
 
 Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As String)
     Dim lbok As Boolean
-    Dim iResultado As Integer
     On Error GoTo error
     lbok = True
       GSSQL = gsCompania & ".invGetExistenciaBodega " & sIDArticulo & " , " & sIDBodega
@@ -2901,7 +2892,6 @@ End Function
 
 Private Function CargaTablas() As Boolean
     Dim lbok As Boolean
-    Dim iResultado As Integer
     On Error GoTo error
     lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "

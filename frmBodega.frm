@@ -453,10 +453,6 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Dim rst As ADODB.Recordset
-Dim bOrdenCodigo As Boolean
-Dim bOrdenDescr As Boolean
-Dim sCodSucursal As String
-Dim sSoloActivo As String
 Dim Accion As TypAccion
 Public gsFormCaption As String
 Public gsTitle As String
@@ -584,9 +580,7 @@ End Sub
 
 Private Sub cmdEliminar_Click()
     Dim lbok As Boolean
-        Dim sMsg As String
-    Dim sTipo As String
-    Dim sFiltro As String
+    Dim sMsg As String
     Dim sActivo As String
     Dim sFactura As String
 
@@ -838,7 +832,6 @@ End Sub
 
 
 Private Sub cargaGrid()
-    Dim sIndependiente As String
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
     rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico

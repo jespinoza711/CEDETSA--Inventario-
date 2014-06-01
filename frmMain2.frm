@@ -97,19 +97,10 @@ End Sub
 
 
 
-Private Sub Command1_Click()
-frmRecibeDatosComision.Show vbModal
-End Sub
 
 
 
-Private Sub Command2_Click()
-    frmCalculoComision.Show vbModal
-End Sub
 
-Private Sub Command3_Click()
-    frmComisiones.Show vbModal
-End Sub
 
 Private Sub Form_Load()
 'lblVersion.Caption = "Version " & App.Major & "." & App.Minor & "." & App.Revision

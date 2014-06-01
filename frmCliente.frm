@@ -1533,7 +1533,6 @@ End Sub
 
 Private Function CargaTablas() As Boolean
     Dim lbok As Boolean
-    Dim iResultado As Integer
     On Error GoTo error
     lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "
@@ -1793,8 +1792,6 @@ End Sub
 Private Sub cmdEliminar_Click()
     Dim lbok As Boolean
     Dim sMsg As String
-    Dim sTipo As String
-    Dim sFiltro As String
     Dim sActivo As String
     Dim sEsFarmacia As String
     
@@ -1960,7 +1957,6 @@ bAdd = False
 
 End Sub
 Private Sub InicializaListView()
-    Dim i As Long
     Dim sItem As String
         With ListView1
             ' Las pruebas serán en modo "detalle"
@@ -2019,7 +2015,6 @@ Private Sub InicializaListView()
 End Sub
 
 Private Sub cargaGrid()
-    Dim sIndependiente As String
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
     rst.CursorType = adOpenKeyset 'adOpenKeyset  'Asigna un cursor dinamico

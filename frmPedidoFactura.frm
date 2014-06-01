@@ -593,7 +593,7 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   61472769
+         Format          =   61800449
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 
@@ -1414,7 +1414,7 @@ End Sub
 
 Private Sub chkLoteAutomaticos_Click()
 If chkLoteAutomaticos.value = 0 Then
-    txtIDLote.Text = ""
+    txtIdLote.Text = ""
     txtLoteInterno.Text = ""
     txtExistenciaLote.Text = "0"
 End If
@@ -1438,7 +1438,7 @@ txtCantidad.Text = ""
 txtSubTotal.Text = "0"
 txtTotalImpuesto.Text = "0"
 txtTotal.Text = "0"
-txtIDLote.Text = ""
+txtIdLote.Text = ""
 txtLoteInterno.Text = ""
 txtExistenciaLote.Text = 0
 End Sub
@@ -1560,9 +1560,7 @@ End Sub
 
 Private Sub cmdEditItem_Click()
 Dim lbok As Boolean
-Dim sTotal As String
-Dim sTotalD As String
-Dim dTotal As Double
+
 
 If Not Val_TextboxNum(txtCantidad) Then
     lbok = Mensaje("La Cantidad debe ser numérica", ICO_ERROR, False)
@@ -1631,7 +1629,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = "IDBodega=" & txtcodBodega.Text & " and IDProducto=" & txtCodProd.Text & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-        txtIDLote.Text = frm.gsCodigobrw
+        txtIdLote.Text = frm.gsCodigobrw
       
     End If
     
@@ -1644,8 +1642,6 @@ End Sub
 
 Private Sub cmdOkCO_Click()
 Dim lbok As Boolean
-Dim sFiltro As String
-Dim ExistenciaDisp As Double
 Dim sFecha As String
 Dim rst As ADODB.Recordset
 Dim frmAuto As frmAutoSugiereLotes
@@ -1713,7 +1709,7 @@ gbLoteInProcess = False
         '-*********************************************************
         
     Else ' El usuario está asignando el lote manualmente
-        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIDLote.Text) Then
+        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIdLote.Text) Then
           lbok = Mensaje("Ya Existe ese Producto. ", ICO_ERROR, False)
           Exit Sub
         
@@ -1733,7 +1729,7 @@ gbLoteInProcess = False
         rsttmpProdFac("IDCliente").value = txtCodCliente.Text
         rsttmpProdFac("Fecha").value = Format(DTPFecFac.value, "yyyy-mm-dd") 'DTPFecFac.value
         rsttmpProdFac("IDProducto").value = txtCodProd.Text
-        rsttmpProdFac("IDLote").value = txtIDLote.Text
+        rsttmpProdFac("IDLote").value = txtIdLote.Text
         
         rsttmpProdFac("Descr").value = txtDescProd.Text
         rsttmpProdFac("CantidadPedida").value = txtCantidad.Text
@@ -1789,10 +1785,8 @@ gbLoteInProcess = False
 End Sub
 
 Private Sub cmdProducto_Click()
-Dim sResultado As String
 Dim frm As frmBrowseCat
-Dim sImpuesto As String
-Dim sPrecio As String
+
 Dim dictValue As New Dictionary
 
     Set frm = New frmBrowseCat
@@ -1966,7 +1960,7 @@ fmtTextbox txtTotalImpuesto, "R"
 fmtTextbox txtSubTotal, "R"
 fmtTextbox txtPrecio, "R"
 fmtTextbox txtPorcImpuesto, "R"
-fmtTextbox txtIDLote, "R"
+fmtTextbox txtIdLote, "R"
 fmtTextbox txtExistenciaLote, "R"
 fmtTextbox txtLoteInterno, "R"
 SetColumnSizeGrid
@@ -2190,7 +2184,7 @@ If Not Val_TextboxNum(txtCantidad) Then
  GoTo salir
 End If
 If chkLoteAutomaticos.value = 0 Then
-      If txtIDLote.Text = "" Then
+      If txtIdLote.Text = "" Then
         gsOperacionError = "Ud no ha seleccionado el lote"
         lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
@@ -2199,12 +2193,12 @@ If chkLoteAutomaticos.value = 0 Then
       End If
     
     
-    If Not Val_TextboxNum(txtIDLote) Then
+    If Not Val_TextboxNum(txtIdLote) Then
      lbok = False
      gsOperacionError = "El código del Lote debe ser numérico."
      lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
-        txtIDLote.Text = ""
+        txtIdLote.Text = ""
         txtLoteInterno.Text = ""
         txtExistenciaLote.Text = "0"
         cmdLote.SetFocus
@@ -2316,7 +2310,7 @@ If Not rsttmpProdFac.EOF Then
   txtSubTotal.Text = rsttmpProdFac("SubTotal").value
   txtTotalImpuesto.Text = rsttmpProdFac("TotalImpuesto").value
   txtTotal.Text = rsttmpProdFac("Total").value
-  txtIDLote.Text = rsttmpProdFac("IDLote").value
+  txtIdLote.Text = rsttmpProdFac("IDLote").value
 End If
 End Sub
 
@@ -2456,7 +2450,6 @@ End Sub
 
 Private Sub txtCodProd_LostFocus()
 Dim sDescr As String
-Dim sResultado As String
 Dim sImpuesto As String
 Dim sPrecio As String
 Dim lbok As Boolean
@@ -2509,7 +2502,7 @@ End Sub
 Private Sub txtTipo_KeyPress(KeyAscii As Integer)
 Dim sDescr As String
 Dim lbok As Boolean
-Dim sValor As String
+
 If KeyAscii = vbKeyReturn Then
     sDescr = getDescrCatalogo(txtTipo, "Codigo", "vfacTipoFactura", "Descr", True)
     If sDescr <> "" Then

@@ -8,7 +8,7 @@ Begin VB.Form frmRegistrarTransaccion
    ClientHeight    =   8850
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   15180
+   ClientWidth     =   15315
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -21,7 +21,7 @@ Begin VB.Form frmRegistrarTransaccion
    Icon            =   "frmRegistrarTransaccion.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   8850
-   ScaleWidth      =   15180
+   ScaleWidth      =   15315
    StartUpPosition =   2  'CenterScreen
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -41,10 +41,10 @@ Begin VB.Form frmRegistrarTransaccion
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   15180
+      ScaleWidth      =   15315
       TabIndex        =   56
       Top             =   0
-      Width           =   15180
+      Width           =   15315
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -97,7 +97,7 @@ Begin VB.Form frmRegistrarTransaccion
    End
    Begin ActiveTabs.SSActiveTabs sTabTransaccion 
       Height          =   7005
-      Left            =   120
+      Left            =   180
       TabIndex        =   5
       Top             =   1620
       Width           =   14295
@@ -123,6 +123,7 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      TagVariant      =   ""
       Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
@@ -754,7 +755,6 @@ Begin VB.Form frmRegistrarTransaccion
             _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
-            Enabled         =   -1  'True
             ScrollBars      =   2
             TextRTF         =   $"frmRegistrarTransaccion.frx":16898
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -785,7 +785,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   20840449
+            Format          =   61407233
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
@@ -995,10 +995,6 @@ Private Type typDatosProductos
 
 Dim rst As ADODB.Recordset
 Dim rstLS As ADODB.Recordset
-Dim bOrdenCodigo As Boolean
-Dim bOrdenDescr As Boolean
-Dim sCodSucursal As String
-Dim sSoloActivo As String
 Dim Accion As TypAccion
 Public gsFormCaption As String
 Public gsTitle As String
@@ -1008,12 +1004,10 @@ Dim bIsAutoSugiereLotes As Boolean
 Dim dTotalSugeridoLotes As Double
 Dim iFactor As Integer
 Dim sPaquete As String
-Dim iPaquete As Integer
 Dim cNaturaleza As String * 1
 Dim iTipoTransaccion As Integer
 Private rstTmpMovimiento As ADODB.Recordset
 Dim rstLote As ADODB.Recordset
-Dim lbAIenProceso As Boolean ' Indica si un ajuste está en proceso
 
 Dim gTrans As Boolean ' se dispara si hubo error en medio de la transacción
 Dim gBeginTransNoEnd As Boolean ' Indica si hubo un begin sin rollback o commit
@@ -1544,16 +1538,33 @@ Private Sub cmdEliminar_Click()
 End Sub
 
 Private Sub cmdLote_Click()
-Dim frm As New frmBrowseCat
+    Dim frm As New frmBrowseCat
     
     frm.gsCaptionfrm = "Lote de Productos"
-    frm.gsTablabrw = "invLOTE"
-    frm.gsCodigobrw = "IdLote"
-    frm.gbTypeCodeStr = True
-    frm.gsDescrbrw = "LoteInterno"
-    frm.gbFiltra = False
-    frm.gsNombrePantallaExtra = "frmMasterLotes"
-    'frm.gsFiltro = "IdPaquete='" & Me.gsIDTipoTransaccion & "'"
+    If (Me.txtTipoTransaccion.Text = "1" Or Me.txtTipoTransaccion.Text = "3" Or Me.txtTipoTransaccion.Text = "7" Or Me.txtTipoTransaccion.Text = "11") Then
+        frm.gsTablabrw = "invLOTE"
+        frm.gsCodigobrw = "IdLote"
+        frm.gbTypeCodeStr = True
+        frm.gsDescrbrw = "LoteInterno"
+        frm.gsDescrbrw = "LoteProveedor"
+        frm.gsMuestraExtra = "SI"
+        frm.gsFieldExtrabrw = "FechaVencimiento"
+        frm.gbFiltra = False
+        frm.gsNombrePantallaExtra = "frmMasterLotes"
+        'frm.gsFiltro = "IdPaquete='" & Me.gsIDTipoTransaccion & "'"
+    Else
+        frm.gsCaptionfrm = "Lotes"
+        frm.gsTablabrw = "vinvExistenciaLote"
+        frm.gsCodigobrw = "IDLote"
+        frm.gbTypeCodeStr = False
+        frm.gsDescrbrw = "LoteProveedor"
+        frm.gsMuestraExtra = "SI"
+        frm.gsFieldExtrabrw = "FechaVencimiento"
+        frm.gsMuestraExtra2 = "SI"
+        frm.gsFieldExtrabrw2 = "Existencia"
+        frm.gbFiltra = True
+        frm.gsFiltro = "IDBodega=" & Me.txtBodegaOrigen.Text & " and IDProducto=" & Me.txtArticulo.Text & " and Existencia>0"
+    End If
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
       Me.txtLote.Text = frm.gsCodigobrw
@@ -2063,7 +2074,6 @@ Public Function invMasterAcutalizaSaldosInventarioPaquete(sDocumento As String, 
 End Function
 
 Private Sub SaveRstBatch(rst As ADODB.Recordset, sCodTra As String)
-    Dim i As Integer
     On Error GoTo errores
     'Set lRegistros = New ADODB.Recordset  'Inicializa la variable de los registros
     'gConet.BeginTrans
@@ -2212,7 +2222,7 @@ Private Sub LoadDescrProducto(ByRef txtCaja As TextBox, KeyAscii As Integer)
         End If
     End If
 End Sub
-
+'#revisar
 Private Sub LoadDescrLote(ByRef txtCaja As TextBox, KeyAscii As Integer)
    Dim sDescr As String
     Dim lbok As Boolean

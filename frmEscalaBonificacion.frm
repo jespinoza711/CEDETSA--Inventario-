@@ -378,11 +378,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim rst As ADODB.Recordset
-Dim bOrdenCodigo As Boolean
-Dim bOrdenDescr As Boolean
-Dim sCodSucursal As String
 Dim Accion As TypAccion
-Dim sSoloActivo As String
 Public gsPorCada As String
 Public gsBonifica As String
 Public gsFormCaption As String
@@ -494,10 +490,6 @@ End Sub
 Private Sub cmdEliminar_Click()
     Dim lbok As Boolean
     Dim sMsg As String
-    Dim sTipo As String
-    Dim sFiltro As String
-    Dim sActivo As String
-    Dim sFactura As String
     
         If txtProducto.Text = "" Then
             lbok = Mensaje("El Vendedor no puede estar en Blanco", ICO_ERROR, False)
@@ -537,8 +529,6 @@ End Sub
 Private Sub cmdSave_Click()
     Dim lbok As Boolean
     Dim sMsg As String
-    Dim sActivo As String
-    Dim sFactura As String
     Dim sFiltro As String
         If txtProducto.Text = "" Then
             lbok = Mensaje("El Vendedor no puede estar en Blanco", ICO_ERROR, False)
@@ -680,7 +670,6 @@ End Sub
 
 
 Private Sub cargaGrid()
-    Dim sIndependiente As String
     If rst.State = adStateOpen Then rst.Close
     rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
     rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico

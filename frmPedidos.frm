@@ -189,7 +189,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2778
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   20971521
+         Format          =   61800449
          CurrentDate     =   41640
       End
       Begin MSComCtl2.DTPicker DTPHasta 
@@ -201,7 +201,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2566
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   20971521
+         Format          =   61800449
          CurrentDate     =   47484
       End
       Begin VB.Label Label9 
@@ -538,7 +538,7 @@ txtDescrVendedor.Text = ""
 End Sub
 
 Private Sub cmdRefresh_Click()
-Dim lbok As Boolean
+
 If ValCtrls() Then
       GSSQL = gsCompania & ".fafgetPedidos 'C', " & sPedidoInicial & "," & sPedidoFinal & ",'" & sFechaInicial & "','" & sFechaFinal & "'," & sCliente & "," & sVendedor & "," & sDesaprobados & "," & sAnulados
       If rsttmpProdFac.State = adStateOpen Then rsttmpProdFac.Close
@@ -785,7 +785,7 @@ Private Sub Label5_Click()
 End Sub
 
 Private Sub TDBGFAC_DblClick()
-Dim lbok As Boolean
+
 Dim vPosition As Variant
 If rsttmpProdFac.State = adStateClosed Then Exit Sub
 If Not (rsttmpProdFac.EOF And rsttmpProdFac.BOF) Then

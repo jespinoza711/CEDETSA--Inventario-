@@ -550,12 +550,9 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim rst As ADODB.Recordset
-Dim bOrdenCodigo As Boolean
-Dim bOrdenDescr As Boolean
-Dim sCodSucursal As String
+
 Dim bEdit As Boolean
 Dim bAdd As Boolean
-Dim sSoloActivo As String
 Public gsCatalogoName As String
 Public gsFormCaption As String
 Public gsTitle As String
@@ -680,8 +677,6 @@ End Sub
 Private Sub cmdEliminar_Click()
 Dim lbok As Boolean
 Dim sMsg As String
-Dim sTipo As String
-Dim sFiltro As String
 Dim sActivo As String
 Dim sUsaValor As String
 
@@ -743,9 +738,8 @@ Private Sub cmdSave_Click()
 Dim lbok As Boolean
 Dim sMsg As String
 Dim sActivo As String
-Dim sbkDocumentos As String
 Dim sUsaValor As String
-Dim sFiltro As String
+    
     If txtIDCatalogo.Text = "" Then
         lbok = Mensaje("El ID del Catálogo no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub

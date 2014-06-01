@@ -57,14 +57,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "28/05/2014"
+            TextSave        =   "31/05/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "0:09"
+            TextSave        =   "21:08"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -675,7 +675,6 @@ Option Explicit
 Dim cursor_pos As POINTAPI
 Dim resize_down     As Boolean
 Dim show_mnu        As Boolean
-Dim pos_num         As Integer
 Dim WindowsOpen     As Integer
 
 Public Function ExistForm(frmName As String) As Boolean
@@ -715,9 +714,7 @@ End Sub
 
 
 Private Sub lvWin_Click()
-  Dim s As String
-    Dim i As Integer
-    
+
     If lvWin.ListItems.Count < 1 Then Exit Sub
     If (ExistForm(lvWin.SelectedItem.Key) = True) Then
         FocusForm lvWin.SelectedItem.Key
@@ -778,6 +775,11 @@ Private Sub lvWin_Click()
             ofrmPedidoFactura.gsFormCaption = "Televentas"
             ofrmPedidoFactura.gsTitle = "TELEVENTAS"
             LoadForm ofrmPedidoFactura
+        Case "frmRegistrarTraslado":
+            Dim ofrmTraslado As New frmRegistrarTraslado
+            ofrmTraslado.gsFormCaption = "Traslados"
+            ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"
+            LoadForm ofrmTraslado
        '----------------------------------------------
                      
         
@@ -858,6 +860,7 @@ Private Sub lvWin_Load()
         
 '        'For Inventory
         .ListItems.Add(, "frmCatalogos", "Catalogos Generales", 5, 5).Bold = False
+        .ListItems.Add(, "frmRegistrarTraslado", "Salida Traslados", 11, 11).Bold = False
 '
 '        .ListItems.Add(, "frmCategories", "Category List", 5, 5).Bold = False
 '        .ListItems.Add(, "frmProduct", "Product List", 6, 6).Bold = False
@@ -879,8 +882,8 @@ Private Sub lvWin_Load()
     End With
 End Sub
 
-Sub MagicCusror(X As Integer)
- picLeft.Width = picLeft + (X * Screen.TwipsPerPixelX) - (Me.left + 110)
+Sub MagicCusror(x As Integer)
+ picLeft.Width = picLeft + (x * Screen.TwipsPerPixelX) - (Me.left + 110)
 
 End Sub
 
@@ -897,7 +900,7 @@ Private Sub picLeft_Resize()
     lvWin.Height = picLeft.ScaleHeight - lvWin.top - 20
 End Sub
 
-Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = True
@@ -905,7 +908,7 @@ Private Sub picSeparator_MouseDown(Button As Integer, Shift As Integer, X As Sin
     End If
 End Sub
 
-Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub picSeparator_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     If show_mnu = False Then Exit Sub
     If Button = vbLeftButton Then
         tmrResize.Enabled = False
@@ -927,7 +930,7 @@ Private Sub tmrResize_Timer()
     GetCursorPos cursor_pos
     'picLeft.Width = (Me.Width - ((cursor_pos.x * Screen.TwipsPerPixelX) - Me.Left)) - 90
    
-    picLeft.Width = picLeft + (cursor_pos.X * Screen.TwipsPerPixelX) - (Me.left + 110)
+    picLeft.Width = picLeft + (cursor_pos.x * Screen.TwipsPerPixelX) - (Me.left + 110)
     
 End Sub
 
