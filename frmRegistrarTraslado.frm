@@ -272,10 +272,10 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61800449
+      Format          =   61669377
       CurrentDate     =   41787
    End
-   Begin VB.TextBox Text4 
+   Begin VB.TextBox txtEstado 
       BackColor       =   &H8000000F&
       BeginProperty Font 
          Name            =   "Tahoma"
@@ -586,8 +586,13 @@ Dim gTrans As Boolean ' se dispara si hubo error en medio de la transacción
 Dim gBeginTransNoEnd As Boolean ' Indica si hubo un begin sin rollback o commit
 Dim gTasaCambio As Double
 Dim tDatosDelProducto As typDatosProductos
-
+Dim sIdStatus As String
 Public scontrol As String
+Dim sTipoMovSalida As String
+Dim sTipoMovEntrada As String
+Dim sPaqueteTraslado As String
+
+
 
 Private Sub InicializaControles()
     dtpFecha.value = Format(Now, "YYYY/MM/DD")
@@ -606,6 +611,12 @@ Private Sub InicializaControles()
     
     txtNumSalida.Text = ""
     fmtTextbox txtNumSalida, "O"
+    
+    sIdStatus = "16-3"
+    sTipoMovSalida = "9"
+    sTipoMovEntrada = "10"
+    sPaqueteTraslado = "7"
+    Me.txtEstado.Text = "Pendiente"
 End Sub
 
 Private Sub HabilitarBotones()
@@ -659,8 +670,8 @@ Public Sub HabilitarControles()
             txtDescrProducto.Text = ""
             fmtTextbox txtDescrProducto, "R"
             
-            txtIdLote.Text = ""
-            fmtTextbox txtIdLote, "O"
+            txtIDLote.Text = ""
+            fmtTextbox txtIDLote, "O"
             txtDescrLote.Text = ""
             fmtTextbox txtDescrLote, "R"
             
@@ -684,7 +695,7 @@ Public Sub HabilitarControles()
             fmtTextbox Me.txtDescrProducto, "R"
                         
             
-            fmtTextbox txtIdLote, "O"
+            fmtTextbox txtIDLote, "O"
             fmtTextbox txtDescrLote, "R"
             
             fmtTextbox txtCantidad, "O"
@@ -699,8 +710,8 @@ Public Sub HabilitarControles()
            
           
             fmtTextbox txtIDProducto, "O"
-            txtIdLote.Text = ""
-            fmtTextbox txtIdLote, "O"
+            txtIDLote.Text = ""
+            fmtTextbox txtIDLote, "O"
             txtCantidad.Text = ""
             fmtTextbox txtCantidad, "O"
             
@@ -736,7 +747,7 @@ Private Function ValCtrlsDetalle() As Boolean
     If (Me.txtIDProducto.Text = "") Then
         sMensajeError = "Por favor seleccione el producto..."
         Valida = False
-    ElseIf (Me.txtIdLote.Text = "" And Me.chkAutoSugiereLotes.value = False) Then
+    ElseIf (Me.txtIDLote.Text = "" And Me.chkAutoSugiereLotes.value = False) Then
         sMensajeError = "Por favor seleccione el lote del producto..."
         Valida = False
     ElseIf (Me.txtCantidad.Text = "") Then
@@ -752,14 +763,14 @@ End Sub
 
 Private Sub HabilitarAutoSugerirLotes(IsAutoSugiereLotes As Boolean)
     If IsAutoSugiereLotes = True Then
-        Me.txtIdLote.Enabled = False
+        Me.txtIDLote.Enabled = False
         Me.txtDescrLote.Enabled = False
         Me.cmdLote.Enabled = False
         'Me.cmdDelLote.Enabled = False
         bIsAutoSugiereLotes = True
     Else
         If (Accion = Add) Then
-            Me.txtIdLote.Enabled = True
+            Me.txtIDLote.Enabled = True
             Me.txtDescrLote.Enabled = True
             Me.cmdLote.Enabled = True
             'Me.cmdDelLote.Enabled = True
@@ -771,7 +782,7 @@ End Sub
 
 Private Sub cmdAdd_Click()
    Dim lbok As Boolean
-    
+    Dim dicDatosExistencia As Dictionary
     If Not ValCtrlsCabecera Then
         lbok = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
         Exit Sub
@@ -841,19 +852,28 @@ Private Sub cmdAdd_Click()
         Else
                 
              If ExiteRstKey(rstDetalle, "IDPRODUCTO=" & Me.txtIDProducto.Text & _
-                                                " AND IDLOTE=" & Me.txtIdLote.Text) Then
+                                                " AND IDLOTE=" & Me.txtIDLote.Text) Then
               lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
         
               Exit Sub
             End If
             Set rstLote = New ADODB.Recordset
               rstLote.ActiveConnection = gConet
-            CargaDatosLotes rstLote, CInt(Trim(Me.txtIdLote.Text))
+            CargaDatosLotes rstLote, CInt(Trim(Me.txtIDLote.Text))
+            'Verificar existenciaas suficientes
+            If (getValueFieldsFromTable("invEXISTENCIALOTE", "Existencia", "IdProducto=" & Me.txtIDProducto.Text & " and  IDBodega='" & Me.txtBodegaOrigen.Text & "'", dicDatosExistencia) = True) Then
+                 If (CDbl(dicDatosExistencia("Existencia")) < CDbl(Me.txtCantidad.Text)) Then
+                    lbok = Mensaje("No hay suficiente existencia para satisfacer la transacción.", ICO_ERROR, False)
+                    Me.txtCantidad.SetFocus
+                    Exit Sub
+                 End If
+               
+            End If
             ' Carga los datos del detalle de transacciones para ser grabados a la bd
             rstDetalle.AddNew
             rstDetalle!IdProducto = Me.txtIDProducto.Text
             rstDetalle!DescrProducto = Me.txtDescrProducto.Text
-            rstDetalle!IdLote = Me.txtIdLote.Text
+            rstDetalle!IdLote = Me.txtIDLote.Text
             rstDetalle!LoteInterno = Me.txtDescrLote.Text
             rstDetalle!FechaVencimiento = rstLote!FechaVencimiento
             rstDetalle!Cantidad = Val(Me.txtCantidad.Text)
@@ -865,7 +885,7 @@ Private Sub cmdAdd_Click()
         ' Actualiza el rst temporal
             rstDetalle!IdProducto = Me.txtIDProducto.Text
             rstDetalle!DescrProducto = Me.txtDescrProducto.Text
-            rstDetalle!IdLote = Me.txtIdLote.Text
+            rstDetalle!IdLote = Me.txtIDLote.Text
             rstDetalle!LoteInterno = Me.txtDescrLote.Text
             rstDetalle!FechaVencimiento = rstLote!FechaVencimiento
             rstDetalle!Cantidad = Val(Me.txtCantidad.Text)
@@ -897,6 +917,12 @@ Dim frm As New frmBrowseCat
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
       Me.txtBodegaDestino.Text = frm.gsCodigobrw
+      'Validar si la bodega seleccionada es diferente a la bodega origen
+      If (Me.txtBodegaDestino.Text = Me.txtBodegaOrigen.Text) Then
+         lbok = Mensaje("No puede seleccionar la misma bodega para el traslado, por favor verifique?", ICO_INFORMACION, True)
+         Me.txtBodegaDestino.Text = ""
+         Exit Sub
+      End If
       
     End If
     
@@ -919,6 +945,11 @@ Dim frm As New frmBrowseCat
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
       Me.txtBodegaOrigen.Text = frm.gsCodigobrw
+      If (Me.txtBodegaDestino.Text = Me.txtBodegaOrigen.Text) Then
+         lbok = Mensaje("No puede seleccionar la misma bodega para el traslado, por favor verifique?", ICO_INFORMACION, True)
+         Me.txtBodegaOrigen.Text = ""
+         Exit Sub
+      End If
       
     End If
     
@@ -942,7 +973,7 @@ Private Sub GetDataFromGridToControl() 'EDITAR
         Me.txtIDProducto.Text = rstDetalle("IDProducto").value
         Me.txtDescrProducto.Text = rstDetalle("DescrProducto").value
         'Contemplar para traslados
-        Me.txtIdLote.Text = rstDetalle("IDLote").value
+        Me.txtIDLote.Text = rstDetalle("IDLote").value
         Me.txtDescrLote.Text = rstDetalle("DescrLote").value
         Me.txtCantidad.Text = rstDetalle("Cantidad").value
         
@@ -984,13 +1015,13 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = "IDBodega=" & Me.txtBodegaOrigen.Text & " and IDProducto=" & Me.txtIDProducto.Text & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-        txtIdLote.Text = frm.gsCodigobrw
+        txtIDLote.Text = frm.gsCodigobrw
       
     End If
     
     If frm.gsDescrbrw <> "" Then
       Me.txtDescrLote.Text = frm.gsDescrbrw
-      fmtTextbox Me.txtIdLote, "R"
+      fmtTextbox Me.txtIDLote, "R"
       'txtExistenciaLote.Text = frm.gsExtraValor2
     End If
 
@@ -1044,11 +1075,13 @@ Private Sub cmdProducto_Click()
     If frm.gsDescrbrw <> "" Then
       Me.txtDescrProducto.Text = frm.gsDescrbrw
       fmtTextbox Me.txtDescrProducto, "R"
-      Me.txtIdLote.Enabled = True
-      If (Me.chkAutoSugiereLotes.value = True) Then
+    
+      If (Me.chkAutoSugiereLotes.value = vbChecked) Then
         Me.cmdLote.Enabled = False
+         Me.txtIDLote.Enabled = False
       Else
         Me.cmdLote.Enabled = True
+        Me.txtIDLote.Enabled = True
       End If
     End If
 End Sub
@@ -1065,6 +1098,7 @@ Private Function invSaveCabeceraTraslado() As String
                 "','" & Format("1980-01-01", "yyyymmdd") & "','','" & Me.txtNumSalida.Text & "','',0"
  Set rst = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
+  
   If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
     sDocumento = "" 'Indica que ocurrió un error
     sMensajeError = "Ha ocurrido un error tratando de ingresar la cabecera del traslado!!!" & err.Description
@@ -1136,14 +1170,72 @@ Private Sub SaveRstDetalle(rst As ADODB.Recordset, sDocumento As String, sOperac
 
             rst.MoveNext
       Wend
+      
       rst.MoveFirst
 
+    
     End If
+    
     Exit Sub
 errores:
     gTrans = False
     'gConet.RollbackTrans 'Descomentarie esto
 End Sub
+
+Private Function invGeneraCabeceraTraslado(sDocumento As String) As String
+    Dim lbok As Boolean
+    On Error GoTo errores
+    lbok = False
+   
+    Dim rst As ADODB.Recordset
+
+    GSSQL = "invInsertCabMovimientos " & sPaqueteTraslado & ",'" & sDocumento & "','" & Format(Str(dtpFecha.value), "yyyymmdd") & _
+                "','Traslado de Bodega " & Me.txtDescrBodegaOrigen.Text & " a bodega " & Me.txtDescrBodegaDestino.Text & "','" & sDocumento & "','" & gsUser & "','" & gsUser & "',0"
+ Set rst = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
+
+  If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
+    sDocumento = "" 'Indica que ocurrió un error
+    sMensajeError = "Ha ocurrido un error tratando de grabar la cabecera de la transacción !!!" & err.Description
+  Else  'Si no es válido
+    'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
+    sDocumento = rst("Documento").value
+  End If
+  invGeneraCabeceraTraslado = sDocumento
+
+    Exit Function
+errores:
+    gTrans = False
+    invGeneraCabeceraTraslado = ""
+    'gConet.RollbackTrans
+    Exit Function
+End Function
+
+
+
+Private Function invGeneraDetalleMovimientoTraslado(sIDTraslado As String, sIsSalida As String, sUserInsert As String, sUserUpdate As String) As Boolean
+    Dim lbok As Boolean
+    On Error GoTo errores
+    lbok = False
+
+    Dim rst As ADODB.Recordset
+
+    GSSQL = "invGeneraDetalleMovimientoTraslado '" & sIDTraslado & "'," & sIsSalida & ",'" & sUserInsert & "','" & sUserUpdate & "'"
+ Set rst = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
+
+  If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
+    'sDocumento = "" 'Indica que ocurrió un error
+    sMensajeError = "Ha ocurrido un error tratando de guardar el detalle del movimiento!!!" & err.Description
+ 
+  End If
+  invGeneraDetalleMovimientoTraslado = lbok
+
+    Exit Function
+errores:
+    gTrans = False
+    invGeneraDetalleMovimientoTraslado = False
+    'gConet.RollbackTrans
+    Exit Function
+End Function
 
 
 Private Sub cmdSave_Click()
@@ -1171,9 +1263,19 @@ Private Sub cmdSave_Click()
         If sDocumento <> "" Then ' salva la cabecera
         SaveRstDetalle rstDetalle, sDocumento, "I" ' salva el detalle que esta en batch
 '        If (gTrans = True) Then
-'            invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
+'            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
+'            invGeneraCabeceraTraslado sDocumento
 '        End If
+        If (gTrans = True) Then
+            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
+            invGeneraCabeceraTraslado sDocumento
+        End If
+        If (gTrans = True) Then
+            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
+            invGeneraDetalleMovimientoTraslado sDocumento, "1", gsUser, gsUser
+        End If
 
+     
 
 
 ''        lbOk = Costo_Promedio_Batch(gRegistrosCODET, Format(CDate(Me.dtpFecha.value), "yyyy-mm-dd"), ParametrosGenerales.CodTranCompra)        ' Costo Promedio
