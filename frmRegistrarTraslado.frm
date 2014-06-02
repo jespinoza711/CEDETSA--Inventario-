@@ -8,11 +8,44 @@ Begin VB.Form frmRegistrarTraslado
    ClientTop       =   450
    ClientWidth     =   13230
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MDIChild        =   -1  'True
    ScaleHeight     =   8760
    ScaleWidth      =   13230
    WindowState     =   2  'Maximized
+   Begin VB.TextBox txtNumSalida 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00404040&
+      Height          =   345
+      Left            =   7140
+      TabIndex        =   42
+      Top             =   2730
+      Width           =   1725
+   End
+   Begin VB.TextBox txtCantidadRemitida 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00404040&
+      Height          =   345
+      Left            =   9570
+      TabIndex        =   40
+      Top             =   7590
+      Width           =   1095
+   End
    Begin VB.CommandButton cmdAdd 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -24,7 +57,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       Height          =   555
-      Left            =   10980
+      Left            =   11010
       Picture         =   "frmRegistrarTraslado.frx":0000
       Style           =   1  'Graphical
       TabIndex        =   37
@@ -65,7 +98,7 @@ Begin VB.Form frmRegistrarTraslado
          Style           =   1  'Graphical
          TabIndex        =   35
          ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
-         Top             =   1440
+         Top             =   1410
          Width           =   555
       End
       Begin VB.CommandButton cmdEliminar 
@@ -236,7 +269,7 @@ Begin VB.Form frmRegistrarTraslado
       Top             =   3300
       Width           =   11955
    End
-   Begin VB.TextBox txtNumSalida 
+   Begin VB.TextBox txtNumReferencia 
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -272,7 +305,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61669377
+      Format          =   61407233
       CurrentDate     =   41787
    End
    Begin VB.TextBox txtEstado 
@@ -331,7 +364,7 @@ Begin VB.Form frmRegistrarTraslado
    Begin VB.CommandButton cmdBodegaDestino 
       Height          =   320
       Left            =   2730
-      Picture         =   "frmRegistrarTraslado.frx":988B
+      Picture         =   "frmRegistrarTraslado.frx":9F03
       Style           =   1  'Graphical
       TabIndex        =   11
       Top             =   2310
@@ -374,7 +407,7 @@ Begin VB.Form frmRegistrarTraslado
    Begin VB.CommandButton cmdBodegaOrigen 
       Height          =   320
       Left            =   2730
-      Picture         =   "frmRegistrarTraslado.frx":9BCD
+      Picture         =   "frmRegistrarTraslado.frx":A245
       Style           =   1  'Graphical
       TabIndex        =   8
       Top             =   1860
@@ -396,7 +429,7 @@ Begin VB.Form frmRegistrarTraslado
       Left            =   1500
       Locked          =   -1  'True
       TabIndex        =   4
-      Top             =   900
+      Top             =   930
       Width           =   1635
    End
    Begin VB.PictureBox picHeader 
@@ -416,7 +449,7 @@ Begin VB.Form frmRegistrarTraslado
          Height          =   480
          Index           =   2
          Left            =   270
-         Picture         =   "frmRegistrarTraslado.frx":9F0F
+         Picture         =   "frmRegistrarTraslado.frx":A587
          Top             =   120
          Width           =   480
       End
@@ -471,8 +504,85 @@ Begin VB.Form frmRegistrarTraslado
       _ExtentX        =   33999
       _ExtentY        =   53
    End
+   Begin MSComCtl2.DTPicker dtpFechaSalida 
+      Height          =   345
+      Left            =   7200
+      TabIndex        =   38
+      Top             =   1380
+      Width           =   1665
+      _ExtentX        =   2937
+      _ExtentY        =   609
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CalendarForeColor=   4210752
+      Format          =   61407233
+      CurrentDate     =   41787
+   End
+   Begin VB.Label lblNumSalida 
+      Caption         =   "Num Salida:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00404040&
+      Height          =   225
+      Left            =   5880
+      TabIndex        =   43
+      Top             =   2790
+      Width           =   1245
+   End
+   Begin VB.Label lblCantidaRemitida 
+      BackColor       =   &H8000000C&
+      Caption         =   " Cantidad Remitida:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FFFFFF&
+      Height          =   225
+      Left            =   7710
+      TabIndex        =   41
+      Top             =   7680
+      Width           =   1815
+   End
+   Begin VB.Label lblFechaSalida 
+      Caption         =   "Fecha Salida:"
+      ForeColor       =   &H00404040&
+      Height          =   225
+      Left            =   5910
+      TabIndex        =   39
+      Top             =   1440
+      Width           =   1065
+   End
    Begin VB.Label Label8 
       Caption         =   "Cantidad:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   8700
@@ -482,6 +592,15 @@ Begin VB.Form frmRegistrarTraslado
    End
    Begin VB.Label Label7 
       Caption         =   "Lote:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   300
@@ -491,6 +610,15 @@ Begin VB.Form frmRegistrarTraslado
    End
    Begin VB.Label Label6 
       Caption         =   "Producto:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   270
@@ -498,17 +626,35 @@ Begin VB.Form frmRegistrarTraslado
       Top             =   6690
       Width           =   825
    End
-   Begin VB.Label Label5 
+   Begin VB.Label lblNumReferencia 
       Caption         =   "Num Salida:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
-      Left            =   210
+      Left            =   240
       TabIndex        =   18
       Top             =   2820
       Width           =   1245
    End
    Begin VB.Label Label4 
       Caption         =   "Fecha:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   210
@@ -527,6 +673,15 @@ Begin VB.Form frmRegistrarTraslado
    End
    Begin VB.Label Label2 
       Caption         =   "Bodega Destino:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   210
@@ -536,6 +691,15 @@ Begin VB.Form frmRegistrarTraslado
    End
    Begin VB.Label Label1 
       Caption         =   "Bodega Origen:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   210
@@ -545,6 +709,15 @@ Begin VB.Form frmRegistrarTraslado
    End
    Begin VB.Label lbl 
       Caption         =   "IDTrasaldo:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   210
@@ -578,6 +751,7 @@ Dim sMensajeError As String
 Dim bIsAutoSugiereLotes As Boolean
 Dim dTotalSugeridoLotes As Double
 
+Private rstCabecera As ADODB.Recordset
 Private rstDetalle As ADODB.Recordset
 Dim rstLote As ADODB.Recordset
 
@@ -591,8 +765,8 @@ Public scontrol As String
 Dim sTipoMovSalida As String
 Dim sTipoMovEntrada As String
 Dim sPaqueteTraslado As String
-
-
+Public sAccion As String
+Public sDocumentoTraslado As String
 
 Private Sub InicializaControles()
     dtpFecha.value = Format(Now, "YYYY/MM/DD")
@@ -609,14 +783,27 @@ Private Sub InicializaControles()
     txtDescrBodegaDestino.Text = ""
     fmtTextbox txtDescrBodegaDestino, "R"
     
-    txtNumSalida.Text = ""
-    fmtTextbox txtNumSalida, "O"
+    txtNumReferencia.Text = ""
+    fmtTextbox txtNumReferencia, "O"
     
     sIdStatus = "16-3"
     sTipoMovSalida = "9"
     sTipoMovEntrada = "10"
     sPaqueteTraslado = "7"
     Me.txtEstado.Text = "Pendiente"
+    
+    Me.TDBG.Columns(6).Visible = False
+    Me.TDBG.Columns(1).Width = 5600
+    
+    
+    Me.lblFechaSalida.Visible = False
+    Me.dtpFechaSalida.Visible = False
+    
+    Me.lblCantidaRemitida.Visible = False
+    Me.txtCantidadRemitida.Visible = False
+    Me.lblNumReferencia.Caption = "Num Salida"
+    Me.lblNumSalida.Visible = False
+    Me.txtNumSalida.Visible = False
 End Sub
 
 Private Sub HabilitarBotones()
@@ -624,7 +811,11 @@ Private Sub HabilitarBotones()
         Case TypAccion.Add
             cmdSave.Enabled = True
             cmdUndo.Enabled = False
-            cmdEliminar.Enabled = True
+            If (sAccion = "Salida") Then
+                cmdEliminar.Enabled = True
+            Else
+                cmdEliminar.Enabled = False
+            End If
             cmdAdd.Enabled = True
             cmdEditItem.Enabled = True
         Case TypAccion.Edit
@@ -645,7 +836,11 @@ Private Sub HabilitarBotones()
             If rstDetalle.RecordCount <> 0 Then
                 cmdSave.Enabled = False
                 cmdUndo.Enabled = False
-                cmdEliminar.Enabled = True
+                If (sAccion = "Salida") Then
+                    cmdEliminar.Enabled = True
+                Else
+                    cmdEliminar.Enabled = False
+                End If
                 cmdAdd.Enabled = True
                 cmdEditItem.Enabled = True
             Else
@@ -678,6 +873,10 @@ Public Sub HabilitarControles()
             txtCantidad.Text = ""
             fmtTextbox txtCantidad, "O"
             
+            If (sAccion = "Entrada") Then
+                txtCantidadRemitida.Text = ""
+                fmtTextbox txtCantidadRemitida, "R"
+            End If
                        
             Me.cmdBodegaDestino.Enabled = True
             Me.cmdBodegaOrigen.Enabled = True
@@ -718,6 +917,11 @@ Public Sub HabilitarControles()
             Me.cmdProducto.Enabled = False
             Me.cmdLote.Enabled = False
            
+            If (sAccion = "Entrada") Then
+                txtCantidadRemitida.Text = ""
+                fmtTextbox txtCantidadRemitida, "R"
+            End If
+           
             Me.TDBG.Enabled = True
     End Select
 End Sub
@@ -731,7 +935,7 @@ Private Function ValCtrlsCabecera() As Boolean
     ElseIf (Me.txtBodegaDestino.Text = "") Then
         sMensajeError = "Por favor seleccione la Bodega Destino..."
         Valida = False
-    ElseIf (Me.txtNumSalida.Text = "") Then
+    ElseIf (Me.txtNumReferencia.Text = "") Then
         sMensajeError = "Por favor digite el numero de salida..."
         Valida = False
 '    ElseIf (rstDetalle.RecordCount = 0) Then
@@ -794,7 +998,7 @@ Private Sub cmdAdd_Click()
     End If
     
     
-    If (Accion = Add) Then
+    If (Accion = Add And sAccion = "Salida") Then
         If (bIsAutoSugiereLotes = True) Then
             Set rstLS = New ADODB.Recordset
             If rstLS.State = adStateOpen Then rstLS.Close
@@ -887,9 +1091,20 @@ Private Sub cmdAdd_Click()
             rstDetalle!DescrProducto = Me.txtDescrProducto.Text
             rstDetalle!IdLote = Me.txtIDLote.Text
             rstDetalle!LoteInterno = Me.txtDescrLote.Text
-            rstDetalle!FechaVencimiento = rstLote!FechaVencimiento
-            rstDetalle!Cantidad = Val(Me.txtCantidad.Text)
-            
+            'rstDetalle!FechaVencimiento = rstLote!FechaVencimiento
+            If (sAccion = "Salida") Then
+                rstDetalle!Cantidad = Val(Me.txtCantidad.Text)
+                rstDetalle!CantidadRecibida = 0
+                rstDetalle!Ajuste = 0
+                rstDetalle!RecibidoParcial = 0
+                rstDetalle!RecibidoTotal = 0
+            Else
+                rstDetalle!CantidadRecibida = Val(Me.txtCantidad.Text)
+                rstDetalle!Cantidad = Val(Me.txtCantidadRemitida.Text)
+                rstDetalle!Ajuste = rstDetalle!Cantidad - rstDetalle!CantidadRecibida
+                rstDetalle!RecibidoParcial = IIf(rstDetalle!CantidadRecibida <> rstDetalle!Cantidad, "1", "0")
+                rstDetalle!RecibidoTotal = IIf(rstDetalle!CantidadRecibida <> rstDetalle!Cantidad, "0", "1")
+            End If
             
     End If
    
@@ -974,9 +1189,13 @@ Private Sub GetDataFromGridToControl() 'EDITAR
         Me.txtDescrProducto.Text = rstDetalle("DescrProducto").value
         'Contemplar para traslados
         Me.txtIDLote.Text = rstDetalle("IDLote").value
-        Me.txtDescrLote.Text = rstDetalle("DescrLote").value
-        Me.txtCantidad.Text = rstDetalle("Cantidad").value
-        
+        Me.txtDescrLote.Text = rstDetalle("LoteInterno").value
+        If (Me.sAccion = "Salida") Then
+            Me.txtCantidad.Text = rstDetalle("Cantidad").value
+        Else
+            Me.txtCantidad.Text = rstDetalle("CantidadRecibida").value
+            Me.txtCantidadRemitida.Text = rstDetalle("Cantidad").value
+        End If
     Else
       
         HabilitarControles
@@ -1086,16 +1305,45 @@ Private Sub cmdProducto_Click()
     End If
 End Sub
 
-Private Function invSaveCabeceraTraslado() As String
+Private Function invSaveCabeceraTraslado(sOperacion As String) As String
   
     Dim lbok As Boolean
     On Error GoTo errores
     lbok = False
     Dim sDocumento As String
     Dim rst As ADODB.Recordset
-
-    GSSQL = "invUpdateCabTraslados 'I','','" & Me.txtBodegaOrigen.Text & "','" & Me.txtBodegaDestino.Text & "','1-16','" & Format(Str(Me.dtpFecha.value), "yyyymmdd") & _
-                "','" & Format("1980-01-01", "yyyymmdd") & "','','" & Me.txtNumSalida.Text & "','',0"
+    
+    Dim sIDStatusRecibido As String
+    Dim sFechaRemision As String
+    Dim sFechaEntrada As String
+    Dim sNumEntrada As String
+    Dim sNumSalida As String
+    Dim sDocumentoAjuste As String
+    Dim sAplicado As String
+    
+    If (sOperacion = "I") Then
+        sIDStatusRecibido = "16-3"
+    Else
+        sIDStatusRecibido = "16-1"
+    End If
+    If (sAccion = "Salida") Then
+        sFechaRemision = Format(Str(Me.dtpFecha.value), "yyyymmdd")
+        sFechaEntrada = Format("1980-01-01", "yyyymmdd")
+        sNumEntrada = ""
+        sNumSalida = Me.txtNumReferencia.Text
+        sDocumentoAjuste = ""
+        sAplicado = "0"
+        sDocumentoTraslado = ""
+    Else
+        sFechaRemision = Format(Str(Me.dtpFechaSalida.value), "yyyymmdd")
+        sFechaEntrada = Format(Str(Me.dtpFecha.value), "yyyymmdd")
+        sNumEntrada = Me.txtNumReferencia.Text
+        sNumSalida = Me.txtNumSalida.Text
+        sDocumentoAjuste = ""
+        sAplicado = "1"
+    End If
+    GSSQL = "invUpdateCabTraslados '" & sOperacion & "','" & sDocumentoTraslado & "','" & Me.txtBodegaOrigen.Text & "','" & Me.txtBodegaDestino.Text & "','" & sIDStatusRecibido & "','" & sFechaRemision & _
+                "','" & sFechaEntrada & "','" & sNumEntrada & "','" & sNumSalida & "','" & sDocumentoAjuste & "'," & sAplicado
  Set rst = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
 
   
@@ -1104,7 +1352,11 @@ Private Function invSaveCabeceraTraslado() As String
     sMensajeError = "Ha ocurrido un error tratando de ingresar la cabecera del traslado!!!" & err.Description
   Else  'Si no es válido
     'gsOperacionError = "No existe ese cliente." 'Asigna msg de error
-    sDocumento = rst("IDTraslado").value
+    If (sAccion = "Salida") Then
+        sDocumento = rst("IDTraslado").value
+    Else
+        sDocumento = sDocumentoTraslado
+    End If
   End If
   invSaveCabeceraTraslado = sDocumento
 
@@ -1162,10 +1414,10 @@ Private Sub SaveRstDetalle(rst As ADODB.Recordset, sDocumento As String, sOperac
                                     rst.Fields("IDProducto").value, _
                                     rst.Fields("IDLote").value, _
                                     rst.Fields("Cantidad").value, _
-                                    "0", _
-                                    "0", _
-                                    "0", _
-                                    "0")
+                                    rst.Fields("CantidadRecibida").value, _
+                                    rst.Fields("Ajuste").value, _
+                                    CInt(rst.Fields("RecibidoParcial").value), _
+                                    CInt(rst.Fields("RecibidoTotal").value))
                                 
 
             rst.MoveNext
@@ -1239,45 +1491,67 @@ End Function
 
 
 Private Sub cmdSave_Click()
- Dim lbok As Boolean
+    Dim lbok As Boolean
     'On Error GoTo errores
-    
+    Dim sOperacion As String
     If Not ValCtrlsCabecera Then
         lbok = Mensaje("Revise sus datos por favor !!! " & sMensajeError, ICO_ERROR, False)
         Exit Sub
     End If
     
     If rstDetalle.RecordCount > 0 Then
-      
-'      If gTasaCambio = 0 Then
-'        lbOk = Mensaje("La tasa de cambio es Cero llame a informática por favor ", ICO_ERROR, False)
-'        Exit Sub
-'      End If
-      
-      
-      gConet.BeginTrans ' inicio aqui la transacción
-      
-      gBeginTransNoEnd = True
-      Dim sDocumento As String
-      sDocumento = invSaveCabeceraTraslado()
+        gConet.BeginTrans ' inicio aqui la transacción
+        gBeginTransNoEnd = True
+        
+        Dim sDocumento As String
+        sOperacion = IIf(sAccion = "Salida", "I", "U")
+        sDocumento = invSaveCabeceraTraslado(sOperacion)
         If sDocumento <> "" Then ' salva la cabecera
-        SaveRstDetalle rstDetalle, sDocumento, "I" ' salva el detalle que esta en batch
-'        If (gTrans = True) Then
-'            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
-'            invGeneraCabeceraTraslado sDocumento
-'        End If
-        If (gTrans = True) Then
-            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
-            invGeneraCabeceraTraslado sDocumento
+            SaveRstDetalle rstDetalle, sDocumento, sOperacion ' salva el detalle que esta en batch
+            If (gTrans = True) And sAccion = "Salida" Then
+              invGeneraCabeceraTraslado sDocumento
+            End If
+            If (gTrans = True) Then
+                'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
+                invGeneraDetalleMovimientoTraslado sDocumento, IIf(sAccion = "Salida", "1", "0"), gsUser, gsUser
+            End If
+            If (gTrans = True) Then
+                lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
+           
+                Me.cmdAdd.Enabled = False
+                Accion = View
+                HabilitarBotones
+                HabilitarControles
+                       
+                gConet.CommitTrans
+                gBeginTransNoEnd = False
+                'InicializaFormulario
+                Exit Sub
+            Else
+                gConet.RollbackTrans
+                gTrans = False
+                gBeginTransNoEnd = False
+            End If
+        
+            gBeginTransNoEnd = False
+            Exit Sub
         End If
-        If (gTrans = True) Then
-            'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
-            invGeneraDetalleMovimientoTraslado sDocumento, "1", gsUser, gsUser
-        End If
+    Else
+        gTrans = False
+    
+        If gBeginTransNoEnd Then gConet.RollbackTrans
+        gBeginTransNoEnd = False
+    End If
+    lbok = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
+End Sub
 
-     
 
-
+    '      If gTasaCambio = 0 Then
+    '        lbOk = Mensaje("La tasa de cambio es Cero llame a informática por favor ", ICO_ERROR, False)
+    '        Exit Sub
+    '      End If
+       
+       
 ''        lbOk = Costo_Promedio_Batch(gRegistrosCODET, Format(CDate(Me.dtpFecha.value), "yyyy-mm-dd"), ParametrosGenerales.CodTranCompra)        ' Costo Promedio
 ''        If lbOk = False Then
 ''          If gBeginTransNoEnd Then
@@ -1303,53 +1577,28 @@ Private Sub cmdSave_Click()
 '            lblProgress.Caption = "Fin"
 '            lblProgress.Refresh
 '          '----------- Progress bar
-          If (gTrans = True) Then
-            lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
-       
-          
-         ' lblNoTra.Caption = ""
-            Me.cmdAdd.Enabled = False
-          
-'
-            Accion = View
-            HabilitarBotones
-            HabilitarControles
-                   
-            gConet.CommitTrans
-            gBeginTransNoEnd = False
-            'InicializaFormulario
-            Exit Sub
-          Else
-            gConet.RollbackTrans
-            gTrans = False
-            gBeginTransNoEnd = False
-          End If
-        gBeginTransNoEnd = False
-            
-       
-        Exit Sub
-      End If
-      
-    
-    End If
-    gTrans = False
-    
-    If gBeginTransNoEnd Then
-      gConet.RollbackTrans
-      gBeginTransNoEnd = False
-    End If
-    lbok = Mensaje("Hubo un error en el proceso de salvado " & Chr(13) & err.Description, ICO_ERROR, False)
-    'InicializaFormulario
-End Sub
-
-
-
 
 Private Sub cmdUndo_Click()
     GetDataFromGridToControl
     Accion = Add
     HabilitarBotones
     HabilitarControles
+End Sub
+
+Private Sub InicializaControlesEntrada()
+    GetCabeceraTraslado sDocumentoTraslado
+    GetDetalleTrasladoByDocumento sDocumentoTraslado
+    Me.TDBG.Columns(6).Visible = True
+    Me.TDBG.Columns(1).Width = 4050.142
+    Me.TDBG.Columns(5).Caption = "Cant Remitida"
+    Me.lblFechaSalida.Visible = False
+    Me.dtpFechaSalida.Visible = False
+    Me.lblCantidaRemitida.Visible = True
+    Me.txtCantidadRemitida.Visible = True
+    fmtTextbox Me.txtCantidadRemitida, "R"
+    Me.lblNumReferencia.Caption = "Num Entrada"
+    Me.lblNumSalida.Visible = True
+    Me.txtNumSalida.Visible = True
 End Sub
 
 Private Sub Form_Load()
@@ -1366,11 +1615,17 @@ Private Sub Form_Load()
     Me.Caption = gsFormCaption
     Me.lbFormCaption = gsTitle
     'gTasaCambio = GetTasadeCambio(Format(Now, "YYYY/MM/DD"))
-    PreparaRstDetalle ' Prepara los Recordsets
-    Set Me.TDBG.DataSource = rstDetalle
-    Me.TDBG.Refresh
-    
-    InicializaControles
+    If sAccion = "Salida" Then
+        PreparaRstDetalle ' Prepara los Recordsets
+        Set Me.TDBG.DataSource = rstDetalle
+        Me.TDBG.Refresh
+        InicializaControles
+    Else
+        InicializaControlesEntrada
+        Set Me.TDBG.DataSource = rstDetalle
+        Me.TDBG.Refresh
+        EnlazarControles
+    End If
    
     'SetTextBoxReadOnly
     Accion = Add
@@ -1379,6 +1634,56 @@ Private Sub Form_Load()
     Me.chkAutoSugiereLotes.value = vbChecked
     HabilitarAutoSugerirLotes Me.chkAutoSugiereLotes.value
 End Sub
+
+Private Sub EnlazarControles()
+    'Enlazar Datos de Cabecera
+     If Not (rstCabecera.EOF And rstCabecera.BOF) Then
+        Me.txtIDTraslado.Text = rstCabecera!IDTraslado
+        Me.txtBodegaOrigen.Text = rstCabecera!BodegaOrigen
+        Me.txtDescrBodegaOrigen.Text = rstCabecera!DescrBodegaOrigen
+        Me.txtBodegaDestino.Text = rstCabecera!BodegaDestino
+        Me.txtDescrBodegaDestino.Text = rstCabecera!DescrBodegaDestino
+        Me.dtpFecha.value = rstCabecera!FechaRemision
+        Me.txtEstado.Text = rstCabecera!DescrStatusRecibido
+        Me.txtNumSalida.Text = rstCabecera!NumSalida
+     End If
+End Sub
+
+Private Sub GetCabeceraTraslado(sDocumento As String)
+      ' preparacion del recordset fuente del grid de movimientos
+      
+      Set rstCabecera = New ADODB.Recordset
+      If rstCabecera.State = adStateOpen Then rstCabecera.Close
+      rstCabecera.ActiveConnection = gConet 'Asocia la conexión de trabajo
+      rstCabecera.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+      rstCabecera.CursorLocation = adUseClient ' Cursor local al cliente
+      rstCabecera.LockType = adLockOptimistic
+                     
+      If rstCabecera.State = adStateOpen Then rstCabecera.Close
+      GSSQL = "invGetCabTraslados '" & sDocumento & "'"
+      
+      gTrans = True ' asume que NO va a haber un error en la transacción
+      Set rstCabecera = GetRecordset(GSSQL) ' para el detalle
+End Sub
+
+
+Private Sub GetDetalleTrasladoByDocumento(sDocumento As String)
+      ' preparacion del recordset fuente del grid de movimientos
+      
+      Set rstDetalle = New ADODB.Recordset
+      If rstDetalle.State = adStateOpen Then rstDetalle.Close
+      rstDetalle.ActiveConnection = gConet 'Asocia la conexión de trabajo
+      rstDetalle.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+      rstDetalle.CursorLocation = adUseClient ' Cursor local al cliente
+      rstDetalle.LockType = adLockOptimistic
+                     
+      If rstDetalle.State = adStateOpen Then rstDetalle.Close
+      GSSQL = "invGetDetalleTraslados '" & sDocumento & "'"
+      
+      gTrans = True ' asume que NO va a haber un error en la transacción
+      Set rstDetalle = GetRecordset(GSSQL) ' para el detalle
+End Sub
+
 
 Private Sub PreparaRstDetalle()
       ' preparacion del recordset fuente del grid de movimientos
@@ -1412,5 +1717,4 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
         lbok = False  'Indica que no es válido
     End If
 End Sub
-
 

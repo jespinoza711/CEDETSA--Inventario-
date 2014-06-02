@@ -20,6 +20,7 @@ Begin VB.Form frmRegistrarTransaccion
    EndProperty
    Icon            =   "frmRegistrarTransaccion.frx":0000
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    ScaleHeight     =   8850
    ScaleWidth      =   15315
    StartUpPosition =   2  'CenterScreen
@@ -126,7 +127,7 @@ Begin VB.Form frmRegistrarTransaccion
       Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   6
          Top             =   360
          Width           =   14235
@@ -183,7 +184,7 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   15
          Top             =   360
          Width           =   14235
@@ -551,7 +552,7 @@ Begin VB.Form frmRegistrarTransaccion
                Height          =   285
                Left            =   2310
                TabIndex        =   27
-               Top             =   1305
+               Top             =   1320
                Width           =   1095
             End
             Begin VB.CommandButton cmdDelBodegaDestino 
@@ -785,7 +786,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61669377
+            Format          =   61603841
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
@@ -1952,6 +1953,8 @@ Private Sub txtBodegaDestino_LostFocus()
     LoadDescrBodegaDestino txtBodegaDestino, 13
 End Sub
 
+
+
 Private Sub txtBodegaOrigen_KeyPress(KeyAscii As Integer)
     LoadDescrBodega txtBodegaOrigen, KeyAscii
     If (KeyAscii = 13) Then
@@ -2234,6 +2237,19 @@ Private Sub LoadDescrLote(ByRef txtCaja As TextBox, KeyAscii As Integer)
             lbok = Mensaje("El Producto no existe por favor revise", ICO_ERROR, False)
         End If
     End If
+End Sub
+
+
+
+Private Sub txtLote_KeyPress(KeyAscii As Integer)
+  LoadDescrLote txtLote, KeyAscii
+    If (KeyAscii = 13) Then
+        Me.cmdAdd.SetFocus
+    End If
+End Sub
+
+Private Sub txtLote_LostFocus()
+ LoadDescrLote txtLote, 13
 End Sub
 
 Private Sub txtPrecioDolar_KeyPress(KeyAscii As Integer)
