@@ -305,7 +305,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61407233
+      Format          =   61538305
       CurrentDate     =   41787
    End
    Begin VB.TextBox txtEstado 
@@ -523,7 +523,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61407233
+      Format          =   61538305
       CurrentDate     =   41787
    End
    Begin VB.Label lblNumSalida 
@@ -1463,6 +1463,31 @@ errores:
 End Function
 
 
+Private Function invGeneraAjusteByTraslado(sIDTraslado As String, sUsuario As String) As Boolean
+    Dim lbok As Boolean
+    On Error GoTo errores
+    lbok = False
+
+    Dim rst As ADODB.Recordset
+
+    GSSQL = "invGeneraAjusteByTraslado '" & sIDTraslado & "','" & sUsuario & "'"
+    Set rst = gConet.Execute(GSSQL, , adCmdText)  'Ejecuta la sentencia
+
+    If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
+    'sDocumento = "" 'Indica que ocurrió un error
+        sMensajeError = "Ha ocurrido un error tratando de guardar el detalle del movimiento!!!" & err.Description
+ 
+    End If
+    invGeneraAjusteByTraslado = lbok
+
+    Exit Function
+errores:
+    gTrans = False
+    invGeneraAjusteByTraslado = False
+    'gConet.RollbackTrans
+    Exit Function
+End Function
+
 
 Private Function invGeneraDetalleMovimientoTraslado(sIDTraslado As String, sIsSalida As String, sUserInsert As String, sUserUpdate As String) As Boolean
     Dim lbok As Boolean
@@ -1490,6 +1515,27 @@ errores:
 End Function
 
 
+Private Function ValidaEntradaParcial(rst As ADODB.Recordset) As Boolean
+     On Error GoTo errores
+    'Set lRegistros = New ADODB.Recordset  'Inicializa la variable de los registros
+    'gConet.BeginTrans
+    Dim bOk  As Boolean
+    bOk = True
+    If rst.RecordCount > 0 Then
+      rst.MoveFirst
+      While Not rst.EOF And bOk
+            If (rst!CantidadRecibida < rst!Cantidad) Then
+                ValidaEntradaParcial = True
+                Exit Sub
+            rst.MoveNext
+      Wend
+      rst.MoveFirst
+    End If
+    Exit Function
+errores:
+    gTrans = False
+End Function
+
 Private Sub cmdSave_Click()
     Dim lbok As Boolean
     'On Error GoTo errores
@@ -1514,6 +1560,10 @@ Private Sub cmdSave_Click()
             If (gTrans = True) Then
                 'invMasterAcutalizaSaldosInventarioPaquete sDocumento, gsIDTipoTransaccion, Me.gsIDTipoTransaccion, gsUser
                 invGeneraDetalleMovimientoTraslado sDocumento, IIf(sAccion = "Salida", "1", "0"), gsUser, gsUser
+            End If
+            If (gTrans = True And sAccion = "Entrada" And ValidaEntradaParcial(rstDetalle) = True) Then
+                'Generar los ajustes correspondientes
+                invGeneraAjusteByTraslado sDocumento, gsUser
             End If
             If (gTrans = True) Then
                 lbok = Mensaje("La transacción ha sido guardada exitosamente", ICO_OK, False)
