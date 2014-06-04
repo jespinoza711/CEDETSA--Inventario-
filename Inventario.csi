@@ -1,0 +1,6 @@
+[History]
+1=#P0#=mb	#P1#=cargaGrid	#P2#=Inventario/frmTablas/cargaGrid	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140602191248	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=invGetSugeridoLote	#P2#=Inventario/Unit/invGetSugeridoLote	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140602185427	#P7#=0	#P8#=8	.
+3=#P0#=mb	#P1#=cmdSave_Click	#P2#=Inventario/frmAutoSugiereLotes/cmdSave_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20140602150736	#P7#=0	#P8#=5	.
+4=#P0#=mb	#P1#=ValidarCantidadLotes	#P2#=Inventario/frmAutoSugiereLotes/ValidarCantidadLotes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140602150723	#P7#=0	#P8#=9	.
+5=#P0#=mb	#P1#=HabilitarBotones	#P2#=Inventario/frmAutoSugiereLotes/HabilitarBotones	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20140602150712	#P7#=0	#P8#=6	.

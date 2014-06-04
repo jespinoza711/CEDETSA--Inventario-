@@ -569,30 +569,30 @@ End Sub
 Public Sub HabilitarControles()
     Select Case Accion
         Case TypAccion.Add
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             txtCantidad.Enabled = True
             cmdLote.Enabled = True
             cmdClear.Enabled = True
             txtCantidad.Text = ""
-            txtIdLote.Text = ""
+            txtIDLote.Text = ""
             txtLoteInterno.Text = ""
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "O"
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "R"
             txtCantidad.Enabled = True
             Me.TDBG.Enabled = False
         Case TypAccion.View
             cmdLote.Enabled = False
             cmdClear.Enabled = False
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtCantidad, "O"
             fmtTextbox txtLoteInterno, "R"
             Me.TDBG.Enabled = True
@@ -618,7 +618,7 @@ Private Sub cmdCancelar_Click()
 End Sub
 
 Private Sub cmdClear_Click()
-    Me.txtIdLote.Text = ""
+    Me.txtIDLote.Text = ""
     Me.txtLoteInterno.Text = ""
 End Sub
 
@@ -631,11 +631,11 @@ Private Sub cmdEditItem_Click()
 End Sub
 Private Sub GetDataFromGridToControl()
     If Not (grst.EOF And grst.BOF) Then
-        txtIdLote.Text = grst("IDLote").value
+        txtIDLote.Text = grst("IDLote").value
         txtLoteInterno.Text = grst("LoteInterno").value
         txtCantidad.Text = grst("Cantidad").value
     Else
-        txtIdLote.Text = ""
+        txtIDLote.Text = ""
         txtLoteInterno.Text = ""
         txtCantidad.Text = ""
     End If
@@ -659,10 +659,10 @@ Private Sub ValidarCantidadLotes()
     CantidadEdicion = IIf(Accion = View, 0, Val(txtCantidad.Text))
     CantLotes = GetTotalLotes(grst)
    If (CantLotes + CantidadEdicion) > Me.gdCantidad Then
-        lbok = Mensaje("La Cantidad del detalle de Lote no puede mayor a la cantidad total del producto", ICO_ERROR, False)
+        lbok = Mensaje("La Cantidad del detalle de Lote no puede ser mayor a la cantidad total del producto", ICO_ERROR, False)
         Exit Sub
     ElseIf (CantLotes + CantidadEdicion) < Me.gdCantidad Then
-        lbok = Mensaje("La Cantidad del detalle de Lote no puede menor a la cantidad total del producto", ICO_ERROR, False)
+        lbok = Mensaje("La Cantidad del detalle de Lote no puede ser menor a la cantidad total del producto", ICO_ERROR, False)
         Exit Sub
     End If
 End Sub
@@ -670,7 +670,7 @@ End Sub
 Private Sub cmdSave_Click()
     Dim lbok As Boolean
 
-        If txtIdLote.Text = "" Then
+        If txtIDLote.Text = "" Then
             lbok = Mensaje("El Lote no puede estar en Blanco", ICO_ERROR, False)
             Exit Sub
         End If
@@ -692,7 +692,7 @@ Private Sub cmdSave_Click()
     
     
     If (Accion = Add) Then
-          If ExiteRstKey(grst, "IDLote=" & Me.txtIdLote.Text & " AND IDPRODUCTO=" & Me.gsIDProducto & _
+          If ExiteRstKey(grst, "IDLote=" & Me.txtIDLote.Text & " AND IDPRODUCTO=" & Me.gsIDProducto & _
                                         " AND IdBodega=" & gsIDBodega) Then
             lbok = Mensaje("Ya existe ese el registro en la transacción", ICO_ERROR, False)
 
@@ -702,11 +702,11 @@ Private Sub cmdSave_Click()
           ' Carga los datos del detalle de transacciones para ser grabados a la bd
         
         Dim datosLote As New Dictionary
-        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIdLote.Text, datosLote
+        getValueFieldsFromTable "invlote", "LoteInterno,LoteProveedor,FechaVencimiento,FechaFabricacion", " IDLote=" & Me.txtIDLote.Text, datosLote
         grst.AddNew
         grst!IdBodega = Me.gsIDBodega
         grst!IdProducto = Me.gsIDProducto
-        grst!IdLote = Me.txtIdLote.Text
+        grst!IdLote = Me.txtIDLote.Text
         grst!Cantidad = Me.txtCantidad.Text
         grst!FechaVencimiento = datosLote("FechaVencimiento")
         grst!FechaFabricacion = datosLote("FechaFabricacion")
@@ -719,7 +719,7 @@ Private Sub cmdSave_Click()
     ElseIf (Accion = Edit) Then
       grst!IdBodega = gsIDBodega
       grst!IdProducto = gsIDProducto
-      grst!IdLote = Me.txtIdLote.Text
+      grst!IdLote = Me.txtIDLote.Text
       grst!Cantidad = Me.txtCantidad.Text
       grst.Update
     End If
@@ -751,7 +751,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = " IdProducto=" & gsIDProducto & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-      Me.txtIdLote.Text = frm.gsCodigobrw
+      Me.txtIDLote.Text = frm.gsCodigobrw
       
     End If
     
@@ -783,7 +783,7 @@ Dim dTotalExistenciaLote As Double
     lbFormCaption = gsTitle
     txtProducto.Text = gsIDProducto
     txtDescrProducto.Text = gsDescrProducto
-    Me.txtIdBodega.Text = gsIDBodega
+    Me.txtIDBodega.Text = gsIDBodega
     Me.txtDescrBodega.Text = Me.gsDescrBodega
     Me.txtCantidadTotal.Text = Me.gdCantidad
     Accion = View
