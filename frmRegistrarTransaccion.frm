@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{0A45DB48-BD0D-11D2-8D14-00104B9E072A}#2.0#0"; "sstabs2.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmRegistrarTransaccion 
@@ -8,7 +8,7 @@ Begin VB.Form frmRegistrarTransaccion
    ClientHeight    =   8850
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   15315
+   ClientWidth     =   11400
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   8.25
@@ -22,7 +22,7 @@ Begin VB.Form frmRegistrarTransaccion
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    ScaleHeight     =   8850
-   ScaleWidth      =   15315
+   ScaleWidth      =   11400
    StartUpPosition =   2  'CenterScreen
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -42,10 +42,10 @@ Begin VB.Form frmRegistrarTransaccion
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   15315
+      ScaleWidth      =   11400
       TabIndex        =   56
       Top             =   0
-      Width           =   15315
+      Width           =   11400
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -124,7 +124,6 @@ Begin VB.Form frmRegistrarTransaccion
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      TagVariant      =   ""
       Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
@@ -786,7 +785,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   61538305
+            Format          =   97320961
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 

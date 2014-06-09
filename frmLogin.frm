@@ -204,7 +204,7 @@ Begin VB.Form frmLogin
    Begin VB.Label lblVersion 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "Vesion"
+      Caption         =   "Versión"
       ForeColor       =   &H00FFFFFF&
       Height          =   255
       Left            =   840

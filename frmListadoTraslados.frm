@@ -6,7 +6,7 @@ Begin VB.Form frmListadoTraslados
    ClientHeight    =   7440
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   13785
+   ClientWidth     =   8490
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -18,10 +18,11 @@ Begin VB.Form frmListadoTraslados
    EndProperty
    ForeColor       =   &H00404040&
    LinkTopic       =   "Form1"
+   MDIChild        =   -1  'True
    ScaleHeight     =   7440
-   ScaleWidth      =   13785
-   StartUpPosition =   3  'Windows Default
-   Begin TrueOleDBGrid60.TDBGrid TDBGrid 
+   ScaleWidth      =   8490
+   WindowState     =   2  'Maximized
+   Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   3795
       Left            =   240
       OleObjectBlob   =   "frmListadoTraslados.frx":0000
@@ -33,8 +34,8 @@ Begin VB.Form frmListadoTraslados
       Height          =   2475
       Left            =   240
       TabIndex        =   4
-      Top             =   960
-      Width           =   10395
+      Top             =   990
+      Width           =   10425
       Begin VB.Frame Frame 
          Caption         =   "Filtrar por: "
          Height          =   585
@@ -69,35 +70,35 @@ Begin VB.Form frmListadoTraslados
       End
       Begin VB.CommandButton cmdRefrescar 
          Caption         =   "Refrescar"
-         Height          =   645
+         Height          =   885
          Left            =   9210
          TabIndex        =   20
          Top             =   300
-         Width           =   885
+         Width           =   945
       End
       Begin VB.CheckBox chkViewPendienteAplicar 
-         Caption         =   "Ver solo pendiente de Aplicar"
+         Caption         =   "Pendiente de Ingresar"
          Height          =   375
          Left            =   3840
          TabIndex        =   19
          Top             =   750
          Width           =   2505
       End
-      Begin VB.TextBox Text3 
+      Begin VB.TextBox txtNumEntrada 
          Height          =   345
          Left            =   6960
          TabIndex        =   18
          Top             =   1800
          Width           =   2055
       End
-      Begin VB.TextBox Text2 
+      Begin VB.TextBox txtNumSalida 
          Height          =   345
          Left            =   1620
          TabIndex        =   16
          Top             =   1740
          Width           =   2055
       End
-      Begin VB.TextBox Text1 
+      Begin VB.TextBox txtDocumentoInv 
          Height          =   345
          Left            =   1620
          TabIndex        =   14
@@ -113,7 +114,7 @@ Begin VB.Form frmListadoTraslados
          _ExtentX        =   2566
          _ExtentY        =   609
          _Version        =   393216
-         Format          =   20774913
+         Format          =   97320961
          CurrentDate     =   41787
       End
       Begin MSComCtl2.DTPicker dtpFechaInicial 
@@ -125,13 +126,13 @@ Begin VB.Form frmListadoTraslados
          _ExtentX        =   3096
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   20774913
+         Format          =   97320961
          CurrentDate     =   41787
       End
-      Begin VB.CommandButton cmdCajero 
+      Begin VB.CommandButton cmdBodega 
          Height          =   320
          Left            =   2850
-         Picture         =   "frmListadoTraslados.frx":2840
+         Picture         =   "frmListadoTraslados.frx":5BED
          Style           =   1  'Graphical
          TabIndex        =   8
          Top             =   300
@@ -230,10 +231,10 @@ Begin VB.Form frmListadoTraslados
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   13785
+      ScaleWidth      =   8490
       TabIndex        =   0
       Top             =   0
-      Width           =   13785
+      Width           =   8490
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -279,7 +280,7 @@ Begin VB.Form frmListadoTraslados
          Height          =   645
          Index           =   2
          Left            =   60
-         Picture         =   "frmListadoTraslados.frx":2B82
+         Picture         =   "frmListadoTraslados.frx":5F2F
          Stretch         =   -1  'True
          Top             =   60
          Width           =   720
@@ -291,8 +292,8 @@ Begin VB.Form frmListadoTraslados
       TabIndex        =   3
       Top             =   750
       Width           =   17925
-      _extentx        =   31618
-      _extenty        =   53
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmListadoTraslados"
@@ -301,4 +302,242 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+Dim rst As ADODB.Recordset
+Public gsFormCaption As String
+Public gsTitle As String
+
+Private Sub cargaGrid()
+    If rst.State = adStateOpen Then rst.Close
+    rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
+    rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+    rst.CursorLocation = adUseClient ' Cursor local al cliente
+    rst.LockType = adLockOptimistic
+    
+    Dim sEntradas  As String
+    Dim sViewPendiente As String
+    
+    
+    If (Me.optSalidas.value = True) Then
+        sEntradas = "0"
+    ElseIf Me.optEntradas.value = True Then
+        sEntradas = "1"
+    Else
+        sEntradas = "-1"
+    End If
+    
+    sViewPendiente = IIf(Me.chkViewPendienteAplicar.value = vbChecked, 1, 0)
+    
+    
+    GSSQL = gsCompania & ".invGetCabTrasladosConFiltros '" & IIf(Trim(Me.txtDocumentoInv.Text) = "", "*", Trim(Me.txtDocumentoInv.Text)) & _
+                                                    "'," & IIf(Trim(Me.txtIdBodega.Text) = "", -1, Trim(Me.txtIdBodega)) & _
+                                                    ",'" & IIf(Trim(Me.txtNumEntrada.Text) = "", "*", Trim(Me.txtNumEntrada.Text)) & _
+                                                    "','" & IIf(Trim(Me.txtNumSalida.Text) = "", "*", Trim(Me.txtNumSalida.Text)) & _
+                                                    "','" & Me.dtpFechaInicial.value & "','" & Me.dtpFechaFinal.value & _
+                                                    "'," & sEntradas & "," & sViewPendiente
+    If rst.State = adStateOpen Then rst.Close
+    Set rst = GetRecordset(GSSQL)
+    If Not (rst.EOF And rst.BOF) Then
+      Set TDBG.DataSource = rst
+      TDBG.Refresh
+    End If
+End Sub
+
+Private Sub InicializarControles()
+    fmtTextbox Me.txtIdBodega, "R"
+    fmtTextbox Me.txtDescrBodega, "R"
+    
+    Me.dtpFechaFinal.value = DateTime.Now
+    Me.dtpFechaInicial.value = DateTime.DateAdd("W", -1, DateTime.Now)
+    
+    Me.optSalidas.value = True
+End Sub
+
+
+Private Sub chkViewPendienteAplicar_Click()
+     If (Me.chkViewPendienteAplicar.value = vbChecked) Then
+        Me.optEntradas.value = True
+     End If
+End Sub
+
+Private Sub cmdBodega_Click()
+    Dim frm As New frmBrowseCat
+    
+    frm.gsCaptionfrm = "Bodega"
+    frm.gsTablabrw = "invBODEGA"
+    frm.gsCodigobrw = "IDBodega"
+    frm.gbTypeCodeStr = True
+    frm.gsDescrbrw = "Descr"
+    frm.gbFiltra = False
+    'frm.gsFiltro = "IdPaquete='" & Me.gsIDTipoTransaccion & "'"
+    frm.Show vbModal
+    If frm.gsCodigobrw <> "" Then
+      Me.txtIdBodega.Text = frm.gsCodigobrw
+      
+    End If
+    
+    If frm.gsDescrbrw <> "" Then
+      Me.txtDescrBodega.Text = frm.gsDescrbrw
+      fmtTextbox txtDescrBodega, "R"
+    End If
+End Sub
+
+Private Sub cmdRefrescar_Click()
+    cargaGrid
+End Sub
+
+Private Sub HabilitarBotonesMain()
+    Select Case Accion
+        Case TypAccion.Add, TypAccion.Edit
+            MDIMain.tbMenu.Buttons(8).Enabled = False 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = False 'Editar
+        Case TypAccion.View
+            MDIMain.tbMenu.Buttons(8).Enabled = True 'Nuevo
+            MDIMain.tbMenu.Buttons(10).Enabled = True 'Editar
+    End Select
+End Sub
+
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
+End Sub
+
+Public Sub CommandPass(ByVal srcPerformWhat As String)
+
+    On Error GoTo err
+
+    Select Case srcPerformWhat
+
+        Case "SalidaProductos"
+            CrearTraslado
+
+        Case "IngresoProductos"
+            CrearEntradaTraslado
+
+        Case "Cerrar"
+            Unload Me
+    End Select
+
+    Exit Sub
+
+    'Trap the error
+err:
+
+    If err.Number = -2147467259 Then
+        MsgBox "You cannot delete this record because it was used by other records! If you want to delete this record" & vbCrLf & "you will first have to delete or change the records that currenly used this record as shown bellow." & vbCrLf & vbCrLf & err.Description, , "Delete Operation Failed!"
+        Me.MousePointer = vbDefault
+    End If
+
+End Sub
+
+Private Sub CrearEntradaTraslado()
+    Dim vPosition As Variant
+    If rst.State = adStateClosed Then Exit Sub
+    vPosition = rst.Bookmark
+    Dim ofrmTraslado As New frmRegistrarTraslado
+    ofrmTraslado.gsFormCaption = "Traslados"
+    ofrmTraslado.gsTitle = "REGISTRO ENTRADA TRASLADO"
+    ofrmTraslado.sAccion = "Entrada"
+    ofrmTraslado.sDocumentoTraslado = rst("IDTraslado").value
+    LoadForm ofrmTraslado
+    rst.Bookmark = vPosition
+End Sub
+
+Private Sub CrearTraslado()
+
+    Dim ofrmTraslado As New frmRegistrarTraslado
+
+    ofrmTraslado.gsFormCaption = "Traslados"
+    ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"
+    ofrmTraslado.sAccion = "Salida"
+    LoadForm ofrmTraslado
+End Sub
+
+
+Private Sub Form_Load()
+    MDIMain.AddForm Me.Name
+    Set rst = New ADODB.Recordset
+    If rst.State = adStateOpen Then rst.Close
+    rst.ActiveConnection = gConet 'Asocia la conexión de trabajo
+    rst.CursorType = adOpenStatic 'adOpenKeyset  'Asigna un cursor dinamico
+    rst.CursorLocation = adUseClient ' Cursor local al cliente
+    rst.LockType = adLockOptimistic
+
+    Me.Caption = gsFormCaption
+    Me.lbFormCaption = gsTitle
+   
+    InicializarControles
+    
+    cargaGrid
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no form")
+    Set frmProductos = Nothing
+End Sub
+
+
+Private Sub Form_Resize()
+ On Error Resume Next
+    If WindowState <> vbMinimized Then
+        If Me.Width < 9195 Then Me.Width = 9195
+        If Me.Height < 4500 Then Me.Height = 4500
+        
+        
+        'Frame2.Width = ScaleWidth - CONTROL_MARGIN
+        
+        TDBG.Width = Me.ScaleWidth - CONTROL_MARGIN
+        TDBG.Height = (Me.ScaleHeight - Me.picHeader.Height) - TDBG.top
+        
+    End If
+    'TrueDBGridResize 0
+End Sub
+
+Public Sub TrueDBGridResize(iIndex As Integer)
+    'If WindowState <> vbMaximized Then Exit Sub
+    Dim i As Integer
+    Dim dAnchoTotal As Double
+    Dim dAnchocol As Double
+    dAnchoTotal = 0
+    dAnchocol = 0
+    For i = 0 To Me.TDBG.Columns.Count - 1
+        If (i = iIndex) Then
+            dAnchocol = TDBG.Columns(i).Width
+        Else
+            dAnchoTotal = dAnchoTotal + TDBG.Columns(i).Width
+        End If
+    Next i
+
+    Me.TDBG.Columns(iIndex).Width = (Me.ScaleWidth - dAnchoTotal) - CONTROL_MARGIN
+End Sub
+
+
+
+Private Sub TDBG_DblClick()
+Dim vPosition As Variant
+If rst.State = adStateClosed Then Exit Sub
+If Not (rst.EOF And rst.BOF) Then
+    vPosition = rst.Bookmark
+    Dim frm As frmRegistrarTraslado
+    Set frm = New frmRegistrarTraslado
+    frm.sAccion = "View"
+    frm.sDocumentoTraslado = rst("IDTraslado").value
+    frm.gsFormCaption = "Traslado"
+    frm.gsTitle = "Traslado"
+    frm.Show
+    
+
+    Set frm = Nothing
+    rst.Bookmark = vPosition
+End If
+End Sub
+
+Private Sub TDBG_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+    If Not (rst.BOF And rst.EOF) Then
+        If (rst!IDStatusRecibido = "16-3") Then 'El traslado no se ha recibido aun
+            MDIMain.tbMenu.Buttons(21).Enabled = True
+        Else
+            MDIMain.tbMenu.Buttons(21).Enabled = False
+        End If
+    End If
+End Sub
 

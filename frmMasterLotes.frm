@@ -92,7 +92,7 @@ Begin VB.Form frmMasterLotes
          _ExtentX        =   2566
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   62128129
+         Format          =   97714177
          CurrentDate     =   41772
       End
       Begin VB.TextBox txtLoteProveedor 
@@ -167,7 +167,7 @@ Begin VB.Form frmMasterLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   62128129
+         Format          =   97714177
          CurrentDate     =   41772
       End
       Begin VB.Label Label5 
@@ -412,13 +412,13 @@ End Sub
 Public Sub HabilitarControles()
     Select Case Accion
         Case TypAccion.Add
-            txtIdLote.Enabled = True
+            txtIDLote.Enabled = True
             txtLoteInterno.Enabled = True
             txtLoteProveedor.Enabled = True
-            txtIdLote.Text = "100"
+            txtIDLote.Text = "100"
             txtLoteInterno.Text = ""
             txtLoteProveedor.Text = ""
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "O"
             fmtTextbox txtLoteProveedor, "O"
             dtpFechaVencimiento.Enabled = True
@@ -426,7 +426,7 @@ Public Sub HabilitarControles()
             Me.TDBG.Enabled = False
         Case TypAccion.Edit
             txtLoteInterno.Enabled = True
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteInterno, "O"
             fmtTextbox txtLoteProveedor, "O"
             dtpFechaVencimiento.Enabled = True
@@ -434,7 +434,7 @@ Public Sub HabilitarControles()
             Me.TDBG.Enabled = False
         Case TypAccion.View
             fmtTextbox txtLoteInterno, "R"
-            fmtTextbox txtIdLote, "R"
+            fmtTextbox txtIDLote, "R"
             fmtTextbox txtLoteProveedor, "R"
             dtpFechaVencimiento.Enabled = False
             dtpFechaProduccion.Enabled = False
@@ -457,13 +457,13 @@ Private Sub cmdEditItem_Click()
 End Sub
 Private Sub GetDataFromGridToControl()
 If Not (rst.EOF And rst.BOF) Then
-    txtIdLote.Text = rst("IDLote").value
+    txtIDLote.Text = rst("IDLote").value
     txtLoteInterno.Text = rst("LoteInterno").value
     txtLoteProveedor.Text = rst("LoteProveedor").value
     dtpFechaVencimiento.value = rst("FechaVencimiento").value
     dtpFechaProduccion.value = rst("FechaFabricacion").value
 Else
-    txtIdLote.Text = ""
+    txtIDLote.Text = ""
     txtLoteInterno.Text = ""
     txtLoteProveedor.Text = ""
     dtpFechaVencimiento.value = DateTime.Now
@@ -502,7 +502,7 @@ Private Sub cmdEliminar_Click()
     Dim lbok As Boolean
     Dim sMsg As String
     
-    If txtIdLote.Text = "" Then
+    If txtIDLote.Text = "" Then
         lbok = Mensaje("El IDLote no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
@@ -516,7 +516,7 @@ Private Sub cmdEliminar_Click()
     
     lbok = Mensaje("Está seguro de eliminar el Lote " & rst("IDLote").value, ICO_PREGUNTA, True)
     If lbok Then
-                lbok = invUpdateLote("D", txtIdLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+                lbok = invUpdateLote("D", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
         
         If lbok Then
             sMsg = "Borrado Exitosamente ... "
@@ -531,7 +531,7 @@ Private Sub cmdSave_Click()
     Dim lbok As Boolean
     Dim sMsg As String
     Dim sFiltro As String
-    If txtIdLote.Text = "" Then
+    If txtIDLote.Text = "" Then
         lbok = Mensaje("IDLote no puede estar en Blanco", ICO_ERROR, False)
         Exit Sub
     End If
@@ -555,15 +555,15 @@ Private Sub cmdSave_Click()
     If Accion = Add Then
     
         If Not (rst.EOF And rst.BOF) Then
-            sFiltro = "IDLote = '" & txtIdLote.Text & "'"
+            sFiltro = "IDLote = '" & txtIDLote.Text & "'"
             If ExiteRstKey(rst, sFiltro) Then
                lbok = Mensaje("Ya exista el Lote ", ICO_ERROR, False)
-                txtIdLote.SetFocus
+                txtIDLote.SetFocus
             Exit Sub
             End If
         End If
     
-            lbok = invUpdateLote("I", txtIdLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+            lbok = invUpdateLote("I", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
             
             If lbok Then
                 sMsg = "El Lote ha sido registrada exitosamente ... "
@@ -580,7 +580,7 @@ Private Sub cmdSave_Click()
     End If ' si estoy adicionando
         If Accion = Edit Then
             If Not (rst.EOF And rst.BOF) Then
-                lbok = invUpdateLote("U", txtIdLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
+                lbok = invUpdateLote("U", txtIDLote.Text, txtLoteInterno.Text, txtLoteProveedor.Text, dtpFechaVencimiento.value, dtpFechaProduccion.value)
                 If lbok Then
                     sMsg = "El Lote ha sido registrada exitosamente ..."
                     lbok = Mensaje(sMsg, ICO_OK, False)
@@ -657,7 +657,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     MDIMain.SubtractForm Me.Name
     Set frmBodega = Nothing
 End Sub

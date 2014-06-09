@@ -3669,41 +3669,42 @@ Public Sub SetupMenuButtons()
 
     ReDim ButtonsAvailable(0 To 19)
     
-    ButtonsAvailable(0).form_buttons = "ABCVW"
+    ButtonsAvailable(0).form_buttons = "1,2,3,25,23,24"
     ButtonsAvailable(0).form_name = "no form"
     
-    ButtonsAvailable(1).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(1).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(1).form_name = "frmProductos"
     
-    ButtonsAvailable(2).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(2).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(2).form_name = "frmBodega"
     
-    ButtonsAvailable(3).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(3).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(3).form_name = "frmMasterLotes"
     
-    ButtonsAvailable(4).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(4).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(4).form_name = "frmCatalogos"
     
-    ButtonsAvailable(5).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(5).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(5).form_name = "frmCliente"
     
-    ButtonsAvailable(6).form_buttons = "ABCVWHT"
+    ButtonsAvailable(6).form_buttons = "1,2,3,24,8,22"
     ButtonsAvailable(6).form_name = "frmPedidos"
     
-    ButtonsAvailable(7).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(7).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(7).form_name = "frmTablas"
     
-    ButtonsAvailable(8).form_buttons = "ABCVWHT"
+    ButtonsAvailable(8).form_buttons = "1,2,3,24,8,22"
     ButtonsAvailable(8).form_name = "frmTransacciones"
     
-    ButtonsAvailable(9).form_buttons = "ABCWHJKLMQRST"
+    ButtonsAvailable(9).form_buttons = "1,2,3,8,10,11,12,13,17,18,19,22,25"
     ButtonsAvailable(9).form_name = "frmVendedor"
-    '#################  hasta aca #######################3
-    ButtonsAvailable(10).form_buttons = "CDEIKLOPRU"
-    ButtonsAvailable(10).form_name = "frmCategories"
     
-    ButtonsAvailable(11).form_buttons = "CDEIKLOPQRU"
-    ButtonsAvailable(11).form_name = "frmProduct"
+    ButtonsAvailable(10).form_buttons = "1,2,3,24,8,20,21,22"
+    ButtonsAvailable(10).form_name = "frmListadoTraslados"
+    
+    ButtonsAvailable(11).form_buttons = "1,2,3,24,22"
+    ButtonsAvailable(11).form_name = "frmRegistrarTraslado"
+    '#################  hasta aca #######################3
     
     ButtonsAvailable(12).form_buttons = "CDEFLPQRU"
     ButtonsAvailable(12).form_name = "frmStockMonitoring"
@@ -3740,30 +3741,33 @@ End Sub
 
 Public Sub SetupFormToolbar(frm As String)
 ' Given a form name set up the toolbar buttons appropriate for that form
-    Dim pattern As String
+    'Dim pattern As String
+    Dim pattern() As String
     Dim p As Integer
     Dim j As Integer
     Dim i As Integer
-    Dim visibility(1 To 24) As Boolean
+    Dim visibility(1 To 32) As Boolean
     Dim foundfrm As Boolean
     
     foundfrm = False
-    For i = 1 To 23
+    For i = 1 To 32
         visibility(i) = False                   'Initially assume all toolbar buttons are invisible
     Next i
     
-    pattern = ""
+    'pattern = ""
     
     For i = 0 To 18                            'There are 24 types of forms from type 0 to type 23
         If frm = ButtonsAvailable(i).form_name Then
-            pattern = ButtonsAvailable(i).form_buttons
-            For j = 1 To Len(pattern)
-                p = Asc(Mid(pattern, j, 1)) - 64    'if it was "C" than p = 1
-               
+            'pattern = ButtonsAvailable(i).form_buttons
+            pattern = Split(ButtonsAvailable(i).form_buttons, ",")
+            'For j = 1 To Len(pattern)
+            For j = 0 To UBound(pattern)
+                'p = Asc(Mid(pattern, j, 1)) - 64    'if it was "C" than p = 1
+                p = pattern(j)
                 visibility(p) = True
               
             Next j
-            For j = 1 To 23
+            For j = 1 To 24
                 MDIMain.tbMenu.Buttons.Item(j).Visible = visibility(j)
             Next j
             foundfrm = True
@@ -3772,9 +3776,11 @@ Public Sub SetupFormToolbar(frm As String)
     Next i              'only continue of form name didn't match
     
     If foundfrm = False Then        'If the form name was not found then default to buttons pattern for "no form"
-        pattern = ButtonsAvailable(0).form_buttons
-        For j = 1 To Len(pattern)
-                p = Asc(Mid(pattern, j, 1)) - 64
+        'pattern = ButtonsAvailable(0).form_buttons
+        pattern = Split(ButtonsAvailable(i).form_buttons, ",")
+        For j = 0 To UBound(pattern)
+                'p = Asc(Mid(pattern, j, 1)) - 64
+                p = pattern(j)
                 visibility(p) = True
               
             Next j

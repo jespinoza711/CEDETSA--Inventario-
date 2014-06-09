@@ -266,6 +266,7 @@ Begin VB.Form frmCliente
       _Version        =   131083
       ForeColor       =   4210752
       TabCount        =   1
+      TagVariant      =   ""
       Tabs            =   "frmCliente.frx":B5EF
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
          Height          =   7995
@@ -2039,7 +2040,7 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     If Not (rst2 Is Nothing) Then Set rst2 = Nothing
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     MDIMain.SubtractForm Me.Name
     Set frmCliente = Nothing
 

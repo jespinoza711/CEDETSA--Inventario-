@@ -139,8 +139,8 @@ Begin VB.Form frmDetPedido
       TabIndex        =   7
       Top             =   750
       Width           =   17925
-      _extentx        =   31618
-      _extenty        =   53
+      _ExtentX        =   31618
+      _ExtentY        =   53
    End
 End
 Attribute VB_Name = "frmDetPedido"
@@ -274,7 +274,7 @@ End Sub
 
 
 Private Sub Form_Unload(Cancel As Integer)
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     Set frmDetPedido = Nothing
 End Sub
 

@@ -498,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   62128129
+            Format          =   97517569
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,7 +521,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   62128129
+            Format          =   97517569
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -2806,7 +2806,7 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Not (rst Is Nothing) Then Set rst = Nothing
     If Not (rst2 Is Nothing) Then Set rst2 = Nothing
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     MDIMain.SubtractForm Me.Name
     Set frmProductos = Nothing
 End Sub

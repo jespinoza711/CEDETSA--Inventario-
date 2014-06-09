@@ -189,7 +189,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2778
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   61800449
+         Format          =   97517569
          CurrentDate     =   41640
       End
       Begin MSComCtl2.DTPicker DTPHasta 
@@ -201,7 +201,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2566
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   61800449
+         Format          =   97517569
          CurrentDate     =   47484
       End
       Begin VB.Label Label9 
@@ -437,7 +437,7 @@ Begin VB.Form frmPedidos
       Width           =   2295
    End
    Begin VB.CommandButton cmdRefresh 
-      Caption         =   "Refresh"
+      Caption         =   "Rohlfs"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -775,7 +775,7 @@ Private Sub Add()
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     MDIMain.SubtractForm Me.Name
     Set frmPedidos = Nothing
 End Sub

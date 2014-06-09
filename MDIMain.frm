@@ -3,10 +3,10 @@ Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.MDIForm MDIMain 
    BackColor       =   &H8000000C&
    Caption         =   "MDIForm1"
-   ClientHeight    =   10710
+   ClientHeight    =   7800
    ClientLeft      =   60
-   ClientTop       =   555
-   ClientWidth     =   16080
+   ClientTop       =   -2355
+   ClientWidth     =   8490
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
@@ -15,9 +15,9 @@ Begin VB.MDIForm MDIMain
       Height          =   285
       Left            =   0
       TabIndex        =   8
-      Top             =   10425
-      Width           =   16080
-      _ExtentX        =   28363
+      Top             =   7515
+      Width           =   8490
+      _ExtentX        =   14975
       _ExtentY        =   503
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
@@ -44,7 +44,6 @@ Begin VB.MDIForm MDIMain
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   10372
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   2
@@ -57,14 +56,14 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "02/06/2014"
+            TextSave        =   "09/06/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "12:19"
+            TextSave        =   "11:01"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -102,10 +101,10 @@ Begin VB.MDIForm MDIMain
       Height          =   375
       Left            =   0
       ScaleHeight     =   375
-      ScaleWidth      =   16080
+      ScaleWidth      =   8490
       TabIndex        =   7
-      Top             =   10050
-      Width           =   16080
+      Top             =   7140
+      Width           =   8490
       Begin VB.ListBox WinList 
          Height          =   255
          ItemData        =   "MDIMain.frx":10CE
@@ -126,9 +125,9 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picLeft 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   9285
+      Height          =   6375
       Left            =   0
-      ScaleHeight     =   9285
+      ScaleHeight     =   6375
       ScaleWidth      =   2310
       TabIndex        =   3
       Top             =   765
@@ -149,6 +148,7 @@ Begin VB.MDIForm MDIMain
          End
          Begin VB.Label Label1 
             BackStyle       =   0  'Transparent
+            Caption         =   "Menú de Inventario"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -162,7 +162,7 @@ Begin VB.MDIForm MDIMain
             Left            =   375
             TabIndex        =   5
             Top             =   195
-            Width           =   1290
+            Width           =   1830
          End
       End
       Begin MSComctlLib.ListView lvWin 
@@ -227,10 +227,10 @@ Begin VB.MDIForm MDIMain
    Begin VB.PictureBox picSeparator 
       Align           =   3  'Align Left
       BorderStyle     =   0  'None
-      Height          =   9285
+      Height          =   6375
       Left            =   2310
       MousePointer    =   9  'Size W E
-      ScaleHeight     =   9285
+      ScaleHeight     =   6375
       ScaleWidth      =   120
       TabIndex        =   2
       Top             =   765
@@ -263,146 +263,134 @@ Begin VB.MDIForm MDIMain
       Height          =   765
       Left            =   0
       ScaleHeight     =   765
-      ScaleWidth      =   16080
+      ScaleWidth      =   8490
       TabIndex        =   0
       Top             =   0
-      Width           =   16080
+      Width           =   8490
       Begin MSComctlLib.Toolbar tbMenu 
-         Height          =   780
+         Height          =   540
          Left            =   0
          TabIndex        =   1
          Top             =   0
          Width           =   14970
          _ExtentX        =   26405
-         _ExtentY        =   1376
+         _ExtentY        =   953
          ButtonWidth     =   2143
-         ButtonHeight    =   1376
+         ButtonHeight    =   953
          AllowCustomize  =   0   'False
          Wrappable       =   0   'False
          Style           =   1
-         ImageList       =   "itb32x"
          _Version        =   393216
          BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-            NumButtons      =   23
+            NumButtons      =   25
             BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Izquierda"
                Key             =   "Izquierda"
-               ImageIndex      =   27
             EndProperty
             BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Derecha"
                Key             =   "Derecha"
-               ImageIndex      =   26
             EndProperty
             BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               ImageIndex      =   14
                Style           =   3
             EndProperty
             BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Ajustar"
                Key             =   "Ajustar"
-               ImageIndex      =   14
             EndProperty
             BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Chequear Todo"
                Key             =   "Chequear Todo"
-               ImageIndex      =   20
             EndProperty
             BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Des Chequear"
                Key             =   "Des Chequear"
-               ImageIndex      =   21
             EndProperty
             BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Filtro"
                Key             =   "Filtro"
-               ImageIndex      =   9
             EndProperty
             BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Nuevo"
                Key             =   "Nuevo"
                Object.ToolTipText     =   "Ctrl+F2"
-               ImageIndex      =   1
             EndProperty
             BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Ver"
                Key             =   "Ver"
-               ImageIndex      =   18
             EndProperty
             BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Editar"
                Key             =   "Editar"
                Object.ToolTipText     =   "Ctrl+F3"
-               ImageIndex      =   2
             EndProperty
             BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Eliminar"
                Key             =   "Eliminar"
-               ImageIndex      =   4
             EndProperty
             BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Guardar"
                Key             =   "Guardar"
-               ImageIndex      =   5
             EndProperty
             BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Cancelar"
                Key             =   "Cancelar"
-               ImageIndex      =   8
             EndProperty
             BeginProperty Button14 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Aplicar"
                Key             =   "Aplicar"
-               ImageIndex      =   11
             EndProperty
             BeginProperty Button15 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Buscar"
                Key             =   "Buscar"
                Object.ToolTipText     =   "Ctrl+F4"
-               ImageIndex      =   3
             EndProperty
             BeginProperty Button16 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Limpiar"
                Key             =   "Limpiar"
-               ImageIndex      =   22
             EndProperty
             BeginProperty Button17 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Refrescar"
                Key             =   "Refrescar"
                Object.ToolTipText     =   "Ctrl+F6"
-               ImageIndex      =   6
             EndProperty
             BeginProperty Button18 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Imprimir"
                Key             =   "Imprimir"
                Object.ToolTipText     =   "Ctrl+F7"
-               ImageIndex      =   7
             EndProperty
             BeginProperty Button19 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Exportar"
                Key             =   "Exportar"
-               ImageIndex      =   10
             EndProperty
             BeginProperty Button20 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Reg. Salida "
+               Key             =   "SalidaProductos"
+               Description     =   "Registrar Salida de Productos"
+               Object.ToolTipText     =   "Registrar Salida de Productos"
+            EndProperty
+            BeginProperty Button21 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Reg. Ingreso"
+               Key             =   "IngresoProductos"
+               Description     =   "Registrar Ingreso de Productos"
+               Object.ToolTipText     =   "Registrar Ingreso de Productos"
+            EndProperty
+            BeginProperty Button22 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Cerrar"
                Key             =   "Cerrar"
                Object.ToolTipText     =   "Ctrl+F8"
-               ImageIndex      =   12
-            EndProperty
-            BeginProperty Button21 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "User's Guide"
-               Key             =   "User's Guide"
-               ImageIndex      =   15
-            EndProperty
-            BeginProperty Button22 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-               Caption         =   "Acerca de"
-               Key             =   "Acerca"
-               ImageIndex      =   16
             EndProperty
             BeginProperty Button23 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "User's Guide"
+               Key             =   "User's Guide"
+            EndProperty
+            BeginProperty Button24 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+               Caption         =   "Acerca de"
+               Key             =   "Acerca"
+            EndProperty
+            BeginProperty Button25 {66833FEA-8583-11D1-B16A-00C0F0283628} 
                Caption         =   "Cerrar Todo"
                Key             =   "CerrarTodo"
-               ImageIndex      =   17
             EndProperty
          EndProperty
       End
@@ -544,7 +532,7 @@ Begin VB.MDIForm MDIMain
       MaskColor       =   12632256
       _Version        =   393216
       BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   27
+         NumListImages   =   28
          BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
             Picture         =   "MDIMain.frx":1F449
             Key             =   "NEW"
@@ -646,23 +634,27 @@ Begin VB.MDIForm MDIMain
             Key             =   ""
          EndProperty
          BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":3A772
+            Picture         =   "MDIMain.frx":39772
             Key             =   ""
          EndProperty
          BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "MDIMain.frx":3B44C
+            Picture         =   "MDIMain.frx":3A44C
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage28 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "MDIMain.frx":3C126
             Key             =   ""
          EndProperty
       EndProperty
    End
    Begin VB.Menu mnuEdicion 
-      Caption         =   "Edicion"
+      Caption         =   "Edición"
    End
    Begin VB.Menu mnuArchivo 
       Caption         =   "Archivo"
    End
    Begin VB.Menu mnuAdministracion 
-      Caption         =   "Administracion"
+      Caption         =   "Administración"
    End
 End
 Attribute VB_Name = "MDIMain"
@@ -775,12 +767,21 @@ Private Sub lvWin_Click()
             ofrmPedidoFactura.gsTitle = "TELEVENTAS"
             LoadForm ofrmPedidoFactura
         Case "frmRegistrarTraslado":
-            Dim ofrmTraslado As New frmRegistrarTraslado
-            ofrmTraslado.gsFormCaption = "Traslados"
-            ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"
-            ofrmTraslado.sAccion = "Entrada"
-            ofrmTraslado.sDocumentoTraslado = "TRS000000000006"
-            LoadForm ofrmTraslado
+            Dim ofrmListadoTraslado As New frmListadoTraslados
+            ofrmListadoTraslado.gsFormCaption = "Listado de Traslados"
+            ofrmListadoTraslado.gsTitle = "Listado de Traslados"
+            LoadForm ofrmListadoTraslado
+'            Dim ofrmTraslado As New frmRegistrarTraslado
+'            ofrmTraslado.gsFormCaption = "Traslados"
+'            ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"
+'            ofrmTraslado.sAccion = "View"
+'            ofrmTraslado.sDocumentoTraslado = "TRS000000000006"
+'            LoadForm ofrmTraslado
+            
+'            Dim ofrmTraslado As New frmListadoTraslados
+'            ofrmTraslado.gsFormCaption = "Traslados"
+'            ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"
+'            LoadForm ofrmTraslado
        '----------------------------------------------
                      
         

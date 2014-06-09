@@ -1,17 +1,285 @@
 VERSION 5.00
 Object = "{0D6234D1-DBA2-11D1-B5DF-0060976089D0}#6.0#0"; "TODG6.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmRegistrarTraslado 
    Caption         =   "Form1"
-   ClientHeight    =   8760
+   ClientHeight    =   8100
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   13230
+   ClientWidth     =   8490
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
-   ScaleHeight     =   8760
-   ScaleWidth      =   13230
+   ScaleHeight     =   8100
+   ScaleWidth      =   8490
    WindowState     =   2  'Maximized
+   Begin MSComctlLib.ImageList imgTitle 
+      Left            =   4170
+      Top             =   990
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      BackColor       =   -2147483643
+      ImageWidth      =   48
+      ImageHeight     =   48
+      MaskColor       =   12632256
+      _Version        =   393216
+      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
+         NumListImages   =   2
+         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmRegistrarTraslado.frx":0000
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "frmRegistrarTraslado.frx":1CDA
+            Key             =   ""
+         EndProperty
+      EndProperty
+   End
+   Begin VB.Frame frmDetalle 
+      Caption         =   " Agregar Detalle:"
+      Height          =   1965
+      Left            =   210
+      TabIndex        =   30
+      Top             =   6510
+      Width           =   12045
+      Begin VB.TextBox txtIDProducto 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   1170
+         TabIndex        =   40
+         Top             =   540
+         Width           =   1095
+      End
+      Begin VB.TextBox txtDescrProducto 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   2670
+         TabIndex        =   39
+         Top             =   540
+         Width           =   5715
+      End
+      Begin VB.CheckBox chkAutoSugiereLotes 
+         Caption         =   "Auto Sugiere Lotes"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   255
+         Left            =   8790
+         TabIndex        =   38
+         Top             =   540
+         Width           =   2145
+      End
+      Begin VB.TextBox txtIDLote 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   1170
+         TabIndex        =   37
+         Top             =   1020
+         Width           =   1095
+      End
+      Begin VB.TextBox txtDescrLote 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   2670
+         TabIndex        =   36
+         Top             =   1020
+         Width           =   5715
+      End
+      Begin VB.TextBox txtCantidad 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   9720
+         TabIndex        =   35
+         Top             =   1020
+         Width           =   1095
+      End
+      Begin VB.CommandButton cmdProducto 
+         Height          =   315
+         Left            =   2310
+         Picture         =   "frmRegistrarTraslado.frx":39B4
+         Style           =   1  'Graphical
+         TabIndex        =   34
+         Top             =   540
+         Width           =   300
+      End
+      Begin VB.CommandButton cmdLote 
+         Height          =   315
+         Left            =   2310
+         Picture         =   "frmRegistrarTraslado.frx":3CF6
+         Style           =   1  'Graphical
+         TabIndex        =   33
+         Top             =   1020
+         Width           =   300
+      End
+      Begin VB.CommandButton cmdAdd 
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   555
+         Left            =   11160
+         Picture         =   "frmRegistrarTraslado.frx":4038
+         Style           =   1  'Graphical
+         TabIndex        =   32
+         ToolTipText     =   "Agrega el item con los datos digitados..."
+         Top             =   750
+         Width           =   555
+      End
+      Begin VB.TextBox txtCantidadRemitida 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   345
+         Left            =   9720
+         TabIndex        =   31
+         Top             =   1470
+         Width           =   1095
+      End
+      Begin VB.Label lblProducto 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Producto:"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   225
+         Left            =   420
+         TabIndex        =   44
+         Top             =   570
+         Width           =   825
+      End
+      Begin VB.Label lblLote 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Lote:"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   225
+         Left            =   450
+         TabIndex        =   43
+         Top             =   1050
+         Width           =   825
+      End
+      Begin VB.Label lblCantidad 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Cantidad:"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   225
+         Left            =   8850
+         TabIndex        =   42
+         Top             =   1080
+         Width           =   825
+      End
+      Begin VB.Label lblCantidadRemitida 
+         AutoSize        =   -1  'True
+         BackColor       =   &H8000000C&
+         Caption         =   " Cantidad Remitida:"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   225
+         Left            =   7860
+         TabIndex        =   41
+         Top             =   1560
+         Width           =   1815
+      End
+   End
    Begin VB.TextBox txtNumSalida 
       BeginProperty Font 
          Name            =   "Tahoma"
@@ -25,50 +293,14 @@ Begin VB.Form frmRegistrarTraslado
       ForeColor       =   &H00404040&
       Height          =   345
       Left            =   7140
-      TabIndex        =   42
+      TabIndex        =   28
       Top             =   2730
       Width           =   1725
-   End
-   Begin VB.TextBox txtCantidadRemitida 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   9570
-      TabIndex        =   40
-      Top             =   7590
-      Width           =   1095
-   End
-   Begin VB.CommandButton cmdAdd 
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   555
-      Left            =   11010
-      Picture         =   "frmRegistrarTraslado.frx":0000
-      Style           =   1  'Graphical
-      TabIndex        =   37
-      ToolTipText     =   "Agrega el item con los datos digitados..."
-      Top             =   6870
-      Width           =   555
    End
    Begin VB.Frame Frame1 
       Height          =   2685
       Left            =   12300
-      TabIndex        =   32
+      TabIndex        =   21
       Top             =   3210
       Width           =   765
       Begin VB.CommandButton cmdUndo 
@@ -83,9 +315,9 @@ Begin VB.Form frmRegistrarTraslado
          EndProperty
          Height          =   555
          Left            =   90
-         Picture         =   "frmRegistrarTraslado.frx":0CCA
+         Picture         =   "frmRegistrarTraslado.frx":4D02
          Style           =   1  'Graphical
-         TabIndex        =   36
+         TabIndex        =   25
          ToolTipText     =   "Deshacer / Cancelar"
          Top             =   2040
          Width           =   555
@@ -94,9 +326,9 @@ Begin VB.Form frmRegistrarTraslado
          Enabled         =   0   'False
          Height          =   555
          Left            =   90
-         Picture         =   "frmRegistrarTraslado.frx":1994
+         Picture         =   "frmRegistrarTraslado.frx":59CC
          Style           =   1  'Graphical
-         TabIndex        =   35
+         TabIndex        =   24
          ToolTipText     =   "Aplica y Guarda los datos de la transacción en Firme ..."
          Top             =   1410
          Width           =   555
@@ -113,9 +345,9 @@ Begin VB.Form frmRegistrarTraslado
          EndProperty
          Height          =   585
          Left            =   90
-         Picture         =   "frmRegistrarTraslado.frx":365E
+         Picture         =   "frmRegistrarTraslado.frx":7696
          Style           =   1  'Graphical
-         TabIndex        =   34
+         TabIndex        =   23
          ToolTipText     =   "Elimina el item actualmente seleccionado en el grid de datos ..."
          Top             =   810
          Width           =   555
@@ -132,139 +364,18 @@ Begin VB.Form frmRegistrarTraslado
          EndProperty
          Height          =   555
          Left            =   90
-         Picture         =   "frmRegistrarTraslado.frx":4328
+         Picture         =   "frmRegistrarTraslado.frx":8360
          Style           =   1  'Graphical
-         TabIndex        =   33
+         TabIndex        =   22
          ToolTipText     =   "Modifica los datos mostrados en el Grid con los datos digitados ..."
          Top             =   180
          Width           =   555
       End
    End
-   Begin VB.CommandButton cmdLote 
-      Height          =   320
-      Left            =   2160
-      Picture         =   "frmRegistrarTraslado.frx":4FF2
-      Style           =   1  'Graphical
-      TabIndex        =   31
-      Top             =   7140
-      Width           =   300
-   End
-   Begin VB.CommandButton cmdProducto 
-      Height          =   320
-      Left            =   2160
-      Picture         =   "frmRegistrarTraslado.frx":5334
-      Style           =   1  'Graphical
-      TabIndex        =   30
-      Top             =   6660
-      Width           =   300
-   End
-   Begin VB.TextBox txtCantidad 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   9570
-      TabIndex        =   29
-      Top             =   7140
-      Width           =   1095
-   End
-   Begin VB.TextBox txtDescrLote 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   2520
-      TabIndex        =   27
-      Top             =   7140
-      Width           =   5715
-   End
-   Begin VB.TextBox txtIDLote 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   1020
-      TabIndex        =   26
-      Top             =   7140
-      Width           =   1095
-   End
-   Begin VB.CheckBox chkAutoSugiereLotes 
-      Caption         =   "Auto Sugiere Lotes"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   255
-      Left            =   8640
-      TabIndex        =   24
-      Top             =   6660
-      Width           =   2145
-   End
-   Begin VB.TextBox txtDescrProducto 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   2520
-      TabIndex        =   23
-      Top             =   6660
-      Width           =   5715
-   End
-   Begin VB.TextBox txtIDProducto 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   345
-      Left            =   1020
-      TabIndex        =   22
-      Top             =   6660
-      Width           =   1095
-   End
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   3165
       Left            =   240
-      OleObjectBlob   =   "frmRegistrarTraslado.frx":5676
+      OleObjectBlob   =   "frmRegistrarTraslado.frx":902A
       TabIndex        =   20
       Top             =   3300
       Width           =   11955
@@ -305,7 +416,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61538305
+      Format          =   97320961
       CurrentDate     =   41787
    End
    Begin VB.TextBox txtEstado 
@@ -364,7 +475,7 @@ Begin VB.Form frmRegistrarTraslado
    Begin VB.CommandButton cmdBodegaDestino 
       Height          =   320
       Left            =   2730
-      Picture         =   "frmRegistrarTraslado.frx":9F03
+      Picture         =   "frmRegistrarTraslado.frx":D8B7
       Style           =   1  'Graphical
       TabIndex        =   11
       Top             =   2310
@@ -407,7 +518,7 @@ Begin VB.Form frmRegistrarTraslado
    Begin VB.CommandButton cmdBodegaOrigen 
       Height          =   320
       Left            =   2730
-      Picture         =   "frmRegistrarTraslado.frx":A245
+      Picture         =   "frmRegistrarTraslado.frx":DBF9
       Style           =   1  'Graphical
       TabIndex        =   8
       Top             =   1860
@@ -441,17 +552,15 @@ Begin VB.Form frmRegistrarTraslado
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   13230
+      ScaleWidth      =   8490
       TabIndex        =   0
       Top             =   0
-      Width           =   13230
-      Begin VB.Image Image 
-         Height          =   480
-         Index           =   2
-         Left            =   270
-         Picture         =   "frmRegistrarTraslado.frx":A587
-         Top             =   120
-         Width           =   480
+      Width           =   8490
+      Begin VB.Image imgCaption 
+         Height          =   645
+         Left            =   150
+         Top             =   60
+         Width           =   735
       End
       Begin VB.Label Label 
          AutoSize        =   -1  'True
@@ -507,7 +616,7 @@ Begin VB.Form frmRegistrarTraslado
    Begin MSComCtl2.DTPicker dtpFechaSalida 
       Height          =   345
       Left            =   7200
-      TabIndex        =   38
+      TabIndex        =   26
       Top             =   1380
       Width           =   1665
       _ExtentX        =   2937
@@ -523,7 +632,7 @@ Begin VB.Form frmRegistrarTraslado
          Strikethrough   =   0   'False
       EndProperty
       CalendarForeColor=   4210752
-      Format          =   61538305
+      Format          =   97320961
       CurrentDate     =   41787
    End
    Begin VB.Label lblNumSalida 
@@ -540,91 +649,18 @@ Begin VB.Form frmRegistrarTraslado
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   5880
-      TabIndex        =   43
+      TabIndex        =   29
       Top             =   2790
       Width           =   1245
-   End
-   Begin VB.Label lblCantidaRemitida 
-      BackColor       =   &H8000000C&
-      Caption         =   " Cantidad Remitida:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FFFFFF&
-      Height          =   225
-      Left            =   7710
-      TabIndex        =   41
-      Top             =   7680
-      Width           =   1815
    End
    Begin VB.Label lblFechaSalida 
       Caption         =   "Fecha Salida:"
       ForeColor       =   &H00404040&
       Height          =   225
       Left            =   5910
-      TabIndex        =   39
+      TabIndex        =   27
       Top             =   1440
       Width           =   1065
-   End
-   Begin VB.Label Label8 
-      Caption         =   "Cantidad:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   225
-      Left            =   8700
-      TabIndex        =   28
-      Top             =   7200
-      Width           =   825
-   End
-   Begin VB.Label Label7 
-      Caption         =   "Lote:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   225
-      Left            =   300
-      TabIndex        =   25
-      Top             =   7170
-      Width           =   825
-   End
-   Begin VB.Label Label6 
-      Caption         =   "Producto:"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00404040&
-      Height          =   225
-      Left            =   270
-      TabIndex        =   21
-      Top             =   6690
-      Width           =   825
    End
    Begin VB.Label lblNumReferencia 
       Caption         =   "Num Salida:"
@@ -799,11 +835,12 @@ Private Sub InicializaControles()
     Me.lblFechaSalida.Visible = False
     Me.dtpFechaSalida.Visible = False
     
-    Me.lblCantidaRemitida.Visible = False
+    Me.lblCantidadRemitida.Visible = False
     Me.txtCantidadRemitida.Visible = False
     Me.lblNumReferencia.Caption = "Num Salida"
     Me.lblNumSalida.Visible = False
     Me.txtNumSalida.Visible = False
+    Me.imgCaption.Picture = Me.imgTitle.ListImages(2).Picture
 End Sub
 
 Private Sub HabilitarBotones()
@@ -856,10 +893,35 @@ Private Sub HabilitarBotones()
 End Sub
 
 Public Sub HabilitarControles()
+
     Select Case Accion
+
         Case TypAccion.Add
-           
-            
+                        
+            If sAccion = "Salida" Then
+                fmtTextbox Me.txtBodegaDestino, "O"
+                fmtTextbox Me.txtDescrBodegaDestino, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "O"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "O"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+            ElseIf sAccion = "Entrada" Then
+                fmtTextbox Me.txtBodegaDestino, "R"
+                fmtTextbox Me.txtDescrBodegaDestino, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "R"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "R"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtNumSalida, "R"
+                
+                Me.dtpFechaSalida.Enabled = False
+            End If
+
             txtIDProducto.Text = ""
             fmtTextbox txtIDProducto, "O"
             txtDescrProducto.Text = ""
@@ -889,17 +951,37 @@ Public Sub HabilitarControles()
             
         Case TypAccion.Edit
             
+            If sAccion = "Salida" Then
+                fmtTextbox Me.txtBodegaDestino, "O"
+                fmtTextbox Me.txtDescrBodegaDestino, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "O"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "O"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+            ElseIf sAccion = "Entrada" Then
+                fmtTextbox Me.txtBodegaDestino, "R"
+                fmtTextbox Me.txtDescrBodegaDestino, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "R"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtBodegaOrigen, "R"
+                fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+                fmtTextbox Me.txtNumSalida, "R"
+                
+                Me.dtpFechaSalida.Enabled = False
+            End If
             
             fmtTextbox txtIDProducto, "O"
             fmtTextbox Me.txtDescrProducto, "R"
-                        
             
             fmtTextbox txtIDLote, "O"
             fmtTextbox txtDescrLote, "R"
             
             fmtTextbox txtCantidad, "O"
-        
-            
             
             Me.cmdProducto.Enabled = False
             Me.cmdLote.Enabled = False
@@ -907,6 +989,20 @@ Public Sub HabilitarControles()
             
         Case TypAccion.View
            
+            fmtTextbox Me.txtBodegaDestino, "R"
+            fmtTextbox Me.txtDescrBodegaDestino, "R"
+                
+            fmtTextbox Me.txtBodegaOrigen, "R"
+            fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+            fmtTextbox Me.txtBodegaOrigen, "R"
+            fmtTextbox Me.txtDescrBodegaOrigen, "R"
+                
+            fmtTextbox Me.txtNumSalida, "R"
+            fmtTextbox Me.txtNumReferencia, "R"
+            
+            Me.dtpFecha.Enabled = False
+            Me.dtpFechaSalida.Enabled = False
           
             fmtTextbox txtIDProducto, "O"
             txtIDLote.Text = ""
@@ -924,6 +1020,7 @@ Public Sub HabilitarControles()
            
             Me.TDBG.Enabled = True
     End Select
+
 End Sub
 
 Private Function ValCtrlsCabecera() As Boolean
@@ -1641,14 +1738,20 @@ Private Sub InicializaControlesEntrada()
     Me.TDBG.Columns(6).Visible = True
     Me.TDBG.Columns(1).Width = 4050.142
     Me.TDBG.Columns(5).Caption = "Cant Remitida"
-    Me.lblFechaSalida.Visible = False
-    Me.dtpFechaSalida.Visible = False
-    Me.lblCantidaRemitida.Visible = True
+    Me.lblFechaSalida.Visible = True
+    Me.dtpFechaSalida.Visible = True
+    Me.lblCantidadRemitida.Visible = True
     Me.txtCantidadRemitida.Visible = True
     fmtTextbox Me.txtCantidadRemitida, "R"
     Me.lblNumReferencia.Caption = "Num Entrada"
     Me.lblNumSalida.Visible = True
     Me.txtNumSalida.Visible = True
+    Me.imgCaption.Picture = Me.imgTitle.ListImages(1).Picture
+End Sub
+
+Private Sub Form_Activate()
+    HighlightInWin Me.Name
+    SetupFormToolbar (Me.Name)
 End Sub
 
 Private Sub Form_Load()
@@ -1664,21 +1767,31 @@ Private Sub Form_Load()
     
     Me.Caption = gsFormCaption
     Me.lbFormCaption = gsTitle
+    Accion = Add
+    
     'gTasaCambio = GetTasadeCambio(Format(Now, "YYYY/MM/DD"))
     If sAccion = "Salida" Then
         PreparaRstDetalle ' Prepara los Recordsets
         Set Me.TDBG.DataSource = rstDetalle
         Me.TDBG.Refresh
         InicializaControles
-    Else
+    ElseIf sAccion = "Entrada" Then
         InicializaControlesEntrada
         Set Me.TDBG.DataSource = rstDetalle
         Me.TDBG.Refresh
         EnlazarControles
+    ElseIf sAccion = "View" Then
+        InicializaControlesEntrada
+        Set Me.TDBG.DataSource = rstDetalle
+        Me.TDBG.Refresh
+        EnlazarControles
+        Frame1.Visible = False
+        Me.frmDetalle.Visible = False
+        Accion = View
     End If
    
     'SetTextBoxReadOnly
-    Accion = Add
+    
     HabilitarBotones
     HabilitarControles
     Me.chkAutoSugiereLotes.value = vbChecked

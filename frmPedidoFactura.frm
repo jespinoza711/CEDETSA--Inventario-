@@ -593,7 +593,7 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   61800449
+         Format          =   97714177
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 
@@ -1414,7 +1414,7 @@ End Sub
 
 Private Sub chkLoteAutomaticos_Click()
 If chkLoteAutomaticos.value = 0 Then
-    txtIdLote.Text = ""
+    txtIDLote.Text = ""
     txtLoteInterno.Text = ""
     txtExistenciaLote.Text = "0"
 End If
@@ -1438,7 +1438,7 @@ txtCantidad.Text = ""
 txtSubTotal.Text = "0"
 txtTotalImpuesto.Text = "0"
 txtTotal.Text = "0"
-txtIdLote.Text = ""
+txtIDLote.Text = ""
 txtLoteInterno.Text = ""
 txtExistenciaLote.Text = 0
 End Sub
@@ -1629,7 +1629,7 @@ Private Sub cmdLote_Click()
     frm.gsFiltro = "IDBodega=" & txtcodBodega.Text & " and IDProducto=" & txtCodProd.Text & " and Existencia>0"
     frm.Show vbModal
     If frm.gsCodigobrw <> "" Then
-        txtIdLote.Text = frm.gsCodigobrw
+        txtIDLote.Text = frm.gsCodigobrw
       
     End If
     
@@ -1709,7 +1709,7 @@ gbLoteInProcess = False
         '-*********************************************************
         
     Else ' El usuario está asignando el lote manualmente
-        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIdLote.Text) Then
+        If ExiteRstKey(rsttmpProdFac, "IDProducto=" & txtCodProd.Text & " AND IDBODEGA=" & txtcodBodega.Text & " and IDLOTE=" & txtIDLote.Text) Then
           lbok = Mensaje("Ya Existe ese Producto. ", ICO_ERROR, False)
           Exit Sub
         
@@ -1729,7 +1729,7 @@ gbLoteInProcess = False
         rsttmpProdFac("IDCliente").value = txtCodCliente.Text
         rsttmpProdFac("Fecha").value = Format(DTPFecFac.value, "yyyy-mm-dd") 'DTPFecFac.value
         rsttmpProdFac("IDProducto").value = txtCodProd.Text
-        rsttmpProdFac("IDLote").value = txtIdLote.Text
+        rsttmpProdFac("IDLote").value = txtIDLote.Text
         
         rsttmpProdFac("Descr").value = txtDescProd.Text
         rsttmpProdFac("CantidadPedida").value = txtCantidad.Text
@@ -1960,7 +1960,7 @@ fmtTextbox txtTotalImpuesto, "R"
 fmtTextbox txtSubTotal, "R"
 fmtTextbox txtPrecio, "R"
 fmtTextbox txtPorcImpuesto, "R"
-fmtTextbox txtIdLote, "R"
+fmtTextbox txtIDLote, "R"
 fmtTextbox txtExistenciaLote, "R"
 fmtTextbox txtLoteInterno, "R"
 SetColumnSizeGrid
@@ -2184,7 +2184,7 @@ If Not Val_TextboxNum(txtCantidad) Then
  GoTo salir
 End If
 If chkLoteAutomaticos.value = 0 Then
-      If txtIdLote.Text = "" Then
+      If txtIDLote.Text = "" Then
         gsOperacionError = "Ud no ha seleccionado el lote"
         lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
@@ -2193,12 +2193,12 @@ If chkLoteAutomaticos.value = 0 Then
       End If
     
     
-    If Not Val_TextboxNum(txtIdLote) Then
+    If Not Val_TextboxNum(txtIDLote) Then
      lbok = False
      gsOperacionError = "El código del Lote debe ser numérico."
      lbok = Mensaje(gsOperacionError, ICO_ADVERTENCIA, False)
         lbok = False
-        txtIdLote.Text = ""
+        txtIDLote.Text = ""
         txtLoteInterno.Text = ""
         txtExistenciaLote.Text = "0"
         cmdLote.SetFocus
@@ -2269,7 +2269,7 @@ End Sub
 
 
 Private Sub Form_Unload(Cancel As Integer)
-    SetupFormToolbar ("no name")
+    SetupFormToolbar ("no form")
     MDIMain.SubtractForm Me.Name
     Set frmProductos = Nothing
 End Sub
@@ -2310,7 +2310,7 @@ If Not rsttmpProdFac.EOF Then
   txtSubTotal.Text = rsttmpProdFac("SubTotal").value
   txtTotalImpuesto.Text = rsttmpProdFac("TotalImpuesto").value
   txtTotal.Text = rsttmpProdFac("Total").value
-  txtIdLote.Text = rsttmpProdFac("IDLote").value
+  txtIDLote.Text = rsttmpProdFac("IDLote").value
 End If
 End Sub
 
