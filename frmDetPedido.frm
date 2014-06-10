@@ -5,10 +5,10 @@ Begin VB.Form frmDetPedido
    ClientHeight    =   7605
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   12165
+   ClientWidth     =   11400
    LinkTopic       =   "Form1"
    ScaleHeight     =   7605
-   ScaleWidth      =   12165
+   ScaleWidth      =   11400
    StartUpPosition =   2  'CenterScreen
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -19,10 +19,10 @@ Begin VB.Form frmDetPedido
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   12165
+      ScaleWidth      =   11400
       TabIndex        =   4
       Top             =   0
-      Width           =   12165
+      Width           =   11400
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -235,7 +235,6 @@ End Sub
 
 Private Sub Form_Load()
 PreparaRst
-MDIMain.AddForm Me.Name
 SetColumnSizeGrid
 gbHuboAnulacion = False
 gbHuboAprobacion = False
@@ -275,6 +274,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     SetupFormToolbar ("no form")
+    
     Set frmDetPedido = Nothing
 End Sub
 

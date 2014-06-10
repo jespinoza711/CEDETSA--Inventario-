@@ -1755,6 +1755,7 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub Form_Load()
+    MDIMain.AddForm Me.Name
     Set rstDetalle = New ADODB.Recordset
     If rstDetalle.State = adStateOpen Then rst.Close
     rstDetalle.ActiveConnection = gConet 'Asocia la conexión de trabajo
@@ -1881,3 +1882,8 @@ Public Sub CargaDatosLotes(rst As ADODB.Recordset, iIDLote As Integer)
     End If
 End Sub
 
+Private Sub Form_Unload(Cancel As Integer)
+    SetupFormToolbar ("no name")
+    MDIMain.SubtractForm Me.Name
+    Set frmProductos = Nothing
+End Sub

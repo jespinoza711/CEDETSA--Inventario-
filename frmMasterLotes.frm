@@ -92,7 +92,7 @@ Begin VB.Form frmMasterLotes
          _ExtentX        =   2566
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   97714177
+         Format          =   97320961
          CurrentDate     =   41772
       End
       Begin VB.TextBox txtLoteProveedor 
@@ -167,7 +167,7 @@ Begin VB.Form frmMasterLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   97714177
+         Format          =   97320961
          CurrentDate     =   41772
       End
       Begin VB.Label Label5 

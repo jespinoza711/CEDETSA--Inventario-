@@ -63,7 +63,7 @@ Begin VB.MDIForm MDIMain
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "11:01"
+            TextSave        =   "19:30"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
@@ -766,7 +766,7 @@ Private Sub lvWin_Click()
             ofrmPedidoFactura.gsFormCaption = "Televentas"
             ofrmPedidoFactura.gsTitle = "TELEVENTAS"
             LoadForm ofrmPedidoFactura
-        Case "frmRegistrarTraslado":
+        Case "frmListadoTraslados":
             Dim ofrmListadoTraslado As New frmListadoTraslados
             ofrmListadoTraslado.gsFormCaption = "Listado de Traslados"
             ofrmListadoTraslado.gsTitle = "Listado de Traslados"
@@ -862,7 +862,7 @@ Private Sub lvWin_Load()
         
 '        'For Inventory
         .ListItems.Add(, "frmCatalogos", "Catalogos Generales", 5, 5).Bold = False
-        .ListItems.Add(, "frmRegistrarTraslado", "Salida Traslados", 11, 11).Bold = False
+        .ListItems.Add(, "frmListadoTraslados", "Salida Traslados", 11, 11).Bold = False
 '
 '        .ListItems.Add(, "frmCategories", "Category List", 5, 5).Bold = False
 '        .ListItems.Add(, "frmProduct", "Product List", 6, 6).Bold = False

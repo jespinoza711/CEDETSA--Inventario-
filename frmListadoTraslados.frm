@@ -114,7 +114,7 @@ Begin VB.Form frmListadoTraslados
          _ExtentX        =   2566
          _ExtentY        =   609
          _Version        =   393216
-         Format          =   97320961
+         Format          =   97255425
          CurrentDate     =   41787
       End
       Begin MSComCtl2.DTPicker dtpFechaInicial 
@@ -126,7 +126,7 @@ Begin VB.Form frmListadoTraslados
          _ExtentX        =   3096
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   97320961
+         Format          =   97255425
          CurrentDate     =   41787
       End
       Begin VB.CommandButton cmdBodega 
@@ -472,6 +472,7 @@ End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     SetupFormToolbar ("no form")
+    MDIMain.SubtractForm Me.Name
     Set frmProductos = Nothing
 End Sub
 

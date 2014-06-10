@@ -256,7 +256,7 @@ Begin VB.Form frmTransacciones
          EndProperty
          CalendarForeColor=   4210752
          CalendarTitleForeColor=   4210752
-         Format          =   97583105
+         Format          =   97255425
          CurrentDate     =   41095
       End
       Begin MSComCtl2.DTPicker dtpFechaFinal 
@@ -279,7 +279,7 @@ Begin VB.Form frmTransacciones
          EndProperty
          CalendarForeColor=   4210752
          CalendarTitleForeColor=   4210752
-         Format          =   97583105
+         Format          =   97255425
          CurrentDate     =   41095
       End
       Begin VB.Label Label4 

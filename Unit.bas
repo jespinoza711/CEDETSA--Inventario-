@@ -3704,11 +3704,12 @@ Public Sub SetupMenuButtons()
     
     ButtonsAvailable(11).form_buttons = "1,2,3,24,22"
     ButtonsAvailable(11).form_name = "frmRegistrarTraslado"
+    
+    
+    ButtonsAvailable(12).form_buttons = "1,2,3,24,8,22"
+    ButtonsAvailable(12).form_name = "frmPedidoFactura"
+    
     '#################  hasta aca #######################3
-    
-    ButtonsAvailable(12).form_buttons = "CDEFLPQRU"
-    ButtonsAvailable(12).form_name = "frmStockMonitoring"
-    
     ButtonsAvailable(13).form_buttons = "CDEIKLOPQRU"
     ButtonsAvailable(13).form_name = "frmStockReceive"
     

@@ -7,11 +7,11 @@ Begin VB.Form frmPedidoFactura
    ClientHeight    =   9390
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   16560
+   ClientWidth     =   11400
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   9390
-   ScaleWidth      =   16560
+   ScaleWidth      =   11400
    Begin VB.Frame FrameTotales 
       Height          =   3015
       Left            =   10350
@@ -291,10 +291,10 @@ Begin VB.Form frmPedidoFactura
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   16560
+      ScaleWidth      =   11400
       TabIndex        =   64
       Top             =   0
-      Width           =   16560
+      Width           =   11400
       Begin VB.Image Image 
          Height          =   720
          Index           =   2
@@ -593,7 +593,7 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   97714177
+         Format          =   97386497
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 

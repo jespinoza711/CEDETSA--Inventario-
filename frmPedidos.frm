@@ -6,11 +6,11 @@ Begin VB.Form frmPedidos
    ClientHeight    =   8055
    ClientLeft      =   60
    ClientTop       =   450
-   ClientWidth     =   15030
+   ClientWidth     =   11400
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   8055
-   ScaleWidth      =   15030
+   ScaleWidth      =   11400
    WindowState     =   2  'Maximized
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -21,10 +21,10 @@ Begin VB.Form frmPedidos
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   15030
+      ScaleWidth      =   11400
       TabIndex        =   25
       Top             =   0
-      Width           =   15030
+      Width           =   11400
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -189,7 +189,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2778
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   97517569
+         Format          =   97255425
          CurrentDate     =   41640
       End
       Begin MSComCtl2.DTPicker DTPHasta 
@@ -201,7 +201,7 @@ Begin VB.Form frmPedidos
          _ExtentX        =   2566
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   97517569
+         Format          =   97255425
          CurrentDate     =   47484
       End
       Begin VB.Label Label9 

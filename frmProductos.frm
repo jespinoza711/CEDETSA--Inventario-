@@ -8,7 +8,7 @@ Begin VB.Form frmProductos
    ClientHeight    =   9150
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   17040
+   ClientWidth     =   11400
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -22,7 +22,7 @@ Begin VB.Form frmProductos
    MDIChild        =   -1  'True
    Picture         =   "frmProductos.frx":0000
    ScaleHeight     =   9150
-   ScaleWidth      =   17040
+   ScaleWidth      =   11400
    WindowState     =   2  'Maximized
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
@@ -42,10 +42,10 @@ Begin VB.Form frmProductos
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   17040
+      ScaleWidth      =   11400
       TabIndex        =   96
       Top             =   0
-      Width           =   17040
+      Width           =   11400
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -498,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   97517569
+            Format          =   98238465
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,7 +521,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   97517569
+            Format          =   98238465
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 

@@ -7,11 +7,11 @@ Begin VB.Form frmCliente
    ClientHeight    =   11010
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   18780
+   ClientWidth     =   11400
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   11010
-   ScaleWidth      =   18780
+   ScaleWidth      =   11400
    WindowState     =   2  'Maximized
    Begin VB.PictureBox picHeader 
       Align           =   1  'Align Top
@@ -22,10 +22,10 @@ Begin VB.Form frmCliente
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   18780
+      ScaleWidth      =   11400
       TabIndex        =   14
       Top             =   0
-      Width           =   18780
+      Width           =   11400
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -266,7 +266,6 @@ Begin VB.Form frmCliente
       _Version        =   131083
       ForeColor       =   4210752
       TabCount        =   1
-      TagVariant      =   ""
       Tabs            =   "frmCliente.frx":B5EF
       Begin ActiveTabs.SSActiveTabPanel SSActiveTabPanel1 
          Height          =   7995

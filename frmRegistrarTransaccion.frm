@@ -755,6 +755,7 @@ Begin VB.Form frmRegistrarTransaccion
             _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
+            Enabled         =   -1  'True
             ScrollBars      =   2
             TextRTF         =   $"frmRegistrarTransaccion.frx":16898
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -785,7 +786,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   97320961
+            Format          =   97255425
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
