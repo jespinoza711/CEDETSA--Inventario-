@@ -56,17 +56,18 @@ Begin VB.MDIForm MDIMain
             Style           =   6
             Object.Width           =   1764
             MinWidth        =   1764
-            TextSave        =   "09/06/2014"
+            TextSave        =   "11/06/2014"
          EndProperty
          BeginProperty Panel8 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Enabled         =   0   'False
             Object.Width           =   1235
             MinWidth        =   1235
-            TextSave        =   "19:30"
+            TextSave        =   "17:41"
          EndProperty
          BeginProperty Panel9 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   3
+            Enabled         =   0   'False
             Object.Width           =   882
             MinWidth        =   882
             TextSave        =   "INS"
@@ -767,10 +768,16 @@ Private Sub lvWin_Click()
             ofrmPedidoFactura.gsTitle = "TELEVENTAS"
             LoadForm ofrmPedidoFactura
         Case "frmListadoTraslados":
-            Dim ofrmListadoTraslado As New frmListadoTraslados
-            ofrmListadoTraslado.gsFormCaption = "Listado de Traslados"
-            ofrmListadoTraslado.gsTitle = "Listado de Traslados"
-            LoadForm ofrmListadoTraslado
+            Dim frm As New frmFiltroExistenciaProducto
+            frm.Show
+             '#DESCOMENTARIAR LUEGO DE TEST
+'            Dim ofrmListadoTraslado As New frmListadoTraslados
+'            ofrmListadoTraslado.gsFormCaption = "Listado de Traslados"
+'            ofrmListadoTraslado.gsTitle = "Listado de Traslados"
+'            LoadForm ofrmListadoTraslado
+
+
+
 '            Dim ofrmTraslado As New frmRegistrarTraslado
 '            ofrmTraslado.gsFormCaption = "Traslados"
 '            ofrmTraslado.gsTitle = "REGISTRO SALIDA TRASLADO"

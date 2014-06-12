@@ -92,7 +92,7 @@ Begin VB.Form frmMasterLotes
          _ExtentX        =   2566
          _ExtentY        =   556
          _Version        =   393216
-         Format          =   97320961
+         Format          =   20971521
          CurrentDate     =   41772
       End
       Begin VB.TextBox txtLoteProveedor 
@@ -167,7 +167,7 @@ Begin VB.Form frmMasterLotes
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   97320961
+         Format          =   20971521
          CurrentDate     =   41772
       End
       Begin VB.Label Label5 
@@ -476,7 +476,7 @@ End Sub
 Public Function DependenciaLote(sFldname As String, sFldVal As String) As Boolean
 Dim lbok As Boolean
 lbok = False
-On Error GoTo error
+On Error GoTo ERROR
 
     If ExisteDependencia("invEXISTENCIALOTE", sFldname, sFldVal, "N") Then
         lbok = True
@@ -492,7 +492,7 @@ salir:
 DependenciaLote = lbok
 Exit Function
 
-error:
+ERROR:
     lbok = False
     GoTo salir
 End Function
@@ -675,6 +675,8 @@ Public Sub CommandPass(ByVal srcPerformWhat As String)
             cmdUndo_Click
         Case "Imprimir"
             MsgBox "Imprimir"
+        Case "Exportar"
+            ExportaGridToExcel Me.TDBG, "Listado de Lotes"
         Case "Cerrar"
             Unload Me
         Case "Guardar"

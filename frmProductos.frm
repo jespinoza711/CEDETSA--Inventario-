@@ -8,7 +8,7 @@ Begin VB.Form frmProductos
    ClientHeight    =   9150
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   11400
+   ClientWidth     =   14640
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -22,7 +22,7 @@ Begin VB.Form frmProductos
    MDIChild        =   -1  'True
    Picture         =   "frmProductos.frx":0000
    ScaleHeight     =   9150
-   ScaleWidth      =   11400
+   ScaleWidth      =   14640
    WindowState     =   2  'Maximized
    Begin Inventario.CtlLiner CtlLiner 
       Height          =   30
@@ -42,10 +42,10 @@ Begin VB.Form frmProductos
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   11400
+      ScaleWidth      =   14640
       TabIndex        =   96
       Top             =   0
-      Width           =   11400
+      Width           =   14640
       Begin VB.Label lbFormCaption 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -498,7 +498,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   98238465
+            Format          =   100335617
             CurrentDate     =   41692
             MinDate         =   41690
          End
@@ -521,7 +521,7 @@ Begin VB.Form frmProductos
                Strikethrough   =   0   'False
             EndProperty
             CalendarForeColor=   3092271
-            Format          =   98238465
+            Format          =   100335617
             CurrentDate     =   41698
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGMov 
@@ -703,11 +703,11 @@ Begin VB.Form frmProductos
             Width           =   1575
          End
          Begin TrueOleDBGrid60.TDBGrid TDBGExistencia 
-            Height          =   5745
+            Height          =   3435
             Left            =   120
             OleObjectBlob   =   "frmProductos.frx":E853
             TabIndex        =   19
-            Top             =   660
+            Top             =   2970
             Width           =   12465
          End
          Begin VB.Label Label2 
@@ -740,7 +740,7 @@ Begin VB.Form frmProductos
          _ExtentX        =   22437
          _ExtentY        =   12144
          _Version        =   131083
-         TabGuid         =   "frmProductos.frx":12A76
+         TabGuid         =   "frmProductos.frx":11FF6
          Begin VB.Frame Frame1 
             BeginProperty Font 
                Name            =   "MS Sans Serif"
@@ -946,7 +946,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3120
-               Picture         =   "frmProductos.frx":12A9E
+               Picture         =   "frmProductos.frx":1201E
                Style           =   1  'Graphical
                TabIndex        =   78
                Top             =   360
@@ -998,7 +998,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1320
-               Picture         =   "frmProductos.frx":12EE0
+               Picture         =   "frmProductos.frx":12460
                Style           =   1  'Graphical
                TabIndex        =   75
                Top             =   360
@@ -1420,7 +1420,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":13222
+               Picture         =   "frmProductos.frx":127A2
                Style           =   1  'Graphical
                TabIndex        =   48
                Top             =   1290
@@ -1454,7 +1454,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":13664
+               Picture         =   "frmProductos.frx":12BE4
                Style           =   1  'Graphical
                TabIndex        =   45
                Top             =   1290
@@ -1472,7 +1472,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":139A6
+               Picture         =   "frmProductos.frx":12F26
                Style           =   1  'Graphical
                TabIndex        =   44
                Top             =   825
@@ -1506,7 +1506,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":13DE8
+               Picture         =   "frmProductos.frx":13368
                Style           =   1  'Graphical
                TabIndex        =   41
                Top             =   810
@@ -1532,7 +1532,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":1412A
+               Picture         =   "frmProductos.frx":136AA
                Style           =   1  'Graphical
                TabIndex        =   39
                Top             =   360
@@ -1566,7 +1566,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":1456C
+               Picture         =   "frmProductos.frx":13AEC
                Style           =   1  'Graphical
                TabIndex        =   36
                Top             =   360
@@ -1584,7 +1584,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":148AE
+               Picture         =   "frmProductos.frx":13E2E
                Style           =   1  'Graphical
                TabIndex        =   35
                Top             =   2190
@@ -1618,7 +1618,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":14CF0
+               Picture         =   "frmProductos.frx":14270
                Style           =   1  'Graphical
                TabIndex        =   32
                Top             =   2190
@@ -1636,7 +1636,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   1560
-               Picture         =   "frmProductos.frx":15032
+               Picture         =   "frmProductos.frx":145B2
                Style           =   1  'Graphical
                TabIndex        =   31
                Top             =   1740
@@ -1670,7 +1670,7 @@ Begin VB.Form frmProductos
                EndProperty
                Height          =   320
                Left            =   3240
-               Picture         =   "frmProductos.frx":15374
+               Picture         =   "frmProductos.frx":148F4
                Style           =   1  'Graphical
                TabIndex        =   28
                Top             =   1740
@@ -1835,7 +1835,7 @@ Begin VB.Form frmProductos
    Begin TrueOleDBGrid60.TDBGrid TDBG 
       Height          =   1695
       Left            =   5400
-      OleObjectBlob   =   "frmProductos.frx":157B6
+      OleObjectBlob   =   "frmProductos.frx":14D36
       TabIndex        =   61
       Top             =   9270
       Visible         =   0   'False
@@ -1865,7 +1865,7 @@ Begin VB.Form frmProductos
       Height          =   480
       Index           =   0
       Left            =   4020
-      Picture         =   "frmProductos.frx":1B593
+      Picture         =   "frmProductos.frx":1AB13
       Top             =   8400
       Width           =   480
    End
@@ -1884,7 +1884,7 @@ Begin VB.Form frmProductos
       Height          =   480
       Index           =   1
       Left            =   0
-      Picture         =   "frmProductos.frx":1BE5D
+      Picture         =   "frmProductos.frx":1B3DD
       Top             =   0
       Width           =   480
    End
@@ -2162,6 +2162,8 @@ Public Sub CommandPass(ByVal srcPerformWhat As String)
             cmdUndo_Click
         Case "Imprimir"
             MsgBox "Imprimir"
+        Case "Exportar"
+            ExportaGridToExcel Me.TDBG, "Listado de Productos"
         Case "Cerrar"
             Unload Me
         Case "Guardar"
@@ -2866,13 +2868,13 @@ End Sub
 
 Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As String)
     Dim lbok As Boolean
-    On Error GoTo error
+    On Error GoTo ERROR
     lbok = True
       GSSQL = gsCompania & ".invGetExistenciaBodega " & sIDArticulo & " , " & sIDBodega
     
       'Set rst2 = gConet.Execute(GSSQL, adCmdText)  'Ejecuta la sentencia
       rst3.Open GSSQL, gConet, adOpenDynamic, adLockOptimistic
-    
+        
       If (gConet.Errors.Count > 0) Then  'Pregunta si hubo un error de ejecución
         gsOperacionError = "No existe ese cliente." 'Asigna msg de error
         lbok = False  'Indica que no es válido
@@ -2884,7 +2886,7 @@ Private Function CargaExistenciaBodega(sIDArticulo As String, sIDBodega As Strin
       CargaExistenciaBodega = lbok
       'rst3.Close
       Exit Function
-error:
+ERROR:
       lbok = False
       gsOperacionError = "Ocurrió un error en la operación de los datos " & err.Description
       Resume Next
@@ -2892,7 +2894,7 @@ End Function
 
 Private Function CargaTablas() As Boolean
     Dim lbok As Boolean
-    On Error GoTo error
+    On Error GoTo ERROR
     lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "
               
@@ -2915,7 +2917,7 @@ Private Function CargaTablas() As Boolean
       CargaTablas = lbok
       rst2.Close
       Exit Function
-error:
+ERROR:
       lbok = False
       gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
       Resume Next

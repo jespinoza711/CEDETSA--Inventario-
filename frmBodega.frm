@@ -625,7 +625,7 @@ End Sub
 Public Function DependenciaBodega(sFldname As String, sFldVal As String) As Boolean
 Dim lbok As Boolean
 lbok = False
-On Error GoTo error
+On Error GoTo ERROR
 
     If ExisteDependencia("invEXISTENCIALOTE", sFldname, sFldVal, "N") Then
         lbok = True
@@ -651,7 +651,7 @@ salir:
 DependenciaBodega = lbok
 Exit Function
 
-error:
+ERROR:
     lbok = False
     GoTo salir
 End Function
@@ -795,6 +795,8 @@ Public Sub CommandPass(ByVal srcPerformWhat As String)
             cmdUndo_Click
         Case "Imprimir"
             MsgBox "Imprimir"
+        Case "Exportar"
+            ExportaGridToExcel Me.TDBG, "Listado de Bodegas"
         Case "Cerrar"
             Unload Me
         Case "Guardar"

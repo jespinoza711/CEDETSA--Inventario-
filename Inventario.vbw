@@ -26,5 +26,5 @@ frmCliente = 154, 203, 1434, 749, C, 132, 174, 1412, 720, C
 frmDetPedido = 198, 261, 1478, 807, C, 176, 232, 1456, 778, C
 frmBodegaUsuario = 198, 261, 1472, 916, C, 176, 232, 1450, 887, C
 rptPedido = 0, 0, 0, 0, C, 220, 290, 1492, 1054, C
-frmListadoTraslados = 111, 336, 1489, 766, Z, 289, 77, 1244, 840, C
-frmRegistrarTraslado = 101, 2, 1453, 782, C, 94, 33, 553, 598, C
+frmListadoTraslados = 111, 336, 1489, 766, C, 289, 77, 1244, 663, C
+frmRegistrarTraslado = 101, 2, 1453, 588, C, 94, 33, 553, 598, C

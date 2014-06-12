@@ -7,11 +7,11 @@ Begin VB.Form frmPedidoFactura
    ClientHeight    =   9390
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   11400
+   ClientWidth     =   17520
    LinkTopic       =   "Form1"
    MDIChild        =   -1  'True
    ScaleHeight     =   9390
-   ScaleWidth      =   11400
+   ScaleWidth      =   17520
    Begin VB.Frame FrameTotales 
       Height          =   3015
       Left            =   10350
@@ -291,10 +291,10 @@ Begin VB.Form frmPedidoFactura
       Height          =   750
       Left            =   0
       ScaleHeight     =   750
-      ScaleWidth      =   11400
+      ScaleWidth      =   17520
       TabIndex        =   64
       Top             =   0
-      Width           =   11400
+      Width           =   17520
       Begin VB.Image Image 
          Height          =   720
          Index           =   2
@@ -593,7 +593,7 @@ Begin VB.Form frmPedidoFactura
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   """DD/MM/YYYY"""
-         Format          =   97386497
+         Format          =   100728833
          CurrentDate     =   38090.4465277778
       End
       Begin VB.Label Label5 
@@ -1531,7 +1531,7 @@ End Sub
 
 Private Sub cmdDelItem_Click()
 Dim lbok As Boolean
-On Error GoTo error
+On Error GoTo ERROR
 If Not rsttmpProdFac.EOF Then
   If Mensaje("Está seguro que desea eliminar el item seleccionado " & Chr(13) & rsttmpProdFac!Descr, ICO_PREGUNTA, True) = True Then
     rsttmpProdFac.Delete
@@ -1554,7 +1554,7 @@ If Not rsttmpProdFac.EOF Then
   End If
 End If
 Exit Sub
-error:
+ERROR:
     lbok = Mensaje("Hubo un error al eliminar un item del Pedido : " & err.Description, ICO_ERROR, False)
 End Sub
 

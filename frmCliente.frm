@@ -1533,7 +1533,7 @@ End Sub
 
 Private Function CargaTablas() As Boolean
     Dim lbok As Boolean
-    On Error GoTo error
+    On Error GoTo ERROR
     lbok = True
       GSSQL = gsCompania & ".globalGetTablas -1 "
               
@@ -1552,7 +1552,7 @@ Private Function CargaTablas() As Boolean
       CargaTablas = lbok
       rst2.Close
       Exit Function
-error:
+ERROR:
       lbok = False
       gsOperacionError = "Ocurrió un error en la operación de carga de parametros " & err.Description
       Resume Next
@@ -1839,7 +1839,7 @@ End Sub
 Public Function DependenciaCliente(sFldname As String, sFldVal As String) As Boolean
 Dim lbok As Boolean
 lbok = False
-On Error GoTo error
+On Error GoTo ERROR
 
     If ExisteDependencia("fafFACTURA", sFldname, sFldVal, "N") Then
         lbok = True
@@ -1855,7 +1855,7 @@ salir:
 DependenciaCliente = lbok
 Exit Function
 
-error:
+ERROR:
     lbok = False
     GoTo salir
 End Function
@@ -2286,6 +2286,8 @@ Public Sub CommandPass(ByVal srcPerformWhat As String)
             cmdUndo_Click
         Case "Imprimir"
             MsgBox "Imprimir"
+        Case "Exportar"
+            ExportaGridToExcel Me.TDBG, "Listado de Clientes"
         Case "Cerrar"
             Unload Me
         Case "Guardar"

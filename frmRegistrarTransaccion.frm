@@ -127,7 +127,7 @@ Begin VB.Form frmRegistrarTransaccion
       Tabs            =   "frmRegistrarTransaccion.frx":150E
       Begin ActiveTabs.SSActiveTabPanel sPabelLinea 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   6
          Top             =   360
          Width           =   14235
@@ -184,7 +184,7 @@ Begin VB.Form frmRegistrarTransaccion
       End
       Begin ActiveTabs.SSActiveTabPanel sPanelTransaccion 
          Height          =   6615
-         Left            =   -99969
+         Left            =   30
          TabIndex        =   15
          Top             =   360
          Width           =   14235
@@ -755,7 +755,6 @@ Begin VB.Form frmRegistrarTransaccion
             _ExtentX        =   22992
             _ExtentY        =   3149
             _Version        =   393217
-            Enabled         =   -1  'True
             ScrollBars      =   2
             TextRTF         =   $"frmRegistrarTransaccion.frx":16898
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -786,7 +785,7 @@ Begin VB.Form frmRegistrarTransaccion
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Format          =   97255425
+            Format          =   100270081
             CurrentDate     =   41095
          End
          Begin VB.Label Label7 
